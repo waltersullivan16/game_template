@@ -5,9 +5,6 @@ init -10 python:
     from collections import namedtuple
     from itertools import chain
 
-    ####### CONSTS #####
-
-
     ## PATHS ##
 
     GAME_PATH = os.path.abspath(os.getcwd())
@@ -22,15 +19,6 @@ init -10 python:
     ANIMATION_PAUSE = 0.2
 
     COMPOSITION = {}
-    COMPOSITION["FRIZ"] = {
-        "start": Position(xpos=0.3),
-        "mouth": Position(xpos=452, ypos=213),
-    }
-
-    COMPOSITION["NOWCIAX"] = {
-        "start": Position(xpos=0.6),
-        "mouth": Position(xpos=465, ypos=203)
-    }
 
     ## FONTS ##
 
@@ -52,17 +40,14 @@ init -10 python:
 
     ###### FUNCTIONS ######
 
-    BUBBLE = "bubble.png"
 
     def char_talking(character, event, **kwargs):
-        #print("[start] chatacer {} event {}".format(renpy.get_attributes(character.name), event))
         if event == "show":
             character.talking = True
             renpy.music.play("music/blip.mp3", channel="sound", loop="True")
         elif event in ["end", "slow_done"]:
             character.talking = False
             renpy.music.stop(channel="sound")
-        #print("[stop] chatacer {} event {}".format(renpy.get_attributes(character.name), event))
 
 
     def animation_maker(character, animation_name, animation_pause=ANIMATION_PAUSE):
@@ -80,52 +65,8 @@ init -10 python:
             (0, 0), bubble,
             (0.0, 0.0), Text(text, style="bum"))#"top_text \"{}\"".format(text))
 
-    mouth_animation = lambda c: animation_maker(c, "mouth")
+    #mouth_animation = lambda c: animation_maker(c, "mouth")
 
     ###### TRANSITIONS AND TRANFORMATIONS ######
 #
-transform dropping:
-    linear 1.5 yanchor -100
-    pause 3.0
 
-transform beating:
-    zoom 1.2
-    pause 0.2
-    zoom 1.0
-    pause 0.2
-    repeat
-
-
-####### STYLE ######
-
-style window:
-    #background Frame(os.path.join(TEXTBOX_PATH, "db.png"))
-    background Frame(os.path.join(TEXTBOX_PATH, "phoenixdb.png"))
-    yalign 1.05
-    ysize 300
-
-style namebox:
-    xalign 0.05
-    yalign 0.16
-
-style say_label:
-    properties gui.text_properties("name", accent=True)
-
-style say_dialogue:
-    properties gui.text_properties("dialogue")
-    xpos 100
-    yalign 0.6
-    xsize gui.dialogue_width
-
-style bum:
-    font FONT_CHERI
-    size 50
-    xanchor 0.5 yanchor 0.5
-
-image tt = comic_text_maker("dsadasd")
-init python:
-    ii = renpy.list_images()
-
-    def iq(name):
-        return list(filter(lambda x: x.startswith(name), ii))
-    fi = iq('friz')

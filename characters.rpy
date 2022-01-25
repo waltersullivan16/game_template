@@ -1,4 +1,3 @@
-# FRIZ
 init python:
     class Characterr:
         def __init__(self, name, who_color='#000000'):
@@ -25,43 +24,11 @@ init python:
         @property
         def mouth(self):
             return Animation(*mouth_animation(self.name))
-        x = LayeredImage([Attribute("test", "main", "reaction_sweatdrop")])
-
-##### FRIZ #####
-
-define FrizClass = Characterr("FRIZ")
-define Friz = FrizClass.char
-
-layeredimage friz:
-    group body auto:
-        attribute main default
-
-    group reaction:
-        attribute normal default null
-        attribute luv:
-            "reaction_luv"
-        attribute angry:
-            "reaction_angry"
-
-    if FrizClass.talking:
-        FrizClass.mouth at FrizClass.mouth_pos
+        #x = LayeredImage([Attribute("test", "main", "reaction_sweatdrop")])
 
 
-### NOWCIAX ###
+image reaction_luv = At("luv", beating)
+image reaction_sweatdrop = At("sweatdrop", dropping)
+image reaction_angry = At("angry", beating)
+image reaction_angry2 = At("angry2", beating)
 
-define NowciaxClass = Characterr("NOWCIAX")
-define Nowciax = NowciaxClass.char
-
-layeredimage nowciax:
-    group body auto:
-        attribute main default
-
-    group reaction:
-        attribute normal default null
-        attribute luv:
-            "reaction_luv"
-        attribute angry:
-            "reaction_angry"
-
-    if NowciaxClass.talking:
-        NowciaxClass.mouth at NowciaxClass.mouth_pos
