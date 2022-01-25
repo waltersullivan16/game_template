@@ -18,7 +18,6 @@ init -10 python:
 
     ANIMATION_PAUSE = 0.2
 
-    COMPOSITION = {}
 
     ## FONTS ##
 
@@ -59,7 +58,7 @@ init -10 python:
         arr = list(map(lambda x: int(x), renpy.get_image_bounds(character)))
         renpy.show(emotion, atl=Position(arr[0], arr[2]))
 
-    def comic_text_maker(text, bubble=BUBBLE):
+    def comic_text_maker(text, bubble):
         return LiveComposite(
             renpy.image_size(bubble),
             (0, 0), bubble,

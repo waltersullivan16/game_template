@@ -24,7 +24,7 @@ transform beating:
 
 #### DIALOGUE BOX ###
 
-TEXTBOX_NAME = "phoenixdb.png"
+define TEXTBOX_NAME = "phoenixdb.png"
 
 style window:
     background Frame(os.path.join(TEXTBOX_PATH, TEXTBOX_NAME))
