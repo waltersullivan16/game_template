@@ -64,6 +64,9 @@ init -10 python:
             (0, 0), bubble,
             (0.0, 0.0), Text(text, style="bum"))#"top_text \"{}\"".format(text))
 
+    def load_characters(characters):
+        for c in characters:
+            pass
     #mouth_animation = lambda c: animation_maker(c, "mouth")
 
     ###### TRANSITIONS AND TRANFORMATIONS ######
