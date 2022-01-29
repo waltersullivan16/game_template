@@ -6,8 +6,8 @@ init -10 python:
     from itertools import chain
 
     ## PATHS ##
-
-    GAME_PATH = os.path.abspath(os.getcwd())
+    title = "template"
+    GAME_PATH = os.path.join('/home/akechi/lajno', title, 'game')
     IMAGES_PATH = os.path.join(GAME_PATH, "images")
     TEXTBOX_PATH = os.path.join("gui", "textbox")
 
@@ -35,10 +35,10 @@ init -10 python:
     FONT_NAME = FONT_BUBBLEGUM
 
     AUTOMATIC_IMAGES = ["/"]
-    AUTOMATIC_IMAGES_STRIP = ["images"]
+    AUTOMATIC_IMAGES_STRIP = ["images", "images/characters"]
 
     ###### FUNCTIONS ######
-
+    import glob
 
     def char_talking(character, event, **kwargs):
         if event == "show":
@@ -48,6 +48,7 @@ init -10 python:
             character.talking = False
             renpy.music.stop(channel="sound")
 
+    print(glob.glob(GAME_PATH),"fdfsf")
 
     def animation_maker(character, animation_name, animation_pause=ANIMATION_PAUSE):
         files = [os.path.splitext(f)[0].split(" ") for f in os.listdir(get_character_animation_path(character))]
@@ -64,9 +65,17 @@ init -10 python:
             (0, 0), bubble,
             (0.0, 0.0), Text(text, style="bum"))#"top_text \"{}\"".format(text))
 
-    def load_characters(characters):
-        for c in characters:
-            pass
+    def reactions(c):
+        for r in os.listdir(os.path.join(IMAGES_PATH, 'reactions')):
+            print("{}_{}_{}".format(c, 'reactions', r.split('.')[0]))
+            #renpy.image("{}_{}_{}".format(c, 'reactions', r), os.path.join('reactions', r))
+
+#        for dir_name in os.listdir(get_character_path(character)):
+#            print(dir_name)
+#            for img in os.listdir(dir_name):
+#                print(img)
+#                renpy.image('{}_{}_{}'.format(character, dir_name, img), Image(img))
+#
     #mouth_animation = lambda c: animation_maker(c, "mouth")
 
     ###### TRANSITIONS AND TRANFORMATIONS ######

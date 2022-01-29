@@ -26,6 +26,71 @@ init python:
             return Animation(*mouth_animation(self.name))
         #x = LayeredImage([Attribute("test", "main", "reaction_sweatdrop")])
 
+define WardegaC = Characterr("Wardega")
+define Wardega = WardegaC.char
+
+define KonopskiC = Characterr("Konopski")
+define Konopski = KonopskiC.char
+
+define RevoC = Characterr("Revo")
+define Revo = RevoC.char
+
+define GimperC = Characterr("Gimper")
+define Gimper = GimperC.char
+
+define LexioC = Characterr("Lexio")
+define Lexio = LexioC.char
+
+define Dziewczyna1C = Characterr("Dziewczyna1")
+define Dziewczyna1 = Dziewczyna1C.char
+
+layeredimage wardega:
+    group body auto:
+        attribute main default
+
+    if WardegaC.talking:
+        WardegaC.mouth at WardegaC.mouth_pos
+
+layeredimage konopski:
+    group body auto:
+        attribute main default
+
+    if konopskic.talking:
+        Konopskic.mouth at konopskic.mouth_pos
+
+layeredimage revo:
+    group body auto:
+        attribute main default
+
+    if RevoC.talking:
+        RevoC.mouth at RevoC.mouth_pos
+
+layeredimage gimper:
+    group body auto:
+        attribute main default
+
+    if GimperC.talking:
+        GimperC.mouth at GimperC.mouth_pos
+
+layeredimage lexio:
+    group body auto:
+        attribute main default
+
+    if LexioC.talking:
+        LexioC.mouth at LexioC.mouth_pos
+
+layeredimage dziewczyna1:
+    group body auto:
+        attribute main default
+
+    if Dziewczyna1C.talking:
+        Dziewczyna1C.mouth at Dziewczyna1C.mouth_pos
+
+
+#notatki gowna bo sie pomylilam w przeszlosci pozdro mordo musi byc png
+image lobby = Image("background/lobby.png")
+#image x = Movie("x", (0,0), (0,0))
+#image ekipup_text = comic_text_maker("EKIPUP")
 
 image reaction_luv = At("luv", beating)
 image reaction_sweatdrop = At("sweatdrop", dropping)

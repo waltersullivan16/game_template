@@ -4,37 +4,48 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-CHARACTER_ANIMATION_PATH	fun/_init_.rpy	/^    CHARACTER_ANIMATION_PATH = lambda c: CHARACTER_PATH(c, "animation")$/;"	v
-CHARACTER_MOUTH_PATH	fun/_init_.rpy	/^    CHARACTER_MOUTH_PATH = lambda c: CHARACTER_PATH(c, "mouth")$/;"	v
-CHARACTER_PATH	fun/_init_.rpy	/^    CHARACTER_PATH = lambda c, prefix='': os.path.join(IMAGES_PATH, c, prefix)$/;"	v
-FONTS_PATH	fun/_init_.rpy	/^    FONTS_PATH = os.path.join("gui", "fonts")$/;"	v
-Friz	images.rpy	/^    Friz = FrizClass.char$/;"	v
-FrizClass	images.rpy	/^    FrizClass = Characterr("FRIZ", image="frizz", who_color='#000000', pos=START_POS_FRIZ)$/;"	v
-GAME_PATH	fun/_init_.rpy	/^    GAME_PATH = "\/home\/akechi\/lajno\/frizzzz\/game"$/;"	v
-GAME_PATH	trash.rpy	/^    GAME_PATH = "\/home\/akechi\/lajno\/frizzzz\/game"$/;"	v
-IMAGES_PATH	fun/_init_.rpy	/^    IMAGES_PATH = os.path.join(GAME_PATH, "images")$/;"	v
-IMAGES_PATH	trash.rpy	/^    IMAGES_PATH = os.path.join(GAME_PATH, "images")$/;"	v
-MAIN_IMAGES	trash.rpy	/^    MAIN_IMAGES = lambda character: os.path.join(IMAGES_PATH, character, "main")$/;"	v
-MOUTH_ANIMATION_PAUSE	fun/_init_.rpy	/^    MOUTH_ANIMATION_PAUSE = 0.2$/;"	v
-Nowciax	images.rpy	/^    Nowciax = NowciaxClass.char$/;"	v
-NowciaxClass	images.rpy	/^    NowciaxClass = Characterr("NOWCIAX", image="nowciaxx", who_color='#000000', pos=START_POS_NOWCIAX)$/;"	v
-START_POS_FRIZ	fun/_init_.rpy	/^    START_POS_FRIZ = Position(xpos=0.3)$/;"	v
-START_POS_NOWCIAX	fun/_init_.rpy	/^    START_POS_NOWCIAX = Position(xpos=0.7)$/;"	v
-TEXTBOX_PATH	fun/_init_.rpy	/^    TEXTBOX_PATH = os.path.join("gui", "textbox")$/;"	v
-a	fun/_imported_fun.rpy	/^    a=Fade(.25, 0, .75, color="#fff")$/;"	v
-abla	test.rpy	/^    $ abla = "a"$/;"	v
+ANIMATION_PAUSE	conf.rpy	/^    ANIMATION_PAUSE = 0.2$/;"	v
+AUTOMATIC_IMAGES	conf.rpy	/^    AUTOMATIC_IMAGES = ["\/"]$/;"	v
+AUTOMATIC_IMAGES_STRIP	conf.rpy	/^    AUTOMATIC_IMAGES_STRIP = ["images", "images\/characters"]$/;"	v
+Dziewczyna1	characters.rpy	/^define Dziewczyna1 = Dziewczyna1C.char$/;"	d
+Dziewczyna1C	characters.rpy	/^define Dziewczyna1C = Characterr("Dziewczyna1")$/;"	d
+FONTS_PATH	conf.rpy	/^    FONTS_PATH = os.path.join("gui", "fonts")$/;"	v
+FONT_BUBBLEGUM	conf.rpy	/^    FONT_BUBBLEGUM = get_font("Bubblegum.ttf")$/;"	v
+FONT_CHERI	conf.rpy	/^    FONT_CHERI = get_font("CHERI___.TTF")$/;"	v
+FONT_NAME	conf.rpy	/^    FONT_NAME = FONT_BUBBLEGUM$/;"	v
+FONT_SIZE	conf.rpy	/^    FONT_SIZE = 25$/;"	v
+FONT_SIZE_NAME	conf.rpy	/^    FONT_SIZE_NAME = 55$/;"	v
+FONT_TEXT	conf.rpy	/^    FONT_TEXT = FONT_UBUNTU$/;"	v
+FONT_UBUNTU	conf.rpy	/^    FONT_UBUNTU = get_font("Ubuntu-Regular.ttf")$/;"	v
+GAME_PATH	conf.rpy	/^    GAME_PATH = os.path.join('\/home\/akechi\/lajno', title, 'game')$/;"	v
+GAME_PATH	t.py	/^GAME_PATH = os.path.abspath('.')$/;"	v
+Gimper	characters.rpy	/^define Gimper = GimperC.char$/;"	d
+GimperC	characters.rpy	/^define GimperC = Characterr("Gimper")$/;"	d
+IMAGES_PATH	conf.rpy	/^    IMAGES_PATH = os.path.join(GAME_PATH, "images")$/;"	v
+Konopski	characters.rpy	/^define Konopski = KonopskiC.char$/;"	d
+KonopskiC	characters.rpy	/^define KonopskiC = Characterr("Konopski")$/;"	d
+Lexio	characters.rpy	/^define Lexio = LexioC.char$/;"	d
+LexioC	characters.rpy	/^define LexioC = Characterr("Lexio")$/;"	d
+Revo	characters.rpy	/^define Revo = RevoC.char$/;"	d
+RevoC	characters.rpy	/^define RevoC = Characterr("Revo")$/;"	d
+TEXTBOX_NAME	astyle_import.rpy	/^define TEXTBOX_NAME = "phoenixdb.png"$/;"	d
+TEXTBOX_PATH	conf.rpy	/^    TEXTBOX_PATH = os.path.join("gui", "textbox")$/;"	v
+Wardega	characters.rpy	/^define Wardega = WardegaC.char$/;"	d
+WardegaC	characters.rpy	/^define WardegaC = Characterr("Wardega")$/;"	d
 about	screens.rpy	/^screen about():$/;"	s
 about_label	screens.rpy	/^style about_label is gui_label$/;"	S
 about_label_text	screens.rpy	/^style about_label_text is gui_label_text$/;"	S
 about_label_text	screens.rpy	/^style about_label_text:$/;"	S
 about_text	screens.rpy	/^style about_text is gui_text$/;"	S
-alpha_transform	fun/_init_.rpy	/^    alpha_transform = lambda x: Transform(alpha=x)$/;"	v
+args	char.py	/^args = parser.parse_args()$/;"	v
+arr	conf.rpy	/^        arr = list(map(lambda x: int(x), renpy.get_image_bounds(character)))$/;"	v
 bar	screens.rpy	/^style bar:$/;"	S
-bazar	script.rpy	/^label bazar:$/;"	l
 build.name	options.rpy	/^define build.name = "frizzzz"$/;"	d
+bum	astyle_import.rpy	/^style bum:$/;"	S
 button	screens.rpy	/^style button:$/;"	S
 button_text	screens.rpy	/^style button_text is gui_text:$/;"	S
-character_path	trash.rpy	/^        character_path = MAIN_IMAGES(character)$/;"	v
+character	char.py	/^character = args.name$/;"	v
+character_path	char.py	/^character_path = os.path.join(os.getcwd(), "images", character)$/;"	v
 check_button	screens.rpy	/^style check_button is gui_button$/;"	S
 check_button	screens.rpy	/^style check_button:$/;"	S
 check_button_text	screens.rpy	/^style check_button_text is gui_button_text$/;"	S
@@ -51,8 +62,8 @@ choice_button_text	screens.rpy	/^style choice_button_text is default:$/;"	S
 choice_vbox	screens.rpy	/^style choice_vbox is vbox$/;"	S
 choice_vbox	screens.rpy	/^style choice_vbox:$/;"	S
 config.after_load_transition	options.rpy	/^define config.after_load_transition = None$/;"	d
-config.automatic_images	fun/_init_.rpy	/^define config.automatic_images = ['\/']$/;"	d
-config.automatic_images_strip	fun/_init_.rpy	/^define config.automatic_images_strip = ['images']$/;"	d
+config.automatic_images	options.rpy	/^define config.automatic_images = AUTOMATIC_IMAGES$/;"	d
+config.automatic_images_strip	options.rpy	/^define config.automatic_images_strip = AUTOMATIC_IMAGES_STRIP$/;"	d
 config.end_game_transition	options.rpy	/^define config.end_game_transition = None$/;"	d
 config.enter_transition	options.rpy	/^define config.enter_transition = dissolve$/;"	d
 config.exit_transition	options.rpy	/^define config.exit_transition = dissolve$/;"	d
@@ -83,15 +94,9 @@ confirm_prompt	screens.rpy	/^style confirm_prompt is gui_prompt$/;"	S
 confirm_prompt_text	screens.rpy	/^style confirm_prompt_text is gui_prompt_text$/;"	S
 confirm_prompt_text	screens.rpy	/^style confirm_prompt_text:$/;"	S
 default	screens.rpy	/^style default:$/;"	S
-end	script.rpy	/^label end:$/;"	l
 file_slots	screens.rpy	/^screen file_slots(title):$/;"	s
-files	fun/_init_.rpy	/^        files = [os.path.splitext(f)[0].split(" ") for f in os.listdir(animation_path(character))]$/;"	v
-files	fun/_init_.rpy	/^        files = list(filter(lambda f: f[0] == character and f[1] == animation_name, files))$/;"	v
-files_names	trash.rpy	/^            files_names = [os.path.splitext(f)[0] for f in os.listdir(character_path) if f.endswith('png')]$/;"	v
-filmik	script.rpy	/^label filmik:$/;"	l
-flatten_template	trash.rpy	/^        flatten_template = list(chain.from_iterable(template))$/;"	v
-foto	fun/_imported_fun.rpy	/^define foto = "friz\/main\/friz_otoja.png"$/;"	d
-fracsurf	fun/_imported_fun.rpy	/^            fracsurf = renpy.display.pgrender.surface(size, True)$/;"	v
+files	conf.rpy	/^        files = [os.path.splitext(f)[0].split(" ") for f in os.listdir(get_character_animation_path(character))]$/;"	v
+files	conf.rpy	/^        files = list(filter(lambda f: f[0] == character and f[1] == animation_name, files))$/;"	v
 frame	screens.rpy	/^style frame:$/;"	S
 game_menu	screens.rpy	/^screen game_menu(title, scroll=None, yinitial=0.0):$/;"	s
 game_menu_content_frame	screens.rpy	/^style game_menu_content_frame is empty$/;"	S
@@ -111,6 +116,9 @@ game_menu_viewport	screens.rpy	/^style game_menu_viewport is gui_viewport$/;"	S
 game_menu_viewport	screens.rpy	/^style game_menu_viewport:$/;"	S
 game_menu_vscrollbar	screens.rpy	/^style game_menu_vscrollbar:$/;"	S
 gamepad_help	screens.rpy	/^screen gamepad_help():$/;"	s
+get_character_animation_path	conf.rpy	/^    get_character_animation_path = lambda c: os.path.join(IMAGES_PATH, c, "animations")$/;"	v
+get_character_path	conf.rpy	/^    get_character_path = lambda c, prefix='': os.path.join(IMAGES_PATH, c, prefix)$/;"	v
+get_font	conf.rpy	/^    get_font = lambda font: os.path.join(FONTS_PATH, font)$/;"	v
 gui.about	options.rpy	/^define gui.about = _p("""$/;"	d
 gui.accent_color	gui.rpy	/^define gui.accent_color = u'#00cc99'$/;"	d
 gui.bar_borders	gui.rpy	/^define gui.bar_borders = Borders(4, 4, 4, 4)$/;"	d
@@ -173,10 +181,8 @@ gui.language	gui.rpy	/^define gui.language = "unicode"$/;"	d
 gui.main_menu_background	gui.rpy	/^define gui.main_menu_background = "gui\/main_menu.png"$/;"	d
 gui.main_menu_text_xalign	gui.rpy	/^define gui.main_menu_text_xalign = 1.0$/;"	d
 gui.muted_color	gui.rpy	/^define gui.muted_color = u'#00513d'$/;"	d
-gui.name_text_font	fun/_init_.rpy	/^define gui.name_text_font = os.path.join(FONTS_PATH, "Bubblegum.ttf")$/;"	d
-gui.name_text_font	gui.rpy	/^define gui.name_text_font = "DejaVuSans.ttf"$/;"	d
-gui.name_text_size	fun/_init_.rpy	/^define gui.name_text_size = 55$/;"	d
-gui.name_text_size	gui.rpy	/^define gui.name_text_size = 30$/;"	d
+gui.name_text_font	gui.rpy	/^define gui.name_text_font = FONT_NAME$/;"	d
+gui.name_text_size	gui.rpy	/^define gui.name_text_size = FONT_SIZE_NAME$/;"	d
 gui.name_xalign	gui.rpy	/^define gui.name_xalign = 0.0$/;"	d
 gui.name_xpos	gui.rpy	/^define gui.name_xpos = 240$/;"	d
 gui.name_ypos	gui.rpy	/^define gui.name_ypos = 0$/;"	d
@@ -236,10 +242,8 @@ gui.slot_button_text_xalign	gui.rpy	/^define gui.slot_button_text_xalign = 0.5$/
 gui.slot_button_width	gui.rpy	/^define gui.slot_button_width = 276$/;"	d
 gui.slot_spacing	gui.rpy	/^define gui.slot_spacing = 10$/;"	d
 gui.text_color	gui.rpy	/^define gui.text_color = u'#ffffff'$/;"	d
-gui.text_font	fun/_init_.rpy	/^define gui.text_font = os.path.join(FONTS_PATH, "Ubuntu-Regular.ttf")$/;"	d
-gui.text_font	gui.rpy	/^define gui.text_font = "DejaVuSans.ttf"$/;"	d
-gui.text_size	fun/_init_.rpy	/^define gui.text_size = 25$/;"	d
-gui.text_size	gui.rpy	/^define gui.text_size = 22$/;"	d
+gui.text_font	gui.rpy	/^define gui.text_font = FONT_TEXT$/;"	d
+gui.text_size	gui.rpy	/^define gui.text_size = FONT_SIZE$/;"	d
 gui.textbox_height	gui.rpy	/^define gui.textbox_height = 185$/;"	d
 gui.textbox_yalign	gui.rpy	/^define gui.textbox_yalign = 1.0$/;"	d
 gui.title_text_size	gui.rpy	/^define gui.title_text_size = 50$/;"	d
@@ -248,7 +252,6 @@ gui.vbar_borders	gui.rpy	/^define gui.vbar_borders = Borders(4, 4, 4, 4)$/;"	d
 gui.vscrollbar_borders	gui.rpy	/^define gui.vscrollbar_borders = Borders(4, 4, 4, 4)$/;"	d
 gui.vslider_borders	gui.rpy	/^define gui.vslider_borders = Borders(4, 4, 4, 4)$/;"	d
 gui_text	screens.rpy	/^style gui_text:$/;"	S
-heh	fun/_imported_fun.rpy	/^define heh = "background\/bedroom.png"$/;"	d
 help	screens.rpy	/^screen help():$/;"	s
 help_button	screens.rpy	/^style help_button is gui_button$/;"	S
 help_button	screens.rpy	/^style help_button:$/;"	S
@@ -272,9 +275,7 @@ history_text	screens.rpy	/^style history_text is gui_text$/;"	S
 history_text	screens.rpy	/^style history_text:$/;"	S
 history_window	screens.rpy	/^style history_window is empty$/;"	S
 history_window	screens.rpy	/^style history_window:$/;"	S
-hrate	fun/_imported_fun.rpy	/^            hrate = math.ceil(256.0 \/ (hr * 2 + 1))$/;"	v
 hyperlink_text	screens.rpy	/^style hyperlink_text:$/;"	S
-image	fun/_imported_fun.rpy	/^            image = im.image(imname)$/;"	v
 input	screens.rpy	/^screen input(prompt):$/;"	s
 input	screens.rpy	/^style input:$/;"	S
 input_prompt	screens.rpy	/^style input_prompt is default$/;"	S
@@ -294,10 +295,9 @@ main_menu_vbox	screens.rpy	/^style main_menu_vbox:$/;"	S
 main_menu_version	screens.rpy	/^style main_menu_version is main_menu_text$/;"	S
 main_menu_version	screens.rpy	/^style main_menu_version:$/;"	S
 mouse_help	screens.rpy	/^screen mouse_help():$/;"	s
-mouth_animation	fun/_init_.rpy	/^    mouth_animation = lambda c: animation(c, CHARACTER_MOUTH_PATH, "usti")$/;"	v
 mute_all_button	screens.rpy	/^style mute_all_button is check_button$/;"	S
 mute_all_button_text	screens.rpy	/^style mute_all_button_text is check_button_text$/;"	S
-namebox	fun/_init_.rpy	/^style namebox:$/;"	S
+namebox	astyle_import.rpy	/^style namebox:$/;"	S
 namebox	screens.rpy	/^style namebox is default$/;"	S
 namebox_label	screens.rpy	/^style namebox_label is say_label$/;"	S
 navigation	screens.rpy	/^screen navigation():$/;"	s
@@ -325,7 +325,6 @@ nvl_label	screens.rpy	/^style nvl_label:$/;"	S
 nvl_thought	screens.rpy	/^style nvl_thought:$/;"	S
 nvl_window	screens.rpy	/^style nvl_window is default$/;"	S
 nvl_window	screens.rpy	/^style nvl_window:$/;"	S
-origsurf	fun/_imported_fun.rpy	/^            origsurf = im.cache.get(self.image)$/;"	v
 page_button	screens.rpy	/^style page_button is gui_button$/;"	S
 page_button	screens.rpy	/^style page_button:$/;"	S
 page_button_text	screens.rpy	/^style page_button_text is gui_button_text$/;"	S
@@ -334,6 +333,8 @@ page_label	screens.rpy	/^style page_label is gui_label$/;"	S
 page_label	screens.rpy	/^style page_label:$/;"	S
 page_label_text	screens.rpy	/^style page_label_text is gui_label_text$/;"	S
 page_label_text	screens.rpy	/^style page_label_text:$/;"	S
+parser	char.py	/^parser = argparse.ArgumentParser()$/;"	v
+position_array	characters.rpy	/^            position_array = renpy.get_image_bounds(self.image)$/;"	v
 pref_label	screens.rpy	/^style pref_label is gui_label$/;"	S
 pref_label	screens.rpy	/^style pref_label:$/;"	S
 pref_label_text	screens.rpy	/^style pref_label_text is gui_label_text$/;"	S
@@ -347,7 +348,6 @@ quick_button	screens.rpy	/^style quick_button:$/;"	S
 quick_button_text	screens.rpy	/^style quick_button_text is button_text$/;"	S
 quick_button_text	screens.rpy	/^style quick_button_text:$/;"	S
 quick_menu	screens.rpy	/^screen quick_menu():$/;"	s
-r	fun/_imported_fun.rpy	/^                r = (r, r)$/;"	v
 radio_button	screens.rpy	/^style radio_button is gui_button$/;"	S
 radio_button	screens.rpy	/^style radio_button:$/;"	S
 radio_button_text	screens.rpy	/^style radio_button_text is gui_button_text$/;"	S
@@ -356,20 +356,17 @@ radio_label	screens.rpy	/^style radio_label is pref_label$/;"	S
 radio_label_text	screens.rpy	/^style radio_label_text is pref_label_text$/;"	S
 radio_vbox	screens.rpy	/^style radio_vbox is pref_vbox$/;"	S
 radio_vbox	screens.rpy	/^style radio_vbox:$/;"	S
-res	trash.rpy	/^        res = []$/;"	v
-retsurf	fun/_imported_fun.rpy	/^            retsurf = renpy.display.pgrender.surface(size, True)$/;"	v
 return_button	screens.rpy	/^style return_button is navigation_button$/;"	S
 return_button	screens.rpy	/^style return_button:$/;"	S
 return_button_text	screens.rpy	/^style return_button_text is navigation_button_text$/;"	S
 save	screens.rpy	/^screen save():$/;"	s
 say	screens.rpy	/^screen say(who, what):$/;"	s
-say_dialogue	fun/_init_.rpy	/^style say_dialogue:$/;"	S
+say_dialogue	astyle_import.rpy	/^style say_dialogue:$/;"	S
 say_dialogue	screens.rpy	/^style say_dialogue is default$/;"	S
-say_label	fun/_init_.rpy	/^style say_label:$/;"	S
+say_label	astyle_import.rpy	/^style say_label:$/;"	S
 say_label	screens.rpy	/^style say_label is default$/;"	S
 say_thought	screens.rpy	/^style say_thought is say_dialogue$/;"	S
 scrollbar	screens.rpy	/^style scrollbar:$/;"	S
-size	fun/_imported_fun.rpy	/^            size = origsurf.get_size()$/;"	v
 skip_frame	screens.rpy	/^style skip_frame is empty$/;"	S
 skip_frame	screens.rpy	/^style skip_frame:$/;"	S
 skip_indicator	screens.rpy	/^screen skip_indicator():$/;"	s
@@ -395,18 +392,13 @@ slot_button_text	screens.rpy	/^style slot_button_text is gui_button_text$/;"	S
 slot_button_text	screens.rpy	/^style slot_button_text:$/;"	S
 slot_name_text	screens.rpy	/^style slot_name_text is slot_button_text$/;"	S
 slot_time_text	screens.rpy	/^style slot_time_text is slot_button_text$/;"	S
-spritechange	fun/_init_.rpy	/^define spritechange = MultipleTransition([$/;"	d
-template	trash.rpy	/^        template = ["{} {}".format(character, state), 0.1, "{} {}_talking".format(character, state), 0.1]$/;"	v
-template	trash.rpy	/^        template = [['{} {}'.format(character, i), 0.1] for i in get_images(character, mood)]$/;"	v
-test	test.rpy	/^label test:$/;"	l
-usti_files	fun/_init_.rpy	/^        usti_files = [os.path.splitext(f)[0] for f in os.listdir(CHARACTER_MOUTH_PATH(character))]$/;"	v
+t	t.py	/^def t():$/;"	f
+title	conf.rpy	/^    title = "template"$/;"	v
 vbar	screens.rpy	/^style vbar:$/;"	S
-vrate	fun/_imported_fun.rpy	/^            vrate = math.ceil(256.0 \/ (vr * 2 + 1))$/;"	v
 vscrollbar	screens.rpy	/^style vscrollbar:$/;"	S
 vslider	screens.rpy	/^style vslider:$/;"	S
 what	screens.rpy	/^                $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)$/;"	v
-window	fun/_init_.rpy	/^style window:$/;"	S
+window	astyle_import.rpy	/^style window:$/;"	S
 window	screens.rpy	/^style window is default$/;"	S
 window	screens.rpy	/^style window:$/;"	S
-x	trash.rpy	/^            x = file.split(' ')$/;"	v
-z	fun/screens.rpy	/^screen z():$/;"	s
+z	astyle_import.rpy	/^screen z():$/;"	s
