@@ -48,51 +48,42 @@ layeredimage wardega:
     group body auto:
         attribute main default
 
-    if WardegaC.talking:
-        WardegaC.mouth at WardegaC.mouth_pos
+#    if WardegaC.talking:
+#        WardegaC.mouth at WardegaC.mouth_pos
 
 layeredimage konopski:
     group body auto:
         attribute main default
 
-    if konopskic.talking:
-        Konopskic.mouth at konopskic.mouth_pos
+#    if konopskic.talking:
+#        Konopskic.mouth at konopskic.mouth_pos
 
 layeredimage revo:
     group body auto:
         attribute main default
 
-    if RevoC.talking:
-        RevoC.mouth at RevoC.mouth_pos
+#    if RevoC.talking:
+#        RevoC.mouth at RevoC.mouth_pos
 
 layeredimage gimper:
     group body auto:
         attribute main default
 
-    if GimperC.talking:
-        GimperC.mouth at GimperC.mouth_pos
+#    if GimperC.talking:
+#        GimperC.mouth at GimperC.mouth_pos
 
 layeredimage lexio:
     group body auto:
         attribute main default
 
-    if LexioC.talking:
-        LexioC.mouth at LexioC.mouth_pos
+#    if LexioC.talking:
+#        LexioC.mouth at LexioC.mouth_pos
 
 layeredimage dziewczyna1:
     group body auto:
         attribute main default
 
-    if Dziewczyna1C.talking:
-        Dziewczyna1C.mouth at Dziewczyna1C.mouth_pos
+#    if Dziewczyna1C.talking:
+#        Dziewczyna1C.mouth at Dziewczyna1C.mouth_pos
 
 
-#notatki gowna bo sie pomylilam w przeszlosci pozdro mordo musi byc png
-image lobby = Image("background/lobby.png")
-#image x = Movie("x", (0,0), (0,0))
-#image ekipup_text = comic_text_maker("EKIPUP")
-
-image reaction_luv = At("luv", beating)
-image reaction_sweatdrop = At("sweatdrop", dropping)
-image reaction_angry = At("angry", beating)
-image reaction_angry2 = At("angry2", beating)

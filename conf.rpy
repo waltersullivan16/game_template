@@ -13,8 +13,8 @@ init -10 python:
 
     ## CHARACTERS ##
 
-    get_character_path = lambda c, prefix='': os.path.join(IMAGES_PATH, c, prefix)
-    get_character_animation_path = lambda c: os.path.join(IMAGES_PATH, c, "animations")
+    get_character_path = lambda c, prefix='': os.path.join(IMAGES_PATH, "characters", c, prefix)
+    get_character_animation_path = lambda c: os.path.join(IMAGES_PATH, "characters", c, "animations")
 
     ANIMATION_PAUSE = 0.2
 
@@ -76,7 +76,7 @@ init -10 python:
 #                print(img)
 #                renpy.image('{}_{}_{}'.format(character, dir_name, img), Image(img))
 #
-    #mouth_animation = lambda c: animation_maker(c, "mouth")
+    mouth_animation = lambda c: animation_maker(c, "mouth")
 
     ###### TRANSITIONS AND TRANFORMATIONS ######
 #
