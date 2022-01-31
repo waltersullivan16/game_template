@@ -1,10 +1,10 @@
 ﻿label start:
     scene lobby with fade
-    Konopski """
+    Konopski "
         No i wreszcie nadszedł ten moment.
         Dzień, w którym raz na zawsze udowodnię, kto jest czarnym charakterem w tej historii.
         To był bez wątpienia najbardziej..."
-    extend """
+    extend "
         intensywny miesiąc w moim życiu.
         Nierealny do tego stopnia, że niejednokrotnie miałem wątpliwość, czy to wszystko dzieje się naprawdę. Nigdy nic nie wiadomo w dzisiejszej kulturze pranków.
         Wydaje mi się jednak, że nawet najbardziej wysublimowane pranki mają jakieś granice, które postawione są nieco niżej niż sprawa w sądzie.
@@ -23,22 +23,20 @@
         Nie jestem nawet pewien czy będę w stanie przejść przez salę sądową bez spektakularnego upadku na ryj.
         Ale może nie byłoby to takie złe? Może zyskałbym w oczach wszystkich jako rozładowujący atmosferę element komiczny?
         Albo może...
-    """
-    extend """
+    "
+    extend "
         może po prostu wyjdę stąd i udam, że nigdy nie było sprawy.
         Szybko, gdzie ja powiesiłem płaszcz? Dobra, walić to, spadam jak jest.
-        Nar...
-     """
+        Nar..."
     "Och, tak się cieszę, że zdążyłyśmy! Bałyśmy się, że wszedł już pan na salę."
     show dziewczyna1 with vpunch
     Dziewczyna1 "A bardzo nam zależało, żeby podziękować panu za to wszystko co pan dla nas robi."
     "Strasznie nam głupio, że naraża to pana na tyle nieprzyjemności."
     Konopski "Och nie przejmujcie się niczym, to żaden kłopot!"
     "[to było tak bezczelnie ewidentne kłamstwo, że aż dziwię się, że przeszło mi przez gardło]"
-    Dziewczyna1 """...
+    Dziewczyna1"...
         W każdym razie, uznałyśmy, że potrzebuje pan jak najwięcej wsparcia.
-        Inni zaraz po usłyszeniu kto będzie prokuratorem, uciekliby w popłochu.
-    """
+        Inni zaraz po usłyszeniu kto będzie prokuratorem, uciekliby w popłochu."
     Konopski "[Ja chciałbym uciec w popłochu, mimo że nawet tego nie usłyszałem.]"
     Konopski "[Zaraz, zaraz. Coś tu się nie zgadza.]"
     Konopski "Przecież to ja jestem prokuratorem. O kim ty w ogóle mówisz?"
