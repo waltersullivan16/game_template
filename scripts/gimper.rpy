@@ -15,7 +15,7 @@ label gimper:
     Lexiu "Bana na łapki w dół!"
     Konopski "[To nie są zbyt odległe czasy, ty youtubowa wygo...
     Poza tym, jak bardzo jest źle z moim wizerunkiem, skoro zostałem postawiony w jednej lidze z Kamerzystą i demonetyzacją...]"
-    Revo: "Papo, papo, a czy ja też kiedyś dorosnę do miliona subów?"
+    Revo "Papo, papo, a czy ja też kiedyś dorosnę do miliona subów?"
     Wardega "Synu. Czyż nie mówiłem ci wielokrotnie, że nadejdzie kiedyś taki dzień, dzień w którym dane mi będzie opuścić youtube, to właśnie tobie, mojemu jedynemu dziedzicowi, powierzam całe watahańskie imperium?"
     Revo "Papo, a co jeśli nie sprostam twoim oczekiwaniom? Co jeśli zawiodę watahę?"
     Wardega "Revo, Ty moja mała definicjo rzetelności. Spójrz mi w oczy. To nie jest tak że sprostasz moim oczekiwaniom. Ty je przerośniesz."

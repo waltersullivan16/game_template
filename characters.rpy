@@ -7,7 +7,7 @@ init python:
             self.pos = Position(xpos=start[0], ypos=start[1])
             self.who_color = who_color
 
-            self.char = Character(name=self.capital_name, callback=partial(char_talking, self), who_color=who_color)
+            self.char = Character(name=self.capital_name, image=self.name, callback=partial(char_talking, self), who_color=who_color)
 
             self.talking = False
             self.layeredimage = None
@@ -41,9 +41,6 @@ define Gimper = GimperC.char
 define LexioC = Characterr("Lexio")
 define Lexio = LexioC.char
 
-define Dziewczyna1C = Characterr("Dziewczyna1")
-define Dziewczyna1 = Dziewczyna1C.char
-
 layeredimage wardega:
     group body auto:
         attribute main default
@@ -55,35 +52,35 @@ layeredimage konopski:
     group body auto:
         attribute main default
 
-#    if konopskic.talking:
-#        Konopskic.mouth at konopskic.mouth_pos
-
 layeredimage revo:
     group body auto:
         attribute main default
-
-#    if RevoC.talking:
-#        RevoC.mouth at RevoC.mouth_pos
 
 layeredimage gimper:
     group body auto:
         attribute main default
 
-#    if GimperC.talking:
-#        GimperC.mouth at GimperC.mouth_pos
-
 layeredimage lexio:
     group body auto:
         attribute main default
 
-#    if LexioC.talking:
-#        LexioC.mouth at LexioC.mouth_pos
+define Dziewczyna1C = Characterr("Dziewczyna1")
+define Dziewczyna1 = Dziewczyna1C.char
 
 layeredimage dziewczyna1:
     group body auto:
         attribute main default
 
-#    if Dziewczyna1C.talking:
-#        Dziewczyna1C.mouth at Dziewczyna1C.mouth_pos
+define Dziewczyna2C = Characterr("Dziewczyna2")
+define Dziewczyna2 = Dziewczyna2C.char
 
+layeredimage dziewczyna2:
+    group body auto:
+        attribute main default
 
+define Dziewczyna3C = Characterr("Dziewczyna3")
+define Dziewczyna3 = Dziewczyna3C.char
+
+layeredimage dziewczyna3:
+    group body auto:
+        attribute main default
