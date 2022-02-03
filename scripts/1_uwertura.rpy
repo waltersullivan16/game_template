@@ -1,15 +1,14 @@
 ﻿label start:
     scene lobby with fade
     show screen z
-    jump konop_monolog1
+    #jump konop_monolog1
     #jump konop_monolog2
     #jump dziewczeta
     #jump dziewczeta-wardega
     #jump namiejsce
+    jump sad_poczatek
 
 label konop_monolog1:
-    scene lobby with fade
-    show screen z
     define gui.text_color = u'#4169E1'
     Konopski """
         No i wreszcie nadszedł ten moment.
@@ -115,6 +114,6 @@ label dziewczetawardega:
     Konopski "No to czy mógłby pan..."
     "" "Ale do oskarżonych z całą pewnością tego szacunku nie mamy!"
     Konopski "Słucham? Zaszła jakaś pomyłka, ja przecież..."
-    Dziewczyny1 "Powodzenia, panie Konopski! I jeszcze raz dziękujemy za wszystko."
+    Dziewczyna1 "Powodzenia, panie Konopski! I jeszcze raz dziękujemy za wszystko."
     Konopski "Błagam, powiedzcie że to jednak jest prank..."
     jump sad_poczatek

@@ -7,6 +7,7 @@ image prosecution = Image("background/prosecution.png")
 image coprosecution = Image("background/coprosecution.png")
 image witness = Image("background/witness.png")
 image courtroom = Image("background/courtroom.png")
+image gavel = Image("background/gavel.jpg")
 
 image winny = Image("others/winny.png")
 

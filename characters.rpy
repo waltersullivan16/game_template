@@ -1,11 +1,12 @@
 init python:
     class Characterr:
-        def __init__(self, name, who_color='#000000', start=(0,0), mouth=(0,0)):
+        def __init__(self, name, who_color='#000000', start=(100,0), mouth=(0,0)):
             self.capital_name = name.upper()
             self.name = name.lower()
             self.mouth_pos = Position(xpos=mouth[0], ypos=mouth[1])
-            self.pos = Position(xpos=start[0], ypos=start[1])
+            self.pos = start
             self.who_color = who_color
+            self.show_args = [Transform(pos=start)]
 
             self.char = Character(name=self.capital_name, image=self.name, callback=partial(char_talking, self), who_color=who_color)
 

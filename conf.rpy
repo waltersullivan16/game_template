@@ -88,6 +88,24 @@ init -10 python:
             str_to_test = str_to_test.replace(key, str_map[key])
         return str_to_test
 
+
+    def show_scene(background, characters):
+        renpy.scene()
+        renpy.show(background)
+        for (c, t) in characters:
+            renpy.show(c, at_list=t)
+
+    def judge_scene(): {show_scene("judge", [(LexioC.name, LexioC.show_args)])}
+    def pros_scene(): {show_scene(
+        "prosecution",
+        [("wardega", []), ("revo", [])]
+    )}
+
+    def defense_scene(): {show_scene("defense", [(KonopskiC.name, KonopskiC.show_args)])}
+    def witness_scene(): {show_scene("witness", [(GimperC.name, GimperC.show_args)])}
+
+    preferences.show_empty_window = False
+
 define config.say_menu_text_filter = alter_say_strings
 define TEXTBOX_NAME = "phoenixdb.png"
 
