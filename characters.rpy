@@ -1,87 +1,121 @@
+## jump to other conf files
+"bin/gui_.rpy"
+"bin/characters_base.rpy"
+"bin/functions.rpy"
+"bin/transforms.rpy"
+
+## common files
+"characters.rpy"
+"images.rpy"
+
+## script
+"scripts/1_uwertura.rpy"
+
+### KONOPSKI ###
+#image konopski = ConditionSwitch(
+#    "KonopskiClass.talking == True", aKonopski("confused"),
+#    "True", "konopski_body_confused")
 init python:
-    class Characterr:
-        def __init__(self, name, who_color='#000000', start=(100,0), mouth=(0,0)):
-            self.capital_name = name.upper()
-            self.name = name.lower()
-            self.mouth_pos = Position(xpos=mouth[0], ypos=mouth[1])
-            self.pos = start
-            self.who_color = who_color
-            self.show_args = [Transform(pos=start)]
-
-            self.char = Character(name=self.capital_name, image=self.name, callback=partial(char_talking, self), who_color=who_color)
-
-            self.talking = False
-            self.layeredimage = None
-
-        def __str__(self):
-            return self.name
-
-        @property
-        def coordinates(self):
-            position_array = renpy.get_image_bounds(self.image)
-            print(position_array)
-            return [position_array[0], position_array[2]]
-
-        @property
-        def mouth(self):
-            return Animation(*mouth_animation(self.name))
-        #x = LayeredImage([Attribute("test", "main", "reaction_sweatdrop")])
-
-define WardegaC = Characterr("Wardega")
-define Wardega = WardegaC.char
-
-define KonopskiC = Characterr("Konopski")
-define Konopski = KonopskiC.char
-
-define RevoC = Characterr("Revo")
-define Revo = RevoC.char
-
-define GimperC = Characterr("Gimper")
-define Gimper = GimperC.char
-
-define LexioC = Characterr("Lexio")
-define Lexio = LexioC.char
-
-layeredimage wardega:
-    group body auto:
-        attribute main default
-
-#    if WardegaC.talking:
-#        WardegaC.mouth at WardegaC.mouth_pos
+    KonopskiClass.styles = ["main", "smirk"]
 
 layeredimage konopski:
     group body auto:
         attribute main default
 
-layeredimage revo:
+    group reaction:
+        xpos 200 zoom 2.
+        attribute normal default null
+        attribute kropla "reaction_sweatdrop"
+
+    if KonopskiClass.talking:
+        KonopskiClass.heads_switch()
+
+
+### PEARL ###
+init python:
+    PearlClass.styles = ["main", "serious", "embarassed", "sad", "crying", "determined", "pleased", "suprised"]
+
+layeredimage pearl:
     group body auto:
         attribute main default
+    if PearlClass.talking:
+        PearlClass.heads_switch()
+#    group body talking if_any PearlClass.talking:
+#        attribute main "pearl tmain" default
+        #attribute main "pearl_tmain"
+        #attribute serious "pearl_tserious"
+        #attribute embarassed "pearl_tembarassed"
 
-layeredimage gimper:
+### EMA ###
+init python:
+    EmaClass.styles = ["main","confused", "determined", "happy", "notes", "sad", "shocked", "thinking"]
+
+image ema_tmain = aEma("main")
+layeredimage ema:
     group body auto:
         attribute main default
+    if EmaClass.talking:
+        EmaClass.heads_switch()
 
-layeredimage lexio:
+### penny ###
+init python:
+    PennyClass.styles = ["main", "cards", "gossip"]
+
+layeredimage penny:
     group body auto:
         attribute main default
+    if PennyClass.talking:
+        PennyClass.heads_switch()
 
-define Dziewczyna1C = Characterr("Dziewczyna1")
-define Dziewczyna1 = Dziewczyna1C.char
+'''
+    define WardegaC = Characterr("Wardega")
+    define Wardega = WardegaC.char
 
-layeredimage dziewczyna1:
-    group body auto:
-        attribute main default
+    layeredimage wardega:
+        group body auto:
+            attribute main default
 
-define Dziewczyna2C = Characterr("Dziewczyna2")
-define Dziewczyna2 = Dziewczyna2C.char
+    define KonopskiC = Characterr("Konopski")
+    define m = KonopskiC.mouth
 
-layeredimage dziewczyna2:
-    group body auto:
-        attribute main default
 
-define Dziewczyna3C = Characterr("Dziewczyna3")
-define Dziewczyna3 = Dziewczyna3C.char
 
-layeredimage dziewczyna3:
-    group body auto:
-        attribute main default
+    define RevoC = Characterr("Revo")
+    define Revo = RevoC.char
+
+    define GimperC = Characterr("Gimper")
+    define Gimper = GimperC.char
+
+    define LexioC = Characterr("Lexio")
+    define Lexio = LexioC.char
+
+
+    #    if WardegaC.talking:
+    #        WardegaC.mouth at WardegaC.mouth_pos
+    layeredimage revo:
+        group body auto:
+            attribute main default
+
+    layeredimage gimper:
+        group body auto:
+            attribute main default
+
+    layeredimage lexio:
+        group body auto:
+            attribute main default
+
+
+    define Dziewczyna2C = Characterr("Dziewczyna2")
+    define Dziewczyna2 = Dziewczyna2C.char
+
+    layeredimage dziewczyna2:
+        group body auto:
+            attribute main default
+
+    define Dziewczyna3C = Characterr("Dziewczyna3")
+    define Dziewczyna3 = Dziewczyna3C.char
+
+    layeredimage dziewczyna3:
+        group body auto:
+            attribute main default
+'''

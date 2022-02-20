@@ -272,19 +272,20 @@ label wardega_przemowienie:
     $ pros_scene()
     Wardega """
         Dobre z tym rynsztokiem, nie? Mnie bawi bardzo.
-        Chciałbym być wreszcie rozpoznawalny nie jako ten-od psa-pajaka, tylko ten od rynsztoka... W sumie to też nie brzmi dobrze."
+        Chciałbym być wreszcie rozpoznawalny nie jako ten-od psa-pajaka, tylko ten od rynsztoka... W sumie to też nie brzmi dobrze.
+        """
 
     Konopski "Ale ty jesteś głównie rozponawalny jako ten od boobsmana."
 
     Wardega """
         Cóż to za czarna magia pozwala temu pędrakowwi czytac mi w myslach?"""
-   Konopski " Zapomniałeś użyc niebieskiej czcionki"
+    Konopski " Zapomniałeś użyc niebieskiej czcionki"
 
-   Wardega "Teraz też słychać?"
+    Wardega "Teraz też słychać?"
 
-   Konopski "Teraz już nie."
+    Konopski "Teraz już nie."
 
-   Wardega """
+    Wardega """
         Dobrze, mogę teraz dokończyć mój wewnętrzny monolog.
         Czy Revo też widzi we mnie 'tego od boobsmena'?
 
@@ -316,7 +317,7 @@ label wardega_przemowienie:
 
     Wardega "A co ty taki niecierpliwy jesteś Konopski, rozsadza cię młodzieńcza energia?"
 
-    Konopski "A co ty taki powolny jesteś, Mistyczny dziaduniu?
+    Konopski """A co ty taki powolny jesteś, Mistyczny dziaduniu?
     ...
     <takie mega parsknięcie>
     """
@@ -345,10 +346,9 @@ label wardega_przemowienie:
 
         Ten mały łachudra, wie, że słowa tną niejednokronie głębiej niż nóż. Warto zauważyć, że brak przemocy fizycznej jest spowodowany tylko mikrą aparycją tej ledwo wyglądającej zza stolika dzieciny
         """
+    Konopski "Powiedziała osoba, która potrzebuje stołka, żeby móc wyglądać zza stolika..."
 
-   Konopski "Powiedziała osoba, która potrzebuje stołka, żeby móc wyglądać zza stolika..."
-
-   Wardega """
+    Wardega """
 
         Zbrodniarz nie przebierał w ohydnych kłamstwach wymierzonych w kierunku poszkodowanego,
         korzystającego z życia lekkoducha, którego jedyny grzechem jest bezinteresowna chęć wniesienia w życie innych trochę światła.

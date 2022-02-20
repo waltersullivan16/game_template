@@ -1,3 +1,16 @@
+## jump to other conf files
+"bin/gui_.rpy"
+"bin/conf.rpy"
+"bin/characters_base.rpy"
+"bin/functions.rpy"
+
+## common files
+"characters.rpy"
+"images.rpy"
+
+## script
+"scripts/1_uwertura.rpy"
+
 #notatki gowna bo sie pomylilam w przeszlosci pozdro mordo musi byc png
 image lobby = Image("background/lobby.png")
 image defense = Image("background/defense.png")
@@ -16,9 +29,11 @@ image reaction_sweatdrop = At("sweatdrop", dropping)
 image reaction_angry = At("angry", beating)
 image reaction_angry2 = At("angry2", beating)
 
+image straszne = Movie("video/strasznego.mp4", (0,0), (0,0))
 # Moves
 init python:
     vpunch = Move((0, 10), (0, -10), .10, bounce=True, repeat=True, delay=.275)
     hpunch = Move((15, 0), (-15, 0), .10, bounce=True, repeat=True, delay=.275)
 
-#image gavel = Movie("background/gavel.gif", (0,0), (0,0))
+    m = Move((15, 0), (-15, 0), .10, bounce=True, repeat=True, delay=.275)
+

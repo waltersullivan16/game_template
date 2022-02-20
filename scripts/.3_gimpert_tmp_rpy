@@ -1,14 +1,4 @@
 label gimper:
-    jump gimper_start
-    jump dziedzictwo
-    jump fangirls2
-    jump poczatek_gimpera
-    jump pan_gimper
-    jump monsieur_gimper
-    jump fangirls3
-    jump gimper2
-
-label gimper_start:
     $ pros_scene()
     Wardega "Czy mógłbym prosić świadka o przedstawienie się?"
 
@@ -50,7 +40,7 @@ label gimper_start:
         Miałem na myśli dzieci dorosłymi...
         ...
         <myśli kurde wtopa>
-        I czego się tak gapisz Konopski?
+        I czego się tak patrzysz Konopski?
         """
 
     Konopski """
@@ -79,12 +69,8 @@ label gimper_start:
 
     Gimper """
         Łezka aż się zakręciła w oku na wsponienie imprezy pierwszomilionowej.
-
         To był trochę taki sequel osiemnastki.
         """
-    jump dziedzictwo
-
-label dziedzictwo:
     Revo "Papo, papo, a czy ja też kiedyś dorosnę do miliona subów?"
     Wardega """
         Synu.
@@ -131,9 +117,7 @@ label dziedzictwo:
         Ty je przerośniesz.
         """
     Revo "Wardęga-sensei..."
-    jump fangirls2
 
-label fangirls2:
 
     Dziewczyna2 """
         No dalej! Pocałuj go! Pocałuj!
@@ -141,10 +125,9 @@ label fangirls2:
         """
     Dziewczyna3 """
         Twoja zakrzywiona czasoprzestrzeń podsuwa ci coraz bardziej odległe od rzeczywistości wersje...
-
         On uczynił go swoim dziedzicem ty poryty łbie, czy jeśli go usynowi to stwierdzisz że się pobrali?
         """
-    Dziewczyna2 """
+   Dziewczyna2 """
         ...
         To by było strasznie romantyczne, gdyby go usynowił.
     """
@@ -156,10 +139,8 @@ label fangirls2:
     Dziewczyna2 "..."
     Dziewczyna3 "Ej, w tym w sumie coś jest."
     Dziewczyna2 "Ciebie już do reszty.."
-# jestes uprzedzona do  heteronormatywnosci
-    jump poczatek_gimpera
+# jestes uprzedzona do heteronormatywnosci
 
-label poczatek_gimpera:
     Lexio """
         Cisza na sali!
         Co to za zakłócanie pracy sądu!
@@ -173,58 +154,38 @@ label poczatek_gimpera:
     Konopski "Czy oprócz obrońcy i oskarżonego jestem też mistrzem ceremonii?"
     Lexio """
         Przepraszamy za niego Gimperze, ale wiesz jak to jest z tymi dzisiejszymi recydywistami.
-
         Zero szacunku do władzy.
         """
 
     Wardega "Konopski, nie przynoś nam więcej wstydu, przeproś gościa."
-    jump pan_gimper
-
-label pan_gimper:
     Konopski """
         ...
         Najmocniej przepraszam panie Gimperze...
-
-        Czy mógłbym już prosić...
-        """
+        Czy mógłbym już prosić..."
     Gimper """
         Hola, hola.
-
         Zaczekaj chwilę młody!
-
         Czy ja dobrze usłyszałem?
         """
     Konopski "..."
-    Konopski "Co znowu zrobiłem źle..?"
+    Konopski "Co tym razem znowu?"
     Gimper "Jeszzce nikt nigdy, nie nazwał mnie..."
     Gimper "...panem Gimperem!"
     Konopski "..."
     Gimper """
         Pan Gimper!
-
         To brzmi tak poważnie, ale zawadiacko!
-
         Słyszałaś kochanie? Słyszałaś kim teraz jestem?
-
         Panem gimperem!
         """
     "A bądź sobie nawet generał Gimper, cesarzem Gimperem albo papieżem Gimperem!"
-
-    "I tak będziesz miał przypał w domy"
-
-    Gimper """
-        ...
-
+    "I tak będziesz miał pprzypał w domy"
+    Gimper """...
         papież Gimper...
-
         To chyba brzmi jeszcze lepiej!
-
         Papież Gimper!
-
         Już widzę te kunsztowne dewocjonalia z moim dumnym obliczem...
-
-        Słyszałaś kochanie? Jestem teraz papieżem Gimperem!
-        """
+        Słyszałaś kochanie? Jestem teraz papieżem Gimperem!"
     "..."
     Gimper "Zaniemówiła z wrażenia."
     Gimper "Ej, chłopaki, jak myślicie, lepiej wyglądam z profilu czy en face?"
@@ -232,48 +193,30 @@ label pan_gimper:
     Gimper "Oficjalnie proszę się do mnie zwracać 'jego ekscelencjo'."
     Konopski """
         ...
-        Zaczynam myśleć, że może wolę już zostać winnym, niż to ciągnąć...
-
+        Jeszcze chwila i poproszę, żeby mnie po prostu uznali już winnym...
         Jak sobie życzysz wasza ekcelencjo...
     """
-    jump monsier_gimper
-
-label monsieur_gimper:
     Gimper """
         Chwila! Mam! Monsieur Gimper!
-
         Arystokratycznie i światowo!
-
         I można uozmaicić swój styl wypowiedzi poprzez chaakteystyczny akcent oaz wstawianie słów takich jak...
-
-        bonjour
-
-        albo
-
-        merci
-
-        albo
-
-        ...
-
-        monsieur
-        """
-
-    Revo "Albo \"omplette di fromache\""
+            bonjour
+            albo
+            merci
+            albo
+            ...
+            monsieur"
+    Revo "Albo \"ompletter di fromache\""
     Lexiu """
         Albo \"Bon apetite\"
-
         albo \"Almette\".
     """
     Wardega """Albo \"don juan\"
-
         O ile oczywiście podejmiesz to wyzywanie i zaryzykujesz poprawne wymówienie tego słowa.
-
         """
     Gimper """
         Ohczywoście, iż <podniosę rękawicę> monsier Wardheega.
-
-        Moja postać nie hest wohalizowana.
+        Moja postać nie hest wokalizowana.
     """
     Lexiu "Ba-dum-tsssk"
     Konopski """
@@ -282,32 +225,25 @@ label monsieur_gimper:
         """
     Wardega """
         Ale nie tym tonem zwyrolu!
-
         Poza tym ja już przekazałem tę informację i nie będę się powtarzał.
         """
     Konopski "Zapewniam cię, Mistyczny dziaduniu, nie ma takiej potrzeby..."
-
     Revo "Wystarczy po prostu Revo."
     Lexio "Do mnie najlepiej w ogóle się nie odzywaj."
     Konopski "Żaden problem, wysoki sądzie..."
     Gimper """
         ...
-
         Poczekaj, zastanawiam się...
         """
-    Wardega "Gimper, wybierz już coś wreszcie, bo zaczynasz mnie denerwować."
+    Wardega "Gimper, wybierz już coś wreszcie, bo nawet mnie zaczynasz denerwować."
     Konopski """
         Ciekawe czy Gimper ma już swoją teczkę?
-
         Nad czym ja się w ogóle zastanawiam?
-
         Prawdziwą zagadką jest raczej kto NIE ma swojej teczki...
         """
     Gimper """
         Tak jest... jaśnie panie Wardęgo...
-
         Po zapoznaniu się ze wszystkimi opcjami, stwierdzam, że jednak najlepiej pasuje do mnie...
-
         ...
         """
     Lexio "Proszę o werble."
@@ -344,16 +280,13 @@ label monsieur_gimper:
 
     Gimper """
         Wybrałem 'pana Gimpera', bo dodaje animuszu, jednocześnie nie mając w sobie nutki megalomanii.
-
         Zrozumiałem, że to bardzo istotne, bo chcę żebyście wiedzieli, że tak napawdę, w głębi duszy jestem zwykłym chłopcem,
         takim jak Lexio czy Wardega.
-
         Albo nawet takim jak wy...
     """
     Konopski "Nie wiem czy powinienem się cieszyć czy smucić z powodu, że Gimper nie uwzględnił mnie na tej liście..."
     Gimper """
         W głębi duszy jestem nadal...
-
         po prostu Gimperem.
         """
     Wardega "Dawno się tak nie wzruszyłem..."
@@ -363,12 +296,10 @@ label monsieur_gimper:
     Konopski "pan Gimper po raz pierwszy..."
     Gimper "To moje ostatnie słowo."
     Konopski "pan Gimper po raz drugi..."
-    Gimper "Przestań już pajacować młody, pan Gimper jak już coś zadeklaruje, to słowa nie zmieni."
+    Gimper "Przestań już pałacować młody, pan Gimper jak już coś zadeklaruje, to słowa nie zmieni."
     Konopski "Pan Gimper po raz trzeci."
     Lexio "Sprzedane."
     #revo i konopsi tak wstrzymuja smiech, ale w końcu się łamią i mają w myślach takie lololoool
-
-label fangirls3:
 
     Dziewczyna2 "Wiecie co? Wydaje mi się, że czuję jakąś nić porozumienia pomiędzy Konopskim i Revo?"
     Dziewczyna3 "Czy ty w ogóle słyszysz co mówisz? Revo/Konopski?"
@@ -383,32 +314,250 @@ label fangirls3:
     Dziewczyna2 "Nitro/Czaro"
     Dziewczyna1 """
         ...
-
         Wydaje mi się, że nie do końca rozumiesz ideę hetero paringów.
-    """
-    Dziewczyna2 "Lexi/Fagata"
-    Dziewczyna3 "Jestem pewna że nie rozumiesz idei hetero paringów."
-    Dziewczyna2 "Revo/Queen of the black..."
-    Dziewczyna1 "... Wydaje mi się, że nawet tu też wyczuwam nienawiść do związków heteroseksualnych..."
-    Dziewczyna3 "Ale zatrzymajmy się tutaj, coś w tym jest. Pamiętajmy że ona jest przybraną córką Wardęgi, więc mamy tu nutkę kazirodctwa."
-    Dziewczyna2 "...I to dobrze?"
-    Dziewczyna1 "Wspaniale! To jest paring tak smutny, że zawsze musi być przedstawiony zawsze w sepii."
-    Dziewczyna3 """
+        """
+   Dziewczyna2 "Lexi/Fagata"
+   Dziewczyna3 "Jestem pewna że nie rozumiesz idei hetero paringów."
+   Dziewczyna2 "Revo/Queen of the black..."
+   Dziewczyna1 "... Wydaje mi się, że nawet tu też wyczuwam nienawiść do związków hereroseksualnych..."
+   Dziewczyna3 "Ale zatrzymajmy się tutaj, coś w tym jest. Pamiętajmy że ona jest przybraną córką Wardęgi, więc mamy tu nutkę kazirodctwa."
+   Dziewczyna2 "...I to dobrze?"
+   Dziewczyna1 "Wspaniale! To jest paring tak smutny, że zawsze musi być przedstawiony zawsze w sepii."
+   Dziewczyna3 """
         I tak ogromny wybór tytułów!
 
         Pieskie życie Revo!
-
         Revo is a new black!
-
         Revo i jego życie pod psem!
-
         Duże kłamstewka!
-
         Scam czy nie scam? Jeden pies!
-
         Odscamienie złośnicy!
-
         W poszukiwaniu straconego hajsu
-
         Revlock Holmes i zagadka czarnego rynku!
     """
+    Lexio """
+        To już drugie upomnienie! Co to ma być!
+        Tak to jest jak się nagnie zasady!
+        Revo, to twoje fanki, prawda?
+        """
+    Revo "Szczerze mówiąc to nie mam..."
+    Lexio """
+        Revo, wiesz że ja nie jest człowiekiem oceniającym.
+        Szanuje twoje milfowe kinki.
+        Ale to nie jest czas i miejsce na twoje nietypowe ciągoty.
+   """
+   Revo """
+        Lexiu.
+        Z całym szacunkiem, chciałbym wskazać kilka nieścisłości, które zawarłeś w...
+   """
+    Wardega """
+        Jezu, Revo, wyjmij już kij z dupy i dowal mu z grubej rury jakimiś najchamstrzymi pociskami o pedofilii!
+        Masz taką przestrzeń do popisu!
+        Pokaż tym cieniasom z HighLieage i spółki, jak powinna wyglądać prawdziwa konferencja!
+        """
+   Lexio "Oż ty stara wywłoko, poczekaj tylko do chwili, jak już mi wygrasz sprawę..."
+
+   Gimper """
+        Lolol ale beka. Z takich hajsowników Gimpera byłbym dumny.
+        Jeśli wyjdą się zaraz nawalać, to przysięgam, najlepszy dzień mojego życia.
+        """
+  Konopski """
+        Dobra mordy, sam chętnie zostanę żeby to pooglądać, ale skończmy najpierw ten mój proces, błagam.
+
+        Słuchajcie nie chcę wam przeszkadzać...
+        """
+  Lexio "To nie przeszkadzaj."
+
+  Konopski "Ale ja NALEGAM. Czy mógłbym prosić o wstrzymanie tej krwawej jatki, na czas mojego procesu."
+
+  Lexio "Nie"
+
+  Wardega """
+        Co Konopski, teraz to udajesz taką cnotkę niewydymkę?
+
+        Lekko muśnięta seksualnością wymiana zdań to za dużo na twoje niepokalane uszka, tak?
+
+        Wytłumacz mi, jak to jest, że bezpardonowy atak na bogu ducha winnego dżentelmenta i obsceniczne, kłamliwe bluźnierstwa skierowane w jego stronę
+        nie stanowiły już żadnego problemu?
+
+        Może chcesz mi powiedzieć, że działałeś pod przymusem i jesteś jedynie trybikiem w maszynie zbudowanej przez prawdziwego króla zbodni?
+        """
+
+    Konopski """
+        ...
+        Przysięgam na moje niepokalane uszka, mój problem leży gdzieś indziej...
+        """
+
+    Revo "Papo, ale ja też wolałbym, żebyśmy ucięli już tę dyskusję..."
+
+    Wardega """
+        ...
+
+        Gimper, ile jeszcze będziemy czekać, zacznij w końcu zeznawać!
+    """
+
+    Konopski "Cóż za miła niespodzianka, wina chociaż raz nie leży po mojej stronie."
+
+    Wardęga "A ty czego tam tak szczerzysz ryja Konopski?"
+
+    Konopski """
+        ...
+
+        Nie było tematu.
+        """
+
+    "Zeznania pana Gimpera"
+
+    Gimper """
+    Nikt z nas nie ma chyba wątpliwości, że ta poważna sprawa wymaga dogłęnnej analizy.
+
+    No to zacznijmy od...
+
+    dużo skomplikowanych rzezcy
+
+    mądre artykuły
+
+    przypis e16 do dziewczyna g77
+
+    errata do mądrych artykułów
+
+    żart na rozładowanie atmosfery
+
+    zeznania lexia
+
+    długie rozważania na temat natury związku z małoletnimi z odwołaniem do greckich filozofów
+
+    coś mądrego
+
+    to tyle."
+
+    Lexio "... <zamknięte oczy>"
+    Lexio """
+        To już koniec?
+
+        Cóż za szkoda, mógłbym pana słuchać godzinami...
+    """
+    Konopski "Zacząłeś chrapać po drugim zdaniu..."
+
+    Lexio """
+        Te zwroty akcji!
+
+        Pościgi!
+
+        Miłosne rozterki!
+
+        Dziewczynki w obcisłych trykotkach!
+
+        ...
+
+        Swoją drogą, czy mógłbym pana prosić o dostarczenie zareprezentowanych zdjęć? Posłużą jako materiał dowodowy.
+     """
+
+    Gimper "..."
+
+    Konopski "..."
+
+    Wardega "..."
+
+    Lexio "Najlepiej na maila."
+
+    Revo "Najmnocniej przepraszam wysoki sądzie! Czy mógłby udzielić mi pan głosu? Mam kilka pytań dotyczących zeznań świadka?"
+
+    Lexio """
+        Lexio
+        kropka
+        Lexiu przez x jak coś.
+    """
+
+    Gimper "Słucham Revo, która część była dla ciebie niejasna? Pościgi czy miłosne rozterki?"
+
+    Lexio "Małpa buziaczek kropka..."
+
+    Revo "Chodzi o dziewczyna y68, wydaje mi się że zapomniałeś wspomnieć o..."
+
+    Wardega "Revo. Błagam. Przybastuj."
+
+    Revo "Ale papo..."
+
+    Wardega """
+        Pan świadek na pewno jest już zmęczony.
+
+        Nietaktem z naszej strony byłoby, gdybyśmy nadwyrężali jego vmksl.
+        """
+    Revo "Papo, jedno ze zdjęć miało w prawym górnym roku wyraźne, które może sugerować..."
+
+    Wardega """
+        Revo! Gdzie twoje dobre maniery!
+
+        Nie tak cię wychowałem!
+        """
+
+    Lexio "kropka pe el."
+
+    Gimper """
+        Ależ to żaden problem, wręcz przeciwnie, bardzo chciałbym usłyszeć komentarz Reva. Już sam początek pytania mnie zaintrygował.
+
+        Być może nasza wspólna dyskusja pozwoli nam odkryć zupełnie nieznane oblicze sprawy."
+
+    Wardega """
+        Gówno w dupie wam się uda odkryć.
+
+        Przejdźmy już do jakichś ciekawszych tematów, bo zaczyna się robić nudno jak na stypie.
+        """
+
+    Lexio """
+        Powtarzam: Lexio kropka buziaczek kropka pe el.
+        Zapisałeś sobie?
+        No to idź już sobie, blokujesz miejsce innym świadkom
+        """
+
+
+    Revo "Papo, błagam, zmień sobie ten font myślowy na niebieski."
+
+    Wardega """
+        Co? Przecież ja już dawno.., naprawdę to nie ten kolor?
+        Ile ja czasu...?
+        Synu, czy... Czy ja mam się czego wstydzić?
+        """
+   Revo "..."
+   Revo "Nie papo, miałeś same sympatyczne myśli."
+
+   Wardega """To w sumie zaskakujące.
+        Teraz ok?
+        """
+    Wardega "Już zmieniłem."
+
+    Revo "Na pewno? Przetestowałeś sobie?"
+
+    Wardega "Masz mnie za głupca mój synu? Myślisz, że pozwoliłbym sobie na błąd w tak ważnej sprawie?"
+
+    Revo """
+        ...
+
+        Przepraszam papo, poniosło mnie.
+    """
+    Wardega """
+        No. Żeby mi to było ostatni raz.
+
+        I zapamiętaj to sobie mój chłopcze, co jak co, ale
+
+        łeb to ja mam jak sklep.
+    """
+
+    Revo """
+        Zanotuję to w swoim notesie papo.
+    """
+
+    Wardega """
+        No i popatrz, ty chciałeś porozmawiać z nowym kolegą, a on już sobie poszedł i nawet się nie pożegnał.
+
+        Ale jak to mówią
+
+        Ludzie nie są jak wilki.
+
+        Przekonasz się o tym na własnej skórze, kiedy już wreszcie poznasz moje stado.
+        """
+#Revo/Konopski
+
+    Revo "Ta sprawa mnie przerasta..." #spojrzenie na konopa i potem znowu beznamiętne
+    Revo "Już mi wszystko jedno."
