@@ -43,11 +43,12 @@ transform shake:
 transform kick_out:
     xpos 0.0 ypos 0.33
     easein 0.2 xalign 0.3
-    pause 0.2 
-    easeout 0.4 rotate 70 
-    easein 0.2 rotate -90 
+    pause 0.2
+    easeout 0.4 rotate 70
+    easein 0.2 rotate -90
     easeout 0.5 rotate 0 ypos 0.30
-   
+    ease 0.9 xalign 0.5
+
 transform kicked_out:
     easeout 0.3 xpos 1.0 ypos -1.0 rotate 300
 

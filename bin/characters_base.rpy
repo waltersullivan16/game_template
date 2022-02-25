@@ -7,6 +7,7 @@
 ## common files
 "../characters.rpy"
 "../images.rpy"
+"../gui.rpy"
 
 ## script
 "../scripts/1_uwertura.rpy"
@@ -19,38 +20,36 @@ init -8 python:
 ## SPECIAL CHARACTERS
 
     class CharacterBase:
-        def __init__(self, name, who_color='#000000', start=(100,100), mouth_pos=(100,59)):
+        def __init__(self, name, who_color='#000000'):
             self.capital_name = name.upper()
             self.name = name.lower()
-            self.mouth_pos = mouth_pos
-            self.pos = start
 
-            self.who_color = who_color
-            self.show_args = [Transform(pos=start)]
+            #self.mouth_pos = mouth_pos
+            #self.pos = start
+            #self.who_color = who_color
+            #self.show_args = [Transform(pos=start)]
 
             self.char = self.create_character()
             self.talking = False
+
             self.styles = []
+            self.animations = {}
+            self.animations_switch = ShowingSwitch()
 
         def create_character(self):
             return Character(
                 name=self.capital_name,
                 image=self.name,
-                callback=partial(char_talking, self),
-                who_color=self.who_color)
+                callback=partial(char_talking, self))
+                #who_color=self.who_color)
 
-        def static_style(self, name):
-            return Image("characters/konopski/animations/{}/{} {} 1.png".format(name, self.name, name))
-
-        def fff(self, name):
-            return self.static_style(name) if not self.talking else self.make_animation(name)
-
-        def heads_switch(self):
+        def generate_animation_switch(self):
             res = []
             for s in self.styles:
-                res.extend(["{} {}".format(self.name, s), self.make_animation(s)])
+                self.animations.setdefault(s, self.make_animation(s))
+                res.extend(["{} {}".format(self.name, s), self.animations[s]])
+            res.extend([self.name, self.animations['main']])
             print(res)
-            res.extend(["True", self.make_animation('main')])
             return ShowingSwitch(*res)
 
         @property
@@ -61,6 +60,10 @@ init -8 python:
 
         def make_animation(self, animation_name):
             return Animation(animation_maker(self.name, animation_name))
+
+        def add_styles(self, styles):
+            self.styles = styles
+            self.animations_switch = self.generate_animation_switch()
 
         def __str__(self):
             return self.name

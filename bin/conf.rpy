@@ -6,6 +6,7 @@
 ## common files
 "../characters.rpy"
 "../images.rpy"
+"../screens.rpy"
 
 ## script
 "../scripts/1_uwertura.rpy"
@@ -36,7 +37,7 @@ init -10 python:
     PATHS["animations"] = lambda c, animation_name: gpj([PATHS["characters"](c, "animations"), animation_name])
 
     ## FONTS ##
-    FONTS_NAMES = ["cheri","ubuntu", "bubblegum", "superc", "fjalla", "exo", "lucky", "monster"]
+    FONTS_NAMES = ["cheri","ubuntu", "bubblegum", "superc", "fjalla", "exo", "lucky", "monster", "unique", "chomsky", "newspaper", "gothic", "deal"]
     FONTS = {font: PATHS["fonts"]("{}.ttf".format(font)) for font in FONTS_NAMES }
 
     FONT_SIZE = 25
@@ -46,13 +47,20 @@ init -10 python:
     FONT_NAME = FONTS["lucky"]
 
     AUTOMATIC_IMAGES = ["/"]
-    AUTOMATIC_IMAGES_STRIP = ["images", "images/characters", "images/characters/dziewczyny"]
+    AUTOMATIC_IMAGES_STRIP = ["images", "images/characters", "background", "background/ulubione"]
 
     ANIMATION_PAUSE = 0.2
 
     TEXTBOX_NAMES = {
         "main": "phoenixdb.png",
-        "creepy": "creepy2.png"
+        "multiple": "blank.png",
+        "creepy": "creepy_textbox.png",
+        "intro": "empty.png",
+        "www": "empty.png",
+        "empty": "empty.png",
     }
+
+    if persistent.style is None:
+        persistent.style = "main"
 
 define config.say_menu_text_filter = alter_say_strings

@@ -16,7 +16,7 @@
 #    "KonopskiClass.talking == True", aKonopski("confused"),
 #    "True", "konopski_body_confused")
 init python:
-    KonopskiClass.styles = ["main", "smirk"]
+    KonopskiClass.add_styles(["main", "smirk"])
 
 layeredimage konopski:
     group body auto:
@@ -28,18 +28,18 @@ layeredimage konopski:
         attribute kropla "reaction_sweatdrop"
 
     if KonopskiClass.talking:
-        KonopskiClass.heads_switch()
+        KonopskiClass.animations_switch
 
 
 ### PEARL ###
 init python:
-    PearlClass.styles = ["main", "serious", "embarassed", "sad", "crying", "determined", "pleased", "suprised"]
+    PearlClass.add_styles(["main", "serious", "embarassed", "sad", "crying", "determined", "pleased", "suprised"])
 
 layeredimage pearl:
     group body auto:
         attribute main default
     if PearlClass.talking:
-        PearlClass.heads_switch()
+        PearlClass.animations_switch
 #    group body talking if_any PearlClass.talking:
 #        attribute main "pearl tmain" default
         #attribute main "pearl_tmain"
@@ -48,24 +48,23 @@ layeredimage pearl:
 
 ### EMA ###
 init python:
-    EmaClass.styles = ["main","confused", "determined", "happy", "notes", "sad", "shocked", "thinking"]
+    EmaClass.add_styles(["main","confused", "determined", "happy", "notes", "sad", "shocked", "thinking"])
 
-image ema_tmain = aEma("main")
 layeredimage ema:
     group body auto:
         attribute main default
     if EmaClass.talking:
-        EmaClass.heads_switch()
+        EmaClass.animations_switch
 
 ### penny ###
 init python:
-    PennyClass.styles = ["main", "cards", "gossip"]
+    PennyClass.add_styles(["main", "cards", "gossip"])
 
 layeredimage penny:
     group body auto:
         attribute main default
     if PennyClass.talking:
-        PennyClass.heads_switch()
+        PennyClass.animations_switch
 
 '''
     define WardegaC = Characterr("Wardega")

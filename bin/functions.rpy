@@ -28,6 +28,9 @@ init -9 python:
     def get_frame(character, animation_name, frame):
         return "{} {} {}".format(character, animation_name, frame)
 
+    def font(font_name):
+        return PATHS["fonts"]("{}.ttf".format(font_name))
+
 # makers
     def count_files_dir(path):
         return len(os.listdir(path))
