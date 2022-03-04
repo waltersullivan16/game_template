@@ -19,6 +19,7 @@ screen z():
     imagebutton:
         xpos 1000
         yalign 0.0
+        #hover setattr(config, "mouse", {"default": [("others/myszka_error.png", 1, 1)]})
         idle "gui/button/end.png"
         action Jump("end")
 
@@ -87,6 +88,7 @@ screen choices2():
         action Jump("end")
 
 screen choices3():
+    modal False
     imagebutton:
         xpos 100
         ypos 50

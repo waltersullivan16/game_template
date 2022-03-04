@@ -1,8 +1,8 @@
 ## jump to other conf files
-"bin/gui_.rpy"
-"bin/conf.rpy"
-"bin/characters_base.rpy"
-"bin/transforms.rpy"
+"gui_.rpy"
+"conf.rpy"
+"characters_base.rpy"
+"transforms.rpy"
 
 ## common files
 "../characters.rpy"
@@ -19,17 +19,19 @@ init -11 python:
 init -9 python:
     def char_talking(character, event, **kwargs):
         if event == "show":
+            print("dsada")
             character.talking = True
-            renpy.music.play("music/blip.mp3", channel="sound", loop="True")
+            renpy.music.play(persistent.blip, channel="sound", loop="True")
+            persistent.blip = BLIP_SOUND
         elif event in ["end", "slow_done"]:
             character.talking = False
             renpy.music.stop(channel="sound")
+            if persistent.special_sound is not None and event == "end":
+                renpy.music.play(persistent.special_sound, channel="sound")
+                persistent.special_sound = None
 
     def get_frame(character, animation_name, frame):
         return "{} {} {}".format(character, animation_name, frame)
-
-    def font(font_name):
-        return PATHS["fonts"]("{}.ttf".format(font_name))
 
 # makers
     def count_files_dir(path):

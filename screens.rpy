@@ -100,19 +100,18 @@ screen say(who, what):
 #
     window:
         id "window"
-        if persistent.style in ["main", "creepy"]:
-            if who is not None:
-                window:
-                    id "namebox"
-                    style "namebox"
-                    text who id "who" color COLORS[COLORS_LABELS[persistent.style]] #color persistent.namelabel_color
-                $style.say_label = style["say_label_{}".format(persistent.style)]
+        if who is not None and who is not "blank":
+            window:
+                id "namebox"
+                style "namebox_{}".format(persistent.style_class.name)
+                text who id "who" color persistent.style_class.name_color font persistent.style_class.name_font
+            $style.say_label = style["say_label_{}".format(persistent.style_class.name)]
 #
 #            $ persistent.font_name = FONTS["ubuntu"]
 #            $ persistent.font_labelname = FONTS["lucky"]
-        $style.say_dialogue = style["say_dialogue_{}".format(persistent.style)]
-        $style.say_window = style["say_window_{}".format(persistent.style)]
-        text what id "what" color COLORS[COLORS_TEXT[persistent.style]]#font persistent.font_name color persistent.text_color
+        $style.say_dialogue = style["say_dialogue_{}".format(persistent.style_class.name)]
+        $style.say_window = style["say_window_{}".format(persistent.style_class.name)]
+        text what id "what" color persistent.style_class.text_color font persistent.style_class.text_font #color persistent.text_color
 #
 
     ## If there's a side image, display it above the text. Do not display on the

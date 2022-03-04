@@ -28,10 +28,18 @@ label chapters:
 
 label uwertura_scenes:
     menu:
+        "abi":
+            jump abi
+        "abi2":
+            jump blowek2
+        "abi3":
+            jump transparenty2
         "monolog1":
             jump konop_monolog1
         "monolog2":
             jump konop_monolog2
+        "transparenty":
+            jump transparenty
         "wybór1":
             jump wybor1
         "wybór1 - blowek":
@@ -40,6 +48,11 @@ label uwertura_scenes:
             jump dziewczeta
         "bloody_text":
             jump bloody_text
+        "next":
+            jump scenes2
+
+label scenes2:
+    menu:
         "kopniak":
             jump kopniak
         "legenda":
@@ -50,3 +63,7 @@ label uwertura_scenes:
             jump gazeta2
         "powiedzenia":
             jump powiedzenia
+        "koniec_powiedzen":
+            jump koniec_powiedzen
+        "prev":
+            jump uwertura_scenes

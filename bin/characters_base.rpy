@@ -78,4 +78,5 @@ init -8 python:
             exec(c)
 
     Unknown = Character(name = "???")
+    Blank = Character(name = "blank")
     Straznik = Character(name = "Groźny głos")

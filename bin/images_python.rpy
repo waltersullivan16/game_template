@@ -154,3 +154,61 @@ image sylwesterry = Composite(
     (1280, 720),
     (40, 450), At(creepy_maker("SYLWESTER"), dissolve_with_sound(4)),
     (100, 200), At(creepy_maker("SYLWESTER"), dissolve_with_sound(8)))
+
+image junkoo:
+    "junko1"
+    pause 2.0
+    "junko2"
+
+image transparenty_prolog: 
+    "maki1" with dissolve
+    pause 1.0
+    "maki2" with vpunch
+    pause 0.5
+    "ishimaru1" with dissolve
+    pause 1.0
+    "ishimaru2" with vpunch
+    pause 0.5
+    "gonta1" with dissolve
+    pause 1.0
+    "gonta2" with vpunch
+    pause 0.5
+    "tsumugi1" with dissolve
+    pause 1.0
+    "tsumugi2" with vpunch
+    pause 0.5
+    "kaito1" with dissolve
+    pause 1.0
+    "kaito2" with vpunch
+    pause 0.5
+    "mikan1" with dissolve
+    pause 1.0
+    "mikan2" with vpunch
+    pause 0.5
+    "kirumi1" with dissolve
+    pause 1.0
+    "kirumi2" with vpunch
+    pause 0.5
+    "dogen1" with dissolve
+    pause 1.0
+    "dogen2" with dissolve
+    pause 1.0
+    "koniec0" with vpunch
+    pause 1.0
+    "koniec1" with vpunch
+
+image transparenty_omg:
+    "zginie" with vpunch
+    pause 1.5
+    "wpierdol" with vpunch
+    pause 1.5
+    "debil" with vpunch
+    pause 1.5
+    "apetyt" with vpunch
+    pause 1.5
+    "bozia" with vpunch
+    pause 1.5
+    "kutas" with vpunch
+    pause 1.5
+    "kutas2" with vpunch
+    pause 1.5

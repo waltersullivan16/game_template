@@ -67,3 +67,9 @@ transform creepy_transform:
             linear 1.0 alpha .9
             linear 1.0 alpha .2
             repeat
+
+init python:
+    vpunch = Move((0, 10), (0, -10), .10, bounce=True, repeat=True, delay=.275)
+    hpunch = Move((15, 0), (-15, 0), .10, bounce=True, repeat=True, delay=.275)
+
+    m = Move((15, 0), (-15, 0), .10, bounce=True, repeat=True, delay=.275)

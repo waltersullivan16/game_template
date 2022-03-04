@@ -7,6 +7,7 @@
 ## common files
 "characters.rpy"
 "images.rpy"
+"screens.rpy"
 
 ## script
 "scripts/1_uwertura.rpy"
@@ -16,7 +17,7 @@
 #    "KonopskiClass.talking == True", aKonopski("confused"),
 #    "True", "konopski_body_confused")
 init python:
-    KonopskiClass.add_styles(["main", "smirk"])
+    KonopskiClass.add_styles(["main", "smirk", "thinking", "ej"])
 
 layeredimage konopski:
     group body auto:
@@ -40,11 +41,7 @@ layeredimage pearl:
         attribute main default
     if PearlClass.talking:
         PearlClass.animations_switch
-#    group body talking if_any PearlClass.talking:
-#        attribute main "pearl tmain" default
-        #attribute main "pearl_tmain"
-        #attribute serious "pearl_tserious"
-        #attribute embarassed "pearl_tembarassed"
+
 
 ### EMA ###
 init python:
