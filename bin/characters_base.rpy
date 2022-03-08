@@ -49,13 +49,13 @@ init -8 python:
                 self.animations.setdefault(s, self.make_animation(s))
                 res.extend(["{} {}".format(self.name, s), self.animations[s]])
             res.extend([self.name, self.animations['main']])
-            print(res)
+            #print(res)
             return ShowingSwitch(*res)
 
         @property
         def coordinates(self):
             position_array = renpy.get_image_bounds(self.image)
-            print(position_array)
+            #print(position_array)
             return [position_array[0], position_array[2]]
 
         def make_animation(self, animation_name):
@@ -72,7 +72,7 @@ init -8 python:
         c_base = "{}Class = CharacterBase(\"{}\")".format(character, character)
         c_character = "{} = {}Class.char".format(character, character)
         c_anim = "a{} = lambda x: {}Class.make_animation(x)".format(character, character)
-        print(anim, "fdfs")
+        #print(anim, "fdfs")
         commands = [c_base, c_character, c_anim]
         for c in commands:
             exec(c)

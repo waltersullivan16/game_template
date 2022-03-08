@@ -1,4 +1,5 @@
-﻿# "0_main.rpy"
+﻿# "../0_main.rpy"
+# "1a_poczatek.rpy"
 
 # ../bin/gui_.rpy
 # ../bin/conf.rpy
@@ -10,6 +11,7 @@ label dziewczeta:
     $ change_style("main")
 
     Unknown "Och, tak się cieszę, że zdążyłyśmy! Bałyśmy się, że wszedł już pan na salę."
+    $ play_music(SOUNDTRACK["dziewczyny1"])
     show pearl embarassed with vpunch
     Pearl "A bardzo nam zależało, żeby podziękować panu za to wszystko co pan dla nas robi."
     show ema happy at right with vpunch
@@ -52,6 +54,7 @@ Przecież to ja jestem prokuratorem.''')
     jump dziewczeta_wardega
 
 label dziewczeta_wardega:
+    $ stop_music()
     show ema at right
     show penny at true_left
     show pearl
@@ -84,6 +87,7 @@ label bloody_text:
     Konopski "Co stało się z pierwszoosobowy styl narracji?"
     Konopski "Sympatycznym w swej prostocie okienkiem dialogowym?"
     Konopski "Bogatym w szczegóły drugim planem?"
+
 label kopniak:
     show pearl determined at kick_out
     pause 0.9
@@ -93,7 +97,7 @@ label kopniak:
     show ema determined at right with moveinbottom
     Ema "A poza tym, czy naprawdę myśli pan, że jest to odpowiedni moment na łamanie czwartej ściany?"
     Konopski "A mógłbym mieć jakiekolwiek wątpliwości dlatego bo...?"
-    pause
+    pause 1.0
     Ema thinking "Tak właściwie to nie wiem, ale jest w tym coś budzącego grozę..."
     jump legenda
 
@@ -117,18 +121,22 @@ label legenda:
     hide Penny
     scene black
     Konopski "A teraz, ku przypomnieniu, podkreślmy fakt, że jego imię brzmi 'Sylwester', a nie 'Wardega'..."
-    pause
+    pause 1.0
     Konopski "Co, znowu cutscenka...? No błagam..."
     # vutscenka lol
+    pause 2.0
+
     jump gazeta0
 
 label gazeta0:
 
+
     $change_style("main")
-    scene lobby with fade
+    scene lobby
     show pearl serious
     show ema confused at right
     show penny at true_left
+    with dissolve
     Konopski "..."
     Konopski "Słuchajcie, nie żebym się czepiał, ale czy nie wydaje wam się, że odrobinę przesadzacie z tym dramatyzmem?"
     Ema thinking "Ale to przecież nie jest naszego autorstwa."
@@ -147,8 +155,11 @@ label gazeta1:
     #show pearl
     #show ema at left
     #show penny at right
-    scene ulubione_filmy
+    $ play_music(SOUNDTRACK["gazeta"])
+    scene bg ulubione_filmy with dissolve
     $change_style("www")
+    $preferences.text_cps = 15
+    #$persistent.blip_mute=True
     #Konopski "dsadadad" (multiple=2)
     #Pearl "{size=+10}{font=gui/fonts/chomsky.ttf}{u}Ulubiony film{/u}{/font}{/size}{font=gui/fonts/unique.ttf}{p}Nagranie z procesu O.J.Simsona.{/font}"(multiple=2)
     $ fav_filmy1 = [
@@ -163,8 +174,8 @@ label gazeta1:
         text_style("coda", "3) Braterstwo wilków"),
         text_style("coda", "4) Wilkołak"),
         text_style("coda", "5) Anakonda"),
-        #text_style("www", "{u}Komentarz{/u}: Czasami wychodzi ze mnie bestia ;P{w}\n"),
-        "{u}Komentarz{/u}: Czasami wychodzi ze mnie bestia ;P{w}\n",
+        text_style("www", "{u}Komentarz{/u}: Czasami wychodzi ze mnie bestia ;P{w}\n"),
+        #"{u}Komentarz{/u}: Czasami wychodzi ze mnie bestia ;P{w}\n",
         text_style("dark_thoughts", "{image=minikonopski}..."),
         text_style("dark_thoughts", "{u}Komentarz{/u}:{w} Nie{p}{w} Po prostu {w}{b}{size=+10}NIE{/size}{/b}.")
     ]
@@ -183,7 +194,8 @@ label gazeta2:
     hide pearl
     hide ema
     show bg ulubione_filmy with wiperight
-    show pearl at true_left with moveinbottom
+    show pearl at true_right with moveinbottom
+    $ stop_music()
     $change_style("main")
     Pearl "To wszystko."
     $Konopski(text_style("thoughts", "Dzięki bogu..."))
@@ -192,24 +204,26 @@ label gazeta2:
     show ema at Position(ypos=800) with moveinbottom
     Ema main "{w=1}Ulubione powiedzenia"
     show bg ulubione_powiedzenia with wiperight
+    $ play_music(SOUNDTRACK["gazeta"])
     Konopski "Dlaczego mi to robicie... Jestem po waszej stronie..."
-    show pearl determined
-    Ema determined "Musi pan myśleć strategicznie!"
-    Ema "Dobre rozeznanie na froncie wroga może dać istotną przewagę!"
+    Pearl determined "Musi pan myśleć strategicznie!"
+    Ema determined "Dobre rozeznanie na froncie wroga może dać istotną przewagę!"
     $Konopski(text_style("thoughts", "No jasne, już nie mogę się doczekać momentu, w którym zmiotę wszystkie argumenty Wardęgi siłą jego ulubionych powiedzeń..."))
-    hide pearl with moveinbottom
-    hide ema with moveinbottom
-label powiedzenia:
-    show ulubione_powiedzenia
-    hide ema
     hide pearl
+    hide ema
+    with dissolve 
+    pause 1.0
+
+label powiedzenia:
+    #show bg ulubione_powiedzenia
     $ change_style("www")
+    $preferences.text_cps = 15
     $ fav_powiedzenia = [
         text_style("coda", "1) Każdy kij ma dwa końce"),
         text_style("cite", "{space=50}powiedzenie ludowe"),
         text_style("coda", "2) Bo do dramy trzeba dwojga"),
         text_style("cite", "{space=50}powiedzenie ludowe"),
-        text_style("coda", "3) Gdzie dwóch się bije, tam Wardęga korzysta,"),
+        text_style("coda", "3) Gdzie dwóch się bije, tam Wardęga korzysta"),
         text_style("cite", "{space=50}autor anonimowy"),
         text_style("dark_thoughts", "\n{image=minikonopski}{size=+50}{cps=3}...{/size}{/cps} {w}{size=+30}co to kuźwa jest?{/size}"),
         text_style("cite", text_style("dark_thoughts", "powiedzenie ludowe")),
@@ -220,10 +234,10 @@ label powiedzenia:
         #text_style("coda", "4) Bez Wardęgi jak bez ręki."),
         #text_style("cite", "{space=50}Sylwester Wardęga"),
         #text_style("dark_thoughts", "{image=minikonopski} To... niepokojące na wielu płaszczyznach."),
-        text_style("coda", "4) Kto z Wardęgą wojuje od Wardęgi ginie.."),
+        text_style("coda", "4) Kto z Wardęgą wojuje, od Wardęgi ginie"),
         text_style("cite", "{space=50}Zaradna Wersow i zdemoralizowany Konopski"),
         text_style("dark_thoughts", "\n{image=minikonopski}{size=+50}{cps=3}...{/size}{/cps} {w}{size=+30}co tu się wydarzyło...{/size}"),
-        text_style("dark_thoughts", "Wardęga z youtuba, wszystkim lżej."),
+        text_style("dark_thoughts", "{b}{size=+15}Wardęga z youtuba, wszystkim lżej{/size}{/b}"),
         text_style("cite", text_style("dark_thoughts", "absolutnie wszyscy youtuberzy")),
         text_style("coda", "5) Z Wardęgą ci się upiecze.") +
         text_style("dark_thoughts","{w}Niech zgadnę, kto może być tego autorem...") +
@@ -232,26 +246,33 @@ label powiedzenia:
         text_style("dark_thoughts", "\n{image=minikonopski} {size=+50}{cps=3}.......{/size}{/cps}")
     ]
     $Ema(list_text(fav_powiedzenia2))
+    $ stop_music()
 
 label koniec_powiedzen:
-    scene black with fade 
+    scene black with slow_dissolve 
     $change_style("main")
     pause 1.0
     $Konopski(text_style("thoughts", "Co jak co, ale jednego Wardędze nie można odmówić."))
     $Konopski(text_style("thoughts", "Zaskakująco dobrze się trzyma jak na swoje lata..."))
-    pause
-    scene lobby
+    scene lobby with slow_dissolve
     pause 1.0
+    $ play_music(SOUNDTRACK["dziewczyny2"])
     $Konopski(text_style("thoughts", "Co za ulga... Stęskniłem się za tym pomieszczeniem..."))
+    pause 1.0
     $Konopski(text_style("thoughts", "..."))
     $Konopski(text_style("thoughts", "Nie, chwila, żadne 'stęskniłem się'."))
-    $Konopski(text_style("thoughts", "Muszę. Stąd. W tym momencie..."))
-    Pearl "...wyjść."
+    $Konopski(text_style("thoughts", "Muszę. {w=1}{size=+10}Stąd.{w=1}{size=+10} W tym momencie...{/size}{w=1}{nw}"))
+    Pearl "...wyjść?"
+    pause 1.0
     show pearl main with moveinbottom
-    show ema at right with moveinright
+    show ema at true_right with moveinright
     show penny at true_left with moveinleft
-    $Konopski(text_style("thoughts", "Czy mój plan natychmiastowej ewakuacji jest aż tak ewidentny...?"))
+    pause 1.0
+    $Konopski(text_style("thoughts", "Czy mój plan natychmiastowej ewakuacji jest aż tak ewidentnie wypisany na mojej twarzy?"))
+
+    show blur with Dissolve(1.0)
     menu:
+        with dissolve
         "Zaprzecz wszystkiemu":
                 jump prawie_koniec
         "Zgrywaj biedactwo, przyłóż rękę do czoła i teatralnie zemdlej. Łkając z podłogi każ im znaleźć swój płaszcz.":
@@ -260,20 +281,38 @@ label koniec_powiedzen:
                 jump prawie_koniec
         "Bądź twardzielem, zostaw baby i uciekaj":
                 jump prawie_koniec
+#"It's working!" (window_style="window_small") with hpunch
 label prawie_koniec:
+    hide blur with ease
+    $stop_music()
     Konopski "Słuchajcie, wy małe flądry, najpierw próbujecie zniszczyć mnie psychicznie poprzez zmuszenie do oglądania materiałów przygotowanych przez waszego guru, a teraz macie czelność insynuować, że mam zamiar stąd bezpardonowo uciec?"
+    show pearl suprised with ease
     Pearl "Flądry...?"
+    show ema shocked with ease
     Ema "Guru...?"
+    pause 1.0
+    show penny gossip with ease
     Penny "Uciec...?"
+    pause 1.0
+    show penny main 
+    show pearl sad
+    show ema confused
+    with fast_dissolve
+    pause 1.0
     Ema "My właśnie mówiłyśmy, że musimy wyjść, bo zaraz chyba będzie pan proszony na salę..."
     $ Konopski(text_style("thoughts", "..."))
     $ Konopski(text_style("thoughts", "A tegoroczna nagroda dla youtubera najgorzej traktującego swoje widzki wędruje dooooo..."))
     Konopski "A ja właśnie wam odpowiedziałem 'Bardzo miło mi było was poznać dziewczyny i naprawdę chętnie zostałbym z wami dłużej, ale wiecie, obowiązki wzywają'."
-    Penny "I to dosłownie."
+    Penny gossip "I to dosłownie."
     Konopski "Słucham?"
 
 label namiejsce:
+    show ema main
+    show pearl serious
+    show penny main
+    with ease
     "" "PANIE KONOPSKI, PROSZĘ ZAJĄĆ SWOJE MIEJSCE!"
+    $play_music(SOUNDTRACK["straznik"])
     Konopski "Nie, nie, nie, szybko, gdzie jest kurtka, walić kurtkę, wycho..."
     "" "PANIE KONOPSKI NA MIEJSCE"
     Konopski "Panie strażniku, przysięgam na wszystko, sala sądowa absolutnie moim miejscem nie jest!"
@@ -285,6 +324,7 @@ label namiejsce:
     Konopski "Słucham? Zaszła jakaś pomyłka, ja przecież..."
     Pearl "Powodzenia, panie Konopski! Dziękujemy za... rezolutną dysputę!"
     Konopski "Błagam, powiedzcie że to jakiś prank..."
+    $ stop_music()
     Konopski "Dubiel, gdzie jesteś...   ?"
     jump end
 

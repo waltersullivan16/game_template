@@ -3,11 +3,13 @@
 # "../bin/conf.rpy"
 # "../bin/characters_base.rpy"
 
-# "1_uwertura.rpy"
+# "chapter1/1a_poczatek.rpy"
+# "chapter1/1b_dziewczyny.rpy"
 
 label start:
+    $ stop_music()
     #scene lobby
-    show screen z
+    show screen z with slow_fade
     #jump chapters
     jump uwertura_scenes
     #jump wybor
@@ -28,28 +30,22 @@ label chapters:
 
 label uwertura_scenes:
     menu:
-        "abi":
-            jump abi
-        "abi2":
-            jump blowek2
-        "abi3":
-            jump transparenty2
         "monolog1":
             jump konop_monolog1
         "monolog2":
             jump konop_monolog2
-        "transparenty":
-            jump transparenty
-        "wybór1":
-            jump wybor1
-        "wybór1 - blowek":
-            jump blowek
+        "co robic1":
+            jump menu1_blowek
+        "szukanie blowka part1":
+            jump check_blowek1a
+        "co robic2":
+            jump menu2_blowek2
+        "t":
+            jump check_blowek2f_anim
         "dziewczeta":
             jump dziewczeta
-        "bloody_text":
+        "bloody":
             jump bloody_text
-        "next":
-            jump scenes2
 
 label scenes2:
     menu:

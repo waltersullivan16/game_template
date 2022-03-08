@@ -3,13 +3,15 @@
 "conf.rpy"
 "characters_base.rpy"
 "transforms.rpy"
+"images_python.rpy"
+"screens_.rpy"
 
 ## common files
 "../characters.rpy"
 "../images.rpy"
 
 ## script
-"../scripts/1_uwertura.rpy"
+"../scripts/chapter1/1a_poczatek.rpy"
 "../scripts/test.rpy"
 
 init -11 python:
@@ -19,10 +21,9 @@ init -11 python:
 init -9 python:
     def char_talking(character, event, **kwargs):
         if event == "show":
-            print("dsada")
             character.talking = True
-            renpy.music.play(persistent.blip, channel="sound", loop="True")
-            persistent.blip = BLIP_SOUND
+            #if persistent.blip_mute is None:
+            renpy.music.play(music("blip"), channel="sound", loop="True")
         elif event in ["end", "slow_done"]:
             character.talking = False
             renpy.music.stop(channel="sound")
@@ -30,38 +31,31 @@ init -9 python:
                 renpy.music.play(persistent.special_sound, channel="sound")
                 persistent.special_sound = None
 
-    def get_frame(character, animation_name, frame):
-        return "{} {} {}".format(character, animation_name, frame)
-
 # makers
     def count_files_dir(path):
         return len(os.listdir(path))
 
     def animation_list_maker(character, name, pause=ANIMATION_PAUSE):
+        def get_frame(character, animation_name, frame):
+            return "{} {} {}".format(character, animation_name, frame)
         animation_path = PATHS["animations"](character, name)
-        print("fdfssfsf", animation_path)
+        #print("fdfssfsf", animation_path)
         amount = count_files_dir(animation_path)
-        print("animation list", amount)
+        #print("animation list", amount)
         animation_list = []
         for i in range(amount):
             animation_list.extend([get_frame(character, name, i + 1), ANIMATION_PAUSE])
         return animation_list
 
+    def animation_easy_maker(name, amount):
+        animation_list = []
+        for i in range(amount):
+            animation_list.extend(["{} {}".format(name, i + 1), ANIMATION_PAUSE])
+        #print(animation_list)
+        return animation_list
+
     def animation_maker(character, animation_name, pause=ANIMATION_PAUSE):
         return Animation(*animation_list_maker(character, animation_name, pause))
-
-    animation_mouth = lambda c: animation_maker(c, "mouth")
-
-    def at_position(image, pos):
-        return At(image, Position(xpos=pos[0], ypos=pos[1]))
-
-    def emotion_maker(character, emotion):
-        arr = list(map(lambda x: int(x), renpy.get_image_bounds(character)))
-        renpy.show(emotion, atl=Position(arr[0], arr[2]))
-
-    def reactions(c):
-        for r in os.listdir(PATHS["reactions"]):
-            print("{}_{}_{}".format(c, 'reactions', r.split('.')[0]))
 
 # scenes
 
@@ -82,7 +76,7 @@ init -9 python:
 
     preferences.show_empty_window = False
 
-    def alter_say_strings(str_to_test, dot="0.5", comma="0.1"):
+    def alter_say_strings(str_to_test, dot="1.0", comma="0.3"):
         str_map = {
             ". " : ". {{w={}}}".format(dot),
             ", " : ", {{w={}}}".format(comma),
@@ -90,3 +84,5 @@ init -9 python:
         for key in str_map:
             str_to_test = str_to_test.replace(key, str_map[key])
         return str_to_test
+    
+    config.say_menu_text_filter = alter_say_strings

@@ -4,6 +4,8 @@
 "functions.rpy"
 "gui_.rpy"
 "transforms.rpy"
+"music.rpy"
+"screens_.rpy"
 
 ## common files
 "../characters.rpy"
@@ -38,9 +40,11 @@ transform blood_particle2:
         linear 0.35 zoom 0
     choice:
         linear 0.55 zoom 0
+
 transform blood_particle:
     yzoom 0 yanchor 0.2 subpixel True
     linear 10 xzoom 8 #Extends vertically
+
 init -1 python:
     def _shake_function(trans, st, at, dt=.5, dist=64):
        #dt is duration timebase, dist is maximum shake distance in pixel
@@ -54,12 +58,14 @@ init -1 python:
 
 transform shake(t=.5, d=64):
     function renpy.curry(_shake_function)(dt=t, dist=d)
+
 init python:
     def creepy_wardega():
         return LiveComposite(
             (1280, 720),
             (0, 50), Text("SYLWESTER", style="creepy"),
             (0, 500), Text("WARDEGA", style="creepy"))
+
 transform wardega_pos:
     xpos 0 ypos 50
 
@@ -79,7 +85,9 @@ transform shake2:
 
     pause .5
     repeat
+
 image crewar = At(creepy_wardega(),blood_particle)
+
 init python:
     def fading_text(text, t, x, y, move_x, move_y, *args, **kwargs):
         ui.add(At(Text(text, *args, **kwargs), fade_move_with_pars(t, x, y, move_x, move_y)))
@@ -122,12 +130,9 @@ image wardega = At(creepy_maker("WARDEGA"), dissolve_with_atl(3))
 image wardega_center = At("wardega", Position(ypos=0.6))
 
 init python:
-    def image_sound(image):
+    def image_sound(image, sound):
         renpy.show(image)
-        renpy.play(os.path.join("music","wardega.mp3"))
-
-    def image_dissolve(image, time=3):
-        return At(image, dissolve_with_atl(time))
+        renpy.play(music(sound))
 
     def whisper():
         renpy.show("wardega_center")
@@ -154,6 +159,8 @@ image sylwesterry = Composite(
     (1280, 720),
     (40, 450), At(creepy_maker("SYLWESTER"), dissolve_with_sound(4)),
     (100, 200), At(creepy_maker("SYLWESTER"), dissolve_with_sound(8)))
+
+### TRANSPARENTY
 
 image junkoo:
     "junko1"
@@ -212,3 +219,6 @@ image transparenty_omg:
     pause 1.5
     "kutas2" with vpunch
     pause 1.5
+
+init python:
+    image_punch = lambda x: image_sound(x, "punch")

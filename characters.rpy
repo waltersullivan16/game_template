@@ -1,35 +1,26 @@
 ## jump to other conf files
-"bin/gui_.rpy"
-"bin/characters_base.rpy"
-"bin/functions.rpy"
-"bin/transforms.rpy"
-
-## common files
-"characters.rpy"
-"images.rpy"
-"screens.rpy"
-
-## script
-"scripts/1_uwertura.rpy"
+"../files_list.txt"
 
 ### KONOPSKI ###
 #image konopski = ConditionSwitch(
 #    "KonopskiClass.talking == True", aKonopski("confused"),
 #    "True", "konopski_body_confused")
 init python:
-    KonopskiClass.add_styles(["main", "smirk", "thinking", "ej"])
+    KonopskiClass.add_styles(["main", "smirk", "thinking", "ej", "ej_happy", "ej_angry"])
 
 layeredimage konopski:
     group body auto:
         attribute main default
 
-    group reaction:
-        xpos 200 zoom 2.
-        attribute normal default null
-        attribute kropla "reaction_sweatdrop"
-
     if KonopskiClass.talking:
         KonopskiClass.animations_switch
+
+    group reaction:
+        xpos 201
+        attribute normal default null
+        attribute kropla "reaction_sweatdrop"
+        attribute flower "flowers"
+        attribute angry "reaction_angry"
 
 
 ### PEARL ###
@@ -41,7 +32,6 @@ layeredimage pearl:
         attribute main default
     if PearlClass.talking:
         PearlClass.animations_switch
-
 
 ### EMA ###
 init python:

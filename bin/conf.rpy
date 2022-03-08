@@ -3,6 +3,7 @@
 "characters_base.rpy"
 "functions.rpy"
 "screens_.rpy"
+"music.rpy"
 
 ## common files
 "../characters.rpy"
@@ -10,7 +11,7 @@
 "../screens.rpy"
 
 ## script
-"../scripts/1_uwertura.rpy"
+"../scripts/chapter1/1a_poczatek.rpy"
 
 init -10 python:
 # imports #
@@ -32,6 +33,8 @@ init -10 python:
         "textbox": gpj(["gui", "textbox"]),
         "fonts": lambda font: gpj(["gui", "fonts", font]),
         "text" : gpj([GAME_PATH, "text.txt"]),
+        "music" : gpj([GAME_PATH, "music"]),
+        "mouse": gpj(["others/mouse"]),
     }
     PATHS["reactions"] = gpj(["images", "reactions"])
     PATHS["characters"] = lambda c, type="": gpj([PATHS["images"], "characters", c, type])
@@ -47,7 +50,8 @@ init -10 python:
     FONT_NAME = font("lucky")
 
     AUTOMATIC_IMAGES = ["/"]
-    AUTOMATIC_IMAGES_STRIP = ["images", "characters", "background", "others", "ulubione", "transparenty", "transparenty2"]
+    AUTOMATIC_IMAGES_STRIP = [
+        "images", "characters", "background", "scenes", "others", "ulubione", "transparenty", "transparenty2", "reactions", "transitions"]
 
     ANIMATION_PAUSE = 0.2
 
@@ -60,27 +64,34 @@ init -10 python:
         "empty": "empty.png",
     }
 
-    def music(name):
-        return gpj(["music", "soundtrack", "{}.mp3".format(name)])
-
-    def sound_effect(name):
-        return gpj(["music", "sound effects", "{}.mp3".format(name)])
-
-    BLIP_SOUND = sound_effect("blip")
-    BADUM_SOUND = sound_effect("badum")
-
 init -8 python:
 
     if persistent.style is None:
         persistent.style = "main"
         persistent.style_class = MainStyle
-    persistent.blip = BLIP_SOUND
-    if persistent.mouse is None:
-        persistent.mouse = "default"
 
-define config.say_menu_text_filter = alter_say_strings
+    if persistent.cursor is None:
+        print(persistent.cursor, "serop")
+        persistent.cursor = "main"
+    mouse = lambda x: "others/mouse/{}.png".format(x)
 
-init 1 python:
-    def change_cursor():
-        setattr(config, "mouse", {"default": [("others/myszka_{}.png".format(persistent.mouse), 1, 1)]})
-    change_cursor()
+    def change_cursor(cursor):
+        persistent.cursor = cursor
+        config.mouse["default"] = config.mouse[cursor]
+
+    config.mouse = {
+            "default": [(mouse("main"), 1, 1)],
+            "main": [(mouse("main"), 1, 1)],
+            "green": [(mouse("green"), 1, 1)],
+            "red": [(mouse("red"), 1, 1)],
+            "loading": [(mouse("loading"), 1, 1)],
+            "not": [(mouse("not"), 1, 1)],
+            "love": [(mouse("love"), 1, 1)],
+            "question": [(mouse("question"), 1, 1)],
+    } 
+    
+    _dismiss_pause = False
+
+define config.window_show_transition = dissolve
+define config.layers = [ 'master', 'transient', 'topcia', 'screens', 'overlay']
+#define config.say_menu_text_filter = alter_say_strings

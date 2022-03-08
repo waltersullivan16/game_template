@@ -5,6 +5,7 @@
 "transforms.rpy"
 "images_python.rpy"
 "screens_.rpy"
+"music.rpy"
 
 ## common files
 "../characters.rpy"
@@ -63,7 +64,7 @@ style say_dialogue_creepy:
     line_spacing 7
 
 style say_window_creepy:
-    background Frame(textbox_maker("creepy"), 1.0)
+    background Frame(textbox_maker("creepy"), 0.5)
     xalign 0.0
     yalign 1.0
     ysize 300
@@ -168,6 +169,7 @@ style cite_text_style is text:
     rest_indent 500
 
 define true_left = Position(xpos=0.2)
+define true_right= Position(xpos=0.8)
 init -9 python:
     from collections import namedtuple, defaultdict
 
@@ -228,7 +230,7 @@ init -9 python:
             opening = i[0] if (len(i) == 1) else "{}={}".format(i[0], i[1])
             ending = i[0]
             res = "{{{}}} {} {{/={}}}".format(opening, res, ending)
-        print(text, res)
+        #print(text, res)
 
         return res
 
@@ -236,6 +238,7 @@ init -9 python:
         for l in text.splitlines():
             if len(l) == 0:
                 continue
+            #print(l, fun)
             character(fun(l))
 
     def font_text(font, text):
