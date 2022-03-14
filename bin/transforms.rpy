@@ -1,3 +1,5 @@
+# ../files_list.rpy
+
 ## jump to other conf files
 "conf.rpy"
 "characters_base.rpy"
@@ -12,10 +14,6 @@
 "../characters.rpy"
 "../images.rpy"
 
-## script
-"../scripts/1_uwertura.rpy"
-"../scripts/test.rpy"
-
 transform dropping:
     linear 1.5 yanchor -100
     pause 3.0
@@ -26,6 +24,16 @@ transform beating:
     zoom 1.0
     pause 0.2
     repeat
+
+transform title_beating:
+    truecenter zoom 1.0
+    pause 2.4
+    block:
+        linear 0.2 truecenter zoom 1.08
+        pause 0.1
+        linear 0.2 truecenter zoom 0.95
+        pause 0.1
+        repeat
 
 transform bounce2:
     linear 3.0 xalign 1.0
@@ -77,8 +85,12 @@ init python:
 
     m = Move((15, 0), (-15, 0), .10, bounce=True, repeat=True, delay=.275)
 
+define true_left = Position(xpos=0.2)
+define true_right= Position(xpos=0.8)
+
 define flashbulb = Fade(0.2, 0.0, 0.8, color='#fff')
 define slow_fade = Fade(0.2, 1.0, 0.8)
+define very_slow_fade = Fade(0.6, 1.5, 0.8)
 define slow_dissolve = Dissolve(3.0)
 define fast_dissolve = Dissolve(0.5)
 
@@ -103,8 +115,8 @@ image alpha_control:
 
 define alpha_example = AlphaDissolve("alpha_control", delay=3.5)
 
-define circleirisout = ImageDissolve("imagedissolve circleiris", 1.0, 8)
-define circleirisin = ImageDissolve("imagedissolve circleiris", 1.0, 8 , reverse=True)
+define circleirisout = ImageDissolve("imdis", 1.0, 8)
+define circleirisin = ImageDissolve("imdis", 1.0, 8 , reverse=True)
 
 #define circlewipe = ImageDissolve("imagedissolve circlewipe", 1.0, 8)
 
@@ -112,5 +124,4 @@ define circleirisin = ImageDissolve("imagedissolve circleiris", 1.0, 8 , reverse
 
 define teleport = ImageDissolve("imagedissolve teleport", 1.0, 0)
 
-image bg circleiris = "imagedissolve circleiris"
-image bg teleport = "imagedissolve teleport"
+image bg circleiris = "imdis"

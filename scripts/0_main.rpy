@@ -8,6 +8,7 @@
 
 label start:
     $ stop_music()
+    $ _dismiss_pause = True
     #scene lobby
     show screen z with slow_fade
     #jump chapters
@@ -30,10 +31,14 @@ label chapters:
 
 label uwertura_scenes:
     menu:
+        "quote":
+            jump quote_screen
         "monolog1":
             jump konop_monolog1
         "monolog2":
             jump konop_monolog2
+        "winny":
+            jump winny
         "co robic1":
             jump menu1_blowek
         "szukanie blowka part1":
@@ -63,3 +68,6 @@ label scenes2:
             jump koniec_powiedzen
         "prev":
             jump uwertura_scenes
+
+#label chapter1_t:
+# quite_screen    

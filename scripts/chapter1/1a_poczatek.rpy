@@ -1,10 +1,30 @@
 ﻿# ../../files_list.rpy
 
+### QUOTE SCREEN (JEŻELI SĄDZISZ...)
+label quote_screen:
+    #$change_style("quote")
+    $ t = "Jeżeli sądzisz, że w dobie internetu, normy moralne przestały obowiązywać (a zwłaszcza ciebie), to niezawodny znak, że jesteś "
+    $ influ = "INFLUENCEREM"
+    #$ t.append("{size=+10}INFLUENCEREM{/size}.")
+    
+    $ author = "mała dziewczynka z warkoczykami"
+    $ author_errata1 = "mała dziewczynka {s}z warkoczykami{/s}{w=2}"
+    $ author_errata2 = "mała dziewczynka {s}z warkoczykami{/s}{w=2} albo i bez warkoczyków"
+    hide screen quote
+    hide black
+    show black
+    show screen quote(t, influ, author, author_errata1, author_errata2) with slow_dissolve 
+    pause 10.0
+    hide screen quote with slow_dissolve
+    jump konop_monolog1
+    
+### KONOP MONOLOG 1 + TITLE
+    
 label konop_monolog1:
-    scene intro with slow_fade
+    scene intro with very_slow_fade
     $ change_style("intro")
     #$ play_music("dangan_new_world")
-    $ play_music(SOUNDTRACK["intro"], loop=False)
+    $ play_music("intro", loop=False)
     $ intro_monologue(Blank, '''
 No i wreszcie nadszedł ten moment.
 Dzień, w którym raz na zawsze udowodnię, kto jest czarnym charakterem w tej historii.
@@ -18,63 +38,89 @@ Jednak bez względu na wszystko, sprawa jest na tyle ważna, że nie powinno si�
 Wszystkie trudy i znoje były warte tej jednej magicznej chwili, która dzisiaj niewątpliwie nastąpi.
 Lexiu ustłyszy dzisiaj wyrok...''')
     scene intro2
+    jump winny
+    
+label winny:
+    jump aa
     $ stop_music()
-    pause 1.0
-    show winny with m
+    scene intro2
+    $ play_music("title", fadein=0.0, loop=False)
+    pause 2.1
+    show winny at title_beating with m
+    show black behind winny with slow_dissolve
     pause 2.0
+    hide winny with wet_time(1.2)
+    show text Text("to ma mnie upokorzyć proudly presents", style="creepy_text_style") at truecenter with fast_dissolve
+    pause 3.1
+    hide text with dissolve
+    show title_blank at Position(ypos=0.6) with wipeleft
+    pause 0.1
+    show zbrodnia at Position(ypos=0.6) with vpunch
+    pause 0.4
+label aa:
+    show kara at Position(ypos=0.6) with vpunch
+    pause 0.1
+    show pasek at Position(ypos=0.6) with wipeleft
+    pause 0.1
+    show subskrypcje at Position(ypos=0.6) with Dissolve(2)
+    show text Text("CHAPTER 0{p=3} PROLOG", style="chapter_text_style") at Position(ypos=0.8)
+    pause 5.0
+    $ stop_music()
     jump konop_monolog2
 
+### konop monolog 2 + subskrybcje + krótki monolog myślowy lol
 
 label konop_monolog2:
-    scene lobby with slow_fade
+    scene lobby with wet
     $change_style("main")
-    $ character_monologue(Konopski,'''
-A mówiąc o byciu winnym...
-Mam nadzieję, że czują się tak wszyscy ci, którzy nie subskrybują jeszcze mojego kanału.
-Jeśli należysz do tej grupy i nie chcesz, żeby wyrzuty sumienia zjadały cię od środka, naciśnij tu i teraz gustowny czerwony przycisk.
-Nic cię to nie kosztuje, a zawsze możesz zrezygnować.
+    $ play_music("lobby")
+    konopski "a mówiąc o byciu winnym..."
+    $ character_monologue(konopski,'''
+mam nadzieję, że czują się tak wszyscy ci, którzy nie subskrybują jeszcze mojego kanału.
+jeśli należysz do tej grupy i nie chcesz, żeby wyrzuty sumienia zjadały cię od środka, naciśnij tu i teraz gustowny czerwony przycisk.
+nic cię to nie kosztuje, a zawsze możesz zrezygnować.
 ''')
 
 label subscribe:
-    #$dismiss_pause = True
-    show blur
+    #$dismiss_pause = true
+    $ stop_music()
     show screen subscribe_screen
     $ renpy.pause(3.0)
-    Konopski "Oczywiście uszanuję twoją decyzję, jakakolwiek by ona nie była.{w=3.0}{nw}"
-    Konopski "Dam ci jeszcze trochę czasu na zastanowienie.{w=3.0}{nw}"
-    Konopski "Długo jeszcze będę musiał czekać?"
+    konopski "oczywiście uszanuję twoją decyzję, jakakolwiek by ona nie była.{w=3.0}{nw}"
+    konopski "dam ci jeszcze trochę czasu na zastanowienie.{w=3.0}{nw}"
+    konopski "długo jeszcze będę musiał czekać?"
 
 label subscribe_like:
     show screen subscribed_screen
-    Konopski "No to teraz łapka w górę!"
+    konopski "no to teraz łapka w górę!"
     #hide subscribed_screen
     show screen subscribed_like_screen
     pause
 
 label subscribe_thanks:
-    #$dismiss_pause = False
-    hide blur with ease
-    Konopski "Fenomenalnie!"
-    Konopski "Od razu wiedziałem, że mam do czynienia z prawdziwym koneserem sztuki!"
-    #Konopski "A skoro już mówimy o sztuce: spiesz się, bo zostały ostatnie sztuki mojej najnowszej eksluzywnej kolekcji bluz blovek"
+    #$dismiss_pause = false
+    konopski "fenomenalnie!"
+    $ play_music("lobby")
+    konopski "od razu wiedziałem, że mam do czynienia z prawdziwym koneserem sztuki!"
+    #konopski "a skoro już mówimy o sztuce: spiesz się, bo zostały ostatnie sztuki mojej najnowszej eksluzywnej kolekcji bluz blovek"
 
 label konop_monolog3:
-    $ thoughts_monologue(Konopski,'''
+    $ thoughts_monologue(konopski,'''
 ...
-Dobra, mam nadzieję, że wszystko się ładnie nagrało.
-Wiem, że nie był to jakoś szczególnie porywający monolog, no ale cóż.
-Cytując klasyka...
+dobra, mam nadzieję, że wszystko się ładnie nagrało.
+wiem, że nie był to jakoś szczególnie porywający monolog, no ale cóż.
+cytując klasyka...
 ''')
-    $ Konopski(text_style("itis", "IT IS WHAT IT IS"))
+    $ konopski(text_style("itis", "it is what it is"))
     $ thoughts_monologue(
-        Konopski,'''
-Niełatwo jest cierpieć za miliony.
+        konopski,'''
+niełatwo jest cierpieć za miliony.
 ...
-Co teraz?'''
+co teraz?'''
 )
-    $ play_music(SOUNDTRACK["lobby"])
     jump menu1_blowek
 
+### MENU 1 + SZUKANIE BLOWKA
 label menu1_blowek:
     show screen choices1_blowek
     pause
@@ -87,7 +133,7 @@ Tak, to dobry pomysł.
 Jego obecność niewątpliwie podniosłaby moje morale.
 Nie mógłbym przecież okryć się hańbą na oczach mistrza.
 ''')
-    scene bg black
+    scene bg black with w18
     $stop_music()
     jump check_blowek1a
 
@@ -98,18 +144,22 @@ label grafika:
     jump blowek
 
 label check_blowek1a:
-    show bg transparenty0 with fade
-    $play_music(SOUNDTRACK["scary"])
+    show bg transparenty0 with slow_dissolve
+    $play_music("scary")
     $thoughts_monologue(
         Konopski,'''
 ...
 Co to ma kuźwa być?
 Gdzie śmietanka towarzyska youtuba?
-Kto doceni te wszystkie wilcze puny, które na dzisiaj przygotowałem?
+Gdzie są kamery?
+Czy cały mój wysiłek włożony w przygotowanie tych wszystkich wilczych punów pójdzie na marne?
+No bo po co mam się niby wysilać, skoro i tak nie ma nikogo, kto mógłby potem zmontować kompilację \'Konopski best of\'?
+...
+Kogo my tu mamy?
 Patrząc na te plebejskie twarze muśnięte odrobiną chamstwa, cała ta horda to wyznawcy Wardęgi.
 ''')
-    $ persistent.special_sound = music("badum")
-    $ Konopski(text_style("thoughts", "Pardon, cała ta {size=+20}WATAHA®{/size}."))
+    $ persistent.special_sound = "badum"
+    $ Konopski(text_style("thoughts", "Pardon, cała ta {size=+10}WATAHA®{/size}."))
     $ renpy.pause(2.0, hard=True)
     $thoughts_monologue(
         Konopski,'''
@@ -133,7 +183,7 @@ W sumie to całkiem sympatycznie...{nw}
     show junko3 with vpunch
     $ Konopski(text_style("thoughts", "{size=+20}{fast}Co do...?{/size}"))
     show toko1 with zoomout
-    show toko2
+    show toko22
 
 label check_blowek1c: 
     $ Konopski(text_style("thoughts", "Współczuję tej okuarnicy całym sercem, ja na jej miejscu chyba bym{nw}"))
@@ -151,8 +201,7 @@ label check_blowek1d:
 
 label check_blowek1e:
     $renpy.pause(2.0, hard=True)
-    scene lobby with Pixellate(3.0,8) 
-    pause
+    scene lobby with eye
     $change_cursor("green")
     $ thoughts_monologue(
         Konopski,'''
@@ -163,6 +212,8 @@ Zrobiło się tu strasznie duszno...
 ''')
     jump menu2_blowek2
 
+
+### MENU 2 + SZUKANIE BLOWKA 2
 label menu2_blowek2:
     show lobby# with alpha_example
     show screen choices2_blowek_sequel
@@ -188,7 +239,7 @@ No dobra, sprawdzę. Ale tak SZYBCIUTKO.
 Może uda mi się to zrobić na tyle dyskretnie, że nawet mnie nie zauważą.
 A nawet jeśli, to i tak nie ma się czym przejmować. Najgorsze i tak już mam za sobą.
 ''')
-    show black with fade
+    show black with w18
     $ Konopski(text_style("thoughts", "Przynajmniej taką mam nadzieję..."))
     jump check_blowek2a
 
@@ -200,7 +251,7 @@ Jakoś tu spokojniej i mniej niepokojąco.
 Może to zasługa światła.
 A może to ja odrobinę się już wyluzowałem i zacząłem postrzegać rzeczy takimi, jakimi są naprawdę.
 Może to nie było nawet stado Wardęgi.
-Pardon, {size=+20}WATAHA®{/size} Wardęgi.
+Pardon, WATAHA® Wardęgi.
 ...
 No i gdzie ba-dum-tssk?
 Tym razem to miało pretendować do kategorii żart.
@@ -209,11 +260,11 @@ Amatorzy.
 ''')
 label check_blowek2b:
     show transparenty1 with slow_dissolve
-    $ persistent.special_sound = music("badum")
+    $ persistent.special_sound = "badum"
     $ thoughts_monologue(
         Konopski,'''
 ''')
-    $Konopski(text_style("thoughts", "Mniejsza o to. Może to nie była nawet {size=+20}WATAHA®{/size}"))
+    $Konopski(text_style("thoughts", "Mniejsza o to. Może to nie była nawet WATAHA®"))
     $ renpy.pause(2.0, hard=True)
 
     $ thoughts_monologue(
@@ -222,7 +273,7 @@ Nie, tu tak totalnie NIE!
 Bardziej "nie" niż za pierszym razem!
 Czy wy w ogóle wiecie czym jest <ba-dum-tsk>?
 ''')
-    $ persistent.special_sound = music("badum")
+    $ persistent.special_sound = "badum"
     $Konopski(text_style("thoughts", "..."))
     $ renpy.pause(2.0, hard=True)
     scene transparenty2 with dissolve
@@ -231,7 +282,7 @@ Czy wy w ogóle wiecie czym jest <ba-dum-tsk>?
 Z kim ja pracuję...
 Dobra, jeszcze raz.
 ''')
-    $ persistent.special_sound = music("badum")
+    $ persistent.special_sound = "badum"
     $Konopski(text_style("thoughts", "To nie byli ludzie z fandomu...{nw}"))
     $ renpy.pause(2.0, hard=True)
 
@@ -243,7 +294,7 @@ label check_blowek2c:
     show konopski ej angry with vpunch
     Konopski "No kuźwa, co za ciul wpuścił tu Chmielarka?" with vpunch
     Konopski "I od razu ostrzegam, niech mi tu żaden śmieszek nawet nie próbuje wykręcić się wersją 'kurier przyniósł go w paczce'"
-    $ persistent.special_sound = music("badum")
+    $ persistent.special_sound = "badum"
     Konopski "Bo to będzie żart śmieszny jak jego wypłata."
     $ renpy.pause(2.0, hard=True)
     Konopski ej_happy flower "Jest jakiś progres."
@@ -254,15 +305,23 @@ label check_blowek2c:
     Konopski "A co to kuźwa ma za znaczenie?"
     pause 1.0
     show konopski ej -angry
-    Konopski "Dobra, niech to będzie ostatnie upomnienie."
-    $ persistent.special_sound = music("badum")
-    Konopski "Ale następnym razem, wylecicie wszyscy na zbity ryj, zanim ktokolwiek zdoła powiedzieć \"szafa\"."
+    Konopski "Jeszcze chwila i wszyscy wylecicie stąd na zbity ryj."
+    Konopski "..."
+    Konopski "Nie mądralo, nie zdążysz ukryć się w szafie."
+    Konopski "Przede wszystkim dlatego, że tu nie ma żadnej szafy."
+    Konopski "..."
+    $ persistent.special_sound = "badum"
+    Konopski "{cps=10}NIE{/cps}, osobiście dopilnuję, żeby nie wpuszczać tu żadnego kuriera z szafą w paczce!"
+    Konopski "..."
+    Konopski "Dobra, nie traćmy więcej czasu i zapomnijmy o sprawie."
+    Konopski "Znajcie łaskę pana."
+    Konopski angry "Ale niech mi to będzie ostatni raz, zrozumiano...?"
+    Konopski "A teraz wracamy do pracy obiboki! Światła, kamera, akcja!"
     $ renpy.pause(2.0, hard=True)
-    Konopski ej_happy "No! Może jeszcze będą z ciebie ludzie!"
-    pause 1.0
+    Konopski "..."
     Konopski ej "Świetnie, straciłem wątek."
     Konopski "..."
-    Konopski "Ok, wiem już."
+    Konopski "Ok, już wiem."
     hide konopski with moveoutright
     pause 1.0
     hide blur with dissolve
@@ -285,31 +344,33 @@ mogłabyś odwrócić ten transparent w moją stronę, żebym mógł...
 
 label check_blowek2e:
     $image_punch("zniszcz_sztubaka")
-    pause
+    pause 2.0
     $ thoughts_monologue(
         Konopski,'''
 Watahańskie dzbany z tiktoka.
 Czy ja właśnie odkryłem najgłębszą czeluść dantejskiego piekła?
 ''')
     $image_punch("zad")
-    pause
+    pause 2.0
     $ thoughts_monologue(
         Konopski,'''
 Prostackie grubiaństwo. Niczego innego się po nich nie spodziewałem.
 Jaki pan, taki kram.
 ''')
     $image_punch("wypada")
-    pause
+    pause 2.0
     $image_punch("sor")
-    pause
+    pause 2.0
     $ thoughts_monologue(
         Konopski,'''
 ...
-Muszę przyznać, że ta eskalująca agresja wywołała we mnie lekką nutkę niepokoju...
+Muszę przyznać, że ta eskalująca agresja wywołuje we mnie lekką nutkę niepokoju...
 Ech, te dzisiejsze fandomy.
-Za moich czasów wszyscy żyli ze sobą w zgodzie i harmonii. A teraz? Szkoda gadać.
-Dobrze wiedzieć, że koniec końców potrafią jednak zachować zdrowy dystans...
-W przeciwnym wypadku, mógłbym zacząć bać się {nw}
+{cps=10}ZA MOICH CZASÓW{/cps} wszyscy żyli ze sobą w zgodzie i harmonii. A teraz...? {w=2}Szkoda gadać.
+Takim patusom nie pomoże już nawet projekt lady.
+No ale nieważne. Co mnie obchodzi zepsucie moralne jakiejś głupiej watahańskiej ferajny.
+W gruncie rzeczy są oni przecież nieszkodli {nw}
+
 ''')
 
 label check_blowek2f_anim:
@@ -326,6 +387,8 @@ Jak można poprawić czystą perfekcję?
 Czemu w ogóle przeszło mi to przez myśl?
 Chyba jestem zmęczony...''')
     jump menu3_uciekaj
+
+### MENU 3 + PRÓBA UCIECZKI 
 
 label menu3_uciekaj:
     scene lobby with slow_fade
@@ -349,6 +412,7 @@ label uciekaj:
         Konopski,'''
 Chwila. Stop.
 Nie mogę tak po prostu stąd wyjść...
+{cps=8}...{/cps}{w=2}
 Gdzie mój płaszcz?
 ...
 Dobra, walić to, spadam jak jest.

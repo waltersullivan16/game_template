@@ -78,12 +78,20 @@ style say_window_empty:
 style say_window_www:
     background textbox_maker("empty")
 
+style say_window_quote:
+    background textbox_maker("black")
+
 style say_dialogue_intro:
     xpos 350
     ypos 270
     xsize 800
 
 style say_dialogue_www:
+    xpos 50 ypos 200
+    #rest_indent 100
+    xsize 900
+
+style say_dialogue_quote:
     xpos 50 ypos 200
     #rest_indent 100
     xsize 900
@@ -114,6 +122,12 @@ style block2_multiple2_say_dialogue:
 style thoughts_text_style is text:
     size 25
     color COLORS["blue"]
+    italic True
+    font font("ubuntu")
+
+style creepy_thoughts_text_style is text:
+    size 25
+    color COLORS["light_red"]
     italic True
     font font("ubuntu")
 
@@ -168,8 +182,35 @@ style cite_text_style is text:
     first_indent 500
     rest_indent 500
 
-define true_left = Position(xpos=0.2)
-define true_right= Position(xpos=0.8)
+style quote_text_style is text:
+    xmaximum 1000
+    font font("pane")
+    color COLORS["white"]
+    size 40
+    adjust_spacing 500
+    slow_cps 20
+    justify True
+
+style quote_influ_text_style is text:
+    font font("coda")
+    color COLORS["blood"]
+    slow_cps 20
+    size 70
+
+style author_text_style is text:
+    font font("ubuntu")
+    color COLORS["white"]
+    size 30
+    xpos 0.5 ypos 0.7
+    slow_cps 25
+    italic True
+
+style chapter_text_style is text:
+    font font("instruction")
+    color COLORS["white"]
+    size 60
+    slow_cps 5
+
 init -9 python:
     from collections import namedtuple, defaultdict
 
@@ -179,16 +220,18 @@ init -9 python:
         "dark_blue": "#00008b",
         "blood": "#830303",
         "red": "#B22222",
+        "bright_red": "#D2042D",
+        "light_red": "#FA8072",
         "black": "000000",
         "white": "#ffffff",
         "pink": "#ff69b4",
     }
 
-    StyleInfo = namedtuple("StyleInfo",
-        ["text_color", "text_font", "name_color", "name_font"])
-
+   # StyleInfo = namedtuple("StyleInfo",
+   #     ["text_color", "text_font", "name_color", "name_font"])
+    
     class FontStyle():
-        def __init__(self, name, text_font="ubuntu", text_color="white", text_size=25, name_font="lucky", name_color="black", name_size=25):
+        def __init__(self, name, text_font="ubuntu", text_color="white", text_size=25, name_font="lucky", name_color="black", name_size=25, hide_namebox = False):
             self.name = name
             self.text_font = font(text_font)
             self.text_color = COLORS[text_color]
@@ -196,23 +239,20 @@ init -9 python:
             self.text_size = text_size
             self.name_color= COLORS[name_color]
             self.name_size = name_size
+            
+            self.hide_namebox = hide_namebox
+
         def __eq__(self, other):
             if isinstance(other, FontStyle):
                 return self.name == other.name
+
             return False
 
     MainStyle = FontStyle("main")
-    IntroStyle = FontStyle("intro")
+    IntroStyle = FontStyle("intro", hide_namebox=True)
     CreepyStyle = FontStyle("creepy", text_color="red", name_font="monster", name_color="blood")
-    WWWStyle = FontStyle("www")
+    WWWStyle = FontStyle("www", hide_namebox=True)
 
-    FONT_STYLES = defaultdict(lambda: StyleInfo("white", "ubuntu", "black", "lucky"))
-    FONT_STYLES["main"] = StyleInfo("white", "ubuntu", "black", "lucky")
-    FONT_STYLES["creepy"] = StyleInfo("red", "ubuntu", "blood", "monster")
-    FONT_STYLES["www"] = StyleInfo("black", "ubuntu", "black", "lucky")
-    FONT_STYLES["intro"] = StyleInfo("black", "ubuntu", "black", "lucky")
-
-    
     def add_style_to_text(text, style):
         return "{{={}}} {} {{/={}}}".format(style, text, style)
 
@@ -244,6 +284,7 @@ init -9 python:
     def font_text(font, text):
         return add_tags_to_text(text, [["font", font(font)]])
 
+    styled_monologue = lambda s, c, t: character_monologue(c, t, lambda x: text_style(s, x))
     thoughts_monologue = lambda c, t: character_monologue(c, t, lambda x: text_style("thoughts", x))
     intro_monologue = lambda c, t: character_monologue(c, t, lambda x: text_style("intro", x))
 

@@ -1,3 +1,5 @@
+"../files_list.rpy"
+
 ## jump to other conf files
 "conf.rpy"
 "characters_base.rpy"
@@ -132,7 +134,7 @@ image wardega_center = At("wardega", Position(ypos=0.6))
 init python:
     def image_sound(image, sound):
         renpy.show(image)
-        renpy.play(music(sound))
+        renpy.play(music_path(sound))
 
     def whisper():
         renpy.show("wardega_center")
@@ -206,19 +208,19 @@ image transparenty_prolog:
 
 image transparenty_omg:
     "zginie" with vpunch
-    pause 1.5
+    pause 4.0
     "wpierdol" with vpunch
-    pause 1.5
+    pause 4.0
     "debil" with vpunch
-    pause 1.5
+    pause 4.0
     "apetyt" with vpunch
-    pause 1.5
+    pause 4.0
     "bozia" with vpunch
-    pause 1.5
+    pause 4.0
     "kutas" with vpunch
-    pause 1.5
+    pause 4.0
     "kutas2" with vpunch
-    pause 1.5
+    pause 4.0
 
 init python:
     image_punch = lambda x: image_sound(x, "punch")

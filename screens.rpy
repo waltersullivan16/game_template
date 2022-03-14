@@ -100,7 +100,7 @@ screen say(who, what):
 #
     window:
         id "window"
-        if who is not None and who is not "blank":
+        if who is not None and who is not "blank" and not persistent.style_class.hide_namebox:
             window:
                 id "namebox"
                 style "namebox_{}".format(persistent.style_class.name)

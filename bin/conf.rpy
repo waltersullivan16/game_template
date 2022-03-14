@@ -51,7 +51,9 @@ init -10 python:
 
     AUTOMATIC_IMAGES = ["/"]
     AUTOMATIC_IMAGES_STRIP = [
-        "images", "characters", "background", "scenes", "others", "ulubione", "transparenty", "transparenty2", "reactions", "transitions"]
+        "images", "characters", "background", "scenes",
+        "others", "ulubione", "transparenty", "transparenty2", 
+        "reactions", "transitions", "title"]
 
     ANIMATION_PAUSE = 0.2
 
@@ -62,6 +64,7 @@ init -10 python:
         "intro": "empty.png",
         "www": "empty.png",
         "empty": "empty.png",
+        "black": "black.png",
     }
 
 init -8 python:

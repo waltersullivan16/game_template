@@ -13,29 +13,9 @@
 "../scripts/chapter1/1a_poczatek.rpy"
 
 init -10 python:
-    def music(name):
-        return gpj(["music", "{}.mp3".format(name)])
-    
-    SOUND_EFFECTS = {
-        "blip": "blip",
-        "badum": "badum",
-        "punch": "punch",
-    }
-    # SOUNDTRACK: [beg, main_menu, wind, pearl, lobby]
 
-    config.main_menu_music = music("main_menu")
-
-    def play_music(name, loop=True):
-        renpy.music.play(music(name), channel="music", fadein=2.0, fadeout=1.0, loop=loop)
-
-    def stop_music(channel="music", fadeout=1.0):
-        renpy.music.stop(channel=channel, fadeout=fadeout)
-
-    def play_sound_effect(name, loop=False):
-        renpy.music.play(music(name), channel="sound", loop=loop)
-
-    config.default_music_volume = 0.5
     SOUNDTRACK = {
+        "main": "main_menu",
         "intro": "beg",
         "lobby": "lobby",
         "scary": "wind",
@@ -43,4 +23,30 @@ init -10 python:
         "dziewczyny2": "dziewczyny2",
         "gazeta": "gazeta",
         "straznik": "straznik",
+        "title": "samurai",
+        "chipdale": "chipdale",
     }
+    def music(name):
+        return gpj(["music", "{}.mp3".format(SOUNDTRACK[name])])
+
+    def music_path(name):
+        return gpj(["music", "{}.mp3".format(name)])
+    
+    # SOUND_EFFECTS = "blip", "badum", "punch"
+
+    def sound(name):
+        return music_path(SOUND_EFFECTS[name])
+
+    config.main_menu_music = music("chipdale")
+
+    def play_music(name, fadein=0.0, fadeout=0.1, loop=True):
+        renpy.music.play(music(name), channel="music", fadein=fadein, fadeout=fadeout, loop=loop)
+
+    def play_sound_effect(name, loop=False):
+        renpy.music.play(music_path(name), channel="sound", loop=loop)
+
+    def stop_music(channel="music", fadeout=1.0):
+        renpy.music.stop(channel=channel, fadeout=fadeout)
+
+
+    config.default_music_volume = 0.5

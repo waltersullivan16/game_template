@@ -23,12 +23,12 @@ init -9 python:
         if event == "show":
             character.talking = True
             #if persistent.blip_mute is None:
-            renpy.music.play(music("blip"), channel="sound", loop="True")
+            play_sound_effect("blip", loop="True")
         elif event in ["end", "slow_done"]:
             character.talking = False
             renpy.music.stop(channel="sound")
             if persistent.special_sound is not None and event == "end":
-                renpy.music.play(persistent.special_sound, channel="sound")
+                play_sound_effect(persistent.special_sound)
                 persistent.special_sound = None
 
 # makers

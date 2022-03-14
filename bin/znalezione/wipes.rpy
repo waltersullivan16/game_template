@@ -1,7 +1,7 @@
 ﻿init:
     $ circlewipe = ImageDissolve("transitions/wipes/circlewipe-cw.jpg", 1.0, 8)
     $ ccirclewipe = ImageDissolve("transitions/wipes/circlewipe-ccw.jpg", 1.0, 8)
-    $ bites = ImageDissolve("transitions/wipes/bites.jpg", 1.0, 8)
+    $ bites = ImageDissolve("transitions/wipes/bites.jpg", 5.0, 8)
     $ bowtie = ImageDissolve("transitions/wipes/bowtie.png", 1.0, 8)
     $ cmet = ImageDissolve("transitions/wipes/cmet.jpg", 1.0, 8)
     $ cwside = ImageDissolve("transitions/wipes/cw-side.jpg", 1.0, 8)
@@ -20,7 +20,22 @@
     $ sunshine = ImageDissolve("transitions/wipes/sunshine.jpg", 1.0, 8)
     $ glasswool = ImageDissolve("transitions/wipes/glasswool.jpg", 1.0, 8)
     $ wet = ImageDissolve("transitions/wipes/wet.jpg", 1.0, 8)
+    $ wet_time = lambda t: ImageDissolve("transitions/wipes/wet.jpg", t, 8)
+    
+    $ curtains = ImageDissolve("transitions/wipes/curtains.png", 1.0, 8)
 
+    $ snow1 = ImageDissolve("transitions/wipes/snow1.png", 1.0, 8)
+    $ rain1 = ImageDissolve("transitions/wipes/rain1.jpg", 1.0, 8)
+    $ rain2 = ImageDissolve("transitions/wipes/rain2.jpg", 1.0, 8)
+
+    $ puzz = ImageDissolve("transitions/wipes/puzz.png", 1.0, 8)
+    
+    $ shatter = ImageDissolve("transitions/wipes/shatter.png", 1.0, 8)
+    $ shot = ImageDissolve("transitions/wipes/shot.png", 1.0, 8)
+
+    $ eye = ImageDissolve(Frame("transitions/wipes/eye.png"), 2.0, 64)
+
+# unnamed
     $ w1 = ImageDissolve("transitions/wipes/1.jpg", 1.0, 8)
     $ w2 = ImageDissolve("transitions/wipes/2.png", 1.0, 8)
     $ w3 = ImageDissolve("transitions/wipes/3.jpg", 1.0, 8)
@@ -32,7 +47,7 @@
     $ w9 = ImageDissolve("transitions/wipes/9.jpg", 1.0, 8)
     $ w10 = ImageDissolve("transitions/wipes/10.jpg", 1.0, 8)
     $ w11 = ImageDissolve("transitions/wipes/11.jpg", 1.0, 8)
-    $ w12 = ImageDissolve("transitions/wipes/12.jpg", 1.0, 8)
+    $ w12 = ImageDissolve("transitions/wipes/12.jpg", 3.0, 8)
     $ w13 = ImageDissolve("transitions/wipes/13.jpg", 1.0, 8)
     $ w14 = ImageDissolve("transitions/wipes/14.png", 1.0, 8)
     $ w15 = ImageDissolve("transitions/wipes/15.png", 1.0, 8)
@@ -55,3 +70,10 @@
     $ w31 = ImageDissolve("transitions/wipes/31.png", 1.0, 8)
     $ w32 = ImageDissolve("transitions/wipes/32.png", 1.0, 8)
     $ w33 = ImageDissolve("transitions/wipes/33.png", 1.0, 8)
+
+    $ w34 = ImageDissolve("transitions/wipes/34.png", 1.0, 8)
+    $ w35 = ImageDissolve("transitions/wipes/35.jpg", 1.0, 8)
+    $ w36 = ImageDissolve("transitions/wipes/36.jpg", 3.0, 8)
+    $ w37 = ImageDissolve("transitions/wipes/37.png", 1.0, 8)
+
+    $ pix1 = ImageDissolve("transitions/wipes/pix1.png", 2.0, 8)
