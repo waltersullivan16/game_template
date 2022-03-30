@@ -64,7 +64,7 @@ style say_dialogue_creepy:
     line_spacing 7
 
 style say_window_creepy:
-    background Frame(textbox_maker("creepy"), 0.5)
+    background Frame(textbox_maker("creepy"), 1)
     xalign 0.0
     yalign 1.0
     ysize 300
@@ -138,6 +138,11 @@ style dark_thoughts_text_style is text:
     font font("ubuntu")
     line_spacing 10
 
+style straznik_text:
+    xpos 100
+    ypos 130
+    xsize 1200
+
 style intro_text_style is text:
     size 36
     color COLORS["white"]
@@ -194,7 +199,7 @@ style quote_text_style is text:
 style quote_influ_text_style is text:
     font font("coda")
     color COLORS["blood"]
-    slow_cps 20
+    slow_cps 10
     size 70
 
 style author_text_style is text:
@@ -211,6 +216,9 @@ style chapter_text_style is text:
     size 60
     slow_cps 5
 
+style straznik_text_style is text:
+    font font("bahiana")
+    size 80
 init -9 python:
     from collections import namedtuple, defaultdict
 
@@ -253,26 +261,12 @@ init -9 python:
     CreepyStyle = FontStyle("creepy", text_color="red", name_font="monster", name_color="blood")
     WWWStyle = FontStyle("www", hide_namebox=True)
 
-    def add_style_to_text(text, style):
-        return "{{={}}} {} {{/={}}}".format(style, text, style)
-
     def text_style(s, text):
+
+        def add_style_to_text(text, style):
+            return "{{={}}} {} {{/={}}}".format(style, text, style)
+
         return add_style_to_text(text, "{}_text_style".format(s))
-
-    def add_tags_to_text(text, style):
-        # style format: list of arrays
-        # first element of the array is a name of the style
-        # second elements exists if style contains arguments (font size...)
-
-        res = text
-        for i in style:
-            assert len(1) > 0
-            opening = i[0] if (len(i) == 1) else "{}={}".format(i[0], i[1])
-            ending = i[0]
-            res = "{{{}}} {} {{/={}}}".format(opening, res, ending)
-        #print(text, res)
-
-        return res
 
     def character_monologue(character, text, fun=(lambda x: x)):
         for l in text.splitlines():
@@ -280,9 +274,6 @@ init -9 python:
                 continue
             #print(l, fun)
             character(fun(l))
-
-    def font_text(font, text):
-        return add_tags_to_text(text, [["font", font(font)]])
 
     styled_monologue = lambda s, c, t: character_monologue(c, t, lambda x: text_style(s, x))
     thoughts_monologue = lambda c, t: character_monologue(c, t, lambda x: text_style("thoughts", x))
@@ -297,7 +288,7 @@ init -9 python:
 
 ### TEXTBOX
     def textbox_maker(textbox_name, alpha=0.85):
-        return Transform(Image(gpj([PATHS["textbox"], TEXTBOX_NAMES[textbox_name]])), alpha=alpha)
+        return Transform(Image(gpj(["gui", "textbox", TEXTBOX_NAMES[textbox_name]])), alpha=alpha)
 
     def change_style(s):
         persistent.style = s

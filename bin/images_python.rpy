@@ -13,214 +13,37 @@
 "../characters.rpy"
 "../images.rpy"
 
-## script
-"../scripts/1_uwertura.rpy"
-"../scripts/test.rpy"
-
-transform co_to:
-    xanchor 0.05 zoom 1.10
-    xpos -5
-    subpixel True
-    parallel:
-        ease 2.0 xpos 5
-        ease 1.0 xpos 0
-        ease 1.0 xpos 5
-        ease 2.0 xpos -5
-        ease 1.0 xpos 0
-        ease 1.0 xpos -5
-        repeat
-
-transform blood_particle2:
-    subpixel True
-    zoom 0.75
-    alpha 0.75
-    choice:
-        linear 0.25 zoom 0
-    choice:
-        linear 0.35 zoom 0
-    choice:
-        linear 0.35 zoom 0
-    choice:
-        linear 0.55 zoom 0
-
-transform blood_particle:
-    yzoom 0 yanchor 0.2 subpixel True
-    linear 10 xzoom 8 #Extends vertically
-
-init -1 python:
-    def _shake_function(trans, st, at, dt=.5, dist=64):
-       #dt is duration timebase, dist is maximum shake distance in pixel
-        if st <= dt:
-            trans.xoffset = int((dt-st)*dist*(.5-renpy.random.random())*2)
-            trans.yoffset = int((dt-st)*dist*(.5-renpy.random.random())*2)
-            return 1.0/60
-        else:
-            return None
-
-
-transform shake(t=.5, d=64):
-    function renpy.curry(_shake_function)(dt=t, dist=d)
 
 init python:
-    def creepy_wardega():
-        return LiveComposite(
-            (1280, 720),
-            (0, 50), Text("SYLWESTER", style="creepy"),
-            (0, 500), Text("WARDEGA", style="creepy"))
 
-transform wardega_pos:
-    xpos 0 ypos 50
+    def show_with_args(x, transition=dissolve, at_list=[], pause_in=None, pause_out=None, sound=None, relative_volume=1):
+        renpy.transition(transition)
+        renpy.show(x, at_list=at_list)
 
-transform shake2:
-    anchor (.5, .5)
+        if pause_in:
+            renpy.pause(pause_in)
+        if sound:
+            play_sound_effect(sound, relative_volume=relative_volume)
+        if pause_out:
+            renpy.pause(pause_out)
 
-    parallel:
-        zoom 0
-        linear .5 zoom .75
-        pause 2
-        linear 1.0 zoom 4.0
+    image_punch = lambda x: show_with_args(x, transition=vpunch, sound="punch")
+    image_trzask = lambda x: show_with_args(x, transition=vpunch, sound="trzask")
 
-    parallel:
-        xpos 0.0 ypos .6
-        linear 1.5 xpos 1.0
-        linear 1.0 xpos .5 ypos .2
+    def scene_courtroom1():
+        def character_courtroom(character, first_transition=dissolve, second_transition=vpunch, pause_out1=1.0, pause_out2=0.5):
 
-    pause .5
-    repeat
+            show_with_args("{}1".format(character), first_transition, pause_out=pause_out1)
+            show_with_args("{}2".format(character), second_transition, pause_out=pause_out2)
 
-image crewar = At(creepy_wardega(),blood_particle)
+        order = ["maki", "ishimaru", "gonta", "tsumugi", "kaito", "mikan", "kirumi"]#, "dogen", "koniec"]
+        for c in order:
+            character_courtroom(c)
+        character_courtroom("dogen", second_transition=ease, pause_out2=1)
+        character_courtroom("koniec", pause_out1=1, first_transition=vpunch)
+        show_with_args("koniec3", vpunch, pause_out=1)
 
-init python:
-    def fading_text(text, t, x, y, move_x, move_y, *args, **kwargs):
-        ui.add(At(Text(text, *args, **kwargs), fade_move_with_pars(t, x, y, move_x, move_y)))
-
-transform fade_move_with_pars(t, x, y, move_x, move_y):
-    parallel:
-        alpha 1.0
-        linear t alpha 0
-    parallel:
-        pos (x, y)
-        linear t pos (move_x, move_y)
-
-transform dissolve_with_atl(time):
-    alpha 0
-    ease time alpha 1
-
-image si = At(Text("dadas", style="creepy"), creepy_transform)
-image si2 = At(Text("dad333as", style="creepy"), creepy_transform)
-image crer:
-    "si"
-    pause 1.0
-    "si2"
-    xpos 0.5 ypos 0.
-
-transform syl:
-    alpha 0.0
-    pause 1.0
-    ease 0.1 alpha 1,0
-
-transform syl2:
-    alpha 0.0
-    pause 3.0
-    ease 0.1 alpha 1,0
-
-
-### WARDEGA INTRO
-
-image sylwester = At(creepy_maker("SYLWESTER"), dissolve_with_atl(3))
-image wardega = At(creepy_maker("WARDEGA"), dissolve_with_atl(3))
-image wardega_center = At("wardega", Position(ypos=0.6))
-
-init python:
-    def image_sound(image, sound):
-        renpy.show(image)
-        renpy.play(music_path(sound))
-
-    def whisper():
-        renpy.show("wardega_center")
-        renpy.play("music/wardega.mp3")
-
-    def show_at_position(image, x, y):
-        return At(image, Position(xpos=x, ypos=y))
-
-    def creepy_composition(name, positions):
-        for (x,y) in positions:
-            image_sound(show_at_position("wardega",x,y) , "wardega.mp3")
-
-    def text_size(t, s):
-        return add_tags_to_text(t, [["size", s]])
-
-    def text_font(t, f):
-        return add_tags_to_text(t, [["font", f]])
-
-transform dissolve_with_sound(time):
-    alpha 0
-    ease time alpha 1
-
-image sylwesterry = Composite(
-    (1280, 720),
-    (40, 450), At(creepy_maker("SYLWESTER"), dissolve_with_sound(4)),
-    (100, 200), At(creepy_maker("SYLWESTER"), dissolve_with_sound(8)))
-
-### TRANSPARENTY
-
-image junkoo:
-    "junko1"
-    pause 2.0
-    "junko2"
-
-image transparenty_prolog: 
-    "maki1" with dissolve
-    pause 1.0
-    "maki2" with vpunch
-    pause 0.5
-    "ishimaru1" with dissolve
-    pause 1.0
-    "ishimaru2" with vpunch
-    pause 0.5
-    "gonta1" with dissolve
-    pause 1.0
-    "gonta2" with vpunch
-    pause 0.5
-    "tsumugi1" with dissolve
-    pause 1.0
-    "tsumugi2" with vpunch
-    pause 0.5
-    "kaito1" with dissolve
-    pause 1.0
-    "kaito2" with vpunch
-    pause 0.5
-    "mikan1" with dissolve
-    pause 1.0
-    "mikan2" with vpunch
-    pause 0.5
-    "kirumi1" with dissolve
-    pause 1.0
-    "kirumi2" with vpunch
-    pause 0.5
-    "dogen1" with dissolve
-    pause 1.0
-    "dogen2" with dissolve
-    pause 1.0
-    "koniec0" with vpunch
-    pause 1.0
-    "koniec1" with vpunch
-
-image transparenty_omg:
-    "zginie" with vpunch
-    pause 4.0
-    "wpierdol" with vpunch
-    pause 4.0
-    "debil" with vpunch
-    pause 4.0
-    "apetyt" with vpunch
-    pause 4.0
-    "bozia" with vpunch
-    pause 4.0
-    "kutas" with vpunch
-    pause 4.0
-    "kutas2" with vpunch
-    pause 4.0
-
-init python:
-    image_punch = lambda x: image_sound(x, "punch")
+    def scene_transparenty():
+        order = ["zginie", "wpierdol", "debil", "apetyt", "kutas", "kutas2", "bozia"]
+        for c in order:
+            show_with_args(c, transition=vpunch, sound="punch", pause_in=2.4, relative_volume=0.1)

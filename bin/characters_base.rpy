@@ -14,7 +14,7 @@
 
 init -8 python:
 ### CHARACTERS
-    CHARACTERS_NAMES = ["Konopski","Pearl", "Ema", "Penny"]#'Wardega', 'Konopski', 'Revo', 'Lexio', 'Gimper', 'Dziewczyna1', 'Dziewczyna2', 'Dziewczyna3']
+    CHARACTERS_NAMES = ["Konopski","Pearl", "Ema", "Penny", "Najman", "LilMasti"]#'Wardega', 'Konopski', 'Revo', 'Lexio', 'Gimper', 'Dziewczyna1', 'Dziewczyna2', 'Dziewczyna3']
 
 
 ## SPECIAL CHARACTERS
@@ -46,20 +46,15 @@ init -8 python:
         def generate_animation_switch(self):
             res = []
             for s in self.styles:
-                self.animations.setdefault(s, self.make_animation(s))
-                res.extend(["{} {}".format(self.name, s), self.animations[s]])
-            res.extend([self.name, self.animations['main']])
-            #print(res)
+                #img_name = "{}_animation_{}".format(self.name, s)
+                #renpy.image(img_name, animation_mouth(self.name, s))
+                #elem=["{} {}".format(self.name, s), img_name]
+                #res.extend(["{} {}".format(self.name, s), img_name])
+                res.extend(["{} {}".format(self.name, s), animation_maker2(self.name, s)])
+                #res += elem
+                #print(elem, res)
+                #print(img_name)
             return ShowingSwitch(*res)
-
-        @property
-        def coordinates(self):
-            position_array = renpy.get_image_bounds(self.image)
-            #print(position_array)
-            return [position_array[0], position_array[2]]
-
-        def make_animation(self, animation_name):
-            return Animation(animation_maker(self.name, animation_name))
 
         def add_styles(self, styles):
             self.styles = styles
@@ -71,12 +66,12 @@ init -8 python:
     for character in CHARACTERS_NAMES:
         c_base = "{}Class = CharacterBase(\"{}\")".format(character, character)
         c_character = "{} = {}Class.char".format(character, character)
-        c_anim = "a{} = lambda x: {}Class.make_animation(x)".format(character, character)
+        #c_anim = "a{} = lambda x: {}Class.make_animation(x)".format(character, character)
         #print(anim, "fdfs")
-        commands = [c_base, c_character, c_anim]
+        commands = [c_base, c_character]#, c_anim]
         for c in commands:
             exec(c)
 
     Unknown = Character(name = "???")
     Blank = Character(name = "blank")
-    Straznik = Character(name = "Groźny głos")
+    Straznik = Character(name = "STRAŻNIK", what_style="straznik_text")

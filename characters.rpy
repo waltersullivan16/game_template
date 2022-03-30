@@ -5,8 +5,14 @@
 #image konopski = ConditionSwitch(
 #    "KonopskiClass.talking == True", aKonopski("confused"),
 #    "True", "konopski_body_confused")
-init python:
-    KonopskiClass.add_styles(["main", "smirk", "thinking", "ej", "ej_happy", "ej_angry"])
+init -8 python:
+    KonopskiClass.add_styles(["main", "smirk", "thinking", "ej", "p2", "lol"])
+
+image aa = animation_mouth("konopski", "main")
+image aaa = At("konopski_usta1", ani_alpha)
+image aaaa = ShowingSwitch(
+    "konopski main", "aaa"
+)
 
 layeredimage konopski:
     group body auto:
@@ -15,17 +21,30 @@ layeredimage konopski:
     if KonopskiClass.talking:
         KonopskiClass.animations_switch
 
+    group anime auto:
+        attribute normal default null
+
     group reaction:
         xpos 201
         attribute normal default null
         attribute kropla "reaction_sweatdrop"
-        attribute flower "flowers"
         attribute angry "reaction_angry"
+        attribute danger "reaction_danger"
+        attribute flower "flowers"
+        attribute question "question" xpos 350 zoom 0.6
 
+layeredimage konopski_phoenix:
+
+    group head auto:
+        attribute normal default null
+    group suit auto:
+        attribute normal default null
+      
 
 ### PEARL ###
 init python:
     PearlClass.add_styles(["main", "serious", "embarassed", "sad", "crying", "determined", "pleased", "suprised"])
+    Pearl.name = "Nieletnia"
 
 layeredimage pearl:
     group body auto:
@@ -42,7 +61,6 @@ layeredimage ema:
         attribute main default
     if EmaClass.talking:
         EmaClass.animations_switch
-
 ### penny ###
 init python:
     PennyClass.add_styles(["main", "cards", "gossip"])
@@ -53,6 +71,21 @@ layeredimage penny:
     if PennyClass.talking:
         PennyClass.animations_switch
 
+init python:
+    NajmanClass.add_styles(["main"])
+layeredimage najman:
+    group body auto:
+        attribute main default
+    if NajmanClass.talking:
+        NajmanClass.animations_switch
+
+init python:
+    LilMastiClass.add_styles(["main"])
+layeredimage lilmasti: 
+    group body auto:
+        attribute main default
+    if LilMastiClass.talking:
+        LilMastiClass.animations_switch
 '''
     define WardegaC = Characterr("Wardega")
     define Wardega = WardegaC.char

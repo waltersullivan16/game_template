@@ -42,16 +42,23 @@ image bg black = Image("background/black.png")
 image minikonopski = Image("characters/konopski/mini-konopski.png")
 
 image winny = Image("others/winny.png")
-
+image reactions = ShowingSwitch(
+    "kropla", At("sweatdrop", dropping),
+    None, "null"
+)
 image reaction_luv = At("luv", beating)
 image reaction_sweatdrop = At("sweatdrop", dropping)
 image reaction_angry = At("angry", beating)
 image reaction_angry2 = At("angry2", beating)
-image flowers:
-    "flowers 1"
-    ANIMATION_PAUSE
-    "flowers 2"
-    ANIMATION_PAUSE
-    repeat
-# Movies
+image reaction_danger = At("danger", beating)
+
+image question = animation_reaction("question")
+image flowers = animation_reaction("flowers")
+
 image straszne = Movie("video/strasznego.mp4", (0,0), (0,0))
+init python:
+    def reaction(name, fun=beating):
+        renpy.show(name, at_list=[fun])
+
+image reaction_switch = ShowingSwitch(
+    "kropla", At("sweatdrop", dropping))

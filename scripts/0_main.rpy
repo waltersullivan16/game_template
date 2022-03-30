@@ -3,12 +3,14 @@
 # "../bin/conf.rpy"
 # "../bin/characters_base.rpy"
 
+# ../files_list.rpy
+
 # "chapter1/1a_poczatek.rpy"
 # "chapter1/1b_dziewczyny.rpy"
 
 label start:
     $ stop_music()
-    $ _dismiss_pause = True
+    #$ _dismiss_pause = True
     #scene lobby
     show screen z with slow_fade
     #jump chapters
@@ -33,6 +35,8 @@ label uwertura_scenes:
     menu:
         "quote":
             jump quote_screen
+        "quote":
+            jump quote_screen
         "monolog1":
             jump konop_monolog1
         "monolog2":
@@ -45,12 +49,14 @@ label uwertura_scenes:
             jump check_blowek1a
         "co robic2":
             jump menu2_blowek2
-        "t":
-            jump check_blowek2f_anim
+        "transparenty":
+            jump danger_transparenty
         "dziewczeta":
             jump dziewczeta
         "bloody":
             jump bloody_text
+        "namiejsce":
+            jump namiejsce
 
 label scenes2:
     menu:

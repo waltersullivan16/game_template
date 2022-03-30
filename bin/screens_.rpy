@@ -25,10 +25,11 @@ screen choices_template(name, imagebuttons):
         imagebutton:
             xpos xpos_
             ypos ypos_
+            activate_sound "music/sound effects/button_menu.mp3"
             hover "gui/choices/active_{}.png".format(i)
             mouse mouse
             idle "gui/choices/inactive_{}.png".format(i)
-            action [Hide(name, transition=dissolve),  Jump(i)]
+            action [Hide(name, transition=ease),  Jump(i)]
 
 screen choices1_blowek():
     modal True
@@ -67,7 +68,7 @@ screen subscribe_screen():
         hover "images/others/subscribe.png"
         unhovered [MouseMove(500, 300)]
         mouse "green"
-        activate_sound "music/button.mp3"
+        activate_sound "music/sound effects/button.mp3"
         idle "images/others/subscribe.png"
         action [Hide("subscribe_screen"), Jump("subscribe_like")]
 
@@ -87,7 +88,7 @@ screen subscribed_like_screen():
         hover "images/others/like.png"
         unhovered [MouseMove(1050, 300)]
         mouse "green"
-        activate_sound "music/button.mp3"
+        activate_sound "music/sound effects/button.mp3"
         idle "images/others/like.png"
         action [Hide("blur"), Hide("subscribed_screen", transition=ease), Hide("subscribed_like_screen", transition=ease), Jump("subscribe_thanks")]#Hide("subscribe", transition=dissolve), Jump("subscribe_thanks")]
 
@@ -95,6 +96,9 @@ transform text_fade_in(t, p=0):
     alpha 0
     pause p
     easeout t alpha 1
+
+transform pause(p):
+    pause p
 
 transform e:
     xoffset -1280 # assuming this is your horizontal resolution
@@ -107,8 +111,8 @@ screen quote(t, influ, a, a_errata1, a_errata2):
     $ curr_w = ""
     $ t2 = t.split(' ')
     $ p = 0
-    text t xpos 0.1 ypos 0.2 style "quote_text_style" at text_fade_in(2.0)#text_fade_in(4.0) with creepy_transform #creepy_transform#text_fade_in(1.0)
+    text t xpos 0.1 ypos 0.2 style "quote_text_style" at pause(1.5)#text_fade_in(2.0, 1.5)#text_fade_in(4.0) with creepy_transform #creepy_transform#text_fade_in(1.0)
     text influ xpos 0.2 ypos 0.4 style "quote_influ_text_style" at text_fade_in(3.0, 5.5)#text_fade_in(4.0) with creepy_transform #creepy_transform#text_fade_in(1.0)
     text a xpos 0.3 ypos 0.6 style "author_text_style" at text_fade_in(2.0, 8.5)
-    text a_errata1 xpos 0.3 ypos 0.6 style "author_text_style" at text_fade_in(2.0, 9.5)
-    text a_errata2 xpos 0.3 ypos 0.6 style "author_text_style" at text_fade_in(2.0, 10.5)
+    text a_errata1 xpos 0.3 ypos 0.6 style "author_text_style" at text_fade_in(2.0, 11.0)
+    text a_errata2 xpos 0.3 ypos 0.6 style "author_text_style" at text_fade_in(2.0, 11.1)

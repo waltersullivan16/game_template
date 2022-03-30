@@ -1,3 +1,4 @@
+" ../files_list.rpy"
 ## jump to other conf files
 "gui_.rpy"
 "characters_base.rpy"
@@ -25,28 +26,34 @@ init -10 python:
         "straznik": "straznik",
         "title": "samurai",
         "chipdale": "chipdale",
+        "king": "king",
     }
     def music(name):
-        return gpj(["music", "{}.mp3".format(SOUNDTRACK[name])])
-
-    def music_path(name):
-        return gpj(["music", "{}.mp3".format(name)])
-    
-    # SOUND_EFFECTS = "blip", "badum", "punch"
+        return gpj(["music", "soundtrack", "{}.mp3".format(SOUNDTRACK[name])])
 
     def sound(name):
-        return music_path(SOUND_EFFECTS[name])
+        return gpj(["music","sound effects", "{}.mp3".format(name)])
+
+    def video(name):
+        return gpj(["images","cutscenes", "{}.webm".format(name)])
+    
+    # SOUND_EFFECTS = "blip", "badum", "punch"
 
     config.main_menu_music = music("chipdale")
 
     def play_music(name, fadein=0.0, fadeout=0.1, loop=True):
         renpy.music.play(music(name), channel="music", fadein=fadein, fadeout=fadeout, loop=loop)
 
-    def play_sound_effect(name, loop=False):
-        renpy.music.play(music_path(name), channel="sound", loop=loop)
+    def play_sound_effect(name, channel="sfx1", loop=False, relative_volume=1.0):
+        renpy.music.play(sound(name), channel=channel, loop=loop, relative_volume=relative_volume)#relative_volume)
 
-    def stop_music(channel="music", fadeout=1.0):
-        renpy.music.stop(channel=channel, fadeout=fadeout)
+    def stop_music(fadeout=1.0):
+        renpy.music.stop(channel="music", fadeout=fadeout)
 
+    def stop_sound_effect():
+        renpy.music.stop(channel="sound")
+
+    def play_video(name):
+        renpy.movie_cutscene(video(name))
 
     config.default_music_volume = 0.5
