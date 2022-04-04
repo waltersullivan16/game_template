@@ -125,7 +125,7 @@ style thoughts_text_style is text:
     italic True
     font font("ubuntu")
 
-style creepy_thoughts_text_style is text:
+style thoughts_creepy_text_style is text:
     size 25
     color COLORS["light_red"]
     italic True
@@ -219,7 +219,7 @@ style chapter_text_style is text:
 style straznik_text_style is text:
     font font("bahiana")
     size 80
-init -9 python:
+init -12 python:
     from collections import namedtuple, defaultdict
 
     COLORS = {
@@ -233,6 +233,22 @@ init -9 python:
         "black": "000000",
         "white": "#ffffff",
         "pink": "#ff69b4",
+        "tet": "#f5a90e",
+    }
+
+    class FontInfo():
+        def __init__(self, name="ubuntu", size=25, color="black"):
+            self.name = font(name)
+            self.size = size
+            self.color = COLORS[color]
+    
+    FONT_DICT = {
+        "text": FontInfo(name="ubuntu", color="white"),
+        "name": FontInfo(name="lucky", size=50),
+        "idle": FontInfo(color="white"),
+        "accent": FontInfo(color="pink"),
+        "hover": FontInfo(color="blue"),
+        "interface": FontInfo(name="haters", color="white", size=52),
     }
 
    # StyleInfo = namedtuple("StyleInfo",
@@ -262,25 +278,53 @@ init -9 python:
     WWWStyle = FontStyle("www", hide_namebox=True)
 
     def text_style(s, text):
+        if s.startswith("thoughts"):
+            persistent.talking_mode = "thinking"
 
         def add_style_to_text(text, style):
             return "{{={}}} {} {{/={}}}".format(style, text, style)
 
         return add_style_to_text(text, "{}_text_style".format(s))
-
+    def music_text(t):
+        try:
+            name = t[2:]
+            if t[1] == "M":
+                play_music(name)
+            elif t[1] == "S":
+                play_sound_effect(name)
+        except:
+            Exception("wrong music format")
+        
+        
     def character_monologue(character, text, fun=(lambda x: x)):
         for l in text.splitlines():
             if len(l) == 0:
                 continue
+            elif l.startswith("~"):
+                music_text(l)
+                continue
             #print(l, fun)
+            persistent.lock = True
             character(fun(l))
+            persistent.lock = False
 
     styled_monologue = lambda s, c, t: character_monologue(c, t, lambda x: text_style(s, x))
-    thoughts_monologue = lambda c, t: character_monologue(c, t, lambda x: text_style("thoughts", x))
+    #thoughts_monologue = lambda c, t: character_monologue(c, t, lambda x: text_style("thoughts", x))
     intro_monologue = lambda c, t: character_monologue(c, t, lambda x: text_style("intro", x))
 
     def list_text(l):
         return "{w}\n".join(l)
+
+    def thinking(character, text, style=None):
+        persistent.talking_mode = "thinking"
+        print("befoorer  ",persistent.talking_mode)
+        s = "thoughts_{}".format(style) if style is not None else "thoughts"
+        styled_monologue(s, character, text)
+        print("after  ",persistent.talking_mode)
+        #play_sound_effect("glitter")
+        persistent.talking_mode = "normal"
+        #persistent.talking_mode = "normal"
+        
 
 ### TEXT WITH TRANSFORM
     def creepy_maker(text):
@@ -288,7 +332,7 @@ init -9 python:
 
 ### TEXTBOX
     def textbox_maker(textbox_name, alpha=0.85):
-        return Transform(Image(gpj(["gui", "textbox", TEXTBOX_NAMES[textbox_name]])), alpha=alpha)
+        return Transform(Image(gpj("gui", "textbox", TEXTBOX_NAMES[textbox_name])), alpha=alpha)
 
     def change_style(s):
         persistent.style = s

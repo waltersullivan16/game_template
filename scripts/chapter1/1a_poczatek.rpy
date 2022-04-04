@@ -26,11 +26,11 @@ label konop_monolog1:
 No i wreszcie nadszedł ten moment.
 Dzień, w którym raz na zawsze udowodnię, kto jest czarnym charakterem w tej historii.
 To była długa i wyczerpująca batalia.
-Początkowo niepozorna, eskalowała błyskawicznie. Zanim się obejrzałem, stała się całym moim życiem.
-Nie będę ukrywał, bywało naprawdę ciężko. Ciężko na tyle, że aż rozważałem odejście z youtuba.
+Początkowo niepozorna, eskalowała błyskawicznie.{w=1} Zanim się obejrzałem, stała się całym moim życiem.
+Nie będę ukrywał, bywało <b>NAPRAWDĘ</b> ciężko. Ciężko na tyle, że aż rozważałem odejście z youtuba.
 Czy żałuję, że otworzyłem tę puszkę Pandrory?{w=1} Raczej nie.
 Wszystkie trudy i znoje były warte tej jednej magicznej chwili, która dzisiaj niewątpliwie nastąpi.
-Lexiu ustłyszy dzisiaj wyrok...''')
+Lexiu usłyszy dzisiaj wyrok...''')
     #scene intro2
     jump winny
     

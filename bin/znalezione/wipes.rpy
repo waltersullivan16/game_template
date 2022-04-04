@@ -1,4 +1,23 @@
-﻿init:
+﻿init python:
+    wipe_path = lambda x: gpj("transitions", "wipes", "{}.png".format(x))
+    def make_trans(name, time=1.0, parts=8):
+        return ImageDissolve(wipe_path(name), time, parts)
+
+    mist = make_trans("mist")
+    w36 = make_trans("mist2")
+
+
+    witraz = make_trans("witraz")
+
+    shot = make_trans("shot")
+    puzz = make_trans("puzz")
+    rain1 = make_trans("rain1")
+    rain2 = make_trans("rain2")
+    snow1 = make_trans("snow1")
+    curtains = make_trans("curtains")
+    eye = ImageDissolve(wipe_path("eye"), 2.0, 64)
+
+init:
     $ circlewipe = ImageDissolve("transitions/wipes/circlewipe-cw.jpg", 1.0, 8)
     $ ccirclewipe = ImageDissolve("transitions/wipes/circlewipe-ccw.jpg", 1.0, 8)
     $ bites = ImageDissolve("transitions/wipes/bites.jpg", 5.0, 8)
@@ -22,18 +41,8 @@
     $ wet = ImageDissolve("transitions/wipes/wet.jpg", 1.0, 8)
     $ wet_time = lambda t: ImageDissolve("transitions/wipes/wet.jpg", t, 8)
     
-    $ curtains = ImageDissolve("transitions/wipes/curtains.png", 1.0, 8)
-
-    $ snow1 = ImageDissolve("transitions/wipes/snow1.png", 1.0, 8)
-    $ rain1 = ImageDissolve("transitions/wipes/rain1.jpg", 1.0, 8)
-    $ rain2 = ImageDissolve("transitions/wipes/rain2.jpg", 1.0, 8)
-
-    $ puzz = ImageDissolve("transitions/wipes/puzz.png", 1.0, 8)
-    
     $ shatter = ImageDissolve("transitions/wipes/shatter.png", 1.0, 8)
-    $ shot = ImageDissolve("transitions/wipes/shot.png", 1.0, 8)
 
-    $ eye = ImageDissolve(Frame("transitions/wipes/eye.png"), 2.0, 64)
 
 # unnamed
     $ w1 = ImageDissolve("transitions/wipes/1.jpg", 1.0, 8)
@@ -73,7 +82,8 @@
 
     $ w34 = ImageDissolve("transitions/wipes/34.png", 1.0, 8)
     $ w35 = ImageDissolve("transitions/wipes/35.jpg", 1.0, 8)
-    $ w36 = ImageDissolve("transitions/wipes/36.jpg", 3.0, 8)
     $ w37 = ImageDissolve("transitions/wipes/37.png", 1.0, 8)
 
     $ pix1 = ImageDissolve("transitions/wipes/pix1.png", 2.0, 8)
+
+    $ maska = ImageDissolve("transitions/wipes/maska.png", 3.0, 8)

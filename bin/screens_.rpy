@@ -8,20 +8,35 @@ screen z():
         yalign 0.0
         #hover setattr(config, "mouse", {"default": [("others/myszka_error.png", 1, 1)]})
         idle "gui/button/kopi.png"
-        action Jump("end")
+        action ToggleMute("music")
 
     imagebutton:
         xalign 0.0
         yalign 0.0
         idle "gui/button/kopi.png"
         action Jump("uwertura_scenes")
+        #action Show("options")
+
+
+screen options():
+    add blur
+    frame:
+        has vbox
+        bar value Preference("sound volume") released Play("sound", "music/sound effects/badum.mp3")
+        bar value Preference("music volume")
+
+screen button_overlay():
+    mousearea:
+        area (0, 0, 1.0, 100)
+        hovered Show("options", transition=dissolve)
+        unhovered Hide("options", transition=dissolve)
 
 screen choices_template(name, imagebuttons):
     #add "blur"
     for (it, i) in enumerate(imagebuttons):
         $ xpos_ = 100 if (it % 2) == 0 else 700
         $ ypos_ = 50 if it < 2 else 400 
-        $ mouse = "love" if i.startswith("blowek") else "green"
+        $ mouse = "love" if i.startswith("blowek") else "active"
         imagebutton:
             xpos xpos_
             ypos ypos_
@@ -67,7 +82,7 @@ screen subscribe_screen():
         ypos 0.3
         hover "images/others/subscribe.png"
         unhovered [MouseMove(500, 300)]
-        mouse "green"
+        mouse "active"
         activate_sound "music/sound effects/button.mp3"
         idle "images/others/subscribe.png"
         action [Hide("subscribe_screen"), Jump("subscribe_like")]
@@ -87,7 +102,7 @@ screen subscribed_like_screen():
         ypos 0.3
         hover "images/others/like.png"
         unhovered [MouseMove(1050, 300)]
-        mouse "green"
+        mouse "active"
         activate_sound "music/sound effects/button.mp3"
         idle "images/others/like.png"
         action [Hide("blur"), Hide("subscribed_screen", transition=ease), Hide("subscribed_like_screen", transition=ease), Jump("subscribe_thanks")]#Hide("subscribe", transition=dissolve), Jump("subscribe_thanks")]

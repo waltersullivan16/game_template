@@ -1,4 +1,3 @@
-## jump to other conf files
 "../files_list.txt"
 
 ### KONOPSKI ###
@@ -6,13 +5,11 @@
 #    "KonopskiClass.talking == True", aKonopski("confused"),
 #    "True", "konopski_body_confused")
 init -8 python:
-    KonopskiClass.add_styles(["main", "smirk", "thinking", "ej", "p2", "lol"])
+    
+    styles = ["main", "smirk", "thinking", "ej", "p2", "lol"]
+    KonopskiClass = CharacterBase("Konopski", styles=styles)
+    Konopski = KonopskiClass.char
 
-image aa = animation_mouth("konopski", "main")
-image aaa = At("konopski_usta1", ani_alpha)
-image aaaa = ShowingSwitch(
-    "konopski main", "aaa"
-)
 
 layeredimage konopski:
     group body auto:
@@ -43,8 +40,10 @@ layeredimage konopski_phoenix:
 
 ### PEARL ###
 init python:
-    PearlClass.add_styles(["main", "serious", "embarassed", "sad", "crying", "determined", "pleased", "suprised"])
-    Pearl.name = "Nieletnia"
+    styles = ["main", "serious", "embarassed", "sad", "crying", "determined", "pleased", "suprised"]
+    PearlClass = CharacterBase("Pearl", styles)
+    Pearl = PearlClass.char
+#Nieletnia
 
 layeredimage pearl:
     group body auto:
@@ -54,7 +53,9 @@ layeredimage pearl:
 
 ### EMA ###
 init python:
-    EmaClass.add_styles(["main","confused", "determined", "happy", "notes", "sad", "shocked", "thinking"])
+    styles = ["main","confused", "determined", "happy", "notes", "sad", "shocked", "thinking"]
+    EmaClass = CharacterBase("Ema", styles)
+    Ema = EmaClass.char
 
 layeredimage ema:
     group body auto:
@@ -63,7 +64,9 @@ layeredimage ema:
         EmaClass.animations_switch
 ### penny ###
 init python:
-    PennyClass.add_styles(["main", "cards", "gossip"])
+    styles = ["main", "cards", "gossip"]
+    PennyClass = CharacterBase("Penny", styles)
+    Penny = PennyClass.char
 
 layeredimage penny:
     group body auto:
@@ -72,7 +75,8 @@ layeredimage penny:
         PennyClass.animations_switch
 
 init python:
-    NajmanClass.add_styles(["main"])
+    NajmanClass = CharacterBase("Najman", ["main"])
+    Najman = NajmanClass.char
 layeredimage najman:
     group body auto:
         attribute main default
@@ -80,7 +84,9 @@ layeredimage najman:
         NajmanClass.animations_switch
 
 init python:
-    LilMastiClass.add_styles(["main"])
+    LilMastiClass = CharacterBase("LilMasti", ["main"])
+    LilMasti = LilMastiClass.char
+
 layeredimage lilmasti: 
     group body auto:
         attribute main default

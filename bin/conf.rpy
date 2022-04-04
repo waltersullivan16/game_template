@@ -27,19 +27,19 @@ init -10 python:
     TITLE = "template"
     ## PATHS ##
 
-    GAME_PATH = gpj(['/home/akechi/renpy/games', TITLE, 'game'])
+    GAME_PATH = gpj('/home/akechi/renpy/games', TITLE, 'game')
     PATHS = {
-        "images": gpj([GAME_PATH, "images"]),
+        "images": gpj(GAME_PATH, "images"),
     }
-    PATHS["characters"] = gpj([PATHS["images"], "characters"])
-    PATHS["animations"] = lambda c, animation_name: gpj([PATHS["characters"], c, "animations", animation_name])
-    PATHS["reactions"] = gpj([PATHS["images"], "reactions"])
+    PATHS["characters"] = gpj(PATHS["images"], "characters")
+    PATHS["animations"] = lambda c, animation_name: gpj(PATHS["characters"], c, "animations", animation_name)
+    PATHS["reactions"] = gpj(PATHS["images"], "reactions")
 
     AUTOMATIC_IMAGES = ["/"]
     AUTOMATIC_IMAGES_STRIP = [
         "images", "characters", "background", "scenes",
         "others", "ulubione", "transparenty", "transparenty2", 
-        "reactions", "transitions", "title", "dziewczyny"]
+        "reactions", "transitions", "title", "dziewczyny", "straznicy"]
 
     ANIMATION_PAUSE = 0.2
 
@@ -53,7 +53,7 @@ init -10 python:
         "black": "black.png",
     }
 
-init -8 python:
+init -11 python:
     print(persistent.style)
 
     if persistent.style is None:
@@ -62,23 +62,26 @@ init -8 python:
 
     if persistent.cursor is None:
         persistent.cursor = "main"
-    mouse = lambda x: "others/mouse/{}.png".format(x)
+    mouse = lambda x: "gui/mouse/{}.png".format(x)
 
     def change_cursor(cursor):
         persistent.cursor = cursor
         config.mouse["default"] = config.mouse[cursor]
 
     config.mouse = {
-            "default": [(mouse("main"), 1, 1)],
-            "main": [(mouse("main"), 1, 1)],
-            "green": [(mouse("green"), 1, 1)],
-            "red": [(mouse("red"), 1, 1)],
-            "loading": [(mouse("loading"), 1, 1)],
-            "not": [(mouse("not"), 1, 1)],
-            "love": [(mouse("love"), 1, 1)],
-            "question": [(mouse("question"), 1, 1)],
+            "default": [(mouse("main"), 1, 0)],
+            "main": [(mouse("main"), 1, 0)],
+            "active": [(mouse("active"), 1, 0)],
+            "red": [(mouse("red"), 1, 0)],
+            "loading": [(mouse("loading"), 1, 0)],
+            "not": [(mouse("not"), 1, 0)],
+            "love": [(mouse("love"), 1, 0)],
+            "question": [(mouse("question"), 1, 0)],
     } 
     
+    persistent.talking_mode = "normal"
+    persistent.lock = False
+    persistent.stop_lipsync = False
     #_dismiss_pause = False
     renpy.music.register_channel("sfx1", "sfx")
 

@@ -200,6 +200,9 @@ style choice_vbox:
 
 style choice_button is default:
     properties gui.button_properties("choice_button")
+    mouse "active"
+    activate_sound "music/sound effects/button.mp3"
+    
 
 style choice_button_text is default:
     properties gui.button_text_properties("choice_button")
@@ -265,13 +268,19 @@ screen navigation():
         style_prefix "navigation"
 
         xpos gui.navigation_xpos
-        yalign 0.5
+        yalign 0.7
 
         spacing gui.navigation_spacing
 
         if main_menu:
 
-            textbutton _("Start") action Start()
+            imagebutton:
+                xpos 9
+                ypos -18 
+                idle "gui/main_menu/button.png"
+                mouse "active"
+                activate_sound "music/sound effects/button_main_menu.mp3"
+                action Start()   
 
         else:
 
@@ -279,9 +288,15 @@ screen navigation():
 
             textbutton _("Save") action ShowMenu("save")
 
-        textbutton _("Load") action ShowMenu("load")
+        imagebutton:
+            xpos 9
+            ypos 30 
+            idle "gui/main_menu/button.png"
+            mouse "active"
+            activate_sound "music/sound effects/button_main_menu.mp3"
+            action ShowMenu("load")   
 
-        textbutton _("Preferences") action ShowMenu("preferences")
+        #textbutton _("Preferences") action ShowMenu("preferences")
 
         if _in_replay:
 
@@ -291,18 +306,23 @@ screen navigation():
 
             textbutton _("Main Menu") action MainMenu()
 
-        textbutton _("About") action ShowMenu("about")
+        #textbutton _("About") action ShowMenu("about")
 
-        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+        #if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
             ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("Help") action ShowMenu("help")
+         #   textbutton _("Help") action ShowMenu("help")
 
         if renpy.variant("pc"):
 
-            ## The quit button is banned on iOS and unnecessary on Android and
-            ## Web.
-            textbutton _("Quit") action Quit(confirm=not main_menu)
+            imagebutton:
+                xpos 9
+                ypos 70
+                idle "gui/main_menu/button.png"
+                mouse "active"
+                activate_sound "music/sound effects/button_main_menu.mp3"
+                action Quit(confirm=not main_menu)
+
 
 
 style navigation_button is gui_button
@@ -337,23 +357,10 @@ screen main_menu():
     ## contents of the main menu are in the navigation screen.
     use navigation
 
-    if gui.show_name:
-
-        vbox:
-            style "main_menu_vbox"
-
-            text "[config.name!t]":
-                style "main_menu_title"
-
-            text "[config.version]":
-                style "main_menu_version"
-
 
 style main_menu_frame is empty
 style main_menu_vbox is vbox
 style main_menu_text is gui_text
-style main_menu_title is main_menu_text
-style main_menu_version is main_menu_text
 
 style main_menu_frame:
     xsize 280
@@ -370,6 +377,7 @@ style main_menu_vbox:
 
 style main_menu_text:
     properties gui.text_properties("main_menu", accent=True)
+    font font("chomsky") 
 
 style main_menu_title:
     properties gui.text_properties("title")
@@ -524,16 +532,6 @@ screen about():
 
         style_prefix "about"
 
-        vbox:
-
-            label "[config.name!t]"
-            text _("Version [config.version!t]\n")
-
-            ## gui.about is usually set in options.rpy.
-            if gui.about:
-                text "[gui.about!t]\n"
-
-            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
 
 
 style about_label is gui_label

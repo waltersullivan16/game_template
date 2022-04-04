@@ -66,25 +66,6 @@ transform shake:
    ease .01 yoffset -4
    ease .01 yoffset 0
    repeat
-
-transform kick_out:
-    xpos 0.0 ypos 0.33
-    easein 0.2 xalign 0.3
-    pause 0.2
-    easeout 0.4 rotate 70
-    easein 0.2 rotate -90
-    easeout 0.5 rotate 0 ypos 0.30
-    ease 0.9 xalign 0.5
-
-transform kicked_out:
-    easeout 0.3 xpos 1.0 ypos -1.0 rotate 300
-
-transform half_out:
-    easein 1.2 xpos 1.5
-    pause 1.0
-    easein 1.2 xpos 1.2
-    
-
 transform creepy_transform:
     parallel:
         block:
@@ -100,19 +81,6 @@ transform creepy_transform:
             linear 1.0 alpha .9
             linear 1.0 alpha .2
             repeat
-
-transform co_to:
-    xanchor 0.05 zoom 1.10
-    xpos -5
-    subpixel True
-    parallel:
-        ease 2.0 xpos 5
-        ease 1.0 xpos 0
-        ease 1.0 xpos 5
-        ease 2.0 xpos -5
-        ease 1.0 xpos 0
-        ease 1.0 xpos -5
-        repeat
 
 transform blood_particle:
     yzoom 0 yanchor 0.2 subpixel True
@@ -149,8 +117,6 @@ transform ani_alpha:
     pause 0.2
     repeat
 
-
-
 define vpunch = Move((0, 10), (0, -10), .10, bounce=True, repeat=True, delay=.275)
 define hpunch = Move((15, 0), (-15, 0), .10, bounce=True, repeat=True, delay=.275)
 define m = Move((15, 0), (-15, 0), .10, bounce=True, repeat=True, delay=.275)
@@ -171,3 +137,43 @@ define very_slow_fade = Fade(0.6, 1.5, 0.8)
 
 define true_left = Position(xpos=0.2)
 define true_right= Position(xpos=0.8)
+
+#TRANSFORMS WHICH ARE USED ONLY ONCE
+
+transform kick_out:
+    xpos 0.0 ypos 0.33
+    easein 0.2 xalign 0.3
+    pause 0.2
+    easeout 0.4 rotate 70
+    easein 0.2 rotate -90
+    easeout 0.5 rotate 0 ypos 0.30
+    ease 0.9 xalign 0.5
+
+transform kicked_out:
+    easeout 0.3 xpos 1.0 ypos -1.0 rotate 300
+
+# koniec_przerwy
+
+transform half_out:
+    easein 1.2 xpos 1.5
+    pause 1.0
+    easein 1.2 xpos 1.2
+
+transform question_konop:
+    xpos 0.55 ypos -30
+    rotate -50    
+    zoom 0.8
+
+transform co_to:
+    xanchor 0.05 zoom 1.10
+    xpos -5
+    subpixel True
+    parallel:
+        ease 2.0 xpos 5
+        ease 1.0 xpos 0
+        ease 1.0 xpos 5
+        ease 2.0 xpos -5
+        ease 1.0 xpos 0
+        ease 1.0 xpos -5
+        repeat
+

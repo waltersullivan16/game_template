@@ -20,7 +20,7 @@ label dziewczeta:
     Penny "Czy planuje pan dzisiaj poruszyć kwestię groomingu? Ten wątek jakoś zagubił się w całym tym ferworze walki, a przecież to naprawdę kluczowa sprawa."
 
     Konopski "..."
-    $ thoughts_monologue(
+    $ thinking(
         Konopski,
     "Niech to szlag.")
     show blur
@@ -40,7 +40,7 @@ label proba_ucieczki:
     Ema main "Proszę się nie wygłupiać, nie będziemy teraz zawracać panu głowy jakimiś błachostkami."
     Ema "Wiemy, że potrzebuje pan teraz jak najwięcej wsparcia."
     Penny main "Inni zaraz po usłyszeniu nazwiska prokuratora, uciekliby w popłochu."
-    $ thoughts_monologue(
+    $ thinking(
         Konopski, '''
 Ja chciałbym uciec w popłochu, mimo że nawet nie usłyszałem...
 ...
@@ -50,6 +50,7 @@ Przecież to ja jestem prokuratorem.''')
     Konopski "O kim ty właściwie mówisz?"
 
     Pearl serious "Trwożę się wypowiedzieć to imię. Sama myśl wywołuje we mnie ciarki."
+    Konopski "..."
     Konopski "To może koleżanka?"
     jump dziewczeta_wardega
 
@@ -69,14 +70,15 @@ label dziewczeta_wardega:
     jump bloody_text
 
 label bloody_text:
-    scene black
+    scene black with dissolve
+    $silence()
     $ play_video("strasznega")
     $ change_style("creepy")
     $ persistent.style = "creepy"
-    show konopski smirk at right with ease
+    show konopski smirk at right with dissolve
     Konopski "Wy... zdajecie sobie sprawę z tego, że \"Wardęga\" to nie jest jego imię, prawda?"
     show konopski main
-    $ styled_monologue('creepy_thoughts', Konopski, '''
+    $ styled_monologue('thoughts_creepy', Konopski, '''
 Co tu się właśnie wydarzyło?
 Co stało się z pierwszoosobowym stylem narracji?
 Sympatycznym w swej prostocie okienkiem dialogowym?
@@ -88,6 +90,7 @@ label kopniak:
     pause 0.9
     show konopski at kicked_out
     pause 0.2
+    #TODO -> blip myślowe
     Pearl "Ale proszę nie wchodzić w kadr!"
     show ema determined at right with moveinbottom
     Ema "A poza tym, czy naprawdę myśli pan, że jest to odpowiedni moment na łamanie czwartej ściany?"
@@ -102,7 +105,7 @@ label legenda:
     show ema at right
     Penny "No wie pan, jak to mówią..."
     Penny cards "Nie należy wywoływać Wardęgi z lasu..."
-    Konopski "Jakoś nie wydaje mi się, żeby ktokolwiek, kiedykolwiek to powiedział..."
+    $thinking(Konopski, "Jakoś nie wydaje mi się, żeby ktokolwiek, kiedykolwiek to powiedział...")
     Ema determined "Legenda głosi, że jeśli podczas jakiejś dramy, wypowie się trzy razy WARDEGA, to w przeciągu
     dwóch godzin przejmie on nad tą dramą dowództwo, zmieniwszy wcześniej całą istotę problemu na coś zupełnie innego."
     Penny cards "Nie wolno jednak igrać z siłami ciemności."
@@ -140,7 +143,7 @@ label gazeta0:
     Penny gossip "To był filmik {b}KU PRZESTRODZE{/b}, umieszczony na oficjalnej stronie Wardęgi {a=a}www.zorro-z-lasu2.com{/a}. Prawie wszystko co do tej pory powiedziałyśmy pochodzi z tej strony."
     Konopski "To... wiele wyjaśnia..."
     $ Konopski(text_style("thoughts", "Błagam, powiedzcie mi, że ta dwójka na końcu to część jakiejś zagadki..."))
-    $ thoughts_monologue(
+    $ thinking(
         Konopski, '''
 To niemożliwe, że istnieje jeszcze jeden zorro-z-lasu, {w=1.0}prawda...?{w=1}
 {size=+10} PRAWDA?{/size}''')

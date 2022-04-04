@@ -28,14 +28,22 @@ init -10 python:
         "chipdale": "chipdale",
         "king": "king",
     }
+
+    BLIP_TYPES = {
+        "normal": "blip",
+        "thinking": "blip_thinking",
+    }
     def music(name):
-        return gpj(["music", "soundtrack", "{}.mp3".format(SOUNDTRACK[name])])
+        return gpj("music", "soundtrack", "{}.mp3".format(SOUNDTRACK[name]))
 
     def sound(name):
-        return gpj(["music","sound effects", "{}.mp3".format(name)])
+        return gpj("music","sound effects", "{}.mp3".format(name))
 
     def video(name):
-        return gpj(["images","cutscenes", "{}.webm".format(name)])
+        return gpj("images","cutscenes", "{}.webm".format(name))
+    
+    def get_blip():
+        return BLIP_TYPES[persistent.talking_mode]
     
     # SOUND_EFFECTS = "blip", "badum", "punch"
 

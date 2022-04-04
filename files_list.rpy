@@ -13,6 +13,7 @@
 "characters.rpy"
 "images.rpy"
 "screens.rpy"
+"gui.rpy"
 
 ## script
 "scripts/0_main.rpy"
