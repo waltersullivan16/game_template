@@ -46,5 +46,5 @@ init -8 python:
             exec(c)
 
     Unknown = Character(name = "???")
-    Blank = Character(name = "blank")
+    Blank = Character(name = "")
     Straznik = Character(name = "STRAŻNIK", what_style="straznik_text")

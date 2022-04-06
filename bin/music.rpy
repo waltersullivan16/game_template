@@ -33,6 +33,9 @@ init -10 python:
         "normal": "blip",
         "thinking": "blip_thinking",
     }
+
+    MUSIC_PATH = lambda x: gpj("music", "soundtrack", *x)
+    SOUND_PATH = lambda x: gpj("music", "sound effects", *x)
     def music(name):
         return gpj("music", "soundtrack", "{}.mp3".format(SOUNDTRACK[name]))
 
@@ -40,10 +43,10 @@ init -10 python:
         return gpj("music","sound effects", "{}.mp3".format(name))
 
     def video(name):
-        return gpj("images","cutscenes", "{}.webm".format(name))
+        return gpj("videos", "{}.webm".format(name))
     
     def get_blip():
-        return BLIP_TYPES[persistent.talking_mode]
+        return gpj("blips", persistent.blip)
     
     # SOUND_EFFECTS = "blip", "badum", "punch"
 

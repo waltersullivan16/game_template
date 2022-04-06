@@ -1,19 +1,5 @@
 "../files_list.rpy"
 
-## jump to other conf files
-"conf.rpy"
-"characters_base.rpy"
-"functions.rpy"
-"gui_.rpy"
-"transforms.rpy"
-"music.rpy"
-"screens_.rpy"
-
-## common files
-"../characters.rpy"
-"../images.rpy"
-
-
 init python:
 
     def show_with_args(x, transition=dissolve, at_list=[], pause_in=None, pause_out=None, sound=None, relative_volume=1):

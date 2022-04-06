@@ -17,15 +17,15 @@
 "../scripts/0_main.rpy"
 "../scripts/1_uwertura.rpy"
 
-style window:
-    background Frame(textbox_maker("main"))
-    xalign 0.0
-    yalign 1.0
-    ysize 300
+#style window:
+    #background Frame(textbox_maker("main"))
+    #xalign 0.0
+    #yalign 1.0
+    #ysize 300
 
-style namebox:
-    xalign 0.155
-    yalign 0.3
+#style namebox:
+#    xalign 0.155
+#    yalign 0.3
 
 style namebox_main:
     xalign 0.155
@@ -36,8 +36,11 @@ style namebox_creepy:
     yalign 0.24
 
 style say_label_main:
-    font font("ubuntu")
-    properties gui.text_properties("name", accent=True)
+    #font font("monster")
+    size 50
+    font font("lucky")
+    color COLORS["black"]
+    #properties gui.text_properties("name", accent=True)
 
 style say_label_creepy:
     size 50
@@ -49,6 +52,15 @@ style say_window_main:
     xalign 0.0
     yalign 1.0
     ysize 300
+
+
+style say_dialogue_blank:
+    #properties gui.text_properties("dialogue")
+    #xpos 0
+    #ypos 0.5
+    #font font("ubuntu")
+    xsize 50
+    line_spacing 7
 
 style say_dialogue_main:
     #properties gui.text_properties("dialogue")
@@ -69,14 +81,13 @@ style say_window_creepy:
     yalign 1.0
     ysize 300
 
-style say_window_intro:
-    background textbox_maker("intro")
+#style say_window_intro:
+#    background textbox_maker("intro")
+#style empty:
+#    background textbox_maker("empty")
 
-style say_window_empty:
-    background textbox_maker("empty")
-
-style say_window_www:
-    background textbox_maker("empty")
+#style say_window_www:
+ #   background textbox_maker("empty")
 
 style say_window_quote:
     background textbox_maker("black")
@@ -119,7 +130,13 @@ style block2_multiple2_say_window:
 style block2_multiple2_say_dialogue:
     xpos 100 ypos 150
 
-style thoughts_text_style is text:
+#style thoughts_text_style is text:
+#    size 25
+#    color COLORS["blue"]
+#    italic True
+#    font font("ubuntu")
+
+style thoughts_main_text_style is text:
     size 25
     color COLORS["blue"]
     italic True
@@ -138,14 +155,11 @@ style dark_thoughts_text_style is text:
     font font("ubuntu")
     line_spacing 10
 
-style straznik_text:
-    xpos 100
-    ypos 130
-    xsize 1200
-
 style intro_text_style is text:
+    xpos .6 ypos 0.6
     size 36
     color COLORS["white"]
+    slow_cps 15 
     italic True
 
 style creepy_text_style is text:
@@ -172,11 +186,6 @@ style itis_text_style is text:
     font font("alba")
     size 60
     color COLORS["pink"]
-
-style window_info:
-    ypos 400
-    xpos 200
-    xmaximum 800
 
 style cite_text_style is text:
     font font("futura")
@@ -217,8 +226,16 @@ style chapter_text_style is text:
     slow_cps 5
 
 style straznik_text_style is text:
-    font font("bahiana")
-    size 80
+    font font("blackops")
+    #font font("major")
+    size 50
+
+style black_screen_text_style is text:
+    xpos 0
+    ypos 0.5
+    font font("ubuntu")
+
+
 init -12 python:
     from collections import namedtuple, defaultdict
 
@@ -237,98 +254,76 @@ init -12 python:
     }
 
     class FontInfo():
-        def __init__(self, name="ubuntu", size=25, color="black"):
+        def __init__(self, name="ubuntu", size=25, color="white"):
             self.name = font(name)
             self.size = size
             self.color = COLORS[color]
-    
-    FONT_DICT = {
-        "text": FontInfo(name="ubuntu", color="white"),
-        "name": FontInfo(name="lucky", size=50),
-        "idle": FontInfo(color="white"),
-        "accent": FontInfo(color="pink"),
-        "hover": FontInfo(color="blue"),
-        "interface": FontInfo(name="haters", color="white", size=52),
-    }
-
-   # StyleInfo = namedtuple("StyleInfo",
-   #     ["text_color", "text_font", "name_color", "name_font"])
-    
-    class FontStyle():
-        def __init__(self, name, text_font="ubuntu", text_color="white", text_size=25, name_font="lucky", name_color="black", name_size=25, hide_namebox = False):
-            self.name = name
-            self.text_font = font(text_font)
-            self.text_color = COLORS[text_color]
-            self.name_font = font(name_font)
-            self.text_size = text_size
-            self.name_color= COLORS[name_color]
-            self.name_size = name_size
-            
-            self.hide_namebox = hide_namebox
 
         def __eq__(self, other):
-            if isinstance(other, FontStyle):
+            if isinstance(other, FontInfo):
                 return self.name == other.name
 
             return False
 
-    MainStyle = FontStyle("main")
-    IntroStyle = FontStyle("intro", hide_namebox=True)
-    CreepyStyle = FontStyle("creepy", text_color="red", name_font="monster", name_color="blood")
-    WWWStyle = FontStyle("www", hide_namebox=True)
+
+    BASE_TEXT_FONT = FontInfo()
+    BASE_NAME_FONT = FontInfo(name="lucky", color="black", size=25)
+
+    FONT_DICT = {
+        "text": FontInfo(name="ubuntu"),
+        "name": FontInfo(name="lucky", size=50, color="black"),
+        "idle": FontInfo(color="white"),
+        "accent": FontInfo(color="black"),
+        "hover": FontInfo(color="blue"),
+        "interface": FontInfo(name="haters", size=52),
+    }
+    #Other's Font
 
     def text_style(s, text):
-        if s.startswith("thoughts"):
-            persistent.talking_mode = "thinking"
+        #if s.startswith("thoughts"):
+        #    persistent.talking_mode = "thinking"
 
         def add_style_to_text(text, style):
             return "{{={}}} {} {{/={}}}".format(style, text, style)
+        text = alter_say_strings(text)
 
         return add_style_to_text(text, "{}_text_style".format(s))
-    def music_text(t):
-        try:
-            name = t[2:]
-            if t[1] == "M":
-                play_music(name)
-            elif t[1] == "S":
-                play_sound_effect(name)
-        except:
-            Exception("wrong music format")
-        
+
+#    def music_text(t):
+#        print("fdsfsdfs", t)
+#        try:
+#            name = t[2:]
+#            if t[1] == "M":
+#                play_music(name)
+#            elif t[1] == "S":
+#                play_sound_effect(name)
+#        except:
+#            Exception("wrong music format")
+#        
+#    def text_preprocessing(text):
+#        print("dsadd", text)
+#        if text.startswith("~"):
+#            music_text(l)
+#        
         
     def character_monologue(character, text, fun=(lambda x: x)):
         for l in text.splitlines():
             if len(l) == 0:
                 continue
-            elif l.startswith("~"):
-                music_text(l)
-                continue
-            #print(l, fun)
-            persistent.lock = True
+#            text_preprocessing(text)
+           #print(l, fun)
+            #persistent.lock = True
             character(fun(l))
-            persistent.lock = False
+            #persistent.lock = False
 
     styled_monologue = lambda s, c, t: character_monologue(c, t, lambda x: text_style(s, x))
-    #thoughts_monologue = lambda c, t: character_monologue(c, t, lambda x: text_style("thoughts", x))
-    intro_monologue = lambda c, t: character_monologue(c, t, lambda x: text_style("intro", x))
-
-    def list_text(l):
-        return "{w}\n".join(l)
 
     def thinking(character, text, style=None):
-        persistent.talking_mode = "thinking"
-        print("befoorer  ",persistent.talking_mode)
-        s = "thoughts_{}".format(style) if style is not None else "thoughts"
+        persistent.blip = "blip_thinking"
+        s = "thoughts_{}".format(persistent.style)
         styled_monologue(s, character, text)
-        print("after  ",persistent.talking_mode)
-        #play_sound_effect("glitter")
-        persistent.talking_mode = "normal"
-        #persistent.talking_mode = "normal"
+        persistent.blip = "blip"
         
-
-### TEXT WITH TRANSFORM
-    def creepy_maker(text):
-        return At(text_style("creepy", text), creepy_transform)
 
 ### TEXTBOX
     def textbox_maker(textbox_name, alpha=0.85):
@@ -336,11 +331,5 @@ init -12 python:
 
     def change_style(s):
         persistent.style = s
-        if s == "main":
-            persistent.style_class = MainStyle
-        elif s == "creepy":
-            persistent.style_class = CreepyStyle
-        elif s == "www":
-            persistent.style_class = WWWStyle
-        elif s == "intro":
-            persistent.style_class = IntroStyle
+        if s in ["www", "intro"]:
+            persistent.hide_dialogue_windows

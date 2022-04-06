@@ -12,7 +12,7 @@ label quote_screen:
     pause 0.5
     show screen quote(t, influ, author, author_errata1, author_errata2) with slow_dissolve 
     pause 12.0
-    hide screen quote with wet
+    hide screen quote with transition("wet")
     jump konop_monolog1
     
 ### KONOP MONOLOG 1 + TITLE
@@ -22,12 +22,12 @@ label konop_monolog1:
     $ change_style("intro")
 
     $ play_music("intro", loop=False)
-    $ intro_monologue(Blank, '''
+    $ styled_monologue("intro", Blank, '''
 No i wreszcie nadszedł ten moment.
 Dzień, w którym raz na zawsze udowodnię, kto jest czarnym charakterem w tej historii.
 To była długa i wyczerpująca batalia.
 Początkowo niepozorna, eskalowała błyskawicznie.{w=1} Zanim się obejrzałem, stała się całym moim życiem.
-Nie będę ukrywał, bywało <b>NAPRAWDĘ</b> ciężko. Ciężko na tyle, że aż rozważałem odejście z youtuba.
+Nie będę ukrywał, bywało {b}NAPRAWDĘ{/b} ciężko. Ciężko na tyle, że aż rozważałem odejście z youtuba.
 Czy żałuję, że otworzyłem tę puszkę Pandrory?{w=1} Raczej nie.
 Wszystkie trudy i znoje były warte tej jednej magicznej chwili, która dzisiaj niewątpliwie nastąpi.
 Lexiu usłyszy dzisiaj wyrok...''')
@@ -43,7 +43,7 @@ label winny:
     show winny at title_beating with m
     show black behind winny with slow_dissolve
     pause 2.0
-    hide winny with wet_time(1.2)
+    hide winny with transition("wet", time=1.2)
 
     # proudly presents
     show text Text("to ma mnie upokorzyć proudly presents", style="creepy_text_style") at truecenter with fast_dissolve
@@ -70,7 +70,7 @@ label winny:
 ### KONOP MONOLOG 2 + SUBSKRYBCJE + KRÓTKI MONOLOG MYŚLOWY LOL
 
 label konop_monolog2:
-    scene lobby with wet
+    scene lobby with transition("farba")
     $ change_style("main")
     $ play_music("lobby")
     pause 1.0
@@ -106,14 +106,14 @@ label subscribe_thanks:
     #konopski "a skoro już mówimy o sztuce: spiesz się, bo zostały ostatnie sztuki mojej najnowszej eksluzywnej kolekcji bluz blovek"
 
 label konop_monolog3:
-    $ thoughts_monologue(Konopski,'''
+    $ thinking(Konopski,'''
 ...
 Dobra, mam nadzieję, że wszystko się ładnie nagrało.
 Wiem, że nie był to jakoś szczególnie porywający monolog, no ale cóż.
 Cytując klasyka...
 ''')
     $ Konopski(text_style("itis", "it is what it is"))
-    $ thoughts_monologue(
+    $ thinking(
         Konopski,'''
 Niełatwo jest cierpieć za miliony.
 ...

@@ -1,5 +1,6 @@
 label test:
-    show konopski
+
+    Konopski "Dsadada"
     show pearl at kick_out
     pause 1.0
     show konopski at kicked_out

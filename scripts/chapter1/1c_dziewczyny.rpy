@@ -23,7 +23,6 @@ label dziewczeta:
     $ thinking(
         Konopski,
     "Niech to szlag.")
-    show blur
     menu:
         "Uśmiechnij się czarująco i powiedz, że musisz iść do toalety":
             jump proba_ucieczki
@@ -60,7 +59,7 @@ label dziewczeta_wardega:
     show penny at true_left
     show pearl
     Ema determined "Dobrze zrobię to."
-    Ema "Jest to prokurator.."
+    Ema "Jest to prokurator..."
     pause 1.0
     show lobby at Glitch
     pause 1.0
@@ -78,7 +77,7 @@ label bloody_text:
     show konopski smirk at right with dissolve
     Konopski "Wy... zdajecie sobie sprawę z tego, że \"Wardęga\" to nie jest jego imię, prawda?"
     show konopski main
-    $ styled_monologue('thoughts_creepy', Konopski, '''
+    $ thinking(Konopski, '''
 Co tu się właśnie wydarzyło?
 Co stało się z pierwszoosobowym stylem narracji?
 Sympatycznym w swej prostocie okienkiem dialogowym?
@@ -159,7 +158,6 @@ label gazeta1:
     scene bg ulubione_filmy with dissolve
     $change_style("www")
     $preferences.text_cps = 15
-    #$persistent.blip_mute=True
     #Konopski "dsadadad" (multiple=2)
     #Pearl "{size=+10}{font=gui/fonts/chomsky.ttf}{u}Ulubiony film{/u}{/font}{/size}{font=gui/fonts/unique.ttf}{p}Nagranie z procesu O.J.Simsona.{/font}"(multiple=2)
     $ fav_filmy1 = [
@@ -270,9 +268,8 @@ label koniec_powiedzen:
     show ema at true_right with moveinright
     show penny at true_left with moveinleft
     pause 1.0
-    $Konopski(text_style("thoughts", "Czy mój plan natychmiastowej ewakuacji jest aż tak ewidentnie wypisany na mojej twarzy?"))
+    $ thinking(Konopski, "Czy mój plan natychmiastowej ewakuacji jest aż tak ewidentnie wypisany na mojej twarzy?")
 
-    show blur with Dissolve(0.5)
     menu:
         "Zaprzecz wszystkiemu":
                 jump prawie_koniec
@@ -301,8 +298,8 @@ label prawie_koniec:
     with fast_dissolve
     pause 1.0
     Ema "My właśnie mówiłyśmy, że musimy wyjść, bo zaraz chyba będzie pan proszony na salę..."
-    $ Konopski(text_style("thoughts", "..."))
-    $ Konopski(text_style("thoughts", "A tegoroczna nagroda dla youtubera najgorzej traktującego swoje widzki wędruje dooooo..."))
+    $ thinking(Konopski, "...")
+    $ thinking(Konopski, "A tegoroczna nagroda dla youtubera najgorzej traktującego swoje widzki wędruje dooooo...")
     Konopski "A ja właśnie wam odpowiedziałem 'Bardzo miło mi było was poznać dziewczyny i naprawdę chętnie zostałbym z wami dłużej, ale wiecie, obowiązki wzywają'."
     Penny gossip "I to dosłownie."
     Konopski "Słucham?"

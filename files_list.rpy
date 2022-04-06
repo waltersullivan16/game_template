@@ -14,6 +14,9 @@
 "images.rpy"
 "screens.rpy"
 "gui.rpy"
+"options.rpy"
+
+"scripts/test.rpy"
 
 ## script
 "scripts/0_main.rpy"

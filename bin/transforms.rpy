@@ -25,16 +25,6 @@ transform beating:
     pause 0.2
     repeat
 
-transform title_beating:
-    truecenter zoom 1.0
-    pause 2.4
-    block:
-        linear 0.2 truecenter zoom 1.08
-        pause 0.1
-        linear 0.2 truecenter zoom 0.95
-        pause 0.1
-        repeat
-
 transform bounce_left_right:
     linear 3.0 xalign 1.0
     linear 3.0 xalign 0.0
@@ -66,6 +56,7 @@ transform shake:
    ease .01 yoffset -4
    ease .01 yoffset 0
    repeat
+
 transform creepy_transform:
     parallel:
         block:
@@ -119,10 +110,8 @@ transform ani_alpha:
 
 define vpunch = Move((0, 10), (0, -10), .10, bounce=True, repeat=True, delay=.275)
 define hpunch = Move((15, 0), (-15, 0), .10, bounce=True, repeat=True, delay=.275)
-define m = Move((15, 0), (-15, 0), .10, bounce=True, repeat=True, delay=.275)
+#define m = Move((15, 0), (-15, 0), .10, bounce=True, repeat=True, delay=.275)
 
-define dissolve = Dissolve(1.0)#, alpha=True)
-define very_slow_dissolve = Dissolve(4.0)
 define slow_dissolve = Dissolve(3.0)
 define fast_dissolve = Dissolve(0.5)
 
@@ -139,6 +128,17 @@ define true_left = Position(xpos=0.2)
 define true_right= Position(xpos=0.8)
 
 #TRANSFORMS WHICH ARE USED ONLY ONCE
+
+transform title_beating:
+    truecenter zoom 1.0
+    pause 2.4
+    block:
+        linear 0.2 truecenter zoom 1.08
+        pause 0.1
+        linear 0.2 truecenter zoom 0.95
+        pause 0.1
+        repeat
+
 
 transform kick_out:
     xpos 0.0 ypos 0.33
@@ -164,7 +164,8 @@ transform question_konop:
     rotate -50    
     zoom 0.8
 
-transform co_to:
+#check_blowek_kokichi
+transform creepy_kokichi:
     xanchor 0.05 zoom 1.10
     xpos -5
     subpixel True

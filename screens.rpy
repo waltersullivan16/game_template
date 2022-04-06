@@ -97,27 +97,22 @@ style frame:
 
 screen say(who, what):
     style_prefix "say"
-#
-    window:
-        id "window"
-        if who is not None and who is not "blank" and not persistent.style_class.hide_namebox:
-            window:
-                id "namebox"
-                style "namebox_{}".format(persistent.style_class.name)
-                text who id "who" color persistent.style_class.name_color font persistent.style_class.name_font
-            $style.say_label = style["say_label_{}".format(persistent.style_class.name)]
-#
-#            $ persistent.font_name = FONTS["ubuntu"]
-#            $ persistent.font_labelname = FONTS["lucky"]
-        $style.say_dialogue = style["say_dialogue_{}".format(persistent.style_class.name)]
-        $style.say_window = style["say_window_{}".format(persistent.style_class.name)]
-        text what id "what" color persistent.style_class.text_color font persistent.style_class.text_font #color persistent.text_color
-#
+    if not persistent.hide_dialogue_windows:
+        window:
+            id "window"
+            if who is not None and who is not "blank":
+                window:
+                    id "namebox"
+                    style "namebox_{}".format(persistent.style)
+                    text who id "who" #style "quote_text_style" #color persistent.name_font.color font persistent.name_font.name
+                $style.say_label = style["say_label_{}".format(persistent.style)]
+            $style.say_dialogue = style["say_dialogue_{}".format(persistent.style)]
+            $style.say_window = style["say_window_{}".format(persistent.style)]
+            text what id "what" style "author_text_style" # size persistent.text_font.color font persistent.text_font.name
+    else:
+        $style.say_dialogue = style["say_dialogue_blank"]
+        text what id "what"# style "straznik_text_style"
 
-    ## If there's a side image, display it above the text. Do not display on the
-    ## phone variant - there's no room.
-    if not renpy.variant("small"):
-        add SideImage() xalign 0.0 yalign 1.0
 
 
 ## Make the namebox available for styling through the Character object.
@@ -175,6 +170,7 @@ style input:
 ## https://www.renpy.org/doc/html/screen_special.html#choice
 
 screen choice(items):
+    add "blur"
     style_prefix "choice"
 
     vbox:

@@ -27,17 +27,15 @@ image witness = Image("background/witness.png")
 image courtroom = Image("background/courtroom.png")
 image gavel = Image("background/gavel.jpg")
 
-init python:
-    transparenty_path = lambda x: "scenes/transparenty2/{}.png".format(x)
-
-image bg transparenty11 = Image(transparenty_path("transparenty1"))
-
 #image bg ulubione_filmy = Image("scenes/ulubione/ulubione_filmy.png")
 #image bg ulubione = Image("scenes/ulubione/ulubione.png")
 #image bg ulubione_powiedzenia = Image("scenes/ulubione/ulubione_powiedzenia.png")
 
-image bg black = Image("background/black.png")
+#image bg black = Image("background/black.png")
 #image blur = Image("background/blur.png")
+#init -2 python:
+#    renpy.image("bg black", Image("background/bg black.png"))
+#    renpy.image("bg re", "background/bg tg.png")
 
 image minikonopski = Image("characters/konopski/mini-konopski.png")
 
