@@ -12,7 +12,7 @@ Tak, to dobry pomysł.
 Jego obecność niewątpliwie podniosłaby moje morale.
 Nie mógłbym przecież okryć się hańbą na oczach mistrza.
 ''')
-    scene bg black with w18
+    scene bg black with transition("farba", 2)
     $stop_music()
     jump check_blowek1a
 
@@ -23,25 +23,23 @@ label grafika:
     jump blowek
 
 label check_blowek1a:
-    show black
-    pause 0.5
-    show bg transparenty0 with w35 
+    scene bg transparenty0 with transition("farba", time=2) 
     $play_music("scary")
     $thinking(
         Konopski,'''
 ...
 Co to ma kuźwa być?
 Gdzie się podziała śmietanka towarzyska youtuba?
-Gdzie kamery...? {w=1} Mateusz Kaniowski...? {w=1}Pełnoletnie nastolatki, mdlejące na mój widok...?
+Gdzie kamery...? {w=1} Mateusz Kaniowski...? {w=1}Pełnoletnie fanki, mdlejące na mój widok...?
 Czy cały wysiłek włożony w przygotowanie tych wszystkich wilczych punów pójdzie na marne?
 Po co mam się niby wysilać, skoro i tak nie ma nikogo, kto mógłby potem zmontować kompilację \'Konopski best of\'?
 ...
 Kogo my tu mamy?
 Patrząc na te plebejskie twarze muśnięte odrobiną chamstwa, cała ta horda to wyznawcy Wardęgi.
 ''')
-    $ persistent.special_sound = "badum"
-    $ Konopski(text_style("thoughts", "Pardon, cała ta {size=+5}WATAHA®{/size}."))
-    $ renpy.pause(2.0, hard=True)
+    $ thinking(Konopski, "Pardon, cała ta {size=+5}WATAHA®{/size}.")
+    $ play_sound_effect("badum")
+    pause 2.0
     $thinking(
         Konopski,'''
 To nawet nie był żart.
@@ -76,11 +74,12 @@ label check_blowek1c:
     #$scene_courtroom1()
     #$renpy.pause(15.0, hard=True)
 
-label check_blowek1d:
-    $ Konopski(text_style("thoughts", "Co to za stado poje{nw}"))
-    show blur with maska
-    show kokichi at co_to with Dissolve(4.0)
-    $renpy.pause(2.0, hard=True)
+label check_blowek_kokichi:
+    $ thinking(Konopski,"Co to za stado poje{nw}")
+    show blur with transition("maska", 3)
+    show kokichi at creepy_kokichi with Dissolve(4.0)
+    pause(2)
+    $play_sound_effect("upadek")
     scene black with vpunch
 
 label check_blowek1e:
@@ -121,8 +120,14 @@ No dobra, sprawdzę. Tak dla pewności.
 Może uda mi się to zrobić na tyle dyskretnie, że nawet mnie nie zauważą.
 A nawet jeśli, to i tak nie ma się czym przejmować. Najgorsze i tak już mam za sobą.
 ''')
-    show black with w18
-    $ Konopski(text_style("thoughts", "Przynajmniej taką mam nadzieję..."))
+label lo:
+    scene bg black with transition("farba") 
+    $stop_music()
+    pause(1)
+    $ change_style("black", True)
+    $ Konopski(text_style("black_screen", "Przynajmniej taką mam nadzieję..."))
+    $ change_style("main")
+    $ loading(transition("farba"), Dissolve(2.0))
     jump check_blowek2a
 
 label check_blowek2a:
@@ -176,12 +181,9 @@ Czy wy w ogóle wiecie czym jest <ba-dum-tsk>?
 Z kim ja pracuję...
 Dobra, jeszcze raz.
 ''')
-    $ thinking(Konopski, '''
-To nie byli ludzie z fandomu...{nw}
-~Sbadum
-''')
-    $ renpy.pause(1)
-
+    $ thinking(Konopski, "To nie byli ludzie z fandomu...{nw}")
+    $play_sound_effect("badum")
+    pause 2
 label check_blowek2c:
     show blur with dissolve
     show konopski ej at right with moveinright
@@ -194,42 +196,38 @@ label check_blowek2c:
     $ play_sound_effect("badum")
     $ silence(3)
     Konopski ej happy_eyes flower "Jest jakiś progres."
-    show bg transparenty4 behind blur
-    show konopski -flower -happy_eyes with dissolve
-    $silence()
-    $ offscreen_talking()
-    Konopski "Że co proszę?"
+    pause 1
+    Konopski ej -flower -happy_eyes "Że co proszę?"
     Konopski "Podczas rozmowy rekrutacyjnej zagrał na pianinie niczym prawdziwy wirtuoz?"
-    #show konopski angry with vpunch
-    Konopski "A co to kuźwa ma za znaczenie?{w=1}"
+    Konopski ej angry angry_eyes "A co to kuźwa ma za znaczenie?{w=1}"
     Konopski "Jeszcze chwila i wszyscy wylecicie stąd na zbity ryj."
-    $ offscreen_talking()
-    #$stop_lipsync(Konopski, "...")
-    Konopski "Nie mądralo, nie zdążysz ukryć się w szafie."
+    pause 1
+    Konopski ej -angry -angry_eyes "Nie mądralo, nie zdążysz ukryć się w szafie."
     Konopski "Przede wszystkim dlatego, że tu nie ma żadnej szafy."
-    $ offscreen_talking()
-    Konopski ej angry "{cps=10}NIE{/cps}, osobiście dopilnuję, żeby nie wpuszczać tu żadnego kuriera z szafą w paczce!"
-    $ silence()
+    pause 1
+    Konopski ej angry_eyes angry "{cps=10}NIE{/cps}, osobiście dopilnuję, żeby nie wpuszczać tu żadnego kuriera z szafą w paczce!"
+    pause 1
     
 
 label koniec_przerwy:
     Konopski -angry "Dobra, nie traćmy więcej czasu i zapomnijmy o sprawie." with dissolve
     Konopski "Znajcie łaskę pana."
     Konopski ej angry_eyes "Ale niech mi to będzie ostatni raz, zrozumiano...?"
-    $ offscreen_talking()
-    show konopski -angry_eyes with dissolve
+    pause 1
+    show konopski -angry_eyes with ease
     Konopski "A teraz wracamy do pracy obiboki!"
-    Konopski "Światła{w=0.5} {size=+5}kamera{w=0.5} {size=+5}AKCJA{/size}!"
+    Konopski "Światła!{w=0.5} {size=+5}Kamera!"
     show konopski at half_out
     pause 3.0
     show question at question_konop
-    Konopski "Świetnie, straciłem wątek. O czym to ja...?"
-    $ offscreen_talking()
+    Konopski "Świetnie, straciłem wątek.{w=1} O czym to ja...?"
+    pause 1
     hide question
-    Konopski ej happy_eyes "No oczywiście, dziękuję randomowy statysto!"
-    Konopski -happy_eyes "Powróćmy zatem do znieważania tiktokerów!"
+    Konopski ej happy_eyes "No oczywiście! Obrażanie tiktokerów!" 
+    Konopski "Dziękuję randomowy statysto!"
     hide konopski with moveoutright
     pause 1.0
+    Konopski "{size=+10}AKCJA!{/size}"
     hide blur with dissolve
 
 label transparenty_poczatek:
@@ -274,19 +272,22 @@ Kto z Wardęga przystaje{nw}
 Muszę przyznać, że ta eskalująca agresja wywołuje we mnie lekką nutkę niepokoju...
 ''')
 label danger_transparenty:
-    scene black with slow_dissolve
+    scene black with transition("farba", time=1.5)
     $stop_music()
     show konopski main with moveinbottom
     $ character_monologue(Konopski, '''
 Ech, te dzisiejsze fandomy.
-{cps=10}ZA MOICH CZASÓW{/cps} wszyscy żyli ze sobą w zgodzie i harmonii. A teraz...? {w=2}Szkoda gadać.
-Takim patusom nie pomoże już nawet Projekt Lady.
-No ale nieważne. Co mnie obchodzi zepsucie moralne jakiejś leśnej hołoty.
+{cps=10}ZA MOICH CZASÓW{/cps} wszyscy żyli ze sobą w zgodzie i harmonii. A teraz...? Szkoda gadać.
+Tym dzikusom nie pomoże już najbardziej prestiżowy kurs walki z patusiarstwem.{w=1}
+Mam oczywiście na myśli Projekt Lady.
+No ale nieważne. Nie wiem czemu aż tak spinam dupę.
+Co mnie obchodzi zepsucie moralne jakiejś leśnej hołoty?
 W gruncie rzeczy są oni przecież nieszkodli {nw}
 ''')
     hide window
     
     $play_video("transparenty")
+    scene black
 
     jump menu3_uciekaj
 
@@ -316,5 +317,5 @@ Nie mogę tak po prostu stąd wyjść...
 Gdzie mój płaszcz?
 ...
 Dobra, walić to, spadam jak jest.
-Nar...{w=1}{nw}''')
+Narauuu{nw}''')
     jump dziewczeta

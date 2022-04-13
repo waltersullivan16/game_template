@@ -6,6 +6,7 @@
 "bin/transforms.rpy"
 "bin/music.rpy"
 "bin/images_python.rpy"
+"bin/styles.rpy"
 
 "bin/znalezione/wipes.rpy"
 

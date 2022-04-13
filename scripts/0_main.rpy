@@ -35,8 +35,6 @@ label uwertura_scenes:
     menu:
         "quote":
             jump quote_screen
-        "quote":
-            jump quote_screen
         "monolog1":
             jump konop_monolog1
         "monolog2":
@@ -51,8 +49,6 @@ label uwertura_scenes:
             jump menu2_blowek2
         "transparenty":
             jump danger_transparenty
-        "dziewczeta":
-            jump dziewczeta
         "bloody":
             jump bloody_text
         "namiejsce":

@@ -18,6 +18,8 @@
 #notatki gowna bo sie pomylilam w przeszlosci pozdro mordo musi byc png
 image lobby = Image("background/lobby.png")
 image bg lobby = Image("background/lobby.png")
+image lobby2 = Image("background/lobby2.png")
+image lobby_black = Image("background/lobby_black.png")
 image defense = Image("background/defense.png")
 image codefense = Image("background/codefense.png")
 image judge = Image("background/judge.png")
@@ -62,3 +64,4 @@ init python:
 
 image reaction_switch = ShowingSwitch(
     "kropla", At("sweatdrop", dropping))
+#image mini-konopski = 

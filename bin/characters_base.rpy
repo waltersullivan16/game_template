@@ -2,7 +2,7 @@
 
 init -8 python:
 ### CHARACTERS
-    CHARACTERS_NAMES = ["Pearl", "Ema", "Penny", "Najman", "LilMasti"]#'Wardega', 'Konopski', 'Revo', 'Lexio', 'Gimper', 'Dziewczyna1', 'Dziewczyna2', 'Dziewczyna3']
+    CHARACTERS_NAMES = ["Pearl", "Ema", "Penny", "Najman", "LilMasti", "Unknown"]#'Wardega', 'Konopski', 'Revo', 'Lexio', 'Gimper', 'Dziewczyna1', 'Dziewczyna2', 'Dziewczyna3']
 
 
 ## SPECIAL CHARACTERS
@@ -46,5 +46,7 @@ init -8 python:
             exec(c)
 
     Unknown = Character(name = "???")
-    Blank = Character(name = "blank")
-    Straznik = Character(name = "STRAŻNIK", what_style="straznik_text")
+    Blank = Character(name = "")
+    Straznik = Character(name = "STRAŻNIK")#, what_style="straznik_text")
+
+    Unknown.name ="???"

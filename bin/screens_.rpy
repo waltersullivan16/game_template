@@ -8,13 +8,15 @@ screen z():
         yalign 0.0
         #hover setattr(config, "mouse", {"default": [("others/myszka_error.png", 1, 1)]})
         idle "gui/button/kopi.png"
-        action ToggleMute("music")
+        mouse "active"
+        action Jump("test")#ToggleMute("music")
 
     imagebutton:
         xalign 0.0
         yalign 0.0
         idle "gui/button/kopi.png"
         action Jump("uwertura_scenes")
+        #action Jump("winny")
         #action Show("options")
 
 

@@ -36,7 +36,25 @@ layeredimage konopski_phoenix:
         attribute normal default null
     group suit auto:
         attribute normal default null
-      
+
+### WARDĘGA  
+init python:
+    styles = ["thinking"]
+    WardegaClass = CharacterBase("Wardega", styles=styles)
+    Wardega = WardegaClass.char
+
+
+layeredimage wardega:
+    group body if_not "head" auto:
+        attribute main default
+
+    if WardegaClass.talking:
+        WardegaClass.animations_switch
+
+    group head auto:
+        attribute normal default null
+    group suit auto:
+        attribute normal default null
 
 ### PEARL ###
 init python:

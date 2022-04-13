@@ -26,9 +26,11 @@ label konop_monolog1:
 No i wreszcie nadszedł ten moment.
 Dzień, w którym raz na zawsze udowodnię, kto jest czarnym charakterem w tej historii.
 To była długa i wyczerpująca batalia.
-Początkowo niepozorna, eskalowała błyskawicznie.{w=1} Zanim się obejrzałem, stała się całym moim życiem.
-Nie będę ukrywał, bywało <b>NAPRAWDĘ</b> ciężko. Ciężko na tyle, że aż rozważałem odejście z youtuba.
-Czy żałuję, że otworzyłem tę puszkę Pandrory?{w=1} Raczej nie.
+Początkowo niepozorna, eskalowała błyskawicznie.
+Zanim się obejrzałem, stała się całym moim życiem.
+Nie będę ukrywał, bywało {b}NAPRAWDĘ{/b} ciężko.
+Ciężko na tyle, że aż rozważałem odejście z youtuba.
+Czy żałuję, że otworzyłem tę puszkę Pandory?{w=1} Raczej nie.
 Wszystkie trudy i znoje były warte tej jednej magicznej chwili, która dzisiaj niewątpliwie nastąpi.
 Lexiu usłyszy dzisiaj wyrok...''')
     #scene intro2
@@ -45,16 +47,16 @@ label winny:
     pause 2.0
     hide winny with wet_time(1.2)
 
-    # proudly presents
+    # TODO nazwa studia
     show text Text("to ma mnie upokorzyć proudly presents", style="creepy_text_style") at truecenter with fast_dissolve
-    pause 3.1
+    pause 3.4
     hide text with dissolve
 
     # zbrodnia, kara subskrybcje
     show title_blank at Position(ypos=0.6) with wipeleft
-    pause 0.1
+    pause 0.3
     show zbrodnia at Position(ypos=0.6) with vpunch
-    pause 0.4
+    pause 0.5
     show kara at Position(ypos=0.6) with vpunch
     pause 0.1
     show pasek at Position(ypos=0.6) with wipeleft
@@ -70,7 +72,7 @@ label winny:
 ### KONOP MONOLOG 2 + SUBSKRYBCJE + KRÓTKI MONOLOG MYŚLOWY LOL
 
 label konop_monolog2:
-    scene lobby with wet
+    scene lobby with transition("farba", time=1.5)
     $ change_style("main")
     $ play_music("lobby")
     pause 1.0

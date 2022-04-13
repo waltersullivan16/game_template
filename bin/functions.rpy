@@ -34,11 +34,20 @@ init -9 python:
         character(text)
         persistent.stop_lipsync = False 
     
-    def offscreen_talking(time=2):
-        renpy.hide("window")
-        play_sound_effect("off_scene")
+    def offscreen_talking(time=1):
+        play_sound_effect(gpj("talking", "ds"))
         renpy.pause(time)
-        
+
+    def loading(transition="farba", time=0.5):#, transition2):
+        renpy.show("bg black")
+        def loading_change(pause1=1.0,pause2=0.3):
+            change_cursor("loading")
+            renpy.pause(pause1)
+            change_cursor("main")
+            renpy.pause(pause2)
+        loading_change(1.0,0.3)
+
+        loading_change(1, 0)
 
     def get_frame(character, animation_name, frame):
         return "{} {} {}".format(character, animation_name, frame)
@@ -51,19 +60,26 @@ init -9 python:
     
     animation_reaction = lambda name: animation_maker(name, "reaction")
  
-    def alter_say_strings(str_to_test, dot="1.0", comma="0.3"):
-        alphabet = string.ascii_lowercase
-        if not any([c in alphabet for c in str_to_test.lower()]):
-            print(str_to_test, "adadas")
-            return str_to_test
+    def alter_say_strings(str_to_test):
         str_map = {
-            ". " : ". {{w={}}}".format(dot),
-            ", " : ", {{w={}}}".format(comma),
+            ". " : ". {{w={}}}".format(DOT),
+            ", " : ", {{w={}}}".format(COMMA),
+            "! " : "! {{w={}}}".format(REST),
         }
         for key in str_map:
             str_to_test = str_to_test.replace(key, str_map[key])
         return str_to_test
         
+    def change_cps(cps=25):
+        preferences.text_cps = cps
+
+    def change_cursor(cursor):
+        globals()['default_mouse'] = cursor
+        return
+
+    def transition(name, time=1.0, parts=8, reverse=False):
+        return ImageDissolve(gpj(PATHS["transitions"], "{}.png".format(name)), time, parts, reverse=reverse)
+    
 # scenes
     def show_scene(background, characters):
         renpy.scene()

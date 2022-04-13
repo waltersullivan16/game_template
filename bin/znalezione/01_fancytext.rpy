@@ -248,7 +248,6 @@ python early:
                 blits = [ renpy.text.text.Blit(0, 0, w - layout.xborder, h - layout.yborder, left=True, right=True, top=True, bottom=True) ]
                 redraw = None
             else:
-                # TODO: Make this changeable.
                 blits = self.blits_slow(layout, st)
                 redraw = self.redraw_slow(layout, st)
 

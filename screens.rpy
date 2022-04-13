@@ -97,39 +97,27 @@ style frame:
 
 screen say(who, what):
     style_prefix "say"
-#
+    $style.say_dialogue = style["say_dialogue_{}".format(persistent.style)]
+    #if True:#not persistent.hide_dialogue_windows:
     window:
         id "window"
-        if who is not None and who is not "blank" and not persistent.style_class.hide_namebox:
+        if who is not None and who is not "blank" and not persistent.hide_dialogue_windows:
             window:
                 id "namebox"
-                style "namebox_{}".format(persistent.style_class.name)
-                text who id "who" color persistent.style_class.name_color font persistent.style_class.name_font
-            $style.say_label = style["say_label_{}".format(persistent.style_class.name)]
-#
-#            $ persistent.font_name = FONTS["ubuntu"]
-#            $ persistent.font_labelname = FONTS["lucky"]
-        $style.say_dialogue = style["say_dialogue_{}".format(persistent.style_class.name)]
-        $style.say_window = style["say_window_{}".format(persistent.style_class.name)]
-        text what id "what" color persistent.style_class.text_color font persistent.style_class.text_font #color persistent.text_color
-#
+                style "namebox_{}".format(persistent.style)
+                text who id "who"
+            $style.say_label = style["say_label_{}".format(persistent.style)]
+        $style.say_window = style["say_window_{}".format(persistent.style)]
+        text what id "what"
+    #else:
+    #    text what id "what"# style "straznik_text_style"
 
-    ## If there's a side image, display it above the text. Do not display on the
-    ## phone variant - there's no room.
-    if not renpy.variant("small"):
-        add SideImage() xalign 0.0 yalign 1.0
 
 
 ## Make the namebox available for styling through the Character object.
 init python:
     config.character_id_prefixes.append('namebox')
 
-style window is default
-style say_label is say_label_main
-style say_dialogue is say_dialogue_main
-
-style namebox is default
-style namebox_label is say_label
 
 ## Input screen ################################################################
 ##

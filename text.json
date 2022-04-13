@@ -1,0 +1,91 @@
+{
+	"name": "Konopski",
+	"style": "style_thoughts"
+}
+    #circlewipe
+    #ccirclewipe
+    #bites
+    #bowtie
+    #cmet
+    #cwside
+    #cwtop
+    #dots
+    #edges
+    #flips
+    #fur
+    #goslow
+    #letter
+    #maze
+    #radio
+    #snake
+    #snake2
+    #snakes
+    #sunshine
+    #glasswool
+    #wet
+    $_dismiss_pause = True
+    scene courtroom with w35
+    show text Text("{size=+30}w35{/size}") 
+    pause
+    scene lobby with w36
+    show text Text("{size=+30}w36{/size}") 
+    pause
+    scene courtroom with w37
+    show text Text("{size=+30}w37{/size}") 
+    pause
+    scene lobby with goslow
+    show text Text("{size=+30}goslow{/size}") 
+    scene courtroom with fur
+    show text Text("{size=+30}fur{/size}") 
+    scene lobby with maze
+    show text Text("{size=+30}maze{/size}") 
+    pause
+    scene courtroom with radio
+    show text Text("{size=+30}radio{/size}") 
+    pause
+    scene lobby with snake
+    show text Text("{size=+30}snake{/size}") 
+    pause
+    scene courtroom with snake2
+    show text Text("{size=+30}snake2{/size}") 
+    pause
+    scene lobby with snakes
+    show text Text("{size=+30}snakes{/size}") 
+    pause
+    scene courtroom with sunshine
+    show text Text("{size=+30}sunshine{/size}") 
+    pause
+    scene lobby with glasswool
+    show text Text("{size=+30}glasswool{/size}") 
+    pause
+    scene courtroom with wet
+    show text Text("{size=+30}wet{/size}") 
+    pause
+    scene lobby with letter
+    show text Text("{size=+30}letter{/size}") 
+    pause
+    scene courtroom with circleirisout
+    show text Text("{size=+30}imdis{/size}") 
+    pause
+    scene lobby with teleport
+    show text Text("{size=+30}imdisteleport{/size}") 
+    pause
+    scene courtroom with circleirisin
+    show text Text("{size=+30}imdisdream{/size}") 
+    pause
+    scene lobby with circleirisout
+    show text Text("{size=+30}imdisteleportwipe{/size}") 
+    pause
+    scene courtroom with rain1
+    show text Text("{size=+30}rain{/size}") 
+    pause
+    scene lobby with rain2
+    show text Text("{size=+30}rain2{/size}") 
+    pause
+    scene courtroom with shot
+    show text Text("{size=+30}shot{/size}") 
+    pause
+    scene lobby with shatter
+    show text Text("{size=+30}shatter:{/size}") 
+    pause
+

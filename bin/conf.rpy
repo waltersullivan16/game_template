@@ -89,3 +89,4 @@ define config.window_show_transition = dissolve
 define config.layers = [ 'master', 'transient', 'topcia', 'screens', 'overlay']
 define config.say_menu_text_filter = alter_say_strings
 default preferences.show_empty_window = False
+default preferences.text_cps = 40
