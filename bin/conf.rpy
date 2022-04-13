@@ -58,15 +58,8 @@ init -11 python:
 
     if persistent.style is None:
         persistent.style = "main"
-        persistent.style_class = MainStyle
 
-    if persistent.cursor is None:
-        persistent.cursor = "main"
-    mouse = lambda x: "gui/mouse/{}.png".format(x)
-
-    def change_cursor(cursor):
-        persistent.cursor = cursor
-        config.mouse["default"] = config.mouse[cursor]
+    mouse = lambda x: gpj("gui", "mouse", "{}.png".format(x))
 
     config.mouse = {
             "default": [(mouse("main"), 1, 0)],
@@ -79,9 +72,6 @@ init -11 python:
             "question": [(mouse("question"), 1, 0)],
     } 
     
-    persistent.talking_mode = "normal"
-    persistent.lock = False
-    persistent.stop_lipsync = False
     #_dismiss_pause = False
     renpy.music.register_channel("sfx1", "sfx")
 

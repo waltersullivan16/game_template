@@ -7,7 +7,7 @@
 # ../screens.rpy
 
 
-label namiejsce:
+label namiffejsce:
     $ Straznik(text_style("straznik", "PANIE KONOPSKI PROSZĘ ZAJĄĆ SWOJE MIEJSCE"))
     #$play_music("straznik")
     Konopski "Nie, nie, nie, szybko, gdzie jest kurtka, walić kurtkę, wycho...{nw}"
@@ -180,5 +180,3 @@ label ucieczka_dom:
     Konopski "Dubiel, gdzie jesteś...   ?"
     jump end
 
-label end:
-    return

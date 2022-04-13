@@ -141,15 +141,13 @@ Może to nie było nawet stado Wardęgi.
 Pardon, {size=+10}WATAHA®{/size} Wardęgi.
 ''')
 
-    $ silence()
-
+    pause 1.5
     $ thinking(
         Konopski,'''
 No i gdzie ba-dum-tssk?
 Tym razem to miało pretendować do kategorii żart.
 ''')
-    $ silence
-    
+    pause 1.0 
     $ thinking(
         Konopski, '''
 Amatorzy.
@@ -157,8 +155,7 @@ Amatorzy.
 label check_blowek2b:
     scene bg transparenty1
     #$ persistent.special_sound = "badum"
-    $ thinking(Konopski, '''Mniejsza o to. Może to nie była nawet {size=+10}WATAHA®{/size}{nw}
-~Sbadum''')
+    $ thinking(Konopski, "Mniejsza o to. Może to nie była nawet {size=+10}WATAHA®{/size}{nw}")
     $ renpy.pause(2.0)
 
     $ thinking(
@@ -166,12 +163,11 @@ label check_blowek2b:
 Nie! {w=0.5} Tu tak totalnie {cps=10}NIE{/cps}!
 Bardziej "NIE" niż za pierszym razem!
 ''')
-#~Sglitter
     $ thinking(
         Konopski,'''
 Czy wy w ogóle wiecie czym jest <ba-dum-tsk>?
 ''')
-    $silence(1)
+    pause(1)
     $play_sound_effect("badum")
     pause(3)
     $ thinking(Konopski, "...")
@@ -184,6 +180,7 @@ Dobra, jeszcze raz.
     $ thinking(Konopski, "To nie byli ludzie z fandomu...{nw}")
     $play_sound_effect("badum")
     pause 2
+
 label check_blowek2c:
     show blur with dissolve
     show konopski ej at right with moveinright
@@ -194,7 +191,7 @@ label check_blowek2c:
     Konopski "I od razu ostrzegam, niech mi tu żaden śmieszek nawet nie próbuje wykręcić się wersją 'kurier przyniósł go w paczce'"
     Konopski "Bo to będzie żart śmieszny jak jego wypłata.{w=1}{nw}"
     $ play_sound_effect("badum")
-    $ silence(3)
+    pause 3.0
     Konopski ej happy_eyes flower "Jest jakiś progres."
     pause 1
     Konopski ej -flower -happy_eyes "Że co proszę?"
@@ -253,11 +250,11 @@ label check_blowek2e:
     #$image_punch("zniszcz_sztubaka")
     #$ show_with_args("zniszcz_sztubaka", transition=vpunch, sound="punch")
     $ image_punch("zniszcz_sztubaka")
-    $silence(2)
+    pause 2.0
     Konopski "Albo wiesz co, zmieniłem zdanie, możesz już zabrać swój{nw}"
 #Czy ja właśnie odkryłem najgłębszą czeluść dantejskiego piekła?
     $image_punch("zad")
-    $silence(2)
+    pause 1.0
     $ thinking(
         Konopski,'''
 Prostackie grubiaństwo. Niczego innego się po nich nie spodziewałem.
@@ -265,7 +262,7 @@ Jaki pan, taki kram.
 Kto z Wardęga przystaje{nw}
 ''')
     $image_punch("sor")
-    $silence(2)
+    pause 2.0
     $ thinking(
         Konopski,'''
 ...

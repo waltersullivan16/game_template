@@ -98,7 +98,6 @@ style frame:
 screen say(who, what):
     style_prefix "say"
     $style.say_dialogue = style["say_dialogue_{}".format(persistent.style)]
-    #if True:#not persistent.hide_dialogue_windows:
     window:
         id "window"
         if who is not None and who is not "blank" and not persistent.hide_dialogue_windows:
@@ -109,8 +108,6 @@ screen say(who, what):
             $style.say_label = style["say_label_{}".format(persistent.style)]
         $style.say_window = style["say_window_{}".format(persistent.style)]
         text what id "what"
-    #else:
-    #    text what id "what"# style "straznik_text_style"
 
 
 

@@ -9,34 +9,13 @@ init -14 python:
 
 init -9 python:
     def char_talking(character, event, **kwargs):
-        if event == "show" and not persistent.stop_lipsync:
+        if event == "show":
             character.talking = True
-            print(character, get_blip(), persistent.talking_mode)
             play_sound_effect(get_blip(), channel="sound", loop="True")
 
         elif event in ["end", "slow_done"]:
             character.talking = False
-            #renpy.music.stop(channel="sound")
             stop_sound_effect()
-            #if persistent.blip_mute is None:
-            if persistent.special_sound is not None and event == "end":
-                play_sound_effect(persistent.special_sound)
-                persistent.special_sound = None
-            if not persistent.lock:
-                persistent.talking_mode = "normal"
-
-    def silence(time=1):
-        renpy.hide("window")
-        renpy.pause(time)
-
-    def stop_lipsync(character, text):
-        persistent.stop_lipsync = True
-        character(text)
-        persistent.stop_lipsync = False 
-    
-    def offscreen_talking(time=1):
-        play_sound_effect(gpj("talking", "ds"))
-        renpy.pause(time)
 
     def loading(transition="farba", time=0.5):#, transition2):
         renpy.show("bg black")
@@ -46,7 +25,6 @@ init -9 python:
             change_cursor("main")
             renpy.pause(pause2)
         loading_change(1.0,0.3)
-
         loading_change(1, 0)
 
     def get_frame(character, animation_name, frame):
@@ -60,25 +38,23 @@ init -9 python:
     
     animation_reaction = lambda name: animation_maker(name, "reaction")
  
-    def alter_say_strings(str_to_test):
+    def alter_say_strings(str_to_test, dot=0.3, comma=0.1, rest=0.2):
         str_map = {
-            ". " : ". {{w={}}}".format(DOT),
-            ", " : ", {{w={}}}".format(COMMA),
-            "! " : "! {{w={}}}".format(REST),
+            ". " : ". {{w={}}}".format(dot),
+            ", " : ", {{w={}}}".format(comma),
+            "! " : "! {{w={}}}".format(rest),
         }
         for key in str_map:
             str_to_test = str_to_test.replace(key, str_map[key])
         return str_to_test
         
-    def change_cps(cps=25):
-        preferences.text_cps = cps
-
     def change_cursor(cursor):
         globals()['default_mouse'] = cursor
         return
 
     def transition(name, time=1.0, parts=8, reverse=False):
-        return ImageDissolve(gpj(PATHS["transitions"], "{}.png".format(name)), time, parts, reverse=reverse)
+        wipe_path = gpj("gui","transitions", "wipes")
+        return ImageDissolve(gpj(wipe_path, name), time, parts)
     
 # scenes
     def show_scene(background, characters):

@@ -70,9 +70,7 @@ label dziewczeta_wardega:
 
 label bloody_text:
     scene black with dissolve
-    $silence()
     $ play_video("strasznega")
-    $ change_style("creepy")
     $ persistent.style = "creepy"
     show konopski smirk at right with dissolve
     Konopski "Wy... zdajecie sobie sprawę z tego, że \"Wardęga\" to nie jest jego imię, prawda?"
@@ -133,8 +131,6 @@ label legenda:
     jump gazeta0
 
 label gazeta0:
-
-
     $change_style("main")
     scene lobby
     show pearl serious
