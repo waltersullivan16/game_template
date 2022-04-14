@@ -100,7 +100,7 @@ screen say(who, what):
     $style.say_dialogue = style["say_dialogue_{}".format(persistent.style)]
     window:
         id "window"
-        if who is not None and who is not "blank" and not persistent.hide_dialogue_windows:
+        if who is not None and who is not "blank":
             window:
                 id "namebox"
                 style "namebox_{}".format(persistent.style)

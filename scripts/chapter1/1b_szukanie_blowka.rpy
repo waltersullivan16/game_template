@@ -12,7 +12,7 @@ Tak, to dobry pomysł.
 Jego obecność niewątpliwie podniosłaby moje morale.
 Nie mógłbym przecież okryć się hańbą na oczach mistrza.
 ''')
-    scene bg black with transition("farba", 2)
+    scene bg black with transition("wet", 2)
     $stop_music()
     jump check_blowek1a
 
@@ -23,6 +23,7 @@ label grafika:
     jump blowek
 
 label check_blowek1a:
+    $ loading()
     scene bg transparenty0 with transition("farba", time=2) 
     $play_music("scary")
     $thinking(
@@ -62,20 +63,19 @@ W sumie to całkiem sympatycznie...{nw}
     $ stop_music()
     show junko3 with vpunch
 
-    $ Konopski(text_style("thoughts", "{size=+20}{fast}Co do...?{/size}"))
+    $ thinking(Konopski, "{size=+20}{fast}Co do...?{/size}")
 
     show toko1 with dissolve
     show toko22
 
 label check_blowek1c:
-    $ Konopski(text_style("thoughts", "Współczuję tej okuarnicy całym sercem, ja na jej miejscu chyba bym{nw}"))
+    $ thinking(Konopski, "Współczuję tej okuarnicy całym sercem, ja na jej miejscu chyba bym{nw}")
     show toko3 with vpunch
-    $ Konopski(text_style("thougts", "{fast}{size=+50}Ja pierdolę co jest grane{/size}"))
-    #$scene_courtroom1()
-    #$renpy.pause(15.0, hard=True)
+    Konopski "{fast}{size=+50}Ja pierdolę co jest grane{/size}"
 
 label check_blowek_kokichi:
     $ thinking(Konopski,"Co to za stado poje{nw}")
+    $ scene_courtroom1()
     show blur with transition("maska", 3)
     show kokichi at creepy_kokichi with Dissolve(4.0)
     pause(2)
@@ -84,8 +84,7 @@ label check_blowek_kokichi:
 
 label check_blowek1e:
     $renpy.pause(2.0, hard=True)
-    scene lobby with eye
-    $change_cursor("active")
+    scene lobby with transition("eye", time=1.5, parts=16)
     $ thinking(
         Konopski,'''
 ...
@@ -124,7 +123,7 @@ label lo:
     scene bg black with transition("farba") 
     $stop_music()
     pause(1)
-    $ change_style("black", True)
+    $ change_style("black")
     $ Konopski(text_style("black_screen", "Przynajmniej taką mam nadzieję..."))
     $ change_style("main")
     $ loading(transition("farba"), Dissolve(2.0))
@@ -244,15 +243,9 @@ mogłabyś odwrócić ten transparent w moją stronę, żebym mógł...{nw}
 '''
 
 label check_blowek2e:
-    #show "zniszcz_sztubaka" with moveinbottom
-
-    #$show_with_args("zniszcz_sztubaka", at_list=[blur], pause=2.0, sound="blup")
-    #$image_punch("zniszcz_sztubaka")
-    #$ show_with_args("zniszcz_sztubaka", transition=vpunch, sound="punch")
     $ image_punch("zniszcz_sztubaka")
     pause 2.0
     Konopski "Albo wiesz co, zmieniłem zdanie, możesz już zabrać swój{nw}"
-#Czy ja właśnie odkryłem najgłębszą czeluść dantejskiego piekła?
     $image_punch("zad")
     pause 1.0
     $ thinking(

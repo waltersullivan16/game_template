@@ -29,10 +29,6 @@ init -10 python:
         "king": "king",
     }
 
-    BLIP_TYPES = {
-        "normal": "blip",
-        "thinking": "blip_thinking",
-    }
     def music(name):
         return gpj("music", "soundtrack", "{}.mp3".format(SOUNDTRACK[name]))
 
@@ -40,12 +36,8 @@ init -10 python:
         return gpj("music","sound effects", "{}.mp3".format(name))
 
     def video(name):
-        return gpj("images","cutscenes", "{}.webm".format(name))
+        return gpj("videos", "{}.webm".format(name))
     
-    def get_blip():
-        return BLIP_TYPES[persistent.talking_mode]
-    
-    # SOUND_EFFECTS = "blip", "badum", "punch"
 
     config.main_menu_music = music("chipdale")
 

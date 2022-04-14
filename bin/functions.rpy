@@ -11,7 +11,7 @@ init -9 python:
     def char_talking(character, event, **kwargs):
         if event == "show":
             character.talking = True
-            play_sound_effect(get_blip(), channel="sound", loop="True")
+            play_sound_effect(persistent.blip, channel="sound", loop="True")
 
         elif event in ["end", "slow_done"]:
             character.talking = False
@@ -54,7 +54,7 @@ init -9 python:
 
     def transition(name, time=1.0, parts=8, reverse=False):
         wipe_path = gpj("gui","transitions", "wipes")
-        return ImageDissolve(gpj(wipe_path, name), time, parts)
+        return ImageDissolve(gpj(wipe_path, "{}.png".format(name)), time, parts, reverse=reverse)
     
 # scenes
     def show_scene(background, characters):

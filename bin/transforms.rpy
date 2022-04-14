@@ -164,7 +164,7 @@ transform question_konop:
     rotate -50    
     zoom 0.8
 
-transform co_to:
+transform creepy_kokichi:
     xanchor 0.05 zoom 1.10
     xpos -5
     subpixel True

@@ -22,17 +22,17 @@ init python:
 
 ## An accent color used throughout the interface to label and highlight text.
 #define gui.accent_color = u'#000000'
-define gui.accent_color = FONT_DICT["accent"].color 
+define gui.accent_color = COLORS["blue"]
 
 ## The color used for a text button when it is neither selected nor hovered.
-define gui.idle_color = FONT_DICT["idle"].color
+define gui.idle_color = COLORS["white"]
 
 ## The small color is used for small text, which needs to be brighter/darker to
 ## achieve the same effect.
 define gui.idle_small_color = u'#aaaaaa'
 
 ## The color that is used for buttons and bars that are hovered.
-define gui.hover_color = FONT_DICT["hover"].color
+define gui.hover_color = COLORS["blue"]
 
 ## The color used for a text button when it is selected but not focused. A
 ## button is selected if it is the current screen or preference value.
@@ -47,30 +47,30 @@ define gui.muted_color = u'#00513d'
 define gui.hover_muted_color = u'#007a5b'
 
 ## The colors used for dialogue and menu choice text.
-define gui.text_color = FONT_DICT["text"].color
-define gui.interface_text_color = FONT_DICT["interface"].color
+define gui.text_color = COLORS["white"]
+define gui.interface_text_color = COLORS["white"]
 
 
 ## Fonts and Font Sizes ########################################################
 
 ## The font used for in-game text.
-define gui.text_font = FONT_DICT["text"].name
+define gui.text_font = font("ubuntu")
 
 ## The font used for character names.
-define gui.name_text_font = FONT_DICT["name"].name
+define gui.name_text_font = font("lucky")
 
 ## The font used for out-of-game text.
 #define gui.interface_text_font = "DejaVuSans.ttf"
-define gui.interface_text_font = FONT_DICT["interface"].name
+define gui.interface_text_font = font("haters") 
 
 ## The size of normal dialogue text.
-define gui.text_size = FONT_DICT["text"].size
+define gui.text_size = 25
 
 ## The size of character names.
-define gui.name_text_size = FONT_DICT["name"].size
+define gui.name_text_size = 50
 
 ## The size of text in the game's user interface.
-define gui.interface_text_size = FONT_DICT["interface"].size
+define gui.interface_text_size = 52 
 
 ## The size of labels in the game's user interface.
 define gui.label_text_size = 24

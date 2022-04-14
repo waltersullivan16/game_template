@@ -34,12 +34,7 @@ init python:
 
 image bg transparenty11 = Image(transparenty_path("transparenty1"))
 
-#image bg ulubione_filmy = Image("scenes/ulubione/ulubione_filmy.png")
-#image bg ulubione = Image("scenes/ulubione/ulubione.png")
-#image bg ulubione_powiedzenia = Image("scenes/ulubione/ulubione_powiedzenia.png")
-
 image bg black = Image("background/black.png")
-#image blur = Image("background/blur.png")
 
 image minikonopski = Image("characters/konopski/mini-konopski.png")
 

@@ -1,12 +1,19 @@
 ### DEFAULT
 
 style say_window is default
-style namebox_main is default
-style namebox_label is say_label_name
-style say_label_main is default
+style say_dialogue is default
+style say_label is default
 
-style say_window:
-    background Frame(textbox_maker("empty"))
+style namebox is default
+
+style say_window_empty:
+    background textbox_maker("empty")
+
+style say_window_main:
+    background Frame(textbox_maker("main"))
+    yalign 1.0
+    ysize 300
+    xalign 0.0
 
 style say_dialogue_main:
     xpos 150 ypos 0.5
@@ -22,19 +29,12 @@ style say_label_main:
     font font("lucky")
     color COLORS["black"]
 
-style say_window_main:
-    background Frame(textbox_maker("main"))
-    yalign 1.0
-    ysize 300
-    xalign 0.0
-
 ## CREEPY
+
+style say_window_creepy is say_window_main
 
 style say_window_creepy:
     background Frame(textbox_maker("creepy"), 1)
-    yalign 1.0
-    ysize 300
-    xalign 0.0
 
 style say_dialogue_creepy:
     xpos 90 ypos 0.5
@@ -52,6 +52,7 @@ style say_label_creepy:
 
 ### INTRO
 
+style say_window_intro is say_window_empty
 style say_dialogue_intro:
     xpos 350
     ypos 270
@@ -59,9 +60,9 @@ style say_dialogue_intro:
     line_spacing 10
 
 ### WWW
+
 style say_dialogue_www:
     xpos 50 ypos 200
-    #rest_indent 100
     xsize 900
 
 ### QUOTE
@@ -120,7 +121,7 @@ style thoughts_creepy_text_style is text:
     italic True
     font font("ubuntu")
 
-style dark_thoughts_text_style is text:
+style thoughts_dark_text_style is text:
     size 20
     color COLORS["dark_blue"]
     italic True

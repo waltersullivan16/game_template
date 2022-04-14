@@ -71,7 +71,7 @@ label dziewczeta_wardega:
 label bloody_text:
     scene black with dissolve
     $ play_video("strasznega")
-    $ persistent.style = "creepy"
+    $ change_style("creepy")
     show konopski smirk at right with dissolve
     Konopski "Wy... zdajecie sobie sprawę z tego, że \"Wardęga\" to nie jest jego imię, prawda?"
     show konopski main
@@ -87,7 +87,6 @@ label kopniak:
     pause 0.9
     show konopski at kicked_out
     pause 0.2
-    #TODO -> blip myślowe
     Pearl "Ale proszę nie wchodzić w kadr!"
     show ema determined at right with moveinbottom
     Ema "A poza tym, czy naprawdę myśli pan, że jest to odpowiedni moment na łamanie czwartej ściany?"
@@ -131,7 +130,7 @@ label legenda:
     jump gazeta0
 
 label gazeta0:
-    $change_style("main")
+    $ change_style("main")
     scene lobby
     show pearl serious
     show ema confused at right
@@ -154,15 +153,12 @@ label gazeta1:
     ### TODO inna muza
     $ play_music("gazeta")
     scene bg ulubione_filmy with dissolve
-    $change_style("www")
-    #$preferences.text_cps = 15
-    #Konopski "dsadadad" (multiple=2)
-    #Pearl "{size=+10}{font=gui/fonts/chomsky.ttf}{u}Ulubiony film{/u}{/font}{/size}{font=gui/fonts/unique.ttf}{p}Nagranie z procesu O.J.Simsona.{/font}"(multiple=2)
+    $ change_style("www")
     $ fav_filmy1 = [
         text_style("coda", "1) Nagranie z procesu O.J.Simsona{w=1}"),
         text_style("www", "{p}{u}Komentarz{/u}:{w=1}{size=+10}{cps=10} MAJSTERSZTYK.{/cps}{/size}{p}Opus magnum sądownictwa.{p}Pozycja {b}obowiązkowa{/b} dla fanów rezolutnej dysputy!!!{w}\n"),
         "\n\n\n",
-        text_style("dark_thoughts", "{image=minikonopski} Fa...{w=1} fanów rezolutnej dysputy...?"),
+        text_style("thoughts_dark", "{image=minikonopski} Fa...{w=1} fanów rezolutnej dysputy...?"),
     ]
     $Pearl("".join(fav_filmy1))
     ### TODO inny font (nie ma polskich znaków)
@@ -172,9 +168,8 @@ label gazeta1:
         text_style("coda", "4) Wilkołak"),
         text_style("coda", "5) Anakonda"),
         text_style("www", "{u}Komentarz{/u}: {w=1}Czasami wychodzi ze mnie bestia ;P{w=1}\n"),
-        #"{u}Komentarz{/u}: Czasami wychodzi ze mnie bestia ;P{w}\n",
-        text_style("dark_thoughts", "{image=minikonopski}..."),
-        text_style("dark_thoughts", "{u}Komentarz{/u}:{w=1} Nie{p}{w=0.5} Po prostu {w=0.5}{b}{size=+10}NIE{/size}{/b}.")
+        text_style("thoughts_dark", "{image=minikonopski}..."),
+        text_style("thoughts_dark", "{u}Komentarz{/u}:{w=1} Nie{p}{w=0.5} Po prostu {w=0.5}{b}{size=+10}NIE{/size}{/b}.")
     ]
     $Pearl("{w}\n".join(fav_filmy2))
 
@@ -183,8 +178,8 @@ label gazeta1:
         text_style("coda", "7) Enigma"),
         text_style("coda", "8) Sudoku"),
         text_style("coda", "9) Krzyżówki panoramiczne"),
-        text_style("dark_thoughts", "\n{image=minikonopski}"),
-        text_style("dark_thoughts", "Czy my nadal jesteśmy w kategorii 'filmy'...?")
+        text_style("thoughts_dark", "\n{image=minikonopski}"),
+        text_style("thoughts_dark", "Czy my nadal jesteśmy w kategorii 'filmy'...?")
     ]
     $Pearl("{w}\n".join(fav_filmy3))
 label gazeta2:
@@ -193,7 +188,7 @@ label gazeta2:
     show bg ulubione_filmy with wiperight
     show pearl at true_right with moveinbottom
     $ stop_music()
-    $change_style("main")
+    $ change_style("main")
     Pearl "To wszystko."
     $Konopski(text_style("thoughts", "Dzięki bogu..."))
     Konopski "Ok, to skoro już wiemy wszystko o druidzie, to..."
@@ -215,7 +210,7 @@ label gazeta2:
     pause 1.0
 
 label powiedzenia:
-    show bg ulubione_powiedzenia
+    scene bg ulubione_powiedzenia
     $ change_style("www")
     $preferences.text_cps = 15
     ### TODO list_text function
@@ -226,33 +221,30 @@ label powiedzenia:
         text_style("cite", "{space=50}powiedzenie ludowe"),
         text_style("coda", "3) Gdzie dwóch się bije, tam Wardęga korzysta"),
         text_style("cite", "{space=50}autor anonimowy"),
-        text_style("dark_thoughts", "\n{image=minikonopski}{size=+50}{cps=10}...{/size}{/cps} {w}{size=+30}co to kuźwa jest?{/size}"),
-        text_style("cite", text_style("dark_thoughts", "powiedzenie ludowe")),
+        text_style("thoughts_dark", "\n{image=minikonopski}{size=+50}{cps=10}...{/size}{/cps} {w}{size=+30}co to kuźwa jest?{/size}"),
+        text_style("cite", text_style("thoughts_dark", "powiedzenie ludowe")),
     ]
-    $character_monologue(Ema, "".join(fav_powiedzenia))
+    $ Blank(list_text(fav_powiedzenia))
     $fav_powiedzenia2 = [
-        #text_style("coda", "4) Bez Wardęgi jak bez ręki."),
-        #text_style("cite", "{space=50}Sylwester Wardęga"),
-        #text_style("dark_thoughts", "{image=minikonopski} To... niepokojące na wielu płaszczyznach."),
         text_style("coda", "4) Kto z Wardęgą wojuje, od Wardęgi ginie"),
         text_style("cite", "{space=50}Zaradna Wersow i zdemoralizowany Konopski"),
-        text_style("dark_thoughts", "\n{image=minikonopski}{size=+50}{cps=3}...{/size}{/cps} {w}{size=+30}co tu się wydarzyło...{/size}"),
-        text_style("dark_thoughts", "{b}{size=+15}Wardęga z youtuba, wszystkim lżej{/size}{/b}"),
-        text_style("cite", text_style("dark_thoughts", "absolutnie wszyscy youtuberzy")),
+        text_style("thoughts_dark", "\n{image=minikonopski}{size=+50}{cps=3}...{/size}{/cps} {w}{size=+30}co tu się wydarzyło...{/size}"),
+        text_style("thoughts_dark", "{b}{size=+15}Wardęga z youtuba, wszystkim lżej{/size}{/b}"),
+        text_style("cite", text_style("thoughts_dark", "absolutnie wszyscy youtuberzy")),
         text_style("coda", "5) Z Wardęgą ci się upiecze.") +
-        text_style("dark_thoughts","{w}\n Niech zgadnę, kto może być tego autorem...") +
-        text_style("dark_thoughts", "Postawię na \'cnotliwego Lexia\'..."),
+        text_style("thoughts_dark","{w}\n Niech zgadnę, kto może być tego autorem...") +
+        text_style("thoughts_dark", "Postawię na \'cnotliwego Lexia\'..."),
         text_style("cite", "{space=50}Cyceron"),
-        text_style("dark_thoughts", "\n{image=minikonopski} {size=+50}{cps=10}.......{/size}{/cps}")
+        text_style("thoughts_dark", "\n{image=minikonopski} {size=+50}{cps=10}.......{/size}{/cps}")
     ]
     ### TODO: poprawić tekst z cyceronem
-    $Ema(list_text(fav_powiedzenia2))
+    $Blank(list_text(fav_powiedzenia2))
     $ stop_music()
 
 label koniec_powiedzen:
     scene black with slow_dissolve 
     $ stop_music()
-    $change_style("main")
+    $ change_style("main")
     pause 1.0
     $Konopski(text_style("thoughts", "Co jak co, ale jednego Wardędze nie można odmówić."))
     $Konopski(text_style("thoughts", "Zaskakująco dobrze się trzyma jak na swoje lata..."))
