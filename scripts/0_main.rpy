@@ -33,14 +33,27 @@ label chapters:
 
 label uwertura_scenes:
     menu:
-        "quote":
+        "intro":
+            jump intro_menu
+        "szukanie blowka":
+            jump szukanie_blowka_menu
+
+        "dziewczyny":
+            jump dziewczyny_menu
+        "strażnik":
+            jump straznik_menu
+
+label intro_menu:
+    menu:
+        "początek":
             jump quote_screen
-        "monolog1":
+        "monolog":
             jump konop_monolog1
-        "monolog2":
-            jump konop_monolog2
         "winny":
             jump winny
+
+label szukanie_blowka_menu:
+    menu:
         "co robic1":
             jump menu1_blowek
         "szukanie blowka part1":
@@ -49,13 +62,11 @@ label uwertura_scenes:
             jump menu2_blowek2
         "transparenty":
             jump danger_transparenty
+
+label dziewczyny_menu:
+    menu:
         "bloody":
             jump bloody_text
-        "namiejsce":
-            jump namiejsce
-
-label scenes2:
-    menu:
         "kopniak":
             jump kopniak
         "legenda":
@@ -68,8 +79,11 @@ label scenes2:
             jump powiedzenia
         "koniec_powiedzen":
             jump koniec_powiedzen
-        "prev":
-            jump uwertura_scenes
+
+label straznik_menu:
+    menu:
+        "namiejsce":
+            jump namiejsce
 
 #label chapter1_t:
 # quite_screen    

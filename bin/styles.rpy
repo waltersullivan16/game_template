@@ -63,7 +63,7 @@ style say_dialogue_intro:
 
 style say_dialogue_www:
     xpos 50 ypos 200
-    xsize 900
+    xsize 1500
 
 ### QUOTE
 
@@ -76,7 +76,7 @@ style say_dialogue_quote:
 ### BLACK
 style say_dialogue_black:
     xpos 0.1 ypos 300
-    xsize 2000
+    xsize 1000
 
 ####################### MULTIPLE WINDOWS ####################################
 
@@ -142,9 +142,13 @@ style creepy_text_style is text:
 
 style coda_text_style is text:
     font font("coda")
-    #underline True
     color COLORS["black"]
     size 30
+
+style archivo_text_style is text:
+    font font("archivo")
+    color COLORS["black"]
+    size 35
 
 style www_text_style is text:
     font font("ubuntu")
@@ -160,6 +164,7 @@ style cite_text_style is text:
     font font("futura")
     color COLORS["black"]
     xpos 500
+    size 25
     italic True
     adjust_spacing 500
     first_indent 500
@@ -195,9 +200,8 @@ style chapter_text_style is text:
     slow_cps 5
 
 style straznik_text_style is text:
-    font font("blackops")
-    #font font("major")
-    size 40
+    font font("consult")
+    size 50
 
 style black_screen_text_style is text:
     font font("ubuntu")

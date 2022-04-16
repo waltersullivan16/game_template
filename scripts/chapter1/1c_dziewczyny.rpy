@@ -11,7 +11,7 @@ label dziewczeta:
     $ change_style("main")
 
     Unknown "Och, tak się cieszę, że zdążyłyśmy! Bałyśmy się, że wszedł już pan na salę."
-    $ play_music("dziewczyny1")
+    $ play_music("pearl")
     show pearl embarassed with vpunch
     Pearl "A bardzo nam zależało, żeby podziękować panu za to wszystko co pan dla nas robi."
     show ema happy at right with vpunch
@@ -119,13 +119,18 @@ label legenda:
     Konopski "A teraz, ku przypomnieniu, podkreślmy fakt, że jego imię brzmi 'Sylwester', a nie 'Wardega'..."
     pause 1.0
     Konopski "Co, znowu cutscenka...? No błagam..."
+
     $ loading()
+    pause .5
     $play_video("wardega")
+
     pause 1.0
     $ play_video("win")
     
     pause 1.0
     $play_video("smile")
+
+    $loading()
 
     jump gazeta0
 
@@ -138,13 +143,17 @@ label gazeta0:
     with dissolve
     Konopski "..."
     Konopski "Słuchajcie, nie żebym się czepiał, ale czy nie wydaje wam się, że odrobinę przesadzacie z tym dramatyzmem?"
+
     Ema thinking "Ale to przecież nie jest naszego autorstwa."
     Penny gossip "To był filmik {b}KU PRZESTRODZE{/b}, umieszczony na oficjalnej stronie Wardęgi {a=a}www.zorro-z-lasu2.com{/a}. Prawie wszystko co do tej pory powiedziałyśmy pochodzi z tej strony."
+
     Konopski "To... wiele wyjaśnia..."
+
     $ thinking(Konopski, '''
 Błagam, powiedzcie mi, że ta dwójka na końcu to część jakiejś zagadki...
 To niemożliwe, że istnieje jeszcze jeden zorro-z-lasu, {w=1.0}prawda...?{w=1}
 {size=+10} PRAWDA?{/size}''')
+
     Ema notes "Jest tu jeszcze sekcja {i}'Poznaj druida'{/i}."
     Konopski "A czy moglibyśmy skończyć tę rozmowę po procesie? Ja naprawdę muszę jeszcze przygotować się do{nw}"
     Ema "Ulubione filmy"
@@ -155,36 +164,34 @@ label gazeta1:
     scene bg ulubione_filmy with dissolve
     $ change_style("www")
     $ fav_filmy1 = [
-        text_style("coda", "1) Nagranie z procesu O.J.Simsona{w=1}"),
+        text_style("archivo", "1) Nagranie z procesu O.J.Simsona{w=1}"),
         text_style("www", "{p}{u}Komentarz{/u}:{w=1}{size=+10}{cps=10} MAJSTERSZTYK.{/cps}{/size}{p}Opus magnum sądownictwa.{p}Pozycja {b}obowiązkowa{/b} dla fanów rezolutnej dysputy!!!{w}\n"),
         "\n\n\n",
         text_style("thoughts_dark", "{image=minikonopski} Fa...{w=1} fanów rezolutnej dysputy...?"),
     ]
-    $Pearl("".join(fav_filmy1))
-    ### TODO inny font (nie ma polskich znaków)
+    $ Blank("".join(fav_filmy1))
     $ fav_filmy2 = [
-        text_style("coda", "2) Tańczący z wilkami"),
-        text_style("coda", "3) Braterstwo wilków"),
-        text_style("coda", "4) Wilkołak"),
-        text_style("coda", "5) Anakonda"),
+        text_style("archivo", "2) Tańczący z wilkami"),
+        text_style("archivo", "3) Braterstwo wilków"),
+        text_style("archivo", "4) Wilkołak"),
+        text_style("archivo", "5) Anakonda"),
         text_style("www", "{u}Komentarz{/u}: {w=1}Czasami wychodzi ze mnie bestia ;P{w=1}\n"),
         text_style("thoughts_dark", "{image=minikonopski}..."),
         text_style("thoughts_dark", "{u}Komentarz{/u}:{w=1} Nie{p}{w=0.5} Po prostu {w=0.5}{b}{size=+10}NIE{/size}{/b}.")
     ]
-    $Pearl("{w}\n".join(fav_filmy2))
+    $ Blank(list_text(fav_filmy2))
 
     $ fav_filmy3 = [
-        text_style("coda", "6) Cube"),
-        text_style("coda", "7) Enigma"),
-        text_style("coda", "8) Sudoku"),
-        text_style("coda", "9) Krzyżówki panoramiczne"),
+        text_style("archivo", "6) Cube"),
+        text_style("archivo", "7) Enigma"),
+        text_style("archivo", "8) Sudoku"),
+        text_style("archivo", "9) Krzyżówki panoramiczne"),
         text_style("thoughts_dark", "\n{image=minikonopski}"),
         text_style("thoughts_dark", "Czy my nadal jesteśmy w kategorii 'filmy'...?")
     ]
-    $Pearl("{w}\n".join(fav_filmy3))
+    $ Blank(list_text(fav_filmy3))
+
 label gazeta2:
-    hide pearl
-    hide ema
     show bg ulubione_filmy with wiperight
     show pearl at true_right with moveinbottom
     $ stop_music()
@@ -193,8 +200,7 @@ label gazeta2:
     $Konopski(text_style("thoughts", "Dzięki bogu..."))
     Konopski "Ok, to skoro już wiemy wszystko o druidzie, to..."
     show bg ulubione with wiperight
-    ### TODO position
-    show ema #at Position(ypos=800) with moveinbottom
+    show ema at Position(ypos=800) with moveinbottom
     Ema main "{w=1}Ulubione powiedzenia"
     show bg ulubione_powiedzenia with wiperight
     $ play_music("gazeta")
@@ -203,42 +209,39 @@ label gazeta2:
     show penny at true_left with moveinbottom
     Penny cards "Dobre rozeznanie na froncie wroga może dać istotną przewagę!"
     $Konopski(text_style("thoughts", "No jasne, już nie mogę się doczekać momentu, w którym zmiotę wszystkie argumenty Wardęgi siłą jego ulubionych powiedzeń..."))
-    hide pearl
-    hide ema
-    hide penny
-    with moveintop 
-    pause 1.0
+    hide penny with moveoutbottom
+    hide ema with moveoutbottom
+    hide pearl with moveoutbottom
 
 label powiedzenia:
     scene bg ulubione_powiedzenia
     $ change_style("www")
-    $preferences.text_cps = 15
-    ### TODO list_text function
     $ fav_powiedzenia = [
-        text_style("coda", "1) Każdy kij ma dwa końce"),
+        text_style("archivo", "1) Każdy kij ma dwa końce"),
         text_style("cite", "{space=50}powiedzenie ludowe"),
-        text_style("coda", "2) Bo do dramy trzeba dwojga"),
+        text_style("archivo", "{p}2) Bo do dramy trzeba dwojga"),
         text_style("cite", "{space=50}powiedzenie ludowe"),
-        text_style("coda", "3) Gdzie dwóch się bije, tam Wardęga korzysta"),
+        text_style("archivo", "{p}3) Gdzie dwóch się bije, tam Wardęga korzysta"),
         text_style("cite", "{space=50}autor anonimowy"),
-        text_style("thoughts_dark", "\n{image=minikonopski}{size=+50}{cps=10}...{/size}{/cps} {w}{size=+30}co to kuźwa jest?{/size}"),
-        text_style("cite", text_style("thoughts_dark", "powiedzenie ludowe")),
+        text_style("thoughts_dark", "\n{image=minikonopski}{size=+50}...{/size}{w}{size=+30}co to kuźwa jest?{/size}"),
+        text_style("cite", text_style("thoughts_dark", "{space=50}powiedzenie ludowe")),
     ]
     $ Blank(list_text(fav_powiedzenia))
-    $fav_powiedzenia2 = [
-        text_style("coda", "4) Kto z Wardęgą wojuje, od Wardęgi ginie"),
+label oo:
+    $ fav_powiedzenia2 = [
+        text_style("archivo", "4) Kto z Wardęgą wojuje, od Wardęgi ginie"),
         text_style("cite", "{space=50}Zaradna Wersow i zdemoralizowany Konopski"),
-        text_style("thoughts_dark", "\n{image=minikonopski}{size=+50}{cps=3}...{/size}{/cps} {w}{size=+30}co tu się wydarzyło...{/size}"),
-        text_style("thoughts_dark", "{b}{size=+15}Wardęga z youtuba, wszystkim lżej{/size}{/b}"),
-        text_style("cite", text_style("thoughts_dark", "absolutnie wszyscy youtuberzy")),
-        text_style("coda", "5) Z Wardęgą ci się upiecze.") +
+        text_style("thoughts_dark", "\n{image=minikonopski}{size=+50}...{/size} {w}{size=+30}co tu się wydarzyło...{/size}\n\n"),
+        text_style("thoughts_dark", "{b}{size=+15}4.5) Wardęga z youtuba, wszystkim lżej{/size}{/b}"),
+        text_style("cite", text_style("thoughts_dark", "{space=50}absolutnie wszyscy youtuberzy")),
+        text_style("archivo", "5) Z Wardęgą ci się upiecze.") +
         text_style("thoughts_dark","{w}\n Niech zgadnę, kto może być tego autorem...") +
         text_style("thoughts_dark", "Postawię na \'cnotliwego Lexia\'..."),
         text_style("cite", "{space=50}Cyceron"),
-        text_style("thoughts_dark", "\n{image=minikonopski} {size=+50}{cps=10}.......{/size}{/cps}")
+        text_style("thoughts_dark", "\n{image=minikonopski} {size=+50}.......{/size}")
     ]
     ### TODO: poprawić tekst z cyceronem
-    $Blank(list_text(fav_powiedzenia2))
+    $ BlankBlip(list_text(fav_powiedzenia2))
     $ stop_music()
 
 label koniec_powiedzen:
@@ -246,8 +249,8 @@ label koniec_powiedzen:
     $ stop_music()
     $ change_style("main")
     pause 1.0
-    $Konopski(text_style("thoughts", "Co jak co, ale jednego Wardędze nie można odmówić."))
-    $Konopski(text_style("thoughts", "Zaskakująco dobrze się trzyma jak na swoje lata..."))
+    $ thinking(Konopski, "Co jak co, ale jednego Wardędze nie można odmówić.")
+    $ thinking(Konopski, "Zaskakująco dobrze się trzyma jak na swoje lata...")
     scene lobby with slow_dissolve
     pause 1.0
     ### TODO muzyka

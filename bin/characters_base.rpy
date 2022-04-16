@@ -2,13 +2,12 @@
 
 init -8 python:
 ### CHARACTERS
-    CHARACTERS_NAMES = ["Pearl", "Ema", "Penny", "Najman", "LilMasti", "Unknown"]#'Wardega', 'Konopski', 'Revo', 'Lexio', 'Gimper', 'Dziewczyna1', 'Dziewczyna2', 'Dziewczyna3']
-
 
 ## SPECIAL CHARACTERS
+    PATH_CHARACTERS = gpj("images", "characters")
 
     class CharacterBase:
-        def __init__(self, name, styles=[], who_color='#000000'):
+        def __init__(self, name, styles=[], who_color='#000000', group="", blip=None):
             self.capital_name = name.upper()
             self.name = name.lower()
 
@@ -16,13 +15,13 @@ init -8 python:
             #self.pos = start
             #self.who_color = who_color
             #self.show_args = [Transform(pos=start)]
+            self.group = group
 
-            self.char = self.create_character()
             self.talking = False
+            self.blip = blip
 
-            self.styles = styles
-
-        def create_character(self):
+        @property
+        def char(self):
             return Character(
                 name=self.capital_name,
                 image=self.name,
@@ -35,18 +34,13 @@ init -8 python:
                 res.extend(["{} {}".format(self.name, s), animation_maker(self.name, s)])
             return ShowingSwitch(*res)
 
+        @property
+        def character_path(self):
+            return gpj(PATH_CHARACTERS, self.group, self.name)
+
+        @property
+        def styles(self):
+            return [d for d in os.listdir(gpj(self.character_path, "animations"))]
+
         def __str__(self):
             return self.name
-
-    for character in CHARACTERS_NAMES:
-        c_base = "{}Class = CharacterBase(\"{}\")".format(character, character)
-        c_character = "{} = {}Class.char".format(character, character)
-        commands = [c_base, c_character]#, c_anim]
-        for c in commands:
-            exec(c)
-
-    Unknown = Character(name = "???")
-    Blank = Character(name = "")
-    Straznik = Character(name = "STRAŻNIK")#, what_style="straznik_text")
-
-    Unknown.name ="???"

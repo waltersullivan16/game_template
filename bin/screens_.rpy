@@ -4,12 +4,13 @@
 
 screen z():
     imagebutton:
-        xpos 1000
+        xpos 1100
         yalign 0.0
         #hover setattr(config, "mouse", {"default": [("others/myszka_error.png", 1, 1)]})
-        idle "gui/button/kopi.png"
+        idle "gui/button/kopi2.png"
+        hover "gui/button/kopi2_active.png"
         mouse "active"
-        action Jump("test")#ToggleMute("music")
+        action Show("main_options")
 
     imagebutton:
         xalign 0.0
@@ -17,11 +18,32 @@ screen z():
         idle "gui/button/kopi.png"
         action Jump("uwertura_scenes")
         #action Jump("winny")
-        #action Show("options")
+        #action Show("volume_options")
 
+define gui.button_text_font = font("coda")
 
-screen options():
-    add blur
+screen main_options_template(options):
+    vbox xalign .5 yalign .5:
+        for (n, a) in options:
+            textbutton n mouse "active" action a
+
+screen main_options():
+    modal True
+    zorder -1
+    add "blur"
+    use main_options_template([
+        ("save", ShowMenu("save")),
+        #("skip", (alternate Skip(fast=True, confirm=True))),
+        ("auto", Preference("auto-forward", "toggle")),
+        ("preferences", ShowMenu("preferences")),
+        ("main menu", Show("main_menu")),
+        ("return", Hide("main_options"))
+    ])
+    #use main_options_template([("preferences", ShowMenu("preferences")), ("return", Hide("main_options"))])
+    
+
+screen volume_options():
+    modal True
     frame:
         has vbox
         bar value Preference("sound volume") released Play("sound", "music/sound effects/badum.mp3")
@@ -30,8 +52,8 @@ screen options():
 screen button_overlay():
     mousearea:
         area (0, 0, 1.0, 100)
-        hovered Show("options", transition=dissolve)
-        unhovered Hide("options", transition=dissolve)
+        hovered Show("volume_options", transition=dissolve)
+        unhovered Hide("volume_options", transition=dissolve)
 
 screen choices_template(name, imagebuttons):
     #add "blur"

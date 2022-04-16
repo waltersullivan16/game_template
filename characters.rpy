@@ -1,15 +1,19 @@
 "../files_list.txt"
 
-### KONOPSKI ###
-#image konopski = ConditionSwitch(
-#    "KonopskiClass.talking == True", aKonopski("confused"),
-#    "True", "konopski_body_confused")
 init -8 python:
-    
-    styles = ["main", "smirk", "thinking", "ej", "p2", "lol"]
-    KonopskiClass = CharacterBase("Konopski", styles=styles)
-    Konopski = KonopskiClass.char
 
+    Unknown = Character(name = "???")
+    Blank = Character(name = "")
+
+    Straznik = Character(name = "")#, what_style="straznik_text")
+
+    BlankBlipClass = CharacterBase(name="", blip="blip3")
+    BlankBlip = BlankBlipClass.char
+
+###################### KONOPSKI ###########################
+    
+    KonopskiClass = CharacterBase("Konopski")
+    Konopski = KonopskiClass.char
 
 layeredimage konopski:
     group body auto:
@@ -26,7 +30,6 @@ layeredimage konopski:
         attribute normal default null
         attribute kropla "reaction_sweatdrop"
         attribute angry "reaction_angry"
-        attribute danger "reaction_danger"
         attribute flower "flowers"
         attribute question "question" xpos 350 zoom 0.6
 
@@ -37,7 +40,8 @@ layeredimage konopski_phoenix:
     group suit auto:
         attribute normal default null
 
-### WARDĘGA  
+###################### WARDEGA ###########################
+
 init python:
     styles = ["thinking"]
     WardegaClass = CharacterBase("Wardega", styles=styles)
@@ -56,12 +60,11 @@ layeredimage wardega:
     group suit auto:
         attribute normal default null
 
-### PEARL ###
+###################### PEARL ###########################
+
 init python:
-    styles = ["main", "serious", "embarassed", "sad", "crying", "determined", "pleased", "suprised"]
-    PearlClass = CharacterBase("Pearl", styles)
+    PearlClass = CharacterBase("Pearl", group="dziewczyny")
     Pearl = PearlClass.char
-#Nieletnia
 
 layeredimage pearl:
     group body auto:
@@ -71,8 +74,7 @@ layeredimage pearl:
 
 ### EMA ###
 init python:
-    styles = ["main","confused", "determined", "happy", "notes", "sad", "shocked", "thinking"]
-    EmaClass = CharacterBase("Ema", styles)
+    EmaClass = CharacterBase("Ema", group="dziewczyny")
     Ema = EmaClass.char
 
 layeredimage ema:
@@ -82,8 +84,7 @@ layeredimage ema:
         EmaClass.animations_switch
 ### penny ###
 init python:
-    styles = ["main", "cards", "gossip"]
-    PennyClass = CharacterBase("Penny", styles)
+    PennyClass = CharacterBase("Penny", group="dziewczyny")
     Penny = PennyClass.char
 
 layeredimage penny:
@@ -93,7 +94,7 @@ layeredimage penny:
         PennyClass.animations_switch
 
 init python:
-    NajmanClass = CharacterBase("Najman", ["main"])
+    NajmanClass = CharacterBase("Najman", group="straznicy")
     Najman = NajmanClass.char
 layeredimage najman:
     group body auto:
@@ -102,7 +103,7 @@ layeredimage najman:
         NajmanClass.animations_switch
 
 init python:
-    LilMastiClass = CharacterBase("LilMasti", ["main"])
+    LilMastiClass = CharacterBase("LilMasti", group="straznicy")
     LilMasti = LilMastiClass.char
 
 layeredimage lilmasti: 
@@ -110,55 +111,3 @@ layeredimage lilmasti:
         attribute main default
     if LilMastiClass.talking:
         LilMastiClass.animations_switch
-'''
-    define WardegaC = Characterr("Wardega")
-    define Wardega = WardegaC.char
-
-    layeredimage wardega:
-        group body auto:
-            attribute main default
-
-    define KonopskiC = Characterr("Konopski")
-    define m = KonopskiC.mouth
-
-
-
-    define RevoC = Characterr("Revo")
-    define Revo = RevoC.char
-
-    define GimperC = Characterr("Gimper")
-    define Gimper = GimperC.char
-
-    define LexioC = Characterr("Lexio")
-    define Lexio = LexioC.char
-
-
-    #    if WardegaC.talking:
-    #        WardegaC.mouth at WardegaC.mouth_pos
-    layeredimage revo:
-        group body auto:
-            attribute main default
-
-    layeredimage gimper:
-        group body auto:
-            attribute main default
-
-    layeredimage lexio:
-        group body auto:
-            attribute main default
-
-
-    define Dziewczyna2C = Characterr("Dziewczyna2")
-    define Dziewczyna2 = Dziewczyna2C.char
-
-    layeredimage dziewczyna2:
-        group body auto:
-            attribute main default
-
-    define Dziewczyna3C = Characterr("Dziewczyna3")
-    define Dziewczyna3 = Dziewczyna3C.char
-
-    layeredimage dziewczyna3:
-        group body auto:
-            attribute main default
-'''

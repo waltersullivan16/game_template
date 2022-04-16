@@ -11,7 +11,9 @@ init -9 python:
     def char_talking(character, event, **kwargs):
         if event == "show":
             character.talking = True
-            play_sound_effect(persistent.blip, channel="sound", loop="True")
+            blip = character.blip or persistent.blip
+            print(character, character.name, character.blip,blip)
+            play_sound_effect(blip, channel="sound", loop="True")
 
         elif event in ["end", "slow_done"]:
             character.talking = False
@@ -30,10 +32,10 @@ init -9 python:
     def get_frame(character, animation_name, frame):
         return "{} {} {}".format(character, animation_name, frame)
 
-    def animation_maker(name, animation_name, frames=2, pause=ANIMATION_PAUSE):
+    def animation_maker(name, animation_name, frames=2, pause=0.2):
         animation_list = []
         for i in range(frames):
-            animation_list.extend([get_frame(name, animation_name, i + 1), ANIMATION_PAUSE])
+            animation_list.extend([get_frame(name, animation_name, i + 1), pause])
         return Animation(*animation_list)
     
     animation_reaction = lambda name: animation_maker(name, "reaction")

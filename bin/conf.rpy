@@ -28,12 +28,6 @@ init -10 python:
     ## PATHS ##
 
     GAME_PATH = gpj('/home/akechi/renpy/games', TITLE, 'game')
-    PATHS = {
-        "images": gpj(GAME_PATH, "images"),
-    }
-    PATHS["characters"] = gpj(PATHS["images"], "characters")
-    PATHS["animations"] = lambda c, animation_name: gpj(PATHS["characters"], c, "animations", animation_name)
-    PATHS["reactions"] = gpj(PATHS["images"], "reactions")
 
     AUTOMATIC_IMAGES = ["/"]
     AUTOMATIC_IMAGES_STRIP = [
@@ -41,14 +35,9 @@ init -10 python:
         "others", "ulubione", "transparenty", "transparenty2", 
         "reactions", "transitions", "title", "dziewczyny", "straznicy"]
 
-    ANIMATION_PAUSE = 0.2
-
     TEXTBOX_NAMES = {
         "main": "phoenixdb.png",
-        "multiple": "empty.png",
         "creepy": "creepy_textbox.png",
-        "intro": "empty.png",
-        "www": "empty.png",
         "empty": "empty.png",
         "black": "black.png",
     }

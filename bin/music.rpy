@@ -15,22 +15,8 @@
 
 init -10 python:
 
-    SOUNDTRACK = {
-        "main": "main_menu",
-        "intro": "beg",
-        "lobby": "lobby",
-        "scary": "wind",
-        "dziewczyny1": "pearl",
-        "dziewczyny2": "dziewczyny2",
-        "gazeta": "gazeta",
-        "straznik": "straznik",
-        "title": "samurai",
-        "chipdale": "chipdale",
-        "king": "king",
-    }
-
     def music(name):
-        return gpj("music", "soundtrack", "{}.mp3".format(SOUNDTRACK[name]))
+        return gpj("music", "soundtrack", "{}.mp3".format(name))
 
     def sound(name):
         return gpj("music","sound effects", "{}.mp3".format(name))

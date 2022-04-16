@@ -43,6 +43,13 @@ init -12 python:
         styled_monologue(s, character, text)
         persistent.blip = "blip"
         
+    def straznik(text):
+        #renpy.show("black")#, layer="overlay")
+        change_style("black")
+        #play_sound_effect("tiger")
+        Straznik(text_style("straznik", text))
+        change_style("main")
+        #renpy.hide("black")
 
 ### TEXTBOX
     def textbox_maker(textbox_name, alpha=0.85):
