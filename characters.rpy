@@ -5,7 +5,7 @@ init -8 python:
     Unknown = Character(name = "???")
     Blank = Character(name = "")
 
-    Straznik = Character(name = "")#, what_style="straznik_text")
+    Straznik = Character(name = "STRAŻNIK")#, what_style="straznik_text")
 
     BlankBlipClass = CharacterBase(name="", blip="blip3")
     BlankBlip = BlankBlipClass.char

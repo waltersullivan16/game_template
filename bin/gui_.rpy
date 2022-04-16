@@ -44,12 +44,15 @@ init -12 python:
         persistent.blip = "blip"
         
     def straznik(text):
-        #renpy.show("black")#, layer="overlay")
-        change_style("black")
+        #renpy.transition(transition("shatter"))
+        renpy.show("very_dark_blur")#, layer="overlay")
+        change_style("straznik")
         #play_sound_effect("tiger")
         Straznik(text_style("straznik", text))
         change_style("main")
-        #renpy.hide("black")
+        #renpy.transition(transition("shot"))
+        renpy.hide("very_dark_blur")
+        renpy.pause(1.0)
 
 ### TEXTBOX
     def textbox_maker(textbox_name, alpha=0.85):

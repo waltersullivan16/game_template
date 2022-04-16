@@ -81,17 +81,15 @@ style say_dialogue_black:
 
 ### STRAZNIK
 
-style say_dialogue_straznik:
-    xalign 0.5 ypos 0.5
-    xsize 1000
-    line_spacing 10
+style say_dialogue_straznik is say_dialogue_black
 
 style namebox_straznik:
-    xalign 0.5 ypos 0.3
+    xalign 0.5
+    yalign 0.3
 
 style say_label_straznik:
     size 80
-    font font("lucznik")
+    font font("consult")
 
 ####################### MULTIPLE WINDOWS ####################################
 
