@@ -71,6 +71,8 @@ label dziewczyny_menu:
             jump kopniak
         "legenda":
             jump legenda
+        "gazeta0":
+            jump gazeta0
         "gazeta1":
             jump gazeta1
         "gazeta2":

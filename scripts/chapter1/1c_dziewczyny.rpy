@@ -162,6 +162,7 @@ label gazeta1:
     ### TODO inna muza
     $ play_music("gazeta")
     scene bg ulubione_filmy with dissolve
+    pause 0.5
     $ change_style("www")
     $ fav_filmy1 = [
         text_style("archivo", "1) Nagranie z procesu O.J.Simsona{w=1}"),
@@ -221,13 +222,14 @@ label powiedzenia:
         text_style("cite", "{space=50}powiedzenie ludowe"),
         text_style("archivo", "{p}2) Bo do dramy trzeba dwojga"),
         text_style("cite", "{space=50}powiedzenie ludowe"),
-        text_style("archivo", "{p}3) Gdzie dwóch się bije, tam Wardęga korzysta"),
+        text_style("archivo", "{p}3) Wardęga człowiekowi wilkiem"),
         text_style("cite", "{space=50}autor anonimowy"),
         text_style("thoughts_dark", "\n{image=minikonopski}{size=+50}...{/size}{w}{size=+30}co to kuźwa jest?{/size}"),
         text_style("cite", text_style("thoughts_dark", "{space=50}powiedzenie ludowe")),
     ]
     $ Blank(list_text(fav_powiedzenia))
-label oo:
+
+label powiedzenia2:
     $ fav_powiedzenia2 = [
         text_style("archivo", "4) Kto z Wardęgą wojuje, od Wardęgi ginie"),
         text_style("cite", "{space=50}Zaradna Wersow i zdemoralizowany Konopski"),

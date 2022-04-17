@@ -48,9 +48,9 @@ label winny:
     hide winny with transition("wet", time=1.2)
 
     # TODO nazwa studia
-    show text Text("to ma mnie upokorzyć proudly presents", style="creepy_text_style") at truecenter with fast_dissolve
+    scene monaunivers at truecenter with fast_dissolve
     pause 2.4
-    hide text with Dissolve(1.2)
+    hide monaunivers with Dissolve(1.2)
 
     # zbrodnia, kara subskrybcje
     show title_blank at Position(ypos=0.6) with wipeleft
