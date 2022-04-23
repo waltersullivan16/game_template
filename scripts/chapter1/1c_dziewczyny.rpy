@@ -46,7 +46,7 @@ Ja chciałbym uciec w popłochu, mimo że nawet nie usłyszałem...
 Zaraz, zaraz.
 Coś tu się nie zgadza.
 Przecież to ja jestem prokuratorem.''')
-    Konopski "O kim ty właściwie mówisz?"
+    Konopski "O kim ty mówisz?"
 
     Pearl serious "Trwożę się wypowiedzieć to imię. Sama myśl wywołuje we mnie ciarki."
     Konopski "..."
@@ -105,20 +105,21 @@ label legenda:
     $thinking(Konopski, "Jakoś nie wydaje mi się, żeby ktokolwiek, kiedykolwiek to powiedział...")
     Ema determined "Legenda głosi, że jeśli podczas jakiejś dramy, wypowie się trzy razy WARDEGA, to w przeciągu
     dwóch godzin przejmie on nad tą dramą dowództwo, zmieniwszy wcześniej całą istotę problemu na coś zupełnie innego."
+    $thinking(Konopski, "A to akurat brzmi całkiem legitnie.")
     Penny cards "Nie wolno jednak igrać z siłami ciemności."
     Penny "Użycie watahańskiej mocy dla własnych korzyści może przynieść poważne konsekwencje."
     Pearl "Jak to mówią..."
     $Pearl(text_style("jak_to_mowia", "Wardęga nierychliwy, ale sprawiedliwy."))
     Konopski "..."
     $ thinking(Konopski, "Ci nieistniejący 'oni' mają zadziwiająco wiele do powiedzenia na temat Wardęgi...")
-    Ema notes "A teraz, ku przestrodze, zobaczmy do czego prowadzić wymawianie imienia druida swego na daremno."
+    Ema notes "A teraz, ku przestrodze, zobaczmy do czego prowadzić może wymawianie imienia druida swego na daremno."
     hide Ema
     hide Pearl
     hide Penny
     scene black with dissolve
     Konopski "A teraz, ku przypomnieniu, podkreślmy fakt, że jego imię brzmi 'Sylwester', a nie 'Wardega'..."
     pause 1.0
-    Konopski "Co, znowu cutscenka...? No błagam..."
+    Konopski "Co, znowu cutscenka...? {w=0.8}No błagam..."
 
     $ loading()
     pause .5

@@ -86,6 +86,10 @@ label straznik_menu:
     menu:
         "namiejsce":
             jump namiejsce
+        "lilmasti_intro":
+            jump lilmasti_intro
+        "lilmasti_konop":
+            jump masti_konop
 
 #label chapter1_t:
 # quite_screen    

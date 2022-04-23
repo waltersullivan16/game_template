@@ -21,6 +21,7 @@ init -12 python:
     from functools import partial
     from collections import namedtuple, defaultdict
     from itertools import chain
+    import random
 
 init -10 python:
 
@@ -29,11 +30,6 @@ init -10 python:
 
     GAME_PATH = gpj('/home/akechi/renpy/games', TITLE, 'game')
 
-    AUTOMATIC_IMAGES = ["/"]
-    AUTOMATIC_IMAGES_STRIP = [
-        "images", "characters", "background", "scenes",
-        "others", "ulubione", "transparenty", "transparenty2", 
-        "reactions", "transitions", "title", "dziewczyny", "straznicy"]
 
     TEXTBOX_NAMES = {
         "main": "phoenixdb.png",
@@ -43,7 +39,6 @@ init -10 python:
     }
 
 init -11 python:
-    print(persistent.style)
 
     if persistent.style is None:
         persistent.style = "main"
@@ -62,7 +57,17 @@ init -11 python:
     } 
     
     #_dismiss_pause = False
-    renpy.music.register_channel("sfx1", "sfx")
+
+init -1 python:
+    AUTOMATIC_IMAGES = ["/"]
+
+    AUTOMATIC_IMAGES_STRIP = ["images"] + get_dirs("images")
+    
+    for x in ["scenes", "others"]:
+        AUTOMATIC_IMAGES_STRIP += get_dirs(gpj("images", x))
+
+    renpy.music.register_channel("sfx1")#, "sfx")
+    renpy.music.register_channel("sfx2")#, "sfx")
 
 define config.window_show_transition = dissolve
 define config.layers = [ 'master', 'transient', 'topcia', 'screens', 'overlay']

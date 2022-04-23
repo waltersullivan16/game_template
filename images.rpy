@@ -10,7 +10,6 @@ image bg black = Image("background/black.png")
 
 image minikonopski = Image("characters/konopski/mini-konopski.png")
 
-image winny = Image("others/winny.png")
 image reaction_sweatdrop = At("sweatdrop", dropping)
 image reaction_angry = At("angry", beating)
 

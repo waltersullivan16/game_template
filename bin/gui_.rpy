@@ -3,17 +3,22 @@
 init -12 python:
 
     COLORS = {
-        "royal_blue": "#4169E1",
-        "blue": "#00FFFF",
-        "dark_blue": "#00008b",
-        "blood": "#830303",
-        "red": "#B22222",
-        "bright_red": "#D2042D",
-        "light_red": "#FA8072",
         "black": "000000",
         "white": "#ffffff",
+
+        "blue": "#00FFFF",
+        "dark_blue": "#00008b",
+        "royal_blue": "#4169E1",
+
+        "light_red": "#FA8072",
+        "bright_red": "#D2042D",
+        "red": "#B22222",
+        "blood": "#830303",
+
         "pink": "#ff69b4",
-        "tet": "#f5a90e",
+        
+        "yellow": "#FFFF00",
+        #"tet": "#f5a90e",
     }
 
     def text_style(s, text):

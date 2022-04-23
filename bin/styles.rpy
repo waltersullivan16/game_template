@@ -227,3 +227,27 @@ style jak_to_mowia_text_style is text:
     bold True
     italic True
     size 28
+
+style strazmasterka_text_style is text:
+    xpos 0
+    bold True
+    font font("consult")
+    size 100
+    color COLORS["blood"]
+
+style button:
+    background "#006"
+    insensitive_background "#444"
+    hover_background "#00a"
+
+style button_text:
+    font font("sonic")
+    selected_color COLORS["yellow"]
+
+style trofeum:
+    font font("ubuntu")
+    color color("black")
+
+style new_item:
+    font font("coda")
+    color color("white")

@@ -12,7 +12,7 @@ label quote_screen:
     pause 0.5
     show screen quote(t, influ, author, author_errata1, author_errata2) with slow_dissolve 
     pause 12.0
-    hide screen quote with wet
+    hide screen quote with  transition("wet")
     jump konop_monolog1
     
 ### KONOP MONOLOG 1 + TITLE
@@ -48,15 +48,14 @@ label winny:
     hide winny with transition("wet", time=1.2)
 
     # TODO nazwa studia
-    scene monaunivers at truecenter with fast_dissolve
-    pause 2.4
-    hide monaunivers with Dissolve(1.2)
+    $play_video("mona_cut", stop_music=False)
+    #hide monaunivers with Dissolve(1.2)
 
     # zbrodnia, kara subskrybcje
     show title_blank at Position(ypos=0.6) with wipeleft
-    pause 0.5
+    pause 0.7
     show zbrodnia at Position(ypos=0.6) with vpunch
-    pause 0.5
+    pause 0.6
     show kara at Position(ypos=0.6) with vpunch
     pause 0.1
     show pasek at Position(ypos=0.6) with wipeleft
@@ -72,7 +71,7 @@ label winny:
 ### KONOP MONOLOG 2 + SUBSKRYBCJE + KRÓTKI MONOLOG MYŚLOWY LOL
 
 label konop_monolog2:
-    scene lobby with transition("37", time=1.5)
+    scene lobby with transition("wipe_przekatny", time=1.5)
     $ change_style("main")
     $ play_music("lobby")
     pause 1.0

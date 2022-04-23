@@ -32,6 +32,7 @@ init -8 python:
             res = []
             for s in self.styles:
                 res.extend(["{} {}".format(self.name, s), animation_maker(self.name, s)])
+            res.extend(["True", animation_maker(self.name, "main")])
             return ShowingSwitch(*res)
 
         @property

@@ -24,7 +24,7 @@ label grafika:
 
 label check_blowek1a:
     $ loading()
-    scene bg transparenty0 with transition("farba", time=2) 
+    scene bg transparenty0 with transition("wet", time=2) 
     $play_music("scary")
     $thinking(
         Konopski,'''
@@ -69,7 +69,7 @@ W sumie to całkiem sympatycznie...{nw}
     show toko22
 
 label check_blowek1c:
-    $ thinking(Konopski, "Współczuję tej okuarnicy całym sercem, ja na jej miejscu chyba bym{nw}")
+    $ thinking(Konopski, "Współczuję tej okularnicy całym sercem, ja na jej miejscu chyba bym{nw}")
     show toko3 with vpunch
     Konopski "{fast}{size=+50}Ja pierdolę co jest grane{/size}"
 
@@ -123,9 +123,7 @@ label lo:
     scene bg black with transition("farba") 
     $stop_music()
     pause(1)
-    $ change_style("black")
-    $ Konopski(text_style("black_screen", "Przynajmniej taką mam nadzieję..."))
-    $ change_style("main")
+    $ thinking(Konopski, "Przynajmniej taką mam nadzieję...")
     $ loading(transition("farba"), Dissolve(2.0))
     jump check_blowek2a
 
@@ -155,6 +153,7 @@ label check_blowek2b:
     scene bg transparenty1
     #$ persistent.special_sound = "badum"
     $ thinking(Konopski, "Mniejsza o to. Może to nie była nawet {size=+10}WATAHA®{/size}{nw}")
+    $ play_sound_effect("badum")
     $ renpy.pause(2.0)
 
     $ thinking(
@@ -206,7 +205,7 @@ label check_blowek2c:
     
 
 label koniec_przerwy:
-    Konopski -angry "Dobra, nie traćmy więcej czasu i zapomnijmy o sprawie." with dissolve
+    Konopski ej -angry_eyes -angry "Dobra, nie traćmy więcej czasu i zapomnijmy o sprawie."
     Konopski "Znajcie łaskę pana."
     Konopski ej angry_eyes "Ale niech mi to będzie ostatni raz, zrozumiano...?"
     pause 1
@@ -278,6 +277,7 @@ W gruncie rzeczy są oni przecież nieszkodli {nw}
     
     $play_video("transparenty")
     scene black
+    $ loading()
 
     jump menu3_uciekaj
 
@@ -287,14 +287,17 @@ label menu3_uciekaj:
     scene lobby
     $ thinking(Konopski, '''
 ...
-No niestety, muszę wreszcie przestać oszukiwać samego siebie i zaakceptować fakt, że Blowka na pewno nie ma na sali.
+Haha{w=0.5} {size=-5}hahaha{/size}{w=0.8}{size=-10} ha
+Co za banda pociesznych zgrywusów...
+Aż mi się łezka w oku zakręciła...{w=1}
+A Blowka jak nie było tak nie ma...
 {cps=10}...{/cps}
 Taaaa...
 Skoro sensei uznał, że nie jest to na tyle istotne wydarzenie, żeby zawracać sobie nim głowę...
 ...to czy nie byłoby to z mojej strony wysoce niestosowne, gdybym sam się na nim pojawił?
 Może to zostać odebrane jako próba podważenia słuszności jego decyzji.
 ''')
-    show screen choices3_uciekaj with dissolve
+    show screen choices3_uciekaj
     pause
 
 label uciekaj:

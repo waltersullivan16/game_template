@@ -7,6 +7,12 @@ init -14 python:
     def font(font_name):
         return gpj("gui", "fonts", "{}.ttf".format(font_name))
 
+    def color(color):
+        return COLORS[color]
+
+    def get_dirs(path):
+        return [d for d in os.listdir(path) if os.path.isdir(gpj(path, d))]
+
 init -9 python:
     def char_talking(character, event, **kwargs):
         if event == "show":
@@ -55,6 +61,7 @@ init -9 python:
         return
 
     def transition(name, time=1.0, parts=8, reverse=False):
+        #wipe_path = gpj("gui","transitions", "wipes")
         wipe_path = gpj("gui","transitions", "wipes")
         return ImageDissolve(gpj(wipe_path, "{}.png".format(name)), time, parts, reverse=reverse)
     
@@ -73,3 +80,40 @@ init -9 python:
     def defense_scene(): {show_scene("defense", [(KonopskiC.name, KonopskiC.show_args)])}
     def witness_scene(): {show_scene("witness", [(GimperC.name, GimperC.show_args)])}
 
+    def wi(t1):
+        renpy.transition(transition(t1))
+        renpy.show("lobby")
+        renpy.pause(2.0)
+        renpy.transition(transition(t1))
+        renpy.show("courtroom")
+
+    def new_trofeum(t):
+        renpy.show_screen("trofeum", t)
+        play_sound_effect("trofeum")
+        renpy.pause(3.0)
+        renpy.hide_screen("trofeum")
+
+    def conditional_wait(condition, text_arr, last_text, p=1):
+        print(condition, condition())
+        print(preferences.get_volume("music"))
+        i = 0
+        while condition():
+            character, text = text_arr[i]
+            character(text)
+            renpy.pause(p)
+            i = (i + 1) % len(text_arr)
+        character, text = last_text
+        character(text)
+
+    def check_too_loud_music(max_volume=0.1):
+        return preferences.get_volume("music") >= max_volume
+
+    def music_volume_wait():
+        text_arr = [
+            (Konopski, "Nie słyszę własnych myśli."),
+            (Konopski, "Jest tak głośno, że nie umiem nawet skupić się na byciu przerażonym."),
+            (LilMasti, "{size=-15}Dociera coś do ciebie knypku?{/size}"),
+            (Konopski, "W międzyczasie sprawdźcie, czy na pewno daliście suba z dzwoneczkiem."),
+        ]
+        last_text = Konopski, "No nareszcie."
+        conditional_wait(check_too_loud_music, text_arr, last_text)

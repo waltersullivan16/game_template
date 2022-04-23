@@ -82,6 +82,7 @@ layeredimage ema:
         attribute main default
     if EmaClass.talking:
         EmaClass.animations_switch
+
 ### penny ###
 init python:
     PennyClass = CharacterBase("Penny", group="dziewczyny")
@@ -107,7 +108,20 @@ init python:
     LilMasti = LilMastiClass.char
 
 layeredimage lilmasti: 
-    group body auto:
+    group body if_not "bajka" auto variant "fighter":
+        at Position(ypos=900)
         attribute main default
+
+    group body if_not "fighter" auto variant "bajka":
+        attribute normal default
+
     if LilMastiClass.talking:
+        at Position(ypos=900)
         LilMastiClass.animations_switch
+
+    group reaction:
+        xpos 0.4
+        zoom 0.3
+        attribute normal default null
+        attribute angry "reaction_angry"
+        attribute angry2 "reaction_angry2"

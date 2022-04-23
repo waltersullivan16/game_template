@@ -66,6 +66,7 @@ transform shake:
    ease .01 yoffset -4
    ease .01 yoffset 0
    repeat
+
 transform creepy_transform:
     parallel:
         block:
@@ -117,6 +118,14 @@ transform ani_alpha:
     pause 0.2
     repeat
 
+transform quick_zoom:
+    truecenter zoom 0
+    linear 0.1 zoom 2.0
+
+transform out_left:
+    linear 3 xanchor 1500
+
+
 define vpunch = Move((0, 10), (0, -10), .10, bounce=True, repeat=True, delay=.275)
 define hpunch = Move((15, 0), (-15, 0), .10, bounce=True, repeat=True, delay=.275)
 define m = Move((15, 0), (-15, 0), .10, bounce=True, repeat=True, delay=.275)
@@ -131,7 +140,7 @@ define circleirisout = ImageDissolve("imdis", 1.0, 8)
 define circleirisin = ImageDissolve("imdis", 1.0, 8 , reverse=True)
 define teleport = ImageDissolve("imagedissolve teleport", 1.0, 0)
 
-define flashbulb = Fade(0.2, 0.0, 0.8, color='#fff')
+define flashbulb = Fade(0.4, 0.5, 2.2, color='#fff')
 define slow_fade = Fade(0.2, 1.0, 0.8)
 define very_slow_fade = Fade(0.6, 1.5, 0.8)
 
@@ -177,3 +186,26 @@ transform creepy_kokichi:
         ease 1.0 xpos -5
         repeat
 
+transform scary_masti:
+    zoom 2
+
+transform beating_masti:
+    truecenter zoom 2.0
+    linear 0.2 truecenter zoom 2.28
+    block:
+        pause 0.1
+        linear 0.2 truecenter zoom 1.28
+        pause 0.1
+        linear 0.2 truecenter zoom 1.05
+        repeat 3
+    linear 0.1 zoom 4.0
+    pause 1.0
+    linear 0.2 zoom 1
+    pause 0.2
+    block:
+        linear 0.1 truecenter rotate -5
+        pause 0.1
+        linear 0.1 truecenter rotate 5
+        pause 0.1
+        repeat 5
+    linear 0.1 ypos 2.0

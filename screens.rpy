@@ -269,15 +269,18 @@ screen navigation():
 
         else:
 
-            textbutton _("History") action ShowMenu("history")
+            #textbutton _("History") action ShowMenu("history")
 
             textbutton _("Save") action ShowMenu("save")
+            textbutton _("Load") action ShowMenu("load")
+            textbutton _("Gallery") action ShowMenu("gallery")
+            textbutton _("Settings") action ShowMenu("preferences")
 
         imagebutton:
             xpos 9
             ypos 30 
             idle "gui/main_menu/button.png"
-            mouse "active"
+           # mouse "active"
             activate_sound "music/sound effects/button_main_menu.mp3"
             action ShowMenu("load")   
 
@@ -666,42 +669,9 @@ style slot_button_text:
 ## https://www.renpy.org/doc/html/screen_special.html#preferences
 
 screen preferences():
-
     tag menu
 
     use game_menu(_("Preferences"), scroll="viewport"):
-
-        vbox:
-
-            hbox:
-                box_wrap True
-
-                if renpy.variant("pc") or renpy.variant("web"):
-
-                    vbox:
-                        style_prefix "radio"
-                        label _("Display")
-                        textbutton _("Window") action Preference("display", "window")
-                        textbutton _("Fullscreen") action Preference("display", "fullscreen")
-
-                vbox:
-                    style_prefix "radio"
-                    label _("Rollback Side")
-                    textbutton _("Disable") action Preference("rollback side", "disable")
-                    textbutton _("Left") action Preference("rollback side", "left")
-                    textbutton _("Right") action Preference("rollback side", "right")
-
-                vbox:
-                    style_prefix "check"
-                    label _("Skip")
-                    textbutton _("Unseen Text") action Preference("skip", "toggle")
-                    textbutton _("After Choices") action Preference("after choices", "toggle")
-                    textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
-
-                ## Additional vboxes of type "radio_pref" or "check_pref" can be
-                ## added here, to add additional creator-defined preferences.
-
-            null height (4 * gui.pref_spacing)
 
             hbox:
                 style_prefix "slider"
@@ -735,22 +705,57 @@ screen preferences():
                             if config.sample_sound:
                                 textbutton _("Test") action Play("sound", config.sample_sound)
 
-
-                    if config.has_voice:
-                        label _("Voice Volume")
-
-                        hbox:
-                            bar value Preference("voice volume")
-
-                            if config.sample_voice:
-                                textbutton _("Test") action Play("voice", config.sample_voice)
-
+#
+#                    if config.has_voice:
+#                        label _("Voice Volume")
+#
+#                        hbox:
+#                            bar value Preference("voice volume")
+#
+#                            if config.sample_voice:
+#                                textbutton _("Test") action Play("voice", config.sample_voice)
+#
                     if config.has_music or config.has_sound or config.has_voice:
                         null height gui.pref_spacing
 
                         textbutton _("Mute All"):
                             action Preference("all mute", "toggle")
                             style "mute_all_button"
+                vbox:
+                    add "tlo"
+
+#        vbox:
+#
+#            hbox:
+#                box_wrap True
+#
+#                if renpy.variant("pc") or renpy.variant("web"):
+#
+#                    vbox:
+#                        style_prefix "radio"
+#                        label _("Display")
+#                        textbutton _("Window") action Preference("display", "window")
+#                        textbutton _("Fullscreen") action Preference("display", "fullscreen")
+#
+#                vbox:
+#                    style_prefix "radio"
+#                    label _("Rollback Side")
+#                    textbutton _("Disable") action Preference("rollback side", "disable")
+#                    textbutton _("Left") action Preference("rollback side", "left")
+#                    textbutton _("Right") action Preference("rollback side", "right")
+#
+#                vbox:
+#                    style_prefix "check"
+#                    label _("Skip")
+#                    textbutton _("Unseen Text") action Preference("skip", "toggle")
+#                    textbutton _("After Choices") action Preference("after choices", "toggle")
+#                    textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
+#
+#                ## Additional vboxes of type "radio_pref" or "check_pref" can be
+#                ## added here, to add additional creator-defined preferences.
+#
+#            null height (4 * gui.pref_spacing)
+
 
 
 style pref_label is gui_label

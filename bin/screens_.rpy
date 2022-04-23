@@ -1,59 +1,22 @@
 "../files_list.rpy"
 
-#### SCREENS ####
+################# TEMPLATES ################
 
-screen z():
+screen screen_buttons_template(x, y, action):
     imagebutton:
-        xpos 1100
-        yalign 0.0
-        #hover setattr(config, "mouse", {"default": [("others/myszka_error.png", 1, 1)]})
+        xalign x
+        yalign y
         idle "gui/button/kopi2.png"
         hover "gui/button/kopi2_active.png"
         mouse "active"
-        action Show("main_options")
-
-    imagebutton:
-        xalign 0.0
-        yalign 0.0
-        idle "gui/button/kopi.png"
-        action Jump("uwertura_scenes")
-        #action Jump("winny")
-        #action Show("volume_options")
-
-define gui.button_text_font = font("coda")
+        action action 
 
 screen main_options_template(options):
+    add "very_dark_blur"
+    modal True
     vbox xalign .5 yalign .5:
         for (n, a) in options:
             textbutton n mouse "active" action a
-
-screen main_options():
-    modal True
-    zorder -1
-    add "blur"
-    use main_options_template([
-        ("save", ShowMenu("save")),
-        #("skip", (alternate Skip(fast=True, confirm=True))),
-        ("auto", Preference("auto-forward", "toggle")),
-        ("preferences", ShowMenu("preferences")),
-        ("main menu", Show("main_menu")),
-        ("return", Hide("main_options"))
-    ])
-    #use main_options_template([("preferences", ShowMenu("preferences")), ("return", Hide("main_options"))])
-    
-
-screen volume_options():
-    modal True
-    frame:
-        has vbox
-        bar value Preference("sound volume") released Play("sound", "music/sound effects/badum.mp3")
-        bar value Preference("music volume")
-
-screen button_overlay():
-    mousearea:
-        area (0, 0, 1.0, 100)
-        hovered Show("volume_options", transition=dissolve)
-        unhovered Hide("volume_options", transition=dissolve)
 
 screen choices_template(name, imagebuttons):
     #add "blur"
@@ -70,6 +33,37 @@ screen choices_template(name, imagebuttons):
             idle "gui/choices/inactive_{}.png".format(i)
             action [Hide(name, transition=ease),  Jump(i)]
 
+screen z():
+    use screen_buttons_template(0, 0, Jump("uwertura_scenes"))
+    use screen_buttons_template(0.9, 0, ShowMenu("preferences"))
+
+
+screen main_options():
+    use main_options_template([
+        ("main menu", Show("main_menu")),
+        ("save", ShowMenu("save")),
+        #("skip", (alternate Skip(fast=True, confirm=True))),
+        #("auto", Preference("auto-forward", "toggle")),
+        ("preferences", ShowMenu("preferences")),
+        ("mute", ToggleMute("music")), 
+        ("return", Hide("main_options"))
+    ])
+    
+
+screen volume_options():
+    modal True
+    frame:
+        has vbox
+        bar value Preference("sound volume") released Play("sound", "music/sound effects/badum.mp3")
+        bar value Preference("music volume")
+
+screen button_overlay():
+    mousearea:
+        area (0, 0, 1.0, 100)
+        hovered Show("volume_options", transition=dissolve)
+        unhovered Hide("volume_options", transition=dissolve)
+
+
 screen choices1_blowek():
     modal True
     use choices_template("choices1_blowek", ["blowek", "lexi", "grafika", "uciekaj"])
@@ -82,33 +76,16 @@ screen choices3_uciekaj():
     modal True
     use choices_template("choices3_uciekaj", ["uciekaj", "uciekaj", "uciekaj", "uciekaj"])
 
-screen dragdrop_menu(items):
-    
-    frame:
-        pos (0,0)
-        side "c b r":
-            area (100, 100, 600, 600) #(100, 100, 600, 400)
-
-            viewport id "vp":
-                draggable True
-
-                vbox:
-                    for i in items:
-                        textbutton i.caption action i.action
-
-            bar value XScrollValue("vp")
-            vbar value YScrollValue("vp")
-
 screen subscribe_screen():
     add "blur"
     imagebutton:
         xpos 0.1
         ypos 0.3
-        hover "images/others/subscribe.png"
+        hover "images/scenes/subscribe/subscribe.png"
         unhovered [MouseMove(500, 300)]
         mouse "active"
         activate_sound "music/sound effects/button.mp3"
-        idle "images/others/subscribe.png"
+        idle "images/scenes/subscribe/subscribe.png"
         action [Hide("subscribe_screen"), Jump("subscribe_like")]
 
 screen subscribed_screen():
@@ -116,19 +93,19 @@ screen subscribed_screen():
     imagebutton:
         xpos 0.1
         ypos 0.3
-        hover "images/others/subscribed.png"
-        idle "images/others/subscribed.png"
+        hover "images/scenes/subscribe/subscribed.png"
+        idle "images/scenes/subscribe/subscribed.png"
 
 screen subscribed_like_screen():
     add "blur"
     imagebutton:
         xpos 0.8
         ypos 0.3
-        hover "images/others/like.png"
+        hover "images/scenes/subscribe/like.png"
         unhovered [MouseMove(1050, 300)]
         mouse "active"
         activate_sound "music/sound effects/button.mp3"
-        idle "images/others/like.png"
+        idle "images/scenes/subscribe/like.png"
         action [Hide("blur"), Hide("subscribed_screen", transition=ease), Hide("subscribed_like_screen", transition=ease), Jump("subscribe_thanks")]#Hide("subscribe", transition=dissolve), Jump("subscribe_thanks")]
 
 transform text_fade_in(t, p=0):
@@ -155,3 +132,72 @@ screen quote(t, influ, a, a_errata1, a_errata2):
     text a xpos 0.3 ypos 0.6 style "author_text_style" at text_fade_in(2.0, 8.5)
     text a_errata1 xpos 0.3 ypos 0.6 style "author_text_style" at text_fade_in(2.0, 11.0)
     text a_errata2 xpos 0.3 ypos 0.6 style "author_text_style" at text_fade_in(2.0, 11.1)
+
+screen trofeum(t):
+    zorder 1
+    hbox:
+        add "gui/button/trofeum.png"
+        xpos 0.5 ypos 0.1
+        text t xpos -350 ypos 0.4 style "trofeum"
+
+screen new_item(name, description):
+    zorder 1
+    vbox xalign 0.5 yalign 0.1:
+        add "gui/button/new_item.png"
+        vbox:
+            xpos 0.6 ypos 0.0
+            text name xpos 0 ypos -230 style "new_item"
+            text description xpos -100 ypos -100 style "new_item"
+
+        vbox:
+            xpos 0.1 ypos 0.1
+            text "fsdfsd" xpos -350 ypos 0.2 style "new_item"
+            text description xpos -500 ypos 0.5 style "new_item"
+
+
+############ EXAMPLES ###########
+screen dragdrop_example:
+    draggroup:
+        drag:
+            drag_name "Ivdsady"
+            child "gui/button/kopi.png"
+            droppable False
+            dragged False
+            xpos 100 ypos 100
+        drag:
+            drag_name "Ivy"
+            child "gui/button/kopi.png"
+            droppable False
+            dragged False
+            xpos 150 ypos 100
+
+### DROPDOWN MENU
+
+screen dropdown_menu (selectedOption="", opt_xpos=300, opt_ypos=200, btnTexts=[""]):
+    zorder 50
+    $ s = 1
+    textbutton selectedOption:
+        xsize 200 ysize 50
+        xpos opt_xpos  ypos opt_ypos
+        action If ((s == 1), true = [ Show("dropdown_options", btnTexts=btnTexts, opt_xpos=opt_xpos, opt_ypos=opt_ypos), SetVariable(s, 0)], false = [Return])
+       
+screen dropdown_options (btnTexts, opt_xpos=0, opt_ypos=0):
+    zorder 51
+    modal True 
+    $yIndent = 20
+    $ySpacing = 40
+    fixed:
+        xpos opt_xpos        ypos opt_ypos+yIndent
+        $listSize = len(btnTexts)
+        for i in range(listSize):  
+            $buttonOption = btnTexts[i]
+            textbutton btnTexts[i]:
+                xsize 200 ysize 50
+                action [ Show("dropdown_menu", selectedOption=buttonOption, btnTexts=btnTexts, opt_xpos=opt_xpos, opt_ypos=opt_ypos), Hide("dropdown_options")] 
+                #idle_background "gui/button/kopi2.png"
+                #hover_background "gui/button/kopi2.png"
+                ypos yIndent
+            $yIndent += ySpacing
+
+screen xx:
+    use dropdown_menu(selectedOption="Foo", btnTexts=["foo", "bar", "baz"])

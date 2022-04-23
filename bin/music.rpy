@@ -36,10 +36,10 @@ init -10 python:
     def stop_music(fadeout=1.0):
         renpy.music.stop(channel="music", fadeout=fadeout)
 
-    def stop_sound_effect():
-        renpy.music.stop(channel="sound")
+    def stop_sound_effect(channel="sound"):
+        renpy.music.stop(channel=channel)
 
-    def play_video(name):
-        renpy.movie_cutscene(video(name))
+    def play_video(name, stop_music=True):
+        renpy.movie_cutscene(video(name), stop_music=stop_music)
 
     config.default_music_volume = 0.5
