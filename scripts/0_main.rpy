@@ -33,6 +33,9 @@ label chapters:
 
 label uwertura_scenes:
     menu:
+        "currrent check":
+            jump transparenty
+            #$ load()
         "intro":
             jump intro_menu
         "szukanie blowka":
@@ -51,6 +54,10 @@ label intro_menu:
             jump konop_monolog1
         "winny":
             jump winny
+        "monolog2":
+            jump winny
+        "subskrybuj":
+            jump subscribe
 
 label szukanie_blowka_menu:
     menu:
@@ -60,6 +67,16 @@ label szukanie_blowka_menu:
             jump check_blowek1a
         "co robic2":
             jump menu2_blowek2
+        "blowek2 poczatek":
+            jump check_blowek2a
+        "wkurw konopskiego":
+            jump check_blowek2b
+        "koniec przerwy":
+            jump koniec_przerwy
+        "rozważania na temat szukania blowka":
+            jump lesne_tradycje
+        "lesne menu":
+            jump lesne_menu_var
         "transparenty":
             jump danger_transparenty
 

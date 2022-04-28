@@ -114,11 +114,16 @@ label masti_konop:
     hide lilmasti moveoutbottom
     show lobby with dissolve
     show lilmasti main with vpunch
+    $ thinking(Konopski, "Co za kijowe intro... Widać że robione na odwal")
+    $ thinking(Konopski, "Czuję pewien dyskomfort przyznając to, ale nawet zorro-z-lasu2 dostarcza kontent wyższej jakości.")
+    $ thinking(Konopski, "...")
+    $ thinking(Konopski, "Ta muzyka wyżera mi mózg, przysięgam.")
+    $ thinking(Konopski, "Muszę szybko coś z tym zrobić, bo inaczej naprawdę dojdzie do jakichś trwałych uszkodzeń.")
     LilMasti "{size=-15}Dobra chłystku, nie będę się tu z tobą cackać, pójdziesz po dobroci czy potrzebujesz motywacji?{/size}"
     Konopski "Eee... {w=1}Słucham?"
     LilMasti "{size=-15}Nie próbuj zgrywać głupszego niż jesteś, to może skończyć się katastrofą.{/size}"
-    LilMasti "{size=-15}Wszechświat nie jest przygotowany na takie stężenie debilizmu.{/size}"
-    $ thinking(Konopski, "")
+    #LilMasti "{size=-15}Wszechświat nie jest przygotowany na takie stężenie debilizmu.{/size}"
+    $ thinking(Konopski, "...")
     $ music_volume_wait()
     Konopski "Już idę, idę, tylko nie rób mi krzywdy!"
 

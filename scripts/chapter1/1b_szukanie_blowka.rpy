@@ -2,6 +2,7 @@
 
 ### MENU 1 + SZUKANIE BLOWKA
 label menu1_blowek:
+    scene lobby
     show screen choices1_blowek
     pause
 
@@ -125,12 +126,13 @@ label lo:
     pause(1)
     $ thinking(Konopski, "Przynajmniej taką mam nadzieję...")
     $ loading(transition("farba"), Dissolve(2.0))
-    jump check_blowek2a
+    jump szukanie_blowka2
 
-label check_blowek2a:
+label szukanie_blowka2:
     scene normal with slow_fade
-    $ thinking(
-        Konopski,'''
+    label .poczatek_szukania2:
+        $ thinking(
+            Konopski,'''
 Jakoś tu spokojniej i mniej niepokojąco.
 Może to zasługa światła.
 A może to ja odrobinę się już wyluzowałem i zacząłem postrzegać rzeczy takimi, jakimi są naprawdę.
@@ -138,133 +140,195 @@ Może to nie było nawet stado Wardęgi.
 Pardon, {size=+10}WATAHA®{/size} Wardęgi.
 ''')
 
-    pause 1.5
-    $ thinking(
-        Konopski,'''
+        pause 1.5
+        $ thinking(
+            konopski,'''
 No i gdzie ba-dum-tssk?
 Tym razem to miało pretendować do kategorii żart.
 ''')
-    pause 1.0 
-    $ thinking(
-        Konopski, '''
-Amatorzy.
-''')
-label check_blowek2b:
-    scene bg transparenty1
-    #$ persistent.special_sound = "badum"
-    $ thinking(Konopski, "Mniejsza o to. Może to nie była nawet {size=+10}WATAHA®{/size}{nw}")
-    $ play_sound_effect("badum")
-    $ renpy.pause(2.0)
+        pause 1.0 
+        $ thinking( Konopski, "Amatorzy.")
 
-    $ thinking(
-        Konopski,'''
+    label .brak_badum:
+        #$ persistent.special_sound = "badum"
+        #scene normal with slow_fade
+        $ thinking(Konopski, "Mniejsza o to. Może to nie była nawet {size=+10}WATAHA®{/size}{nw}")
+        $ play_sound_effect("badum")
+        $ renpy.pause(2.0)
+
+        $ thinking(
+            Konopski,'''
 Nie! {w=0.5} Tu tak totalnie {cps=10}NIE{/cps}!
 Bardziej "NIE" niż za pierszym razem!
 ''')
-    $ thinking(
-        Konopski,'''
-Czy wy w ogóle wiecie czym jest <ba-dum-tsk>?
-''')
-    pause(1)
-    $play_sound_effect("badum")
-    pause(3)
-    $ thinking(Konopski, "...")
-    scene bg transparenty2
-    $ thinking(
-        Konopski,'''
+        $ thinking(
+            Konopski,"Czy wy w ogóle wiecie czym jest <ba-dum-tsk>?")
+        pause(1)
+        $play_sound_effect("badum")
+        pause(3)
+        $ thinking(Konopski, "...")
+        $ thinking(
+            Konopski,'''
 Z kim ja pracuję...
 Dobra, jeszcze raz.
 ''')
-    $ thinking(Konopski, "To nie byli ludzie z fandomu...{nw}")
-    $play_sound_effect("badum")
-    pause 2
+        $ thinking(Konopski, "To nie byli ludzie z fandomu...{nw}")
+        $play_sound_effect("badum")
+        pause 2
 
-label check_blowek2c:
-    show blur with dissolve
-    show konopski ej at right with moveinright
-    Konopski "No już bez jaj co się tam dzieje?"
-    show bg transparenty3 behind blur
-    show konopski ej angry angry_eyes with vpunch
-    Konopski "No kuźwa, co za ciul wpuścił tu Chmielarka?" with vpunch
-    Konopski "I od razu ostrzegam, niech mi tu żaden śmieszek nawet nie próbuje wykręcić się wersją 'kurier przyniósł go w paczce'"
-    Konopski "Bo to będzie żart śmieszny jak jego wypłata.{w=1}{nw}"
-    $ play_sound_effect("badum")
-    pause 3.0
-    Konopski ej happy_eyes flower "Jest jakiś progres."
-    pause 1
-    Konopski ej -flower -happy_eyes "Że co proszę?"
-    Konopski "Podczas rozmowy rekrutacyjnej zagrał na pianinie niczym prawdziwy wirtuoz?"
-    Konopski ej angry angry_eyes "A co to kuźwa ma za znaczenie?{w=1}"
-    Konopski "Jeszcze chwila i wszyscy wylecicie stąd na zbity ryj."
-    pause 1
-    Konopski ej -angry -angry_eyes "Nie mądralo, nie zdążysz ukryć się w szafie."
-    Konopski "Przede wszystkim dlatego, że tu nie ma żadnej szafy."
-    pause 1
-    Konopski ej angry_eyes angry "{cps=10}NIE{/cps}, osobiście dopilnuję, żeby nie wpuszczać tu żadnego kuriera z szafą w paczce!"
-    pause 1
+label gnojenie_pracownikow:
+    scene normal at blur
+    show dark_blur with dissolve
     
+    label .poczatek:
 
-label koniec_przerwy:
-    Konopski ej -angry_eyes -angry "Dobra, nie traćmy więcej czasu i zapomnijmy o sprawie."
-    Konopski "Znajcie łaskę pana."
-    Konopski ej angry_eyes "Ale niech mi to będzie ostatni raz, zrozumiano...?"
-    pause 1
-    show konopski -angry_eyes with ease
-    Konopski "A teraz wracamy do pracy obiboki!"
-    Konopski "Światła!{w=0.5} {size=+5}Kamera!"
-    show konopski at half_out
-    pause 3.0
-    show question at question_konop
-    Konopski "Świetnie, straciłem wątek.{w=1} O czym to ja...?"
-    pause 1
-    hide question
-    Konopski ej happy_eyes "No oczywiście! Obrażanie tiktokerów!" 
-    Konopski "Dziękuję randomowy statysto!"
-    hide konopski with moveoutright
-    pause 1.0
-    Konopski "{size=+10}AKCJA!{/size}"
-    hide blur with dissolve
+        show konopski ej at right with moveinright
+        Konopski "No już bez jaj co się tam dzieje?"
+        show konopski ej angry angry_eyes with vpunch
+        Konopski "No kuźwa, co za ciul wpuścił tu Chmielarka?" with vpunch
+        Konopski "I od razu ostrzegam, niech mi tu żaden wesołek nawet nie próbuje wykręcić się wersją 'kurier przyniósł go w paczce'"
+        Konopski "Bo to będzie żart śmieszny jak jego wypłata.{w=1}{nw}"
+        $ play_sound_effect("badum")
+        pause 3.0
+        Konopski ej happy_eyes flower "Jest jakiś progres."
+        pause 1
+        Konopski ej -flower -happy_eyes "Że co proszę?"
+        Konopski "Podczas rozmowy rekrutacyjnej zagrał na pianinie niczym prawdziwy wirtuoz?"
+        Konopski ej angry angry_eyes "A co to ma kuźwa za znaczenie?{w=1}"
+        Konopski "Jeszcze chwila i wszyscy wylecicie stąd na zbity ryj."
+        pause 1
+        Konopski ej -angry -angry_eyes "Nie mądralo, nie zdążysz ukryć się w szafie."
+        Konopski "Przede wszystkim dlatego, że tu nie ma żadnej szafy."
+        pause 1
+        Konopski ej angry_eyes angry "{cps=10}NIE{/cps}, osobiście dopilnuję, żeby nie wpuszczać tu żadnego kuriera z szafą w paczce!"
+        pause 1
+        
 
-label transparenty_poczatek:
-    $ thinking(
-        Konopski,'''
-Ten motłoch, to najprawdopodobniej jakieś dzbany z tiktoka.
-O w dupę, przygotowali jakieś transparenty.
+    label .koniec_przerwy:
+        Konopski ej -angry_eyes -angry "Dobra, nie traćmy więcej czasu i zapomnijmy o sprawie."
+        Konopski "Znajcie łaskę pana."
+        Konopski ej angry_eyes "Ale niech mi to będzie ostatni raz, zrozumiano...?"
+        pause 1
+        show konopski -angry_eyes with ease
+        Konopski "A teraz wracamy do pracy obiboki!"
+        Konopski "Światła!{w=0.5} {size=+5}Kamera!"
+        show konopski at half_out
+        pause 3.0
+        show question at question_konop
+        Konopski "Świetnie, straciłem wątek. O czym to ja...?"
+        Konopski "Ubliżanie ludziom? To było chyba coś w ten deseń..."
+        pause 1
+        hide question
+        Konopski "Hmm? Co tam mamroczesz pod nosem randomowy statysto?"
+        pause 1
+        Konopski ej happy_eyes "Szukanie Blowka! No przecież!" 
+        pause 1
+        Konopski ej angry_eyes "Jak mogliście w takim momencie zabrać tyle mojego cennego czasu łachudry!"
+        Konopski "Wasza wypłata nie będzie już nawet śmieszna!"
+        Konopski "Waszej wypłaty po prostu nie będzie!"
+        show konopski ej -angry_eyes
+        pause 1
+        Konopski ej angry_eyes "E, wy tam! Tylny rząd!"
+        Konopski "Czy ja wam pozwoliłem przestać pracować?"
+        Konopski "Wracać mi tu natychmiast na miejsca, wy lenie patentowane!"
+        hide konopski with moveoutright
+        pause 1.0
+        hide blur with dissolve
+        jump transparenty
+
+label transparenty:
+
+    label .co_tak_gwarno:
+        show tra 
+        
+        $ play_music("crowd_talking", relative_volume=1.5)
+     
+        $ thinking(Konopski, '''
+A co tu tak gwarno?
+Szczerze mówiąc obawiałem się przez chwilę, że odrobinę za bardzo poniosły mnie nerwy i mój podniesiony głos przykuł czyjąś uwagę.
+Ale na szczęście te dzbany są zbyt zajęte sobą.
+...
+Nie żebym marudził, ale jest to dla mnie odrobinę dziwne.
+...
+No bo co niby może być bardziej absorbujące od interakcji ze mną...?
+...{w=1}...{w=1}
+No oczywiście!
 ''')
-    Konopski '''
-Ej, ty!
-Dziwna dziewczynko z misiem!
-'''
-    show bg transparenty5
-    Konopski '''
-Tak ty.
-mogłabyś odwrócić ten transparent w moją stronę, żebym mógł...{nw}
-'''
+    #TODO love sound effect
+        $ Konopski(text_style("blowek", "{size=+10}Blowek!{/size}"))
+        $ thinking(Konopski, "Tam może być Blowek!")
+        $ thinking(Konopski, '''
+Wszystko składa się w jedną całość!{w=1}
+Dobra, szkoda czasu, idę na zwiady.
+Zdaję sobie sprawę, że będzie to niebezpieczna misja, więc muszę zachować szczególną ostrożność.
+''')
+#TODO mute
+    $ thinking(Konopski, '''
+Bez wątpienia kluczową rolę odegrają wszystkie umiejętności zdobyte podczas gry w Thiefa.{w=1}
+Głupio wam teraz, snoby, twierdzący że gry to tylko głupia rozrywka dla dzieci?
+Szach-mat frajerzy.
+...
+No ale bierzmy się do roboty.
+Wchodzę do jaskini lwa.
+''')
 
-label check_blowek2e:
-    $ image_punch("zniszcz_sztubaka")
-    pause 2.0
-    Konopski "Albo wiesz co, zmieniłem zdanie, możesz już zabrać swój{nw}"
-    $image_punch("zad")
-    pause 1.0
-    $ thinking(
-        Konopski,'''
+    label .jaskinia_wilka:
+        $ thinking(Konopski, "Albo raczej...")
+        $ thinking(Konopski, "Wchodzę do jaskini WILKA.")
+        pause 1
+        Konopski "{size=+5}EKHEM{/size}"
+        Konopski "Powiedziałem..."
+        Konopski "Wchodzę do jaskni {size=+5}WILKA{/size}"
+        $ play_sound_effect("badum")
+    label .dziki_tlum:
+        pause 1.5
+        Konopski "No teraz było ja{w=0.1}{nw}"
+        show transparenty_angry
+        $ styled_monologue(Konopski, 
+'''{cps=90}JA PIERDOLĘ
+ZARAZ SIĘ KUŹWA ZAJEBIĘ
+CO TU SIĘ ZNOWU ODJEBAŁO
+JAKIEŚ CHORE POOOOOOO{/cps}{w=2}{nw}''', 'panic')
+    Konopski "zdrawiam wszystkich, chciałem powiedzieć haha."
+    pause 1
+    label .junko_transparent:
+        show junko_patrzaca
+        Konopski "Słucham? Mogłabyś powtórzyć dziwna dziewczynko z misiem?"
+        pause 1.0
+        Konopski "Mam podejść i zobaczyć co...?"
+        Konopski "Trans... Trans-pa..."
+        Konopski "Transparenty! Przygotowaliście transparenty, żeby zagrzewać nas do boju!"
+        Konopski "Jakie to miłe i... eee... kreatywne."
+        $ thinking(Konopski, '''
+    Chyba zbyt pochopnie ich oceniłem...
+    Co prawda mają chamskie mordy, ale w gruncie rzeczy są całkiem w porządku.
+    ''')
+        Konopski "Mogłabyś odwrócić swój transparent w moją stronę, żebym mógł...{nw}"
+
+    label .transparenty_main:
+        $ image_punch("zniszcz_sztubaka")
+        pause 2.0
+        Konopski "Albo wiesz co, zmieniłem zdanie, możesz już zabrać swój{nw}"
+        $image_punch("zad")
+        pause 1.0
+        $ thinking(
+            Konopski,'''
 Prostackie grubiaństwo. Niczego innego się po nich nie spodziewałem.
 Jaki pan, taki kram.
 Kto z Wardęga przystaje{nw}
 ''')
-    $image_punch("sor")
-    pause 2.0
-    $ thinking(
-        Konopski,'''
-...
-Muszę przyznać, że ta eskalująca agresja wywołuje we mnie lekką nutkę niepokoju...
-''')
-label danger_transparenty:
-    scene black with transition("farba", time=1.5)
-    $stop_music()
-    show konopski main with moveinbottom
-    $ character_monologue(Konopski, '''
+        $image_punch("sor")
+        pause 2.0
+        $ thinking(
+            Konopski,'''
+    ...
+    Muszę przyznać, że ta eskalująca agresja wywołuje we mnie lekką nutkę niepokoju...
+    ''')
+    label .dis_na_motloch:
+        scene black with transition("farba", time=1.5)
+        $stop_music()
+        show konopski main with moveinbottom
+        $ character_monologue(Konopski, '''
 Ech, te dzisiejsze fandomy.
 {cps=10}ZA MOICH CZASÓW{/cps} wszyscy żyli ze sobą w zgodzie i harmonii. A teraz...? Szkoda gadać.
 Tym dzikusom nie pomoże już najbardziej prestiżowy kurs walki z patusiarstwem.{w=1}
@@ -273,19 +337,23 @@ No ale nieważne. Nie wiem czemu aż tak spinam dupę.
 Co mnie obchodzi zepsucie moralne jakiejś leśnej hołoty?
 W gruncie rzeczy są oni przecież nieszkodli {nw}
 ''')
-    hide window
-    
-    $play_video("transparenty")
-    scene black
-    $ loading()
+        hide window
 
-    jump menu3_uciekaj
+    label .transparenty_video:
+        
+        $play_video("transparenty")
+        scene black
+        $ loading()
+
+    jump ucieczka
 
 ### MENU 3 + PRÓBA UCIECZKI
 
-label menu3_uciekaj:
-    scene lobby
-    $ thinking(Konopski, '''
+
+label ucieczka:
+    label .menu3_ucieczka:
+        scene lobby
+        $ thinking(Konopski, '''
 ...
 Haha{w=0.5} {size=-5}hahaha{/size}{w=0.8}{size=-10} ha
 Co za banda pociesznych zgrywusów...
@@ -297,13 +365,13 @@ Skoro sensei uznał, że nie jest to na tyle istotne wydarzenie, żeby zawracać
 ...to czy nie byłoby to z mojej strony wysoce niestosowne, gdybym sam się na nim pojawił?
 Może to zostać odebrane jako próba podważenia słuszności jego decyzji.
 ''')
-    show screen choices3_uciekaj
-    pause
+        show screen choices3_uciekaj
+        pause
 
-label uciekaj:
+    label .proba:
 
-    $ thinking(
-        Konopski,'''
+        $ thinking(
+            Konopski,'''
 Chwila. Stop.
 Nie mogę tak po prostu stąd wyjść...
 {cps=8}...{/cps}{w=2}
@@ -311,4 +379,4 @@ Gdzie mój płaszcz?
 ...
 Dobra, walić to, spadam jak jest.
 Narauuu{nw}''')
-    jump dziewczeta
+        jump dziewczeta

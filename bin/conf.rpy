@@ -66,11 +66,17 @@ init -1 python:
     for x in ["scenes", "others"]:
         AUTOMATIC_IMAGES_STRIP += get_dirs(gpj("images", x))
 
-    renpy.music.register_channel("sfx1")#, "sfx")
+    renpy.music.register_channel("sfx1", "sfx")
     renpy.music.register_channel("sfx2")#, "sfx")
+
 
 define config.window_show_transition = dissolve
 define config.layers = [ 'master', 'transient', 'topcia', 'screens', 'overlay']
 define config.say_menu_text_filter = alter_say_strings
+define config.menu_include_disabled = True
+define config.label_callback = label_callback
+#define config.menu_arguments_callback = True
+
 default preferences.show_empty_window = False
 default preferences.text_cps = 40
+default menuset = set()

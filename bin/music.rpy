@@ -27,8 +27,8 @@ init -10 python:
 
     config.main_menu_music = music("chipdale")
 
-    def play_music(name, fadein=0.0, fadeout=0.1, loop=True):
-        renpy.music.play(music(name), channel="music", fadein=fadein, fadeout=fadeout, loop=loop)
+    def play_music(name, fadein=0.0, fadeout=0.1, loop=True, relative_volume=0.5):
+        renpy.music.play(music(name), channel="music", fadein=fadein, fadeout=fadeout, loop=loop, relative_volume=relative_volume)
 
     def play_sound_effect(name, channel="sfx1", loop=False, relative_volume=1.0):
         renpy.music.play(sound(name), channel=channel, loop=loop, relative_volume=relative_volume)#relative_volume)

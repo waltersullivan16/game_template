@@ -117,3 +117,29 @@ init -9 python:
         ]
         last_text = Konopski, "No nareszcie."
         conditional_wait(check_too_loud_music, text_arr, last_text)
+
+    def menu_creator(question, options):
+        m = Menu(question)
+        for o in options:
+            m.option(**o)
+
+    def label_callback(name, abnormal):
+        if not name.startswith('_'):
+            persistent.prev = persistent.label
+            persistent.label = name
+            name_arr = name.split('.')
+            persistent.base = name_arr[-len(name_arr)]
+
+    def blur_bg(name, b=1.5):
+        blurred_im = im.Blur(name, b)
+        renpy.show(blurred_im)
+        renpy.show(dark_blur)
+
+    def gibberish(n=1):
+        play_sound_effect("gibberish{}".format(n))
+
+    def save():
+        persistent.save = persistent.label
+
+    def load():
+        renpy.jump(persistent.save)

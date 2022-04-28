@@ -101,10 +101,11 @@ transform blood_particle2:
         linear 0.55 zoom 0
 
 transform blur:
-    ypos 0.5 blur 50
-    alpha 1.0
-    linear 1.5 ypos 0.0
-    linear 0.3 blur 0
+    linear 0.3 blur 20
+#    ypos 0.5 blur 50
+#    alpha 1.0
+#    linear 1.5 ypos 0.0
+#    linear 0.3 blur 0
 
 transform unblur:
     blur 50

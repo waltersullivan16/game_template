@@ -27,7 +27,7 @@ style namebox_main:
 style say_label_main:
     size 50
     font font("lucky")
-    color COLORS["black"]
+    color color("black")
 
 ## CREEPY
 
@@ -48,7 +48,7 @@ style namebox_creepy:
 style say_label_creepy:
     size 50
     font font("monster")
-    color COLORS["red"]
+    color color("red")
 
 ### INTRO
 
@@ -120,25 +120,25 @@ style block2_multiple2_say_dialogue:
 
 #style thoughts_text_style is text:
 #    size 25
-#    color COLORS["blue"]
+#    color color("blue")
 #    italic True
 #    font font("ubuntu")
 
 style thoughts_main_text_style is text:
     size 25
-    color COLORS["blue"]
+    color color("blue")
     italic True
     font font("ubuntu")
 
 style thoughts_creepy_text_style is text:
     size 25
-    color COLORS["light_red"]
+    color color("light_red")
     italic True
     font font("ubuntu")
 
 style thoughts_dark_text_style is text:
     size 20
-    color COLORS["dark_blue"]
+    color color("dark_blue")
     italic True
     font font("ubuntu")
     line_spacing 10
@@ -146,38 +146,38 @@ style thoughts_dark_text_style is text:
 style intro_text_style is text:
     #xpos .6 ypos 0.6
     size 36
-    color COLORS["white"]
+    color color("white")
     slow_cps 15 
     italic True
 
 style creepy_text_style is text:
     size 55
     font font("monster")
-    color COLORS["blood"]
+    color color("blood")
 
 style coda_text_style is text:
     font font("coda")
-    color COLORS["black"]
+    color color("black")
     size 30
 
 style archivo_text_style is text:
     font font("archivo")
-    color COLORS["black"]
+    color color("black")
     size 35
 
 style www_text_style is text:
     font font("ubuntu")
     size 30
-    color COLORS["black"]
+    color color("black")
 
 style itis_text_style is text:
     font font("alba")
     size 60
-    color COLORS["pink"]
+    color color("pink")
 
 style cite_text_style is text:
     font font("futura")
-    color COLORS["black"]
+    color color("black")
     xpos 500
     size 25
     italic True
@@ -188,7 +188,7 @@ style cite_text_style is text:
 style quote_text_style is text:
     xmaximum 1000
     font font("pane")
-    color COLORS["white"]
+    color color("white")
     size 40
     adjust_spacing 500
     slow_cps 20
@@ -196,13 +196,13 @@ style quote_text_style is text:
 
 style quote_influ_text_style is text:
     font font("coda")
-    color COLORS["blood"]
+    color color("blood")
     slow_cps 10
     size 70
 
 style author_text_style is text:
     font font("ubuntu")
-    color COLORS["white"]
+    color color("white")
     size 30
     xpos 0.5 ypos 0.7
     slow_cps 25
@@ -210,7 +210,7 @@ style author_text_style is text:
 
 style chapter_text_style is text:
     font font("instruction")
-    color COLORS["white"]
+    color color("white")
     size 60
     slow_cps 5
 
@@ -220,20 +220,28 @@ style straznik_text_style is text:
 
 style black_screen_text_style is text:
     font font("ubuntu")
-    color COLORS["white"]
+    color color("white")
     size 60
 
 style jak_to_mowia_text_style is text:
+    size 28
     bold True
     italic True
-    size 28
 
 style strazmasterka_text_style is text:
     xpos 0
-    bold True
-    font font("consult")
     size 100
-    color COLORS["blood"]
+    font font("consult")
+    color color("blood")
+    bold True
+
+style panic_text_style is text:
+    color color("blood")
+
+style blowek_text_style is text:
+    size 45
+    font font("love")
+    color color("pink")
 
 style button:
     background "#006"
@@ -242,7 +250,7 @@ style button:
 
 style button_text:
     font font("sonic")
-    selected_color COLORS["yellow"]
+    selected_color color("yellow")
 
 style trofeum:
     font font("ubuntu")

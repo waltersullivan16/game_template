@@ -90,6 +90,7 @@ label subscribe:
     Konopski "Oczywiście uszanuję twoją decyzję, jakakolwiek by ona nie była.{w=3.0}{nw}"
     Konopski "Dam ci jeszcze trochę czasu na zastanowienie.{w=3.0}{nw}"
     Konopski "Długo jeszcze będę musiał czekać?"
+    pause
 
 label subscribe_like:
     show screen subscribed_screen

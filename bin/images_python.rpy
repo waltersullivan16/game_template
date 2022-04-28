@@ -31,7 +31,7 @@ init python:
     image_trzask = lambda x: show_with_args(x, transition=vpunch, sound="trzask")
 
     def scene_courtroom1():
-        def character_courtroom(character, first_transition=dissolve, second_transition=vpunch, pause_out1=1.0, pause_out2=0.5):
+        def character_courtroom(character, first_transition=dissolve, second_transition=vpunch, pause_out1=0.5, pause_out2=0.2):
 
             show_with_args("{}1".format(character), first_transition, pause_out=pause_out1)
             show_with_args("{}2".format(character), second_transition, pause_out=pause_out2)

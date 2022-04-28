@@ -82,7 +82,7 @@ screen subscribe_screen():
         xpos 0.1
         ypos 0.3
         hover "images/scenes/subscribe/subscribe.png"
-        unhovered [MouseMove(500, 300)]
+        unhovered [MouseMove(500, 300, 0.3)]
         mouse "active"
         activate_sound "music/sound effects/button.mp3"
         idle "images/scenes/subscribe/subscribe.png"
@@ -102,7 +102,7 @@ screen subscribed_like_screen():
         xpos 0.8
         ypos 0.3
         hover "images/scenes/subscribe/like.png"
-        unhovered [MouseMove(1050, 300)]
+        unhovered [MouseMove(1050, 300, 0.3)]
         mouse "active"
         activate_sound "music/sound effects/button.mp3"
         idle "images/scenes/subscribe/like.png"
