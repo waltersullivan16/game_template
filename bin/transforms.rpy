@@ -1,18 +1,8 @@
 # ../files_list.rpy
 
-## jump to other conf files
-"conf.rpy"
-"characters_base.rpy"
-"functions.rpy"
-"gui_.rpy"
-"transforms.rpy"
-"screens_.rpy"
-"images_python.rpy"
-
-
-## common files
-"../characters.rpy"
-"../images.rpy"
+init -10 python:
+    def blurred(s, b=2.5):
+        return Transform(im.Blur(s, b))
 
 transform dropping:
     linear 1.5 yanchor -100
@@ -111,6 +101,19 @@ transform unblur:
     blur 50
     pause 1.0
     linear 1.0 blur 0
+
+transform choice_bg_transform_show:
+    blur 20.0
+
+transform choice_bg_transform_hide:
+    blur 0.0
+
+transform choice_transform:
+    alpha 0.0
+    easein 1.0 alpha 1.0
+
+    #on hide:
+    #    easein 2.0 alpha 0.0
 
 transform ani_alpha:
     alpha 1.0

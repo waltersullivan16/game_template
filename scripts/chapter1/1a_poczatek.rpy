@@ -1,7 +1,9 @@
 ﻿# ../../files_list.rpy
 
 ### QUOTE SCREEN (JEŻELI SĄDZISZ...)
-label quote_screen:
+label chapter0:
+
+label ._1quote_screen:
     $ t = "Jeżeli sądzisz, że w dobie internetu, normy moralne przestały obowiązywać (a zwłaszcza ciebie), to niezawodny znak, że jesteś "
     $ influ = "INFLUENCEREM"
     
@@ -12,12 +14,9 @@ label quote_screen:
     pause 0.5
     show screen quote(t, influ, author, author_errata1, author_errata2) with slow_dissolve 
     pause 12.0
-    hide screen quote with  transition("wet")
-    jump konop_monolog1
+    hide screen quote with transition("wet")
     
-### KONOP MONOLOG 1 + TITLE
-    
-label konop_monolog1:
+label ._2konop_monolog1:
     scene intro with very_slow_fade
     $ change_style("intro")
 
@@ -33,13 +32,10 @@ Ciężko na tyle, że aż rozważałem odejście z youtuba.
 Czy żałuję, że otworzyłem tę puszkę Pandory?{w=1} Raczej nie.
 Wszystkie trudy i znoje były warte tej jednej magicznej chwili, która dzisiaj niewątpliwie nastąpi.
 Lexiu usłyszy dzisiaj wyrok...''')
-    #scene intro2
-    jump winny
     
-label winny:
+label ._3winny:
     $ stop_music()
     scene intro2
-    # winny
     $ play_music("title", fadein=0.0, loop=False)
     pause 2.1
     show winny at title_beating with m
@@ -47,11 +43,8 @@ label winny:
     pause 2.0
     hide winny with transition("wet", time=1.2)
 
-    # TODO nazwa studia
     $play_video("mona_cut", stop_music=False)
-    #hide monaunivers with Dissolve(1.2)
 
-    # zbrodnia, kara subskrybcje
     show title_blank at Position(ypos=0.6) with wipeleft
     pause 0.7
     show zbrodnia at Position(ypos=0.6) with vpunch
@@ -62,51 +55,54 @@ label winny:
     pause 0.1
     show subskrypcje at Position(ypos=0.6) with Dissolve(2)
 
-    # chapter 0
     show text Text("CHAPTER 0{p=3} PROLOG", style="chapter_text_style") at Position(ypos=0.8)
     pause 5.0
-    $ stop_music()
-    jump konop_monolog2
+    $ change_scene()
 
-### KONOP MONOLOG 2 + SUBSKRYBCJE + KRÓTKI MONOLOG MYŚLOWY LOL
+label chapter1:
 
-label konop_monolog2:
-    scene lobby with transition("wipe_przekatny", time=1.5)
-    $ change_style("main")
+    scene lobby with transition("wet")
     $ play_music("lobby")
-    pause 1.0
+    pause 0.5
 
-    Konopski "A mówiąc o byciu winnym..."
-    $ character_monologue(Konopski,'''
+label ._1konop_monolog2:
+    Konopski """
+A mówiąc o byciu winnym...
+
 Mam nadzieję, że czują się tak wszyscy ci, którzy nie subskrybują jeszcze mojego kanału.
-Jeśli należysz do tej grupy i nie chcesz, żeby wyrzuty sumienia zjadały cię od środka, naciśnij tu i teraz gustowny czerwony przycisk.
-Nic cię to nie kosztuje, a zawsze możesz zrezygnować.
-''')
 
-label subscribe:
+Jeśli należysz do tej grupy i nie chcesz, żeby wyrzuty sumienia zjadały cię od środka, naciśnij tu i teraz gustowny czerwony przycisk.
+
+Nic cię to nie kosztuje, a zawsze możesz zrezygnować.
+"""
+
+label ._2subscribe:
+    scene lobby
+    $change_style("main")
     $ stop_music()
     show screen subscribe_screen
-    $ renpy.pause(3.0)
-    Konopski "Oczywiście uszanuję twoją decyzję, jakakolwiek by ona nie była.{w=3.0}{nw}"
-    Konopski "Dam ci jeszcze trochę czasu na zastanowienie.{w=3.0}{nw}"
-    Konopski "Długo jeszcze będę musiał czekać?"
+    pause 3
+    Konopski """
+Oczywiście uszanuję twoją decyzję, jakakolwiek by ona nie była.{w=3.0}{nw}
+
+Dam ci jeszcze trochę czasu na zastanowienie.{w=3.0}{nw}
+
+Długo jeszcze będę musiał czekać?
+"""
     pause
 
-label subscribe_like:
-    show screen subscribed_screen
+label ._3subscribe_like:
     Konopski "No to teraz łapka w górę!"
-    #hide subscribed_screen
     show screen subscribed_like_screen
     pause
 
-label subscribe_thanks:
-    #$dismiss_pause = false
+label ._4subscribe_thanks:
     Konopski "Fenomenalnie!"
     $ play_music("lobby")
     Konopski "Od razu wiedziałem, że mam do czynienia z prawdziwym koneserem sztuki!"
     #konopski "a skoro już mówimy o sztuce: spiesz się, bo zostały ostatnie sztuki mojej najnowszej eksluzywnej kolekcji bluz blovek"
 
-label konop_monolog3:
+label ._5konop_monolog3:
     $ thinking(Konopski,'''
 ...
 Dobra, mam nadzieję, że wszystko się ładnie nagrało.
@@ -120,4 +116,4 @@ Niełatwo jest cierpieć za miliony.
 ...
 Co teraz?'''
 )
-    jump menu1_blowek
+    jump chapter21

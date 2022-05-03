@@ -1,7 +1,7 @@
 "files_list.rpy"
 
 #notatki gowna bo sie pomylilam w przeszlosci pozdro mordo musi byc png
-image lobby = Image("background/lobby.png")
+#image lobby = Image("background/lobby.png")
 image bg lobby = Image("background/lobby.png")
 image lobby2 = Image("background/lobby2.png")
 image lobby_black = Image("background/lobby_black.png")

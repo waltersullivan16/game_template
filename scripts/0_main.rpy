@@ -7,34 +7,33 @@
 
 # "chapter1/1a_poczatek.rpy"
 # "chapter1/1b_dziewczyny.rpy"
+init -1 python:
+    def chapters_list():
+        all_labels = renpy.get_all_labels()
+        return sorted(list(filter(lambda x: x.startswith("chapter"), all_labels)))
+
+    CHAPTERS = chapters_list() 
+
+init python:
+
+    def chapter_idx():
+        return CHAPTERS.index(persistent.label)
+
+    def prev_chapter():
+        return CHAPTERS[max(0, chapter_idx() - 1)]
+
+    def next_chapter():
+        return CHAPTERS[min(len(CHAPTERS), chapter_idx() + 1)]
 
 label start:
-    $ stop_music()
-    #$ _dismiss_pause = True
-    #scene lobby
     show screen z with slow_fade
-    #jump chapters
     jump uwertura_scenes
-    #jump wybor
-    #jump dziewczeta
-    #jump dziewczeta_wardega
-    #jump bloody_text
-    #jump legenda
-    #jump gazeta
-    #jump namiejsce
-    #jump sad_poczatek
-
-label chapters:
-    menu:
-        "uwertura":
-            jump uwertura_scenes
-        "TEST":
-            jump test
 
 label uwertura_scenes:
     menu:
         "currrent check":
-            jump transparenty
+            jump chapter1._2subscribe
+            #jump transparenty
             #$ load()
         "intro":
             jump intro_menu
@@ -49,36 +48,28 @@ label uwertura_scenes:
 label intro_menu:
     menu:
         "początek":
-            jump quote_screen
+            jump chapter0
         "monolog":
-            jump konop_monolog1
+            jump chapter0._2konop_monolog1
         "winny":
-            jump winny
+            jump chapter0._3winny
         "monolog2":
-            jump winny
+            jump chapter1
         "subskrybuj":
-            jump subscribe
+            jump chapter1._2subscribe
 
 label szukanie_blowka_menu:
     menu:
-        "co robic1":
-            jump menu1_blowek
+        "menu1":
+            jump chapter21.menu1
         "szukanie blowka part1":
-            jump check_blowek1a
+            jump chapter22
         "co robic2":
-            jump menu2_blowek2
+            jump chapter23
         "blowek2 poczatek":
-            jump check_blowek2a
-        "wkurw konopskiego":
-            jump check_blowek2b
-        "koniec przerwy":
-            jump koniec_przerwy
-        "rozważania na temat szukania blowka":
-            jump lesne_tradycje
-        "lesne menu":
-            jump lesne_menu_var
-        "transparenty":
-            jump danger_transparenty
+            jump chapter24
+        "ucieczka":
+            jump chapter25
 
 label dziewczyny_menu:
     menu:

@@ -18,25 +18,37 @@ screen main_options_template(options):
         for (n, a) in options:
             textbutton n mouse "active" action a
 
-screen choices_template(name, imagebuttons):
+screen blur_background:
     #add "blur"
-    for (it, i) in enumerate(imagebuttons):
-        $ xpos_ = 100 if (it % 2) == 0 else 700
-        $ ypos_ = 50 if it < 2 else 400 
-        $ mouse = "love" if i.startswith("blowek") else "active"
-        imagebutton:
-            xpos xpos_
-            ypos ypos_
-            activate_sound "music/sound effects/button_menu.mp3"
-            hover "gui/choices/active_{}.png".format(i)
-            mouse mouse
-            idle "gui/choices/inactive_{}.png".format(i)
-            action [Hide(name, transition=ease),  Jump(i)]
+    on "show" action Function(renpy.show_layer_at, choice_bg_transform_show, layer='master')
+    on "hide" action Function(renpy.show_layer_at, choice_bg_transform_hide, layer='master')
+
+screen choices_template(chapter, imagebuttons):
+    use blur_background
+    modal True
+    style_prefix "choice"
+    grid 2 2 at choice_transform:
+        xalign 0.5
+        yalign 0.5
+        xspacing 100
+        yspacing 50
+
+        for (it, i) in enumerate(imagebuttons):
+            $ mouse = "love" if i.startswith("blowek") else "active"
+            imagebutton:
+                activate_sound "music/sound effects/button_menu.mp3"
+                hover "gui/choices/active_{}.png".format(i)
+                mouse mouse
+                idle "gui/choices/inactive_{}.png".format(i)
+                action [Hide("choices_template", transition=ease),  Jump("{}.{}".format(chapter, i))]
 
 screen z():
     use screen_buttons_template(0, 0, Jump("uwertura_scenes"))
     use screen_buttons_template(0.9, 0, ShowMenu("preferences"))
 
+screen keymapscreen():    
+       key "K_LEFT" action Jump("end")
+       #key "K_RIGHT" action next_chapter()
 
 screen main_options():
     use main_options_template([
@@ -49,7 +61,6 @@ screen main_options():
         ("return", Hide("main_options"))
     ])
     
-
 screen volume_options():
     modal True
     frame:
@@ -57,56 +68,39 @@ screen volume_options():
         bar value Preference("sound volume") released Play("sound", "music/sound effects/badum.mp3")
         bar value Preference("music volume")
 
+
 screen button_overlay():
     mousearea:
         area (0, 0, 1.0, 100)
         hovered Show("volume_options", transition=dissolve)
         unhovered Hide("volume_options", transition=dissolve)
 
-
-screen choices1_blowek():
-    modal True
-    use choices_template("choices1_blowek", ["blowek", "lexi", "grafika", "uciekaj"])
-
-screen choices2_blowek_sequel():
-    modal True
-    use choices_template("choices2_blowek_sequel", ["blowek2", "lexi", "pocieszajka", "uciekaj"])
-
-screen choices3_uciekaj():
-    modal True
-    use choices_template("choices3_uciekaj", ["uciekaj", "uciekaj", "uciekaj", "uciekaj"])
-
-screen subscribe_screen():
-    add "blur"
-    imagebutton:
-        xpos 0.1
-        ypos 0.3
-        hover "images/scenes/subscribe/subscribe.png"
-        unhovered [MouseMove(500, 300, 0.3)]
+screen subscribe_screen:
+    #style_prefix "subbutton"
+    use blur_background
+    imagebutton auto "gui/button/subscribe/subscribe_%s.png":
+        xpos 0.1 ypos 0.3
         mouse "active"
         activate_sound "music/sound effects/button.mp3"
-        idle "images/scenes/subscribe/subscribe.png"
-        action [Hide("subscribe_screen"), Jump("subscribe_like")]
+        #unhovered If ((subscribed == False), true = [MouseMove(500, 300, 0.3)])
+        unhovered MouseMove(500, 300, 0.3)
+        #action [SetScreenVariable("subscribed", True), Jump("chapter1._3subscribe_like")]#, SelectedIf(False)]
+        action [Show("subscribed_screen"), Hide("subscribe_screen"), Jump("chapter1._3subscribe_like")]#, SelectedIf(False)]
+        #[Hide("subscribe_screen"), Show("subscribed_screen"), Jump("subscribe_like")]
 
-screen subscribed_screen():
-    add "blur"
-    imagebutton:
-        xpos 0.1
-        ypos 0.3
-        hover "images/scenes/subscribe/subscribed.png"
-        idle "images/scenes/subscribe/subscribed.png"
+screen subscribed_screen:
+    use blur_background
+    imagebutton auto "gui/button/subscribe/subscribed_%s.png":
+        xpos 0.1 ypos 0.3
 
-screen subscribed_like_screen():
-    add "blur"
-    imagebutton:
-        xpos 0.8
-        ypos 0.3
-        hover "images/scenes/subscribe/like.png"
-        unhovered [MouseMove(1050, 300, 0.3)]
+screen subscribed_like_screen:
+    use blur_background
+    modal True
+    imagebutton auto "gui/button/subscribe/like_%s.png":
+        xpos 0.8 ypos 0.3
         mouse "active"
         activate_sound "music/sound effects/button.mp3"
-        idle "images/scenes/subscribe/like.png"
-        action [Hide("blur"), Hide("subscribed_screen", transition=ease), Hide("subscribed_like_screen", transition=ease), Jump("subscribe_thanks")]#Hide("subscribe", transition=dissolve), Jump("subscribe_thanks")]
+        action [Hide("subscribed_screen", transition=ease) , Hide("subscribed_like_screen", transition=ease), Jump("chapter1._4subscribe_thanks")]#Hide("subscribe", transition=dissolve), Jump("subscribe_thanks")]
 
 transform text_fade_in(t, p=0):
     alpha 0
@@ -200,4 +194,4 @@ screen dropdown_options (btnTexts, opt_xpos=0, opt_ypos=0):
             $yIndent += ySpacing
 
 screen xx:
-    use dropdown_menu(selectedOption="Foo", btnTexts=["foo", "bar", "baz"])
+    use dropdown_menu(btnTexts=["foo", "bar", "baz"])

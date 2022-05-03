@@ -25,6 +25,13 @@ init -9 python:
             character.talking = False
             stop_sound_effect()
 
+    def label_callback(name, abnormal):
+        if not name.startswith('_'):
+            persistent.prev = persistent.label
+            persistent.label = name
+            name_arr = name.split('.')
+            persistent.base = name_arr[-len(name_arr)]
+
     def loading(transition="farba", time=0.5):#, transition2):
         renpy.show("bg black")
         def loading_change(pause1=1.0,pause2=0.3):
@@ -34,6 +41,7 @@ init -9 python:
             renpy.pause(pause2)
         loading_change(1.0,0.3)
         loading_change(1, 0)
+        renpy.transition(transition, time)
 
     def get_frame(character, animation_name, frame):
         return "{} {} {}".format(character, animation_name, frame)
@@ -80,13 +88,6 @@ init -9 python:
     def defense_scene(): {show_scene("defense", [(KonopskiC.name, KonopskiC.show_args)])}
     def witness_scene(): {show_scene("witness", [(GimperC.name, GimperC.show_args)])}
 
-    def wi(t1):
-        renpy.transition(transition(t1))
-        renpy.show("lobby")
-        renpy.pause(2.0)
-        renpy.transition(transition(t1))
-        renpy.show("courtroom")
-
     def new_trofeum(t):
         renpy.show_screen("trofeum", t)
         play_sound_effect("trofeum")
@@ -118,28 +119,26 @@ init -9 python:
         last_text = Konopski, "No nareszcie."
         conditional_wait(check_too_loud_music, text_arr, last_text)
 
-    def menu_creator(question, options):
-        m = Menu(question)
-        for o in options:
-            m.option(**o)
-
-    def label_callback(name, abnormal):
-        if not name.startswith('_'):
-            persistent.prev = persistent.label
-            persistent.label = name
-            name_arr = name.split('.')
-            persistent.base = name_arr[-len(name_arr)]
-
-    def blur_bg(name, b=1.5):
-        blurred_im = im.Blur(name, b)
-        renpy.show(blurred_im)
-        renpy.show(dark_blur)
-
     def gibberish(n=1):
         play_sound_effect("gibberish{}".format(n))
 
-    def save():
-        persistent.save = persistent.label
+#    def replacement_show(*args, **kwargs):
+#        renpy.show(*args, **kwargs)
+#        return 
+#
+#    def replacement_hide(*args, **kwargs):
+#        renpy.transition(Dissolve(1))
+#        renpy.hide(*args, **kwargs)
+#        return 
 
-    def load():
-        renpy.jump(persistent.save)
+    #config.show = replacement_show
+    #config.hide = replacement_hide  
+
+    def change_scene(t="wet", s="main"):
+        renpy.transition(transition(t, 2))
+        renpy.show("black")
+        stop_music()
+        renpy.pause(2)
+        loading()
+        change_style(s)
+        renpy.transition(transition(t, 2))

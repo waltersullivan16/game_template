@@ -1,19 +1,4 @@
-## jump to other conf files
-"gui_.rpy"
-"characters_base.rpy"
-"functions.rpy"
-"screens_.rpy"
-"music.rpy"
-"images_python.rpy"
-
-## common files
-"../characters.rpy"
-"../images.rpy"
-"../screens.rpy"
-
-## script
-"../scripts/chapter1/1a_poczatek.rpy"
-"../scripts/chapter1/1b_szukanie_blowka.rpy"
+# list_files.rpy
 
 init -12 python:
     import os
@@ -23,38 +8,18 @@ init -12 python:
     from itertools import chain
     import random
 
-init -10 python:
-
-    TITLE = "template"
-    ## PATHS ##
-
-    GAME_PATH = gpj('/home/akechi/renpy/games', TITLE, 'game')
-
-
-    TEXTBOX_NAMES = {
-        "main": "phoenixdb.png",
-        "creepy": "creepy_textbox.png",
-        "empty": "empty.png",
-        "black": "black.png",
-    }
-
 init -11 python:
+    TITLE = "template"
+    GAME_PATH = gpj('/home/akechi/renpy/games', TITLE, 'game')
 
     if persistent.style is None:
         persistent.style = "main"
 
     mouse = lambda x: gpj("gui", "mouse", "{}.png".format(x))
-
-    config.mouse = {
-            "default": [(mouse("main"), 1, 0)],
-            "main": [(mouse("main"), 1, 0)],
-            "active": [(mouse("active"), 1, 0)],
-            "red": [(mouse("red"), 1, 0)],
-            "loading": [(mouse("loading"), 1, 0)],
-            "not": [(mouse("not"), 1, 0)],
-            "love": [(mouse("love"), 1, 0)],
-            "question": [(mouse("question"), 1, 0)],
-    } 
+    mouses_list = ["main", "active", "red", "loading", "not", "love", "question"]
+    
+    config.mouse = {n:[(mouse(n), 1, 0)] for n in mouses_list}
+    config.mouse["default"] = [(mouse("main"), 1, 0)]
     
     #_dismiss_pause = False
 
@@ -75,6 +40,7 @@ define config.layers = [ 'master', 'transient', 'topcia', 'screens', 'overlay']
 define config.say_menu_text_filter = alter_say_strings
 define config.menu_include_disabled = True
 define config.label_callback = label_callback
+define config.displayable_prefix["blur"] = blurred
 #define config.menu_arguments_callback = True
 
 default preferences.show_empty_window = False

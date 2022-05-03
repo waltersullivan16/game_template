@@ -161,12 +161,18 @@ style input:
 
 screen choice(items):
     style_prefix "choice"
+    modal True
+    $ renpy.show_layer_at(choice_bg_transform_show, layer='master')
+    on "hide" action Function(renpy.show_layer_at, choice_bg_transform_hide, layer='master')
 
-    vbox:
+    vbox at choice_transform:
         for i in items:
             textbutton i.caption action i.action
 
-
+#        for i in items:
+#            textbutton i.caption action [ Function(renpy.show_layer_at, blur, layer="master" ), i.action]
+#
+#
 ## When this is true, menu captions will be spoken by the narrator. When false,
 ## menu captions will be displayed as empty buttons.
 define config.narrator_menu = True

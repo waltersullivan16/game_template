@@ -8,8 +8,6 @@
 "bin/images_python.rpy"
 "bin/styles.rpy"
 
-"bin/znalezione/wipes.rpy"
-
 ## common files
 "characters.rpy"
 "images.rpy"

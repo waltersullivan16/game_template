@@ -61,7 +61,7 @@ init -12 python:
 
 ### TEXTBOX
     def textbox_maker(textbox_name, alpha=0.85):
-        return Transform(Image(gpj("gui", "textbox", TEXTBOX_NAMES[textbox_name])), alpha=alpha)
+        return Transform(Image(gpj("gui", "textbox", "{}_textbox.png".format(textbox_name))), alpha=alpha)
 
     def change_style(s):
         persistent.style = s
