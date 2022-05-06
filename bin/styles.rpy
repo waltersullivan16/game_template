@@ -1,3 +1,5 @@
+# STYLES: main, creepy, www, intro, quote, black, straznik
+
 ### DEFAULT
 
 style say_window is default
@@ -76,8 +78,12 @@ style say_dialogue_quote:
 
 ### BLACK
 style say_dialogue_black:
-    xpos 0.1 ypos 300
+    font font("consult")
+    size 40
+    slow_cps 200
+    xalign 0.5 ypos 0.5
     xsize 1000
+    line_spacing 10
 
 ### STRAZNIK
 
@@ -142,6 +148,10 @@ style thoughts_dark_text_style is text:
     italic True
     font font("ubuntu")
     line_spacing 10
+
+style thoughts_whisper_text_style is text:
+    size 18
+    color color("light_red")
 
 style intro_text_style is text:
     #xpos .6 ypos 0.6
@@ -219,6 +229,11 @@ style straznik_text_style is text:
     size 50
 
 style black_screen_text_style is text:
+    font font("ubuntu")
+    color color("white")
+    size 60
+
+style black_text_style is text:
     font font("ubuntu")
     color color("white")
     size 60

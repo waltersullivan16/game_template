@@ -22,8 +22,8 @@ init -12 python:
     }
 
     def text_style(s, text):
-        persistent.blip = "blip_thinking" if s.startswith("thoughts") else "blip"
-        print(persistent.blip)
+        persistent.blip = "thoughts" if s.startswith("thoughts") else "main"
+        #print(persistent.blip)
 
         def add_style_to_text(text, style):
             return "{{={}}} {} {{/={}}}".format(style, text, style)
@@ -43,10 +43,11 @@ init -12 python:
     styled_monologue = lambda s, c, t: character_monologue(c, t, lambda x: text_style(s, x))
 
     def thinking(character, text, style=None):
-        persistent.blip = "blip_thinking"
+        #persistent.blip = "blip_thinking"
+        #character.blip = "thoughts"
         s = "thoughts_{}".format(persistent.style)
         styled_monologue(s, character, text)
-        persistent.blip = "blip"
+        #character.blip = "main"
         
     def straznik(text):
         #renpy.transition(transition("shatter"))

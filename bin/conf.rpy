@@ -32,7 +32,7 @@ init -1 python:
         AUTOMATIC_IMAGES_STRIP += get_dirs(gpj("images", x))
 
     renpy.music.register_channel("sfx1", "sfx")
-    renpy.music.register_channel("sfx2")#, "sfx")
+    renpy.music.register_channel("sfx2")#n, "sfx")
 
 
 define config.window_show_transition = dissolve

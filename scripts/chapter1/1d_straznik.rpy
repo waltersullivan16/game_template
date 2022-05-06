@@ -6,13 +6,14 @@
 # ../characters.rpy
 # ../screens.rpy
 
-
-label namiejsce:
-    $ play_music("hurry")
+label chapter41:
+    scene lobby
     show penny
     show ema
     show pearl
-    scene lobby
+
+label ._1na_miejsce:
+    $ play_music("hurry")
     Unknown "PANIE KONOPSKI, PROSZĘ ZAJĄĆ SWOJE MIEJSCE"
     hide penny with moveoutbottom
     hide ema with moveoutbottom
@@ -83,8 +84,8 @@ label lilmasti_intro:
 
 label lilmasti_boss:
     scene black with slow_dissolve
-    $persistent.style = "black"
-    $ Blank(text_style("black_screen", "Bo jak już na pewno wiecie, wasza..."))
+    $ change_style("black")
+    Blank "Bo jak już na pewno wiecie, wasza..."
     pause 0.5
     show lilmasti wpierdol with hpunch
     pause 0.5

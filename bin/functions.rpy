@@ -17,13 +17,15 @@ init -9 python:
     def char_talking(character, event, **kwargs):
         if event == "show":
             character.talking = True
-            blip = character.blip or persistent.blip
-            print(character, character.name, character.blip,blip)
+            blip = get_blip(character.blip or persistent.blip)# or persistent.blip
+            print(character, character.name, character.blip, blip)
             play_sound_effect(blip, channel="sound", loop="True")
 
         elif event in ["end", "slow_done"]:
             character.talking = False
             stop_sound_effect()
+            if event == "end":
+                persistent.blip = "main"
 
     def label_callback(name, abnormal):
         if not name.startswith('_'):
@@ -54,11 +56,12 @@ init -9 python:
     
     animation_reaction = lambda name: animation_maker(name, "reaction")
  
-    def alter_say_strings(str_to_test, dot=0.3, comma=0.1, rest=0.2):
+    def alter_say_strings(str_to_test, dot=0.6, comma=0.1, rest=0.6):
         str_map = {
             ". " : ". {{w={}}}".format(dot),
             ", " : ", {{w={}}}".format(comma),
             "! " : "! {{w={}}}".format(rest),
+            "? " : "? {{w={}}}".format(rest),
         }
         for key in str_map:
             str_to_test = str_to_test.replace(key, str_map[key])
@@ -134,11 +137,12 @@ init -9 python:
     #config.show = replacement_show
     #config.hide = replacement_hide  
 
-    def change_scene(t="wet", s="main"):
-        renpy.transition(transition(t, 2))
+    def change_scene(t=["wet", "wet"], time=[2, 2], pause=2, s="main", skip_loading=False, clean_only=False):
+        renpy.transition(transition(t[0], time[0]))#t_time))
         renpy.show("black")
         stop_music()
-        renpy.pause(2)
-        loading()
+        renpy.pause(pause)
+        if not skip_loading:
+            loading()
         change_style(s)
-        renpy.transition(transition(t, 2))
+        renpy.transition(transition(t[1], time[1]))

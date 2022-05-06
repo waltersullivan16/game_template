@@ -59,7 +59,7 @@ label ._3winny:
     pause 5.0
     $ change_scene()
 
-label chapter1:
+label chapter11:
 
     scene lobby with transition("wet")
     $ play_music("lobby")

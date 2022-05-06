@@ -30,8 +30,9 @@ label .uciekaj:
 ################### PIERWSZE SZUKANIE BLOWKA ##############
 
 label chapter22:
-
-    scene dark_courtroom with transition("wet", 2)
+    scene dark_courtroom
+    show dark_blur
+    pause 3.0
     $ play_music("scary")
 
 label ._1wstep:
@@ -88,6 +89,7 @@ label ._4watahanska_wrogosc:
     $ scene_courtroom1()
 
 label ._5creepy_kokichi:
+    $ play_sound_effect("kokichi")
     show blur with transition("maska", 3)
     show kokichi at creepy_kokichi with Dissolve(4.0)
     pause 2
@@ -131,19 +133,17 @@ A nawet jeśli, to i tak nie ma się czym przejmować. Najgorsze i tak już mam 
 ''')
 
 label .ostatnie_wahanie:
-    scene black with transition("farba") 
+    scene black with transition("wet") 
     $stop_music()
     pause(1)
-    $ change_style("black")
-    $ thinking(Konopski, "Przynajmniej taką mam nadzieję...")
-    $ loading(transition("farba"), Dissolve(2.0))
+    $ change_style("straznik")
+    $ thinking(BlankBlip, "Przynajmniej taką mam nadzieję...")
+    $ change_scene(time=[0, 0], pause=1)
 
 ############# SZUKANIE BLOWKA 2 ##################
 
 label chapter24:
-    scene normal with slow_fade
-
-label chapter5_1:
+    scene normal with Dissolve(3)
 
 label .poczatek_szukania2:
     $ thinking(
@@ -157,7 +157,7 @@ Pardon, {size=+10}WATAHA®{/size} Wardęgi.
 
     pause 1.5
     $ thinking(
-        konopski,'''
+        Konopski,'''
 No i gdzie ba-dum-tssk?
 Tym razem to miało pretendować do kategorii żart.
 ''')
@@ -182,14 +182,14 @@ Bardziej "NIE" niż za pierszym razem!
     $ thinking(Konopski, "...")
     $ thinking(
         Konopski,'''
-Z kim ja pracuję...
+Z kim ja pracuję...{w=1}
 Dobra, jeszcze raz.
 ''')
     $ thinking(Konopski, "To nie byli ludzie z fandomu...{nw}")
     $ play_sound_effect("badum")
     pause 2
 
-label chapter5_2:
+label chapter25:
     scene normal at blur
     show dark_blur with dissolve
 
@@ -243,13 +243,11 @@ label .koniec_przerwy:
     pause 1
     Konopski ej angry_eyes "E, wy tam! Tylny rząd!"
     Konopski "Czy ja wam pozwoliłem przestać pracować?"
-    Konopski "Wracać mi tu natychmiast na miejsca, wy lenie patentowane!"
+    Konopski "Wracać natychmiast na miejsca, wy lenie patentowane!"
     hide konopski with moveoutright
-    pause 1.0
-    hide blur with dissolve
-    jump transparenty
+    hide blur with slow_dissolve
 
-label chapter5_3:
+label chapter26:
     scene transparenty_courtroom 
 
 label .co_tak_gwarno:
@@ -268,6 +266,7 @@ No bo co niby może być bardziej absorbujące od interakcji ze mną...?
 No oczywiście!
 ''')
 #TODO love sound effect
+    $ play_sound_effect("magic")
     $ Konopski(text_style("blowek", "{size=+10}Blowek!{/size}"))
     $ thinking(Konopski, '''
 Tam może być Blowek!
@@ -277,9 +276,9 @@ Wszystko składa się w jedną całość!{w=1}
 label .zwiady:
     $ thinking(Konopski, '''
 Dobra, szkoda czasu, idę na zwiady.
-Zdaję sobie sprawę, że będzie to niebezpieczna misja, więc muszę zachować szczególną ostrożność.
+Wkroczyłem właśnie na wrogie terytorium, więc od teraz muszę zachować szczególną ostrożność.
 ''')
-#TODO mute
+    $ mute_blip()
 $ thinking(Konopski, '''
 Bez wątpienia kluczową rolę odegrają wszystkie umiejętności zdobyte podczas gry w Thiefa.{w=1}
 Głupio wam teraz, snoby, twierdzący że gry to tylko głupia rozrywka dla dzieci?
@@ -287,7 +286,7 @@ Szach-mat frajerzy.
 ...
 No ale bierzmy się do roboty.
 Wchodzę do jaskini lwa.
-''')
+''', style="whisper")
 
 label .jaskinia_wilka:
     $ thinking(Konopski, "Albo raczej...")
@@ -295,21 +294,36 @@ label .jaskinia_wilka:
     pause 1
     Konopski "{size=+5}EKHEM{/size}"
     Konopski "Powiedziałem..."
+    $ mute_blip(False)
     Konopski "Wchodzę do jaskni {size=+5}WILKA{/size}"
     $ play_sound_effect("badum")
 
 label .dziki_tlum:
+    $ stop_music()
+    scene transparenty_courtroom
     pause 1.5
     Konopski "No teraz było ja{w=0.1}{nw}"
-    show transparenty_courtroom2
-    $ styled_monologue(Konopski, 
-'''{cps=90}JA PIERDOLĘ
-ZARAZ SIĘ KUŹWA ZAJEBIĘ
-CO TU SIĘ ZNOWU ODJEBAŁO
-JAKIEŚ CHORE POOOOOOO{/cps}{w=2}{nw}''', 'panic')
+    scene transparenty_courtroom_dark with flashbulb_fast
+    $ play_sound_effect("danger")
+    pause 0.3
+    scene transparenty_courtroom_dark2
+    pause 1.0
+##    $ change_style("black")
+##    "" '''
+##JA PIERDOLĘ
+##ZARAZ SIĘ KUŹWA ZAJEBIĘ
+##CO TU SIĘ ZNOWU ODJEBAŁO
+##TO JAKIŚ POJEBANY SEN
+##BŁAGAM POWIEDZCIE ŻE TO JAKIŚ POJEBANY SEN
+##JUŻ DAJCIE MI SPOKÓJ
+##KONIEC Z RATOWANIEM LUDZKOŚCI
+##JAKIEŚ CHORE POOOOOOO{w=2}{nw}'''
+    scene transparenty_courtroom2
+
+    $ change_style("main")
 Konopski "zdrawiam wszystkich, chciałem powiedzieć haha."
 
-label chapter5_4:
+label chapter27:
 
 label .junko_transparent:
     $ play_video("transparenty_junko")
@@ -368,7 +382,7 @@ label .transparenty_video:
 ### MENU 3 + PRÓBA UCIECZKI
 
 
-label chapter25:
+label chapter28:
     scene lobby with slow_dissolve
 
 label .menu3_ucieczka:

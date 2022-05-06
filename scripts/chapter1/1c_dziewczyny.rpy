@@ -5,8 +5,9 @@
 # ../bin/conf.rpy
 # ../characters.rpy
 # ../screens.rpy
+label chapter31:
 
-label dziewczeta:
+label ._1dziewczeta:
     scene bg lobby
     $ change_style("main")
 
@@ -33,7 +34,7 @@ label dziewczeta:
         "Weź rozbieg, przeskocz nad najniższą i nie zatrzymuj się, aż nie dobiegniesz do domu. No chyba że gdzieś zauważysz swój wytworny płaszczyk.":
             jump proba_ucieczki
 
-label proba_ucieczki:
+label ._2proba_ucieczki:
     hide blur
     Konopski "Słuchajcie, jeśli chodzi o ten autograf, to dajcie mi chwilę..."
     Ema main "Proszę się nie wygłupiać, nie będziemy teraz zawracać panu głowy jakimiś błachostkami."
@@ -53,7 +54,7 @@ Przecież to ja jestem prokuratorem.''')
     Konopski "To może koleżanka?"
     jump dziewczeta_wardega
 
-label dziewczeta_wardega:
+label ._3dziewczeta_wardega:
     $ stop_music()
     show ema at right
     show penny at true_left
@@ -68,10 +69,14 @@ label dziewczeta_wardega:
     show penny at Glitch
     jump bloody_text
 
-label bloody_text:
+label chapter32:
     scene black with dissolve
-    $ play_video("strasznega")
     $ change_style("creepy")
+
+label ._1vid_az_sie_trzese:
+    $ play_video("strasznega")
+
+label ._2creepy_style:
     show konopski smirk at right with dissolve
     Konopski "Wy... zdajecie sobie sprawę z tego, że \"Wardęga\" to nie jest jego imię, prawda?"
     show konopski main
@@ -82,7 +87,7 @@ Sympatycznym w swej prostocie okienkiem dialogowym?
 Bogatym w szczegóły drugim planem?
 ''')
 
-label kopniak:
+label ._3kopniak:
     show pearl determined at kick_out
     pause 0.9
     show konopski at kicked_out
@@ -95,7 +100,7 @@ label kopniak:
     Ema thinking "Tak właściwie to nie wiem, ale jest w tym coś budzącego grozę..."
     jump legenda
 
-label legenda:
+label ._4legenda:
     show penny main at true_left with moveinbottom
     show pearl
     show ema at right
@@ -121,23 +126,29 @@ label legenda:
     pause 1.0
     Konopski "Co, znowu cutscenka...? {w=0.8}No błagam..."
 
+label ._5vid_wardega_wardega:
+
     $ loading()
     pause .5
     $play_video("wardega")
 
+label ._6vid_win:
+
     pause 1.0
     $ play_video("win")
-    
+
+label ._7vid_smile:
+
     pause 1.0
     $play_video("smile")
 
-    $loading()
+    $change_scene()
 
-    jump gazeta0
-
-label gazeta0:
+label chapter33:
     $ change_style("main")
     scene lobby
+
+label ._1zorro_z_lasu:
     show pearl serious
     show ema confused at right
     show penny at true_left
@@ -159,12 +170,11 @@ To niemożliwe, że istnieje jeszcze jeden zorro-z-lasu, {w=1.0}prawda...?{w=1}
     Konopski "A czy moglibyśmy skończyć tę rozmowę po procesie? Ja naprawdę muszę jeszcze przygotować się do{nw}"
     Ema "Ulubione filmy"
 
-label gazeta1:
-    ### TODO inna muza
-    $ play_music("gazeta")
+label ._2ulubione_filmy:
     scene bg ulubione_filmy with dissolve
-    pause 0.5
     $ change_style("www")
+    $ play_music("gazeta")
+    pause 0.5
     $ fav_filmy1 = [
         text_style("archivo", "1) Nagranie z procesu O.J.Simsona{w=1}"),
         text_style("www", "{p}{u}Komentarz{/u}:{w=1}{size=+10}{cps=10} MAJSTERSZTYK.{/cps}{/size}{p}Opus magnum sądownictwa.{p}Pozycja {b}obowiązkowa{/b} dla fanów rezolutnej dysputy!!!{w}\n"),
@@ -193,13 +203,13 @@ label gazeta1:
     ]
     $ Blank(list_text(fav_filmy3))
 
-label gazeta2:
+label ._3przerwa:
     show bg ulubione_filmy with wiperight
     show pearl at true_right with moveinbottom
     $ stop_music()
     $ change_style("main")
     Pearl "To wszystko."
-    $Konopski(text_style("thoughts", "Dzięki bogu..."))
+    $ thinking(Konopski, "Dzięki bogu...")
     Konopski "Ok, to skoro już wiemy wszystko o druidzie, to..."
     show bg ulubione with wiperight
     show ema at Position(ypos=800) with moveinbottom
@@ -209,13 +219,13 @@ label gazeta2:
     Konopski "Dlaczego mi to robicie... Jestem po waszej stronie..."
     Pearl determined "Musi pan myśleć strategicznie!"
     show penny at true_left with moveinbottom
-    Penny cards "Dobre rozeznanie na froncie wroga może dać istotną przewagę!"
+    Penny @cards "Dobre rozeznanie na froncie wroga może dać istotną przewagę!"
     $Konopski(text_style("thoughts", "No jasne, już nie mogę się doczekać momentu, w którym zmiotę wszystkie argumenty Wardęgi siłą jego ulubionych powiedzeń..."))
     hide penny with moveoutbottom
     hide ema with moveoutbottom
     hide pearl with moveoutbottom
 
-label powiedzenia:
+label ._4ulubione_powiedzenia1:
     scene bg ulubione_powiedzenia
     $ change_style("www")
     $ fav_powiedzenia = [
@@ -230,7 +240,7 @@ label powiedzenia:
     ]
     $ Blank(list_text(fav_powiedzenia))
 
-label powiedzenia2:
+label ._5ulubione_powiedzenia2:
     $ fav_powiedzenia2 = [
         text_style("archivo", "4) Kto z Wardęgą wojuje, od Wardęgi ginie"),
         text_style("cite", "{space=50}Zaradna Wersow i zdemoralizowany Konopski"),
@@ -245,24 +255,24 @@ label powiedzenia2:
     ]
     ### TODO: poprawić tekst z cyceronem
     $ BlankBlip(list_text(fav_powiedzenia2))
-    $ stop_music()
 
-label koniec_powiedzen:
-    scene black with slow_dissolve 
-    $ stop_music()
-    $ change_style("main")
+label ._6koniec_powiedzen:
+    $ change_style(skip_loading=True)
     pause 1.0
     $ thinking(Konopski, "Co jak co, ale jednego Wardędze nie można odmówić.")
     $ thinking(Konopski, "Zaskakująco dobrze się trzyma jak na swoje lata...")
-    scene lobby with slow_dissolve
+    $ loading()
+
+label chapter34:
+label ._1proba_ucieczki2:
+    scene lobby
     pause 1.0
-    ### TODO muzyka
-    #$ play_music("dziewczyny2")
-    $Konopski(text_style("thoughts", "Co za ulga... Stęskniłem się za tym pomieszczeniem..."))
-    pause 1.0
-    $Konopski(text_style("thoughts", "..."))
-    $Konopski(text_style("thoughts", "Nie, chwila, żadne 'stęskniłem się'."))
-    $Konopski(text_style("thoughts", "Muszę. {w=1}{size=+10}Stąd.{w=1}{size=+10} W tym momencie...{/size}{w=1}{nw}"))
+    $ thinking(Konopski, '''
+Co za ulga... Stęskniłem się za tym pomieszczeniem...{w=1}
+...
+Nie, chwila, żadne \'stęskniłem się\'.
+Muszę. {w=1}{size=+10}Stąd.{w=1}{size=+10} W tym momencie...{/size}{w=1}{nw}
+''')
     Pearl "...wyjść?"
     pause 1.0
     show pearl main with moveinbottom
@@ -273,15 +283,15 @@ label koniec_powiedzen:
 
     menu:
         "Zaprzecz wszystkiemu":
-                jump prawie_koniec
+                jump ._2fladry
         "Zgrywaj biedactwo, przyłóż rękę do czoła i teatralnie zemdlej. Łkając z podłogi każ im znaleźć swój płaszcz.":
-                jump prawie_koniec
+                jump ._2fladry
         "Posądź o szpiegowanie dla Wardęgi i powiedz, że idziesz szukać kogoś z ochrony, bo miarka się już przebrała":
-                jump prawie_koniec
+                jump ._2fladry
         "Bądź twardzielem, zostaw baby i uciekaj":
-                jump prawie_koniec
-label prawie_koniec:
-    hide blur with ease
+                jump ._2fladry
+
+label ._2fladry:
     $stop_music()
     Konopski "Słuchajcie, wy małe flądry, najpierw próbujecie zniszczyć mnie psychicznie poprzez zmuszenie do oglądania materiałów przygotowanych przez waszego guru, a teraz macie czelność insynuować, że mam zamiar stąd bezpardonowo uciec?"
     show pearl suprised with ease
@@ -305,4 +315,4 @@ label prawie_koniec:
     Konopski "Bardzo miło mi było was poznać dziewczyny i naprawdę chętnie zostałbym z wami dłużej, ale wiecie, obowiązki wzywają."
     Penny gossip "I to dosłownie."
     Konopski "Słucham?"
-    jump namiejsce
+    jump chapter41

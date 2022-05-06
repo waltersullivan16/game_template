@@ -23,8 +23,13 @@ init -10 python:
 
     def video(name):
         return gpj("videos", "{}.webm".format(name))
-    
 
+    def get_blip(b):
+        n = "blip_{}".format(b)
+        path = gpj("music", "sound effects", "{}.mp3".format(n))
+        print(n, path)
+        return n if os.path.exists(gpj("music", "sound effects", "{}.mp3".format(n))) else "blip_main"
+        
     config.main_menu_music = music("chipdale")
 
     def play_music(name, fadein=0.0, fadeout=0.1, loop=True, relative_volume=0.5):
@@ -41,5 +46,11 @@ init -10 python:
 
     def play_video(name, stop_music=True):
         renpy.movie_cutscene(video(name), stop_music=stop_music)
+
+    def mute(channel="music", m=True):
+        preferences.set_mute(channel, m)
+
+    def mute_blip(m=True):
+        mute("sfx", m)
 
     config.default_music_volume = 0.5

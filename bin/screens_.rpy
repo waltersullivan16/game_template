@@ -85,7 +85,7 @@ screen subscribe_screen:
         #unhovered If ((subscribed == False), true = [MouseMove(500, 300, 0.3)])
         unhovered MouseMove(500, 300, 0.3)
         #action [SetScreenVariable("subscribed", True), Jump("chapter1._3subscribe_like")]#, SelectedIf(False)]
-        action [Show("subscribed_screen"), Hide("subscribe_screen"), Jump("chapter1._3subscribe_like")]#, SelectedIf(False)]
+        action [Show("subscribed_screen"), Hide("subscribe_screen"), Jump("chapter11._3subscribe_like")]#, SelectedIf(False)]
         #[Hide("subscribe_screen"), Show("subscribed_screen"), Jump("subscribe_like")]
 
 screen subscribed_screen:
@@ -100,7 +100,7 @@ screen subscribed_like_screen:
         xpos 0.8 ypos 0.3
         mouse "active"
         activate_sound "music/sound effects/button.mp3"
-        action [Hide("subscribed_screen", transition=ease) , Hide("subscribed_like_screen", transition=ease), Jump("chapter1._4subscribe_thanks")]#Hide("subscribe", transition=dissolve), Jump("subscribe_thanks")]
+        action [Hide("subscribed_screen", transition=ease) , Hide("subscribed_like_screen", transition=ease), Jump("chapter11._4subscribe_thanks")]#Hide("subscribe", transition=dissolve), Jump("subscribe_thanks")]
 
 transform text_fade_in(t, p=0):
     alpha 0

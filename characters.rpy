@@ -7,7 +7,7 @@ init -8 python:
 
     Straznik = Character(name = "STRAŻNIK")#, what_style="straznik_text")
 
-    BlankBlipClass = CharacterBase(name="", blip="blip3")
+    BlankBlipClass = CharacterBase(name="")#, blip="blip")
     BlankBlip = BlankBlipClass.char
 
 ###################### KONOPSKI ###########################

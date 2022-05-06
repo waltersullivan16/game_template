@@ -145,6 +145,7 @@ define circleirisin = ImageDissolve("imdis", 1.0, 8 , reverse=True)
 define teleport = ImageDissolve("imagedissolve teleport", 1.0, 0)
 
 define flashbulb = Fade(0.4, 0.5, 2.2, color='#fff')
+define flashbulb_fast = Fade(0.1, 0.2, 0.1, color=color("white"))
 define slow_fade = Fade(0.2, 1.0, 0.8)
 define very_slow_fade = Fade(0.6, 1.5, 0.8)
 
