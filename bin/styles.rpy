@@ -78,10 +78,10 @@ style say_dialogue_quote:
 
 ### BLACK
 style say_dialogue_black:
-    font font("consult")
-    size 40
-    slow_cps 200
-    xalign 0.5 ypos 0.5
+    font font("lemiesz")
+    size 60
+    slow_cps 300
+    xalign 0.4 ypos 0.4
     xsize 1000
     line_spacing 10
 
@@ -174,6 +174,11 @@ style archivo_text_style is text:
     font font("archivo")
     color color("black")
     size 35
+
+style crooked_text_style is text:
+    font font("crooked")
+    color color("white")
+    size 30
 
 style www_text_style is text:
     font font("ubuntu")

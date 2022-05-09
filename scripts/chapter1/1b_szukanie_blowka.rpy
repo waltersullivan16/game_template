@@ -32,8 +32,8 @@ label .uciekaj:
 label chapter22:
     scene dark_courtroom
     show dark_blur
+    $ play_music("ghost_sigh")
     pause 3.0
-    $ play_music("scary")
 
 label ._1wstep:
     $ thinking(
@@ -299,40 +299,98 @@ label .jaskinia_wilka:
     $ play_sound_effect("badum")
 
 label .dziki_tlum:
+    $ change_style("main")
+    
     $ stop_music()
     scene transparenty_courtroom
     pause 1.5
     Konopski "No teraz było ja{w=0.1}{nw}"
-    scene transparenty_courtroom_dark with flashbulb_fast
+    show transparenty_courtroom_red# with flashbulb_fast
+    #scene transparenty_courtroom_eyes# with flashbulb_fast
     $ play_sound_effect("danger")
-    pause 0.3
-    scene transparenty_courtroom_dark2
+    #scene transparenty_courtroom_eyes
+    pause 2.0
+    #play_sound_effect("upadek")
+    show black with vpunch
+    pause 2.0
+     #   renpy.transition(transition("eye", time=1.5, parts=16))
+label .co_sie_dzieje:
+    scene transparenty_courtroom2 at sh_blur with transition("eye", time=1.5, parts=16)
     pause 1.0
-##    $ change_style("black")
-##    "" '''
-##JA PIERDOLĘ
-##ZARAZ SIĘ KUŹWA ZAJEBIĘ
-##CO TU SIĘ ZNOWU ODJEBAŁO
-##TO JAKIŚ POJEBANY SEN
-##BŁAGAM POWIEDZCIE ŻE TO JAKIŚ POJEBANY SEN
-##JUŻ DAJCIE MI SPOKÓJ
-##KONIEC Z RATOWANIEM LUDZKOŚCI
-##JAKIEŚ CHORE POOOOOOO{w=2}{nw}'''
-    scene transparenty_courtroom2
-
+    $ styled_monologue("crooked", Konopski, '''
+Co tu sie wydarzylo...?
+...
+Gdzie ja...{w=1}
+Jak... {w=1} 
+Moja glowa...
+''')
+    scene black with transition("eye", time=2.0, reverse=True)
+    pause 1.0
+    $change_style("black")
+    "" "{size=+10}WDECH{w=1} WYDECH {w=1}{nw}"
+    "" " {size=+20}WDECH {w=1} WYDECH{/size}"
+    pause 1.
     $ change_style("main")
-Konopski "zdrawiam wszystkich, chciałem powiedzieć haha."
+    Konopski "Ok."
+    Konopski "Już mi trochę lepiej.{w=1} Chyba.{w=1}"
+    Konopski "W każdym razie font wrócił do normy, więc jest progres."
+    pause 1
 
 label chapter27:
 
-label .junko_transparent:
-    $ play_video("transparenty_junko")
-    show junko_patrzaca
-    Konopski "Słucham? Mogłabyś powtórzyć dziwna dziewczynko z misiem?"
+label .bibi:
+
+    scene transparenty_courtroom_red0 with transition("eye", time=1.5, parts=16)
+    pause .5
+    $ play_sound_effect("danger")
+    scene transparenty_courtroom_red
+    pause 1
+    scene black with transition("eye", time=.1, reverse=True)
+label .a:
+    $change_style("black")
+    "" "{cps=55}{size=+20}COFAM MOJE SŁOWA JEST GORZEJ DUŻO GORZEJ JA PIERDOLĘ MOJE ŻYCIE TO BIAŁYSTOK{w=1}{/cps}{/size}"#{nw}"
+    pause
+    $ play_sound_effect("bibi1", group="junko_bibi")
+    pause 3 
+    $change_style("main")
+    Konopski "Eeeeeee...{w=2}{nw}"
+    Konopski "Ale że co?"
+    show transparenty_courtroom with transition("eye", time=1., parts=16)
     pause 1.0
+    $ junko_bibi("bibi2")
+    Konopski "Słucham? Mogłabyś powtórzyć dziwna dziewczynko z misiem?"
+    $ junko_bibi("bibi2")
     Konopski "Mam podejść i zobaczyć co...?"
-    Konopski "Trans... Trans-pa..."
-    Konopski "Transparenty! Przygotowaliście transparenty, żeby zagrzewać nas do boju!"
+    $ junko_bibi("bibi3", pause=1)
+    Konopski "..."
+    scene transparenty_courtroom5
+    pause .5
+    $ play_sound_effect("transparenty")
+    pause 2
+    Konopski "TRANSPARENTY?"
+    $ junko_bibi("bibi4", pause=1)
+    Konopski "Przygotowaliście transparenty, żeby zagrzewać nas do boju, tak?"
+    $ junko_bibi("bibi_tak", pause=1)
+
+
+#    Konopski '''
+#...
+#
+#Yyyyyy{w=1} Hej...
+#
+#Jak to {w=1} miło was widzieć.
+#
+#Przepraszam za moją chwilową niedyspozycję, takie tam problemy z {w=.5}yyy {w=0.5} no tego,,,{w=0.5} Wiecie o co chodzi?
+#
+#...
+#
+#Widzę w waszych oczach pełne zrozumienie, więc chyba nie ma sensu ciągnąć tematu.
+#
+#Słuchajcie, ajnie się z wami rozmawia i w ogóle, zostałbym dłużej, ale obowiązki wzywają, więc no...{w=1} tego... {w=1}wiecie o co chodzi.
+#
+#Narauuu
+#'''
+label .junko_transparent:
     Konopski "Jakie to miłe i... eee... kreatywne."
     $ thinking(Konopski, '''
 Chyba zbyt pochopnie ich oceniłem...

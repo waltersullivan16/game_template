@@ -23,10 +23,12 @@ label start:
     jump uwertura_scenes
 
 label uwertura_scenes:
+    jump chapter27.a
+    $ stop_music()
     menu:
         "currrent check":
-            jump chapter26.dziki_tlum
-            #jump transparenty
+            jump chapter27.a
+            #jump transparenty
             #$ load()
         "intro":
             jump intro_menu

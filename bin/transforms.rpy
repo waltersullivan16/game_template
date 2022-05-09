@@ -56,6 +56,7 @@ transform shake:
    ease .01 yoffset -4
    ease .01 yoffset 0
    repeat
+    
 
 transform creepy_transform:
     parallel:
@@ -90,16 +91,24 @@ transform blood_particle2:
     choice:
         linear 0.55 zoom 0
 
-transform blur:
-    linear 0.3 blur 20
-#    ypos 0.5 blur 50
-#    alpha 1.0
-#    linear 1.5 ypos 0.0
-#    linear 0.3 blur 0
+transform blur(x=50):
+    blur x
 
-transform unblur:
-    blur 50
-    pause 1.0
+transform sh_blur:
+    truecenter zoom 1.3
+    parallel:
+        block:
+            blur 50
+        block:
+            ease .7 xoffset 15 yoffset 15
+            ease .7 xoffset 15 yoffset 0
+            ease .7 xoffset -15 yoffset 0
+            ease .7 xoffset -15 yoffset -15
+            ease .7 xoffset 0 yoffset 15
+            repeat
+
+transform unblur2(x=50):
+    blur x
     linear 1.0 blur 0
 
 transform choice_bg_transform_show:

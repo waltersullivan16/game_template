@@ -1,6 +1,7 @@
 "bin/conf.rpy"
 "bin/characters_base.rpy"
 "bin/functions.rpy"
+"bin/scenes_functions.rpy"
 "bin/gui_.rpy"
 "bin/screens_.rpy"
 "bin/transforms.rpy"
