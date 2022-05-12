@@ -1,17 +1,11 @@
-﻿# "../0_main.rpy"
-# "1a_poczatek.rpy"
+﻿label chapter30:
 
-# ../bin/gui_.rpy
-# ../bin/conf.rpy
-# ../characters.rpy
-# ../screens.rpy
-label chapter31:
-
-label ._1dziewczeta:
-    scene bg lobby
+    scene lobby
     $ change_style("main")
 
-    Unknown "Och, tak się cieszę, że zdążyłyśmy! Bałyśmy się, że wszedł już pan na salę."
+label dziewczyny:
+
+    Blank "Och, tak się cieszę, że zdążyłyśmy! Bałyśmy się, że wszedł już pan na salę."
     $ play_music("pearl")
     show pearl embarassed with vpunch
     Pearl "A bardzo nam zależało, żeby podziękować panu za to wszystko co pan dla nas robi."
@@ -24,6 +18,8 @@ label ._1dziewczeta:
     $ thinking(
         Konopski,
     "Niech to szlag.")
+    jump me_dziew
+label me_dziew:
     menu:
         "Uśmiechnij się czarująco i powiedz, że musisz iść do toalety":
             jump proba_ucieczki
@@ -34,8 +30,7 @@ label ._1dziewczeta:
         "Weź rozbieg, przeskocz nad najniższą i nie zatrzymuj się, aż nie dobiegniesz do domu. No chyba że gdzieś zauważysz swój wytworny płaszczyk.":
             jump proba_ucieczki
 
-label ._2proba_ucieczki:
-    hide blur
+label proba_ucieczki:
     Konopski "Słuchajcie, jeśli chodzi o ten autograf, to dajcie mi chwilę..."
     Ema main "Proszę się nie wygłupiać, nie będziemy teraz zawracać panu głowy jakimiś błachostkami."
     Ema "Wiemy, że potrzebuje pan teraz jak najwięcej wsparcia."
@@ -52,9 +47,8 @@ Przecież to ja jestem prokuratorem.''')
     Pearl serious "Trwożę się wypowiedzieć to imię. Sama myśl wywołuje we mnie ciarki."
     Konopski "..."
     Konopski "To może koleżanka?"
-    jump dziewczeta_wardega
 
-label ._3dziewczeta_wardega:
+label dziewczeta_wardega:
     $ stop_music()
     show ema at right
     show penny at true_left

@@ -78,11 +78,11 @@ style say_dialogue_quote:
 
 ### BLACK
 style say_dialogue_black:
-    font font("lemiesz")
-    size 60
-    slow_cps 300
-    xalign 0.4 ypos 0.4
-    xsize 1000
+    #font font("indie")
+    #size 60
+    slow_cps 20
+    xalign 0.5 yalign 0.5
+    xsize 1200
     line_spacing 10
 
 ### STRAZNIK
@@ -256,7 +256,9 @@ style strazmasterka_text_style is text:
     bold True
 
 style panic_text_style is text:
-    color color("blood")
+    font font("murder")
+    color color("light_red")
+    size 120
 
 style blowek_text_style is text:
     size 45

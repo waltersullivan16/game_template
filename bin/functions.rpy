@@ -14,6 +14,28 @@ init -14 python:
         return [d for d in os.listdir(path) if os.path.isdir(gpj(path, d))]
 
 init -9 python:
+    def alter_say_strings(str_to_test, dot=0.6, comma=0.1, rest=0.6):
+        str_map = {
+            ". " : ". {{w={}}}".format(dot),
+            ", " : ", {{w={}}}".format(comma),
+            "! " : "! {{w={}}}".format(rest),
+            "? " : "? {{w={}}}".format(rest),
+        }
+        for key in str_map:
+            str_to_test = str_to_test.replace(key, str_map[key])
+        return str_to_test
+
+    def label_callback(name, abnormal):
+        if not renpy.has_label(name):
+            print("dadadadas", name)
+            renpy.jump("uwertura_scenes")
+            return
+        if not name.startswith('_'):
+            persistent.prev = persistent.label
+            persistent.label = name
+            name_arr = name.split('.')
+            persistent.base = name_arr[-len(name_arr)]
+
     def char_talking(character, event, **kwargs):
         if event == "show":
             character.talking = True
@@ -26,13 +48,6 @@ init -9 python:
             stop_sound_effect()
             if event == "end":
                 persistent.blip = "main"
-
-    def label_callback(name, abnormal):
-        if not name.startswith('_'):
-            persistent.prev = persistent.label
-            persistent.label = name
-            name_arr = name.split('.')
-            persistent.base = name_arr[-len(name_arr)]
 
     def loading(transition="farba", time=0.5):#, transition2):
         renpy.show("bg black")
@@ -56,17 +71,6 @@ init -9 python:
     
     animation_reaction = lambda name: animation_maker(name, "reaction")
  
-    def alter_say_strings(str_to_test, dot=0.6, comma=0.1, rest=0.6):
-        str_map = {
-            ". " : ". {{w={}}}".format(dot),
-            ", " : ", {{w={}}}".format(comma),
-            "! " : "! {{w={}}}".format(rest),
-            "? " : "? {{w={}}}".format(rest),
-        }
-        for key in str_map:
-            str_to_test = str_to_test.replace(key, str_map[key])
-        return str_to_test
-        
     def change_cursor(cursor):
         globals()['default_mouse'] = cursor
         return
@@ -94,8 +98,8 @@ init -9 python:
         character, text = last_text
         character(text)
 
-    def check_too_loud_music(max_volume=0.1):
-        return preferences.get_volume("music") >= max_volume
+    def check_music_volume(min_music=0, max_volume=1):
+        return min_music <= preferences.get_volume("music") <= max_volume
 
 #    def replacement_show(*args, **kwargs):
 #        renpy.show(*args, **kwargs)

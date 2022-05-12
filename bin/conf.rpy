@@ -38,8 +38,8 @@ define config.window_show_transition = dissolve
 define config.layers = [ 'master', 'transient', 'topcia', 'screens', 'overlay']
 define config.say_menu_text_filter = alter_say_strings
 define config.menu_include_disabled = True
-define config.label_callback = label_callback
-define config.displayable_prefix["blur"] = blurred
+#define config.label_callback = label_callback
+#define config.displayable_prefix["blur"] = blurred
 #define config.menu_arguments_callback = True
 
 default preferences.show_empty_window = False

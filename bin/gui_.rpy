@@ -11,6 +11,7 @@ init -12 python:
         "royal_blue": "#4169E1",
 
         "light_red": "#FA8072",
+        "very_light_red": "#986868",
         "bright_red": "#D2042D",
         "red": "#B22222",
         "blood": "#830303",
@@ -21,44 +22,44 @@ init -12 python:
         #"tet": "#f5a90e",
     }
 
-    def text_style(s, text):
+    def text_style(s, text, **kwargs):
         persistent.blip = "thoughts" if s.startswith("thoughts") else "main"
         #print(persistent.blip)
 
-        def add_style_to_text(text, style):
+        def add_style_to_text(text, style, **kwargs):
+
+            for k, i in kwargs.items():
+                b = "{{{}={}}}".format(k, i)# if len(x) == 2 else ""
+                e = "{{/{}}}".format(k)
+                text = "{} {} {}".format(b, text, e)
+
             return "{{={}}} {} {{/={}}}".format(style, text, style)
+
         text = alter_say_strings(text)
-        return add_style_to_text(text, "{}_text_style".format(s))
+        return add_style_to_text(text, "{}_text_style".format(s), **kwargs)
 
     def character_monologue(character, text, fun=(lambda x: x)):
         for l in text.splitlines():
             if len(l) == 0:
                 continue
+            if l.startswith("&&"):
+                exec(l.split("|"))[1]
+                continue
             character(fun(l))
 
-    def list_text(text_arr):
-        print(list_text)
-        return "{w=1}\n".join(text_arr)
+    def list_text(text_arr, wait=1, nw=False):
+        w = "{{w={}}}{}\n".format(wait, "{nw}" if nw else "")
+        return w.join(text_arr)
 
-    styled_monologue = lambda s, c, t: character_monologue(c, t, lambda x: text_style(s, x))
+    #styled_monologue = lambda s, c, t, **k: character_monologue(c, t, lambda x: text_style(s, x, **k))
+    def styled_monologue(style, character, text, wait=1, nw=False, **kwargs):
+        if type(text) == list:
+            text = list_text(text, wait, nw)
+        character_monologue(character, text, lambda x: text_style(style, x, **kwargs))
 
-    def thinking(character, text, style=None):
-        #persistent.blip = "blip_thinking"
-        #character.blip = "thoughts"
+    def thinking(character, text, style=None, **kwargs):
         s = "thoughts_{}".format(persistent.style)
-        styled_monologue(s, character, text)
-        #character.blip = "main"
-        
-    def straznik(text):
-        #renpy.transition(transition("shatter"))
-        renpy.show("very_dark_blur")#, layer="overlay")
-        change_style("straznik")
-        #play_sound_effect("tiger")
-        Straznik(text_style("straznik", text))
-        change_style("main")
-        #renpy.transition(transition("shot"))
-        renpy.hide("very_dark_blur")
-        renpy.pause(1.0)
+        styled_monologue(s, character, text, kwargs)
 
 ### TEXTBOX
     def textbox_maker(textbox_name, alpha=0.85):

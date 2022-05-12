@@ -35,8 +35,8 @@ init -10 python:
     def play_music(name, fadein=0.0, fadeout=0.1, loop=True, relative_volume=0.5):
         renpy.music.play(music(name), channel="music", fadein=fadein, fadeout=fadeout, loop=loop, relative_volume=relative_volume)
 
-    def play_sound_effect(name, channel="sfx1", loop=False, relative_volume=1.0, group=""):
-        renpy.music.play(sound(name, group), channel=channel, loop=loop, relative_volume=relative_volume)#relative_volume)
+    def play_sound_effect(name, channel="sfx1", loop=False, relative_volume=1.0, group="", fadein=0):
+        renpy.music.play(sound(name, group), channel=channel, fadein=fadein, loop=loop, relative_volume=relative_volume)#relative_volume)
 
     def stop_music(fadeout=1.0):
         renpy.music.stop(channel="music", fadeout=fadeout)

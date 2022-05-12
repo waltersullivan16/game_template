@@ -23,10 +23,6 @@ screen blur_background:
     on "show" action Function(renpy.show_layer_at, choice_bg_transform_show, layer='master')
     on "hide" action Function(renpy.show_layer_at, choice_bg_transform_hide, layer='master')
 
-screen blured_courtroom:
-    add "/home/akechi/renpy/games/template/game/images/scenes/transparenty2/transparenty_courtroom2.png"
-    add "blur"
-
 screen choices_template(chapter, imagebuttons):
     use blur_background
     modal True

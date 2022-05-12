@@ -50,3 +50,13 @@ init python:
     def defense_scene(): {show_scene("defense", [(KonopskiC.name, KonopskiC.show_args)])}
     def witness_scene(): {show_scene("witness", [(GimperC.name, GimperC.show_args)])}
 
+    def straznik(text):
+        #renpy.transition(transition("shatter"))
+        renpy.show("very_dark_blur")#, layer="overlay")
+        change_style("straznik")
+        #play_sound_effect("tiger")
+        Straznik(text_style("straznik", text))
+        change_style("main")
+        #renpy.transition(transition("shot"))
+        renpy.hide("very_dark_blur")
+        renpy.pause(1.0)

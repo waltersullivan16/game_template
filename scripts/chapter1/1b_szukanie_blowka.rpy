@@ -245,7 +245,7 @@ label .koniec_przerwy:
     Konopski "Czy ja wam pozwoliłem przestać pracować?"
     Konopski "Wracać natychmiast na miejsca, wy lenie patentowane!"
     hide konopski with moveoutright
-    hide blur with slow_dissolve
+    hide dark_blur with slow_dissolve
 
 label chapter26:
     scene transparenty_courtroom 
@@ -346,31 +346,47 @@ label .bibi:
     scene transparenty_courtroom_red
     pause 1
     scene black with transition("eye", time=.1, reverse=True)
+
 label .a:
+    scene black
     $change_style("black")
-    "" "{cps=55}{size=+20}COFAM MOJE SŁOWA JEST GORZEJ DUŻO GORZEJ JA PIERDOLĘ MOJE ŻYCIE TO BIAŁYSTOK{w=1}{/cps}{/size}"#{nw}"
-    pause
-    $ play_sound_effect("bibi1", group="junko_bibi")
-    pause 3 
+    $ panic = [
+"GORZEJ",
+"JEST GORZEJ",
+"DUŻO {size=+20}GORZEJ{/size}"]
+    $ styled_monologue("panic", Blank, panic, wait=0.3, nw=True, cps=30)
+    $ Blank(text_style("panic", "żżżżż{w=0.5} ?", cps=5))
+    $ Blank(text_style("panic", "...", cps=10))
+    $ styled_monologue("panic", Blank, [
+"EJ NO, ALE JUŻ BEZ JAJ, O CO CHODZI Z TYM FONTEM?",
+"JUŻ KOGOŚ TOTALNIE POSRAŁO?",
+" CO TO MA KUŹWA BYĆ, REBUS?",
+"CHAMSKA KUŹWA CENZURA?",
+"...",
+"MOJE ŻYCIE TO BIAŁYSTOK"])
+    $ play_sound_effect("bibi1", group="junko_bibi") 
     $change_style("main")
-    Konopski "Eeeeeee...{w=2}{nw}"
-    Konopski "Ale że co?"
-    show transparenty_courtroom with transition("eye", time=1., parts=16)
+    pause 3
+    Konopski "Bidi didi bidaj...{w=1}{size=+5}CO?{/size}{w=1}"
     pause 1.0
+    show transparenty_courtroom with transition("eye", time=1., parts=16)
+    pause 1
     $ junko_bibi("bibi2")
     Konopski "Słucham? Mogłabyś powtórzyć dziwna dziewczynko z misiem?"
     $ junko_bibi("bibi2")
-    Konopski "Mam podejść i zobaczyć co...?"
+    Konopski "Eeeeee..."
+    Konopski "A mogłabyś spróbować tak słowo po słowie...?"
     $ junko_bibi("bibi3", pause=1)
     Konopski "..."
-    scene transparenty_courtroom5
-    pause .5
-    $ play_sound_effect("transparenty")
+    Konopski "Litera po literze...?{w=1}{nw}"
+    $ play_video("obczaj_transparenty", group="junko_bibi")
     pause 2
-    Konopski "TRANSPARENTY?"
-    $ junko_bibi("bibi4", pause=1)
-    Konopski "Przygotowaliście transparenty, żeby zagrzewać nas do boju, tak?"
-    $ junko_bibi("bibi_tak", pause=1)
+    Konopski "Transparenty!"
+    Konopski "No przecież, że transparenty!"
+    Konopski "Tak podejrzewałem od samego początku, chciałem się tylko upewnić czy dobrze usłyszałem, bo mówiłaś odrobinę niewyraźnie!"
+    $ play_video("trudno_porozumiec", group="junko_bibi")
+    pause 3
+    Konopski "..."
 
 
 #    Konopski '''
@@ -391,12 +407,8 @@ label .a:
 #Narauuu
 #'''
 label .junko_transparent:
-    Konopski "Jakie to miłe i... eee... kreatywne."
-    $ thinking(Konopski, '''
-Chyba zbyt pochopnie ich oceniłem...
-Co prawda mają chamskie mordy, ale w gruncie rzeczy są całkiem w porządku.
-''')
-    Konopski "Mogłabyś odwrócić swój transparent w moją stronę, żebym mógł...{nw}"
+    Konopski "To co, długo jeszcze będę musiał czekać?"
+    Konopski "Odwrócisz wreszcie z łaski swojej ten swój cały transparent, żebym mógł{nw}"
 
 label .transparenty_main:
     $ image_punch("zniszcz_sztubaka")
@@ -414,9 +426,8 @@ Kto z Wardęga przystaje{nw}
     pause 2.0
     $ thinking(
         Konopski,'''
-    ...
-    Muszę przyznać, że ta eskalująca agresja wywołuje we mnie lekką nutkę niepokoju...
-    ''')
+...
+Muszę przyznać, że ta eskalująca agresja wywołuje we mnie lekką nutkę niepokoju...''')
 label .dis_na_motloch:
     scene black with transition("farba", time=1.5)
     $stop_music()
@@ -428,22 +439,23 @@ Tym dzikusom nie pomoże już najbardziej prestiżowy kurs walki z patusiarstwem
 Mam oczywiście na myśli Projekt Lady.
 No ale nieważne. Nie wiem czemu aż tak spinam dupę.
 Co mnie obchodzi zepsucie moralne jakiejś leśnej hołoty?
-W gruncie rzeczy są oni przecież nieszkodli {nw}
 ''')
-    hide window
 
 label .transparenty_video:
-    
+    Konopski "W gruncie rzeczy są oni przecież nieszkodli {nw}"
+    hide window
     $play_video("transparenty")
-    $ change_scene()
+    hide konopski
+    scene black
+    #$ change_scene()
 
 ### MENU 3 + PRÓBA UCIECZKI
 
 
 label chapter28:
-    scene lobby with slow_dissolve
 
 label .menu3_ucieczka:
+    scene lobby with slow_dissolve
     $ thinking(Konopski, '''
 ...
 Haha{w=0.5} {size=-5}hahaha{/size}{w=0.8}{size=-10} ha
@@ -456,18 +468,15 @@ Skoro sensei uznał, że nie jest to na tyle istotne wydarzenie, żeby zawracać
 ...to czy nie byłoby to z mojej strony wysoce niestosowne, gdybym sam się na nim pojawił?
 Może to zostać odebrane jako próba podważenia słuszności jego decyzji.
 ''')
-    show screen choices_template("chapter25", ["uciekaj", "uciekaj", "uciekaj", "uciekaj"])
+    show screen choices_template("chapter28", ["uciekaj", "uciekaj", "uciekaj", "uciekaj"])
     pause
 
-label .proba:
-
+label .uciekaj:
     $ thinking(
         Konopski,'''
-Chwila. Stop.
 Nie mogę tak po prostu stąd wyjść...
-{cps=8}...{/cps}{w=2}
 Gdzie mój płaszcz?
 ...
 Dobra, walić to, spadam jak jest.
 Narauuu{nw}''')
-    jump dziewczeta
+    jump chapter30
