@@ -162,8 +162,8 @@ style input:
 screen choice(items):
     style_prefix "choice"
     modal True
-    $ renpy.show_layer_at(choice_bg_transform_show, layer='master')
-    #on "hide" action Function(renpy.show_layer_at, choice_bg_transform_hide, layer='master')
+    on "show" action Function(renpy.show_layer_at, choice_bg_transform_show, layer='master')
+    on "hide" action Function(renpy.show_layer_at, choice_bg_transform_hide, layer='master')
 
     vbox at choice_transform:
         for i in items:

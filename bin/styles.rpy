@@ -142,8 +142,8 @@ style thoughts_creepy_text_style is text:
     italic True
     font font("ubuntu")
 
-style thoughts_dark_text_style is text:
-    size 20
+style dark_thoughts_text_style is text:
+    size 22
     color color("dark_blue")
     italic True
     font font("ubuntu")

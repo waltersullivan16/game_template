@@ -36,6 +36,10 @@ init -12 python:
             return "{{={}}} {} {{/={}}}".format(style, text, style)
 
         text = alter_say_strings(text)
+
+        if s.startswith("thoughts"):
+            text = "({})".format(text)
+
         return add_style_to_text(text, "{}_text_style".format(s), **kwargs)
 
     def character_monologue(character, text, fun=(lambda x: x)):

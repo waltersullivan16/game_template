@@ -16,7 +16,7 @@ init python:
             (Konopski, "W międzyczasie sprawdźcie, czy na pewno daliście suba z dzwoneczkiem."),
         ]
         last_text = Konopski, "No nareszcie."
-        conditional_wait(check_too_loud_music, text_arr, last_text)
+        conditional_wait(too_loud, text_arr, last_text, max_volume=0.1)
 
     def gibberish(n=1):
         play_sound_effect("gibberish{}".format(n))

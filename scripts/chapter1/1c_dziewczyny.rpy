@@ -3,9 +3,9 @@
     scene lobby
     $ change_style("main")
 
-label dziewczyny:
+label .dziewczyny:
 
-    Blank "Och, tak się cieszę, że zdążyłyśmy! Bałyśmy się, że wszedł już pan na salę."
+    Unknown "Och, tak się cieszę, że zdążyłyśmy! Bałyśmy się, że wszedł już pan na salę."
     $ play_music("pearl")
     show pearl embarassed with vpunch
     Pearl "A bardzo nam zależało, żeby podziękować panu za to wszystko co pan dla nas robi."
@@ -18,19 +18,19 @@ label dziewczyny:
     $ thinking(
         Konopski,
     "Niech to szlag.")
-    jump me_dziew
-label me_dziew:
+
+label .menu_dziewczyny:
     menu:
         "Uśmiechnij się czarująco i powiedz, że musisz iść do toalety":
-            jump proba_ucieczki
+            jump .proba_ucieczki
         "Powiedz, że dasz im autograf, tylko muszą chwilę poczekać, bo zostawiłeś swój długopis w płaszczu":
-            jump proba_ucieczki
+            jump .proba_ucieczki
         "To samo co powyżej, tylko zamień 'długopis' na 'pióro'. Brzmi bardziej dostojnie.":
-            jump proba_ucieczki
+            jump .proba_ucieczki
         "Weź rozbieg, przeskocz nad najniższą i nie zatrzymuj się, aż nie dobiegniesz do domu. No chyba że gdzieś zauważysz swój wytworny płaszczyk.":
-            jump proba_ucieczki
+            jump .proba_ucieczki
 
-label proba_ucieczki:
+label .proba_ucieczki:
     Konopski "Słuchajcie, jeśli chodzi o ten autograf, to dajcie mi chwilę..."
     Ema main "Proszę się nie wygłupiać, nie będziemy teraz zawracać panu głowy jakimiś błachostkami."
     Ema "Wiemy, że potrzebuje pan teraz jak najwięcej wsparcia."
@@ -48,7 +48,7 @@ Przecież to ja jestem prokuratorem.''')
     Konopski "..."
     Konopski "To może koleżanka?"
 
-label dziewczeta_wardega:
+label .dziewczeta_wardega:
     $ stop_music()
     show ema at right
     show penny at true_left
@@ -61,16 +61,16 @@ label dziewczeta_wardega:
     show ema at Glitch
     show pearl at Glitch
     show penny at Glitch
-    jump bloody_text
+    jump chapter32
 
 label chapter32:
     scene black with dissolve
     $ change_style("creepy")
 
-label ._1vid_az_sie_trzese:
+label .az_sie_trzese:
     $ play_video("strasznega")
 
-label ._2creepy_style:
+label .creepy_style:
     show konopski smirk at right with dissolve
     Konopski "Wy... zdajecie sobie sprawę z tego, że \"Wardęga\" to nie jest jego imię, prawda?"
     show konopski main
@@ -92,9 +92,9 @@ label ._3kopniak:
     Konopski "A mógłbym mieć jakiekolwiek wątpliwości dlatego bo...?"
     pause 1.0
     Ema thinking "Tak właściwie to nie wiem, ale jest w tym coś budzącego grozę..."
-    jump legenda
+    jump chapter32.legenda
 
-label ._4legenda:
+label .legenda:
     show penny main at true_left with moveinbottom
     show pearl
     show ema at right
@@ -120,18 +120,18 @@ label ._4legenda:
     pause 1.0
     Konopski "Co, znowu cutscenka...? {w=0.8}No błagam..."
 
-label ._5vid_wardega_wardega:
+label .vid_wardega_wardega:
 
     $ loading()
     pause .5
     $play_video("wardega")
 
-label ._6vid_win:
+label .vid_win:
 
     pause 1.0
     $ play_video("win")
 
-label ._7vid_smile:
+label .vid_smile:
 
     pause 1.0
     $play_video("smile")
@@ -173,7 +173,7 @@ label ._2ulubione_filmy:
         text_style("archivo", "1) Nagranie z procesu O.J.Simsona{w=1}"),
         text_style("www", "{p}{u}Komentarz{/u}:{w=1}{size=+10}{cps=10} MAJSTERSZTYK.{/cps}{/size}{p}Opus magnum sądownictwa.{p}Pozycja {b}obowiązkowa{/b} dla fanów rezolutnej dysputy!!!{w}\n"),
         "\n\n\n",
-        text_style("thoughts_dark", "{image=minikonopski} Fa...{w=1} fanów rezolutnej dysputy...?"),
+        text_style("dark_thoughts", "{image=minikonopski} Fa...{w=1} fanów rezolutnej dysputy...?"),
     ]
     $ Blank("".join(fav_filmy1))
     $ fav_filmy2 = [
@@ -182,8 +182,8 @@ label ._2ulubione_filmy:
         text_style("archivo", "4) Wilkołak"),
         text_style("archivo", "5) Anakonda"),
         text_style("www", "{u}Komentarz{/u}: {w=1}Czasami wychodzi ze mnie bestia ;P{w=1}\n"),
-        text_style("thoughts_dark", "{image=minikonopski}..."),
-        text_style("thoughts_dark", "{u}Komentarz{/u}:{w=1} Nie{p}{w=0.5} Po prostu {w=0.5}{b}{size=+10}NIE{/size}{/b}.")
+        text_style("dark_thoughts", "{image=minikonopski}..."),
+        text_style("dark_thoughts", "{u}Komentarz{/u}:{w=1} Nie{p}{w=0.5} Po prostu {w=0.5}{b}{size=+10}NIE{/size}{/b}.")
     ]
     $ Blank(list_text(fav_filmy2))
 
@@ -192,8 +192,8 @@ label ._2ulubione_filmy:
         text_style("archivo", "7) Enigma"),
         text_style("archivo", "8) Sudoku"),
         text_style("archivo", "9) Krzyżówki panoramiczne"),
-        text_style("thoughts_dark", "\n{image=minikonopski}"),
-        text_style("thoughts_dark", "Czy my nadal jesteśmy w kategorii 'filmy'...?")
+        text_style("dark_thoughts", "\n{image=minikonopski}"),
+        text_style("dark_thoughts", "Czy my nadal jesteśmy w kategorii 'filmy'...?")
     ]
     $ Blank(list_text(fav_filmy3))
 
@@ -204,7 +204,7 @@ label ._3przerwa:
     $ change_style("main")
     Pearl "To wszystko."
     $ thinking(Konopski, "Dzięki bogu...")
-    Konopski "Ok, to skoro już wiemy wszystko o druidzie, to..."
+    Konopski "Ok, to skoro już wiemy wszystko o druidzie, to...{w=0.5}{nw}"
     show bg ulubione with wiperight
     show ema at Position(ypos=800) with moveinbottom
     Ema main "{w=1}Ulubione powiedzenia"
@@ -214,7 +214,7 @@ label ._3przerwa:
     Pearl determined "Musi pan myśleć strategicznie!"
     show penny at true_left with moveinbottom
     Penny @cards "Dobre rozeznanie na froncie wroga może dać istotną przewagę!"
-    $Konopski(text_style("thoughts", "No jasne, już nie mogę się doczekać momentu, w którym zmiotę wszystkie argumenty Wardęgi siłą jego ulubionych powiedzeń..."))
+    $ thinking(Konopski, "No jasne, już nie mogę się doczekać momentu, w którym zmiotę wszystkie argumenty Wardęgi siłą jego ulubionych powiedzeń...")
     hide penny with moveoutbottom
     hide ema with moveoutbottom
     hide pearl with moveoutbottom
@@ -229,8 +229,8 @@ label ._4ulubione_powiedzenia1:
         text_style("cite", "{space=50}powiedzenie ludowe"),
         text_style("archivo", "{p}3) Wardęga człowiekowi wilkiem"),
         text_style("cite", "{space=50}autor anonimowy"),
-        text_style("thoughts_dark", "\n{image=minikonopski}{size=+50}...{/size}{w}{size=+30}co to kuźwa jest?{/size}"),
-        text_style("cite", text_style("thoughts_dark", "{space=50}powiedzenie ludowe")),
+        text_style("dark_thoughts", "\n{image=minikonopski}{size=+50}...{/size}{w}{size=+30}co to kuźwa jest?{/size}"),
+        text_style("cite", text_style("dark_thoughts", "{space=50}powiedzenie ludowe")),
     ]
     $ Blank(list_text(fav_powiedzenia))
 
@@ -238,21 +238,21 @@ label ._5ulubione_powiedzenia2:
     $ fav_powiedzenia2 = [
         text_style("archivo", "4) Kto z Wardęgą wojuje, od Wardęgi ginie"),
         text_style("cite", "{space=50}Zaradna Wersow i zdemoralizowany Konopski"),
-        text_style("thoughts_dark", "\n{image=minikonopski}{size=+50}...{/size} {w}{size=+30}co tu się wydarzyło...{/size}\n\n"),
-        text_style("thoughts_dark", "{b}{size=+15}4.5) Wardęga z youtuba, wszystkim lżej{/size}{/b}"),
-        text_style("cite", text_style("thoughts_dark", "{space=50}absolutnie wszyscy youtuberzy")),
+        text_style("dark_thoughts", "\n{image=minikonopski}{size=+50}...{/size} {w}{size=+30}co tu się wydarzyło...{/size}\n\n"),
+        text_style("dark_thoughts", "{b}{size=+15}4.5) Wardęga z youtuba, wszystkim lżej{/size}{/b}"),
+        text_style("cite", text_style("dark_thoughts", "{space=50}absolutnie wszyscy youtuberzy")),
         text_style("archivo", "5) Z Wardęgą ci się upiecze.") +
-        text_style("thoughts_dark","{w}\n Niech zgadnę, kto może być tego autorem...") +
-        text_style("thoughts_dark", "Postawię na \'cnotliwego Lexia\'..."),
+        text_style("dark_thoughts","{w}\n Niech zgadnę, kto może być tego autorem...") +
+        text_style("dark_thoughts", "Postawię na \'cnotliwego Lexia\'..."),
         text_style("cite", "{space=50}Cyceron"),
-        text_style("thoughts_dark", "\n{image=minikonopski} {size=+50}.......{/size}")
+        text_style("dark_thoughts", "\n{image=minikonopski} {size=+50}.......{/size}")
     ]
     ### TODO: poprawić tekst z cyceronem
     $ BlankBlip(list_text(fav_powiedzenia2))
 
 label ._6koniec_powiedzen:
-    $ change_style(skip_loading=True)
-    pause 1.0
+    $ change_scene(skip_loading=True)
+    $ change_style("main")
     $ thinking(Konopski, "Co jak co, ale jednego Wardędze nie można odmówić.")
     $ thinking(Konopski, "Zaskakująco dobrze się trzyma jak na swoje lata...")
     $ loading()
@@ -304,7 +304,7 @@ label ._2fladry:
     pause 1.0
     Ema "My właśnie mówiłyśmy, że musimy wyjść, bo zaraz chyba będzie pan proszony na salę..."
     $ thinking(Konopski, "...")
-    $ thinking(Konopski, "A tegoroczna nagroda dla youtubera najgorzej traktującego swoje widzki wędruje dooooo...")
+    $ new_trophy("ulubieniec fanów")
     Konopski "A ja właśnie wam odpowiedziałem..."
     Konopski "Bardzo miło mi było was poznać dziewczyny i naprawdę chętnie zostałbym z wami dłużej, ale wiecie, obowiązki wzywają."
     Penny gossip "I to dosłownie."

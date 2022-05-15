@@ -132,7 +132,7 @@ screen trofeum(t):
     hbox:
         add "gui/button/trofeum.png"
         xpos 0.5 ypos 0.1
-        text t xpos -350 ypos 0.4 style "trofeum"
+        text t xpos -320 ypos 0.5 style "trofeum"
 
 screen new_item(name, description):
     zorder 1

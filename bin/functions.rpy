@@ -83,14 +83,13 @@ init -9 python:
     def new_trophy(t):
         renpy.show_screen("trofeum", t)
         play_sound_effect("trofeum")
-        renpy.pause(3.0)
+        renpy.pause(4.0)
         renpy.hide_screen("trofeum")
 
-    def conditional_wait(condition, text_arr, last_text, p=1):
-        print(condition, condition())
+    def conditional_wait(condition, text_arr, last_text, p=1, **kwargs):
         print(preferences.get_volume("music"))
         i = 0
-        while condition():
+        while condition(**kwargs):
             character, text = text_arr[i]
             character(text)
             renpy.pause(p)
@@ -98,8 +97,12 @@ init -9 python:
         character, text = last_text
         character(text)
 
-    def check_music_volume(min_music=0, max_volume=1):
-        return min_music <= preferences.get_volume("music") <= max_volume
+    def check_music_volume(min_volume=0, max_volume=1):
+        print(min_volume, max_volume)
+        return min_volume <= preferences.get_volume("music") <= max_volume
+    
+    def too_loud(max_volume=1):
+        return check_music_volume(max_volume)
 
 #    def replacement_show(*args, **kwargs):
 #        renpy.show(*args, **kwargs)
