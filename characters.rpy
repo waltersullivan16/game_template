@@ -1,4 +1,4 @@
-"../files_list.txt"
+"files_list.rpy"
 
 init -8 python:
 
@@ -36,29 +36,28 @@ layeredimage konopski:
 layeredimage konopski_phoenix:
 
     group head auto:
-        attribute normal default null
+        attribute normal default
     group suit auto:
-        attribute normal default null
+        attribute normal default
 
 ###################### WARDEGA ###########################
 
 init python:
-    styles = ["thinking"]
-    WardegaClass = CharacterBase("Wardega", styles=styles)
+    WardegaClass = CharacterBase("Wardega")
     Wardega = WardegaClass.char
 
 
 layeredimage wardega:
-    group body if_not "head" auto:
+    group body auto:
         attribute main default
-
-    if WardegaClass.talking:
-        WardegaClass.animations_switch
-
     group head auto:
         attribute normal default null
     group suit auto:
         attribute normal default null
+
+    if WardegaClass.talking:
+        WardegaClass.animations_switch
+
 
 ###################### PEARL ###########################
 

@@ -6,7 +6,7 @@ init -8 python:
     PATH_CHARACTERS = gpj("images", "characters")
 
     class CharacterBase:
-        def __init__(self, name, styles=[], group="", blip=None):
+        def __init__(self, name, group="", blip=None):
             self.capital_name = name.upper()
             self.name = name.lower()
             self.group = group
