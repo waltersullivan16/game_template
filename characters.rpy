@@ -16,7 +16,7 @@ init -8 python:
     Konopski = KonopskiClass.char
 
 layeredimage konopski:
-    group body auto:
+    group body:
         attribute main default
 
     if KonopskiClass.talking:
@@ -40,6 +40,20 @@ layeredimage konopski_phoenix:
     group suit auto:
         attribute normal default
 
+###################### revo ###########################
+
+init python:
+    
+    RevoClass = CharacterBase("Revo")
+    Revo = RevoClass.char
+
+layeredimage revo:
+    group body:
+        attribute main default
+
+    if RevoClass.talking:
+        RevoClass.animations_switch
+
 ###################### WARDEGA ###########################
 
 init python:
@@ -58,12 +72,19 @@ layeredimage wardega:
     if WardegaClass.talking:
         WardegaClass.animations_switch
 
+###################### Lexio ###########################
+
+init python:
+    
+    LexioClass = CharacterBase("Lexio")
+    Lexio = LexioClass.char
 
 ###################### PEARL ###########################
 
 init python:
-    PearlClass = CharacterBase("Pearl", group="dziewczyny")
+    PearlClass = CharacterBase("pearl", group="dziewczyny", who_size=35) 
     Pearl = PearlClass.char
+    Pearl.name = "nieletnia baba"
 
 layeredimage pearl:
     group body auto:
@@ -73,8 +94,10 @@ layeredimage pearl:
 
 ### EMA ###
 init python:
-    EmaClass = CharacterBase("Ema", group="dziewczyny")
+    EmaClass = CharacterBase("ema", group="dziewczyny", who_size=35)
     Ema = EmaClass.char
+    #Ema.image = "ema"
+    Ema.name = "dziwna baba"
 
 layeredimage ema:
     group body auto:
@@ -84,8 +107,9 @@ layeredimage ema:
 
 ### penny ###
 init python:
-    PennyClass = CharacterBase("Penny", group="dziewczyny")
+    PennyClass = CharacterBase("penny", group="dziewczyny", who_size=35)
     Penny = PennyClass.char
+    Penny.name = "brzydka baba"
 
 layeredimage penny:
     group body auto:
@@ -107,9 +131,11 @@ init python:
     LilMasti = LilMastiClass.char
 
 layeredimage lilmasti: 
+    #image_format "lilmasti/body/lilmasti {image}.png"
+
     group body if_not "bajka" auto variant "fighter":
         at Position(ypos=900)
-        attribute main default
+        attribute main2 default
 
     group body if_not "fighter" auto variant "bajka":
         attribute normal default
@@ -124,3 +150,8 @@ layeredimage lilmasti:
         attribute normal default null
         attribute angry "reaction_angry"
         attribute angry2 "reaction_angry2"
+'''
+    group body if_not "bajka" auto variant "fighter":
+        at Position(ypos=900)
+        attribute main default
+'''

@@ -1,15 +1,9 @@
 ﻿# "../../files_list.rpy"
-# "1a_poczatek.rpy"
-
-# ../bin/gui_.rpy
-# ../bin/conf.rpy
-# ../characters.rpy
-# ../screens.rpy
 
 label chapter41:
     scene lobby
-    show penny
-    show ema
+    show penny at true_left
+    show ema at true_right
     show pearl
 
 label ._1na_miejsce:
@@ -19,7 +13,7 @@ label ._1na_miejsce:
     hide ema with moveoutbottom
     hide pearl with moveoutbottom
 
-    Konopski "Nie, nie, nie, szybko, gdzie jest kurtka, walić kurtkę, wycho...{nw}"
+    Konopski "Nie, nie, nie, szybko, gdzie jest płaszcz, walić płaszcz, wycho...{nw}"
     
     Unknown "KONOPSKI, NA MIEJSCE, NATYCHMIAST."
     Konopski "Ale proszę już tak nie drzeć ryja, ok?"
@@ -57,7 +51,7 @@ label lilmasti_intro:
     LilMasti "Żenująco ubodzy prostaczkowie."
     LilMasti "Ręcę wam odpadły od tej biedoty, czy co?"
     LilMasti "Gwiazdę wita się GORĄCYMI BRAWAMI."
-    $play_sound_effect("applause", channel="sfx2")
+    $play_sound_effect("applause", channel="sfx2", relative_volume=0.5)
     pause 3.0
     #$play_music("lilmasti_intro2", loop=False)
     LilMasti normal "Tak lepiej."
@@ -114,7 +108,7 @@ label lilmasti_boss:
 label masti_konop:
     hide lilmasti moveoutbottom
     show lobby with dissolve
-    show lilmasti main with vpunch
+    show lilmasti main2 with vpunch
     $ thinking(Konopski, "Co za kijowe intro... Widać że robione na odwal")
     $ thinking(Konopski, "Czuję pewien dyskomfort przyznając to, ale nawet zorro-z-lasu2 dostarcza kontent wyższej jakości.")
     $ thinking(Konopski, "...")
@@ -129,9 +123,14 @@ label masti_konop:
     Konopski "Już idę, idę, tylko nie rób mi krzywdy!"
 
 label pozegnanie_dziewczyn:
-    Penny "Do widzenia panie Konopski."
+    hide lilmasti with dissolve
+    show pearl serious
+    show ema confused at true_right
+    show penny main at true_left
+    with moveinbottom
+    Pearl "Do widzenia panie Konopski."
     Ema "Dziękujemy za...{w=1}{nw}"
-    Pearl "...rezolutną dysputę."
+    Penny "...rezolutną dysputę."
     Konopski "Haha, to ja dziękuję i no...{w=0.5} {w=0.5}eee... {w=0.5}tego..."
     Konopski "...polecam się na przyszłość...{w=1.5}?"
     $thinking(Konopski, "Polecam się na przyszłość? Serio nie mogłem wymyśleć niczego lepszego?")
@@ -147,7 +146,12 @@ label pozegnanie_dziewczyn:
     Konopski "Sorry że wam jeszcze zawracam głowę..."
     Konopski "Ale tak miło nam się rozmawiało i w ogóle...{w=1}"
     Konopski "Będziecie pamiętały o łapeczkach w górę, prawda?{w=1}{nw}"
+    show lilmasti big with vpunch
     LilMasti "Jeszcze jedno słowo i wejdzie pan na salę sądową z łapeczkami w górze!"
+    hide pearl
+    hide ema
+    hide penny 
+    with moveoutbottom
     Konopski "No przecież idę, po co te nerwy?"
 
     Konopski "{size=-5} Nie zapomnijcie o subie z dzwoneczkiem!{/size}"
@@ -155,7 +159,7 @@ label pozegnanie_dziewczyn:
     LilMasti "KONOPSKI"
 label ostatnie_pytanie:
 
-    Konopski "Haha, no tak, oczywiście, już...{w=1} w tej chwili. {size=-5} Nie bij proszę{/size} {size=-10}Uważaj na okularki.{/size}"
+    Konopski "Haha, no tak, oczywiście, już...{w=1} w tej chwili. {size=-5} Nie bij proszę{/size} {size=-10}{w=1}Uważaj na okularki.{/size}"
     pause 1.0
     Konopski "Eeee... zanim wejdę, czy mógłabyś odpowiedzieć mi na jedno pytanie?"
     LilMasti "W drodze wyjątku."
@@ -164,29 +168,36 @@ label ostatnie_pytanie:
     Konopski "Tak czy owak, czy naprawdę są to przewinienia upoważniające was do traktowania prokuratora w tak przemocowy sposób?"
     LilMasti "O czym ty mówisz chłopaczku?"
     LilMasti "Co to za bezsensowne insynuacje?"
-    LilMasti "Oczywiściem, że traktujemy prokuratora z należytym szacunkiem!"
-    Konopski "  Jakoś nie wydaje mi{nw}"
+    LilMasti "Oczywiście, że traktujemy prokuratora z należytym szacunkiem!"
+    Konopski "Jakoś nie wydaje mi{nw}"
     LilMasti "Ale do oskarżonych z całą pewnością tego szacunku nie mamy!"
-    Konopski "Ale że jak? {w=1}Zaszła jakaś pomyłka, ja przecież{w=0.3}{nw}"
-    LilMasti "Wchodzisz, czy liczysz na pożegnalny kopniak?"
+    Konopski "Ale że jak? {w=1}Zaszła jakaś pomyłka, ja przecież{nw}"
+    LilMasti "Wchodzisz, czy liczysz na pożegnalnego kopniaka?"
+    pause 1
+    hide lilmasti with moveoutleft
     Konopski "Błagam, powiedzcie że to jakiś prank..."
     Konopski "Dobra robota, totalnie dałem się nabrać! Możecie już wyjść z ukrycia!"
     # AUUUUU
+    show lilmasti scary with moveinleft
     LilMasti "Moja noga już wyszła z ukrycia, czekasz jeszcze na coś?"
     Konopski "Nie, nie wystarczy, będę grzeczny, tylko puść już moją rękę."
+    hide lilmasti with moveoutleft
     $ stop_music()
+
 label omg:
     show lobby
     #show konopski at t 
     show lobby_black with transition("imdis", reverse=True)
     show konopski main at Position(xpos=0.5, ypos=1.15) behind lobby_black with moveinbottom
     Konopski "Dubiel gdzie jesteś?"
-    Konopski "To jest ten moment, kiedy krzyczysz it's a prank, bro!"
-    Konopski "Żegnaj słodkie życie."
-    Konopski "Mam nadzieję, że Blowek zapłacze nad moją mogiłą." 
     #AUUUUUU
+    $ play_sound_effect("punch")
+    #show lilmasti wpierdol2 at masti_wpierdol behind lobby_black
+    show glove at masti_wpierdol behind lobby_black
     Konopski "Przestań, już wchodzę!"
     ### TODO Koniec
+    show black with dissolve
+    Konopski "Mam nadzieję, że Blowek zapłacze nad moją mogiłą." 
     jump end
 
 label end:

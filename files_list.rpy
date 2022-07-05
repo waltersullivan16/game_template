@@ -8,6 +8,7 @@
 "bin/music.rpy"
 "bin/images_python.rpy"
 "bin/styles.rpy"
+"bin/placeholders.rpy"
 
 ## common files
 "characters.rpy"

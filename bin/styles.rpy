@@ -36,12 +36,13 @@ style say_label_main:
 style say_window_creepy is say_window_main
 
 style say_window_creepy:
-    background Frame(textbox_maker("creepy"), 1)
+    background Frame(textbox_maker("creepy", 1))
 
 style say_dialogue_creepy:
     xpos 90 ypos 0.5
     xsize 700
     line_spacing 7
+    color color("tangerine")
 
 style namebox_creepy:
     xalign 0.14
@@ -97,7 +98,7 @@ style namebox_straznik:
 
 style say_label_straznik:
     size 80
-    font font("lucznik")
+    font font("ubuntu")
 
 ####################### MULTIPLE WINDOWS ####################################
 

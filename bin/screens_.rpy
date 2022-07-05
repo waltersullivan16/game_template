@@ -11,6 +11,7 @@ screen screen_buttons_template(x, y, action):
         mouse "active"
         action action 
 
+
 screen main_options_template(options):
     add "very_dark_blur"
     modal True
@@ -45,6 +46,12 @@ screen choices_template(chapter, imagebuttons):
 screen z():
     use screen_buttons_template(0, 0, Jump("uwertura_scenes"))
     use screen_buttons_template(0.9, 0, ShowMenu("preferences"))
+
+screen zz():
+    mousearea:
+        area (0.0, 0, 1.0, 0.2)
+        hovered Show("z", transition=dissolve)
+        unhovered Hide("z", transition=dissolve)
 
 screen keymapscreen():    
        key "K_LEFT" action Jump("end")

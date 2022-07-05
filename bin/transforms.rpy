@@ -131,13 +131,12 @@ transform ani_alpha:
     pause 0.2
     repeat
 
-transform quick_zoom:
+transform quick_zoom(z=2.0):
     truecenter zoom 0
-    linear 0.1 zoom 2.0
+    linear 0.1 zoom z
 
 transform out_left:
     linear 3 xanchor 1500
-
 
 define vpunch = Move((0, 10), (0, -10), .10, bounce=True, repeat=True, delay=.275)
 define hpunch = Move((15, 0), (-15, 0), .10, bounce=True, repeat=True, delay=.275)
@@ -223,3 +222,8 @@ transform beating_masti:
         pause 0.1
         repeat 5
     linear 0.1 ypos 2.0
+
+transform masti_wpierdol:
+    truecenter
+    xpos 0.0 ypos 0.4
+    linear 0.2 xanchor -0.5

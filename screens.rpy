@@ -108,6 +108,7 @@ screen say(who, what):
             $style.say_label = style["say_label_{}".format(persistent.style)]
         $style.say_window = style["say_window_{}".format(persistent.style)]
         text what id "what"
+    #add SideImage() xpos 47 ypos 500
 
 
 

@@ -97,6 +97,7 @@ label ._3subscribe_like:
     pause
 
 label ._4subscribe_thanks:
+    $ new_trophy("hajsownik Konopa")
     Konopski "Fenomenalnie!"
     $ play_music("lobby")
     Konopski "Od razu wiedziałem, że mam do czynienia z prawdziwym koneserem sztuki!"

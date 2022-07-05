@@ -4,7 +4,7 @@ label sad_poczatek:
     #jump sad
     #jump wardega1
     #jump wardega-przemowienie
-    jump gimper
+    #jump gimper
 
 label sad:
     pause 1.0

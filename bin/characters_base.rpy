@@ -6,20 +6,21 @@ init -8 python:
     PATH_CHARACTERS = gpj("images", "characters")
 
     class CharacterBase:
-        def __init__(self, name, group="", blip=None):
+        def __init__(self, name, group="", blip=None, **kwargs):
             self.capital_name = name.upper()
             self.name = name.lower()
             self.group = group
 
             self.talking = False
             self.blip = blip
+            self.kwargs = kwargs
 
         @property
         def char(self):
             return Character(
                 name=self.capital_name,
                 image=self.name,
-                callback=partial(char_talking, self))
+                callback=partial(char_talking, self), **self.kwargs)
 
         @property
         def animations_switch(self):

@@ -101,7 +101,7 @@ init -9 python:
         print(min_volume, max_volume)
         return min_volume <= preferences.get_volume("music") <= max_volume
     
-    def too_loud(max_volume=1):
+    def too_loud(max_volume=0.1):
         return check_music_volume(max_volume)
 
 #    def replacement_show(*args, **kwargs):

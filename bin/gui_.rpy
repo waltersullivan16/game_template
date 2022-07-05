@@ -15,6 +15,7 @@ init -12 python:
         "bright_red": "#D2042D",
         "red": "#B22222",
         "blood": "#830303",
+        "tangerine": "#E78A61",
 
         "pink": "#ff69b4",
         

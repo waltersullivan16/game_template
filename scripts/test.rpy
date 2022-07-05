@@ -8,6 +8,7 @@ label test:
     pause 0.5
     #show lobby_black with transition("black", reverse=True)
     show konopski main at center with moveinbottom
+    show pearl main
 
     Pearl "Fsdfsdfsdfsdf"
     #show text creepy_text("wardega") at creepy_transform

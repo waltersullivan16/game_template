@@ -19,8 +19,10 @@ init python:
         return CHAPTERS[min(len(CHAPTERS), chapter_idx() + 1)]
 
 label start:
-    show screen z with slow_fade
-    jump uwertura_scenes
+    show screen zz with slow_fade
+    $ stop_music()
+    jump chapter0
+    #jump uwertura_scenes
 
 label uwertura_scenes:
     $ stop_music()
@@ -67,30 +69,30 @@ label szukanie_blowka_menu:
 label dziewczyny_menu:
     menu:
         "bloody":
-            jump bloody_text
+            jump chapter32
         "kopniak":
             jump kopniak
         "legenda":
             jump legenda
-        "gazeta0":
-            jump gazeta0
-        "gazeta1":
-            jump gazeta1
-        "gazeta2":
-            jump gazeta2
-        "powiedzenia":
-            jump powiedzenia
+        "powiedzenia1":
+            jump chapter33._4ulubione_powiedzenia1
+        "powiedzenia2":
+            jump chapter33._5ulubione_powiedzenia2
+        "powiedzenia3":
+            jump chapter33._6ulubione_powiedzenia3
         "koniec_powiedzen":
             jump koniec_powiedzen
 
 label straznik_menu:
     menu:
         "namiejsce":
-            jump namiejsce
+            jump chapter41._1na_miejsce
         "lilmasti_intro":
             jump lilmasti_intro
-        "lilmasti_konop":
-            jump masti_konop
+        "pozegnanie_dziewczyn":
+            jump pozegnanie_dziewczyn
+        "omg":
+            jump omg
 
 #label chapter1_t:
 # quite_screen    

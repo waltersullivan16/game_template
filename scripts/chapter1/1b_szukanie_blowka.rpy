@@ -31,7 +31,7 @@ label .uciekaj:
 
 label chapter22:
     scene dark_courtroom
-    show dark_blur
+    show dark_blur #onlayer topcia
     $ play_music("ghost_sigh")
     pause 3.0
 
@@ -43,7 +43,7 @@ Co to ma kuźwa być?
 Gdzie się podziała śmietanka towarzyska youtuba?
 Gdzie kamery...? {w=1} Mateusz Kaniowski...? {w=1}Pełnoletnie fanki, mdlejące na mój widok...?
 Czy cały wysiłek włożony w przygotowanie tych wszystkich wilczych punów pójdzie na marne?
-Po co mam się niby wysilać, skoro i tak nie ma nikogo, kto mógłby potem zmontować kompilację \'Konopski best of\'?
+Po co mam się niby wysilać, skoro i tak nie będzie z czego zmontować shotów?
 ...
 Kogo my tu mamy?
 Patrząc na te plebejskie twarze muśnięte odrobiną chamstwa, cała ta horda to wyznawcy Wardęgi.
@@ -71,6 +71,7 @@ O wilku mowa, złapała ze mną kontakt wzrokowy.
 Czaicie? O WILKU. W sensie że{nw}
 ''')
     $ stop_music()
+    $ play_sound_effect("danger")
     show junko3 with vpunch
 
     $ thinking(Konopski, "{size=+20}{fast}Co do...?{/size}")
@@ -80,6 +81,7 @@ Czaicie? O WILKU. W sensie że{nw}
 
 label ._3o_toko_mowa:
     $ thinking(Konopski, "Współczuję tej okularnicy całym sercem, ja na jej miejscu chyba bym{nw}")
+    $ play_sound_effect("danger")
     show toko3 with vpunch
     Konopski "{fast}{size=+50}Ja pierdolę co jest grane{/size}"
 
@@ -136,7 +138,7 @@ label .ostatnie_wahanie:
     scene black with transition("wet") 
     $stop_music()
     pause(1)
-    $ change_style("straznik")
+    $ change_style("black")
     $ thinking(BlankBlip, "Przynajmniej taką mam nadzieję...")
     $ change_scene(time=[0, 0], pause=1)
 
@@ -236,16 +238,17 @@ label .koniec_przerwy:
     pause 1
     Konopski ej happy_eyes "Szukanie Blowka! No przecież!" 
     pause 1
-    Konopski ej angry_eyes "Jak mogliście w takim momencie zabrać tyle mojego cennego czasu łachudry!"
+    show konopski ej -happy_eyes
+    Konopski ej angry "Jak mogliście w takim momencie zabrać tyle mojego cennego czasu łachudry!"
     Konopski "Wasza wypłata nie będzie już nawet śmieszna!"
     Konopski "Waszej wypłaty po prostu nie będzie!"
-    show konopski ej -angry_eyes
+    show konopski ej -angry
     pause 1
     Konopski ej angry_eyes "E, wy tam! Tylny rząd!"
     Konopski "Czy ja wam pozwoliłem przestać pracować?"
     Konopski "Wracać natychmiast na miejsca, wy lenie patentowane!"
     hide konopski with moveoutright
-    hide dark_blur with slow_dissolve
+    hide dark_blur with dissolve
 
 label chapter26:
     scene transparenty_courtroom 
@@ -385,6 +388,7 @@ label .a:
     Konopski "No przecież, że transparenty!"
     Konopski "Tak podejrzewałem od samego początku, chciałem się tylko upewnić czy dobrze usłyszałem, bo mówiłaś odrobinę niewyraźnie!"
     $ play_video("trudno_porozumiec", group="junko_bibi")
+    show transparenty_courtroom
     pause 3
     Konopski "..."
 
@@ -475,8 +479,13 @@ label .uciekaj:
     $ thinking(
         Konopski,'''
 Nie mogę tak po prostu stąd wyjść...
-Gdzie mój płaszcz?
+...
+Gdzie ja zostawiłem płaszcz?
 ...
 Dobra, walić to, spadam jak jest.
+Kupię sobie nowy za pieniądze, które pierwotnie miałem przeznaczyć na wypłatę dla moich bezimiennych podwładnych.
+...
+Kuźwa, przecież mi nie starczy.
+No trudno, dołożę z własnej kieszeni.
 Narauuu{nw}''')
     jump chapter30

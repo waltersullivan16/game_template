@@ -42,8 +42,3 @@ init python:
         character_courtroom("dogen", second_transition=ease, pause_out2=1)
         character_courtroom("koniec", pause_out1=1, first_transition=vpunch)
         show_with_args("koniec3", vpunch, pause_out=1)
-
-    def scene_transparenty():
-        order = ["zginie", "wpierdol", "debil", "apetyt", "kutas", "kutas2", "bozia"]
-        for c in order:
-            show_with_args(c, transition=vpunch, sound="punch", pause_in=2.4, relative_volume=0.1)

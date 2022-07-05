@@ -240,15 +240,21 @@ label ._5ulubione_powiedzenia2:
         text_style("cite", "{space=50}Zaradna Wersow i zdemoralizowany Konopski"),
         text_style("dark_thoughts", "\n{image=minikonopski}{size=+50}...{/size} {w}{size=+30}co tu się wydarzyło...{/size}\n\n"),
         text_style("dark_thoughts", "{b}{size=+15}4.5) Wardęga z youtuba, wszystkim lżej{/size}{/b}"),
-        text_style("cite", text_style("dark_thoughts", "{space=50}absolutnie wszyscy youtuberzy")),
+        text_style("cite", text_style("dark_thoughts", "{space=50}absolutnie wszyscy youtuberzy"))
+    ]
+    $ BlankBlip(list_text(fav_powiedzenia2))
+
+label ._6ulubione_powiedzenia3:
+    $ fav_powiedzenia3 = [
         text_style("archivo", "5) Z Wardęgą ci się upiecze.") +
         text_style("dark_thoughts","{w}\n Niech zgadnę, kto może być tego autorem...") +
-        text_style("dark_thoughts", "Postawię na \'cnotliwego Lexia\'..."),
+        text_style("dark_thoughts","{w}\n Mamy tu nawiązanie do gotowania, więc może...") +
+        text_style("dark_thoughts", "{w}{b}\'Cnotliwy Lexio\'{/b}?"),
         text_style("cite", "{space=50}Cyceron"),
-        text_style("dark_thoughts", "\n{image=minikonopski} {size=+50}.......{/size}")
+        text_style("dark_thoughts", "{w}\n{image=minikonopski} {size=+50}.......{/size}") +
+        text_style("dark_thoughts", "{w}\nNo prawie mi się udało...")
     ]
-    ### TODO: poprawić tekst z cyceronem
-    $ BlankBlip(list_text(fav_powiedzenia2))
+    $ BlankBlip(list_text(fav_powiedzenia3))
 
 label ._6koniec_powiedzen:
     $ change_scene(skip_loading=True)
