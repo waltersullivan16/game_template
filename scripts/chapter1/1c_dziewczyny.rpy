@@ -1,10 +1,11 @@
 ﻿label chapter30:
 
-    scene lobby
+    scene lobby with very_slow_dissolve
     $ change_style("main")
 
 label .dziewczyny:
 
+    $ play_sound_effect("suprise")
     Unknown "Och, tak się cieszę, że zdążyłyśmy! Bałyśmy się, że wszedł już pan na salę."
     $ play_music("pearl")
     show pearl embarassed with vpunch
@@ -111,7 +112,7 @@ label .legenda:
     $Pearl(text_style("jak_to_mowia", "Wardęga nierychliwy, ale sprawiedliwy."))
     Konopski "..."
     $ thinking(Konopski, "Ci nieistniejący 'oni' mają zadziwiająco wiele do powiedzenia na temat Wardęgi...")
-    Ema notes "A teraz, ku przestrodze, zobaczmy do czego prowadzić może wymawianie imienia druida swego na daremno."
+    Ema notes "A teraz, ku przestrodze, zobaczmy do czego prowadzić może wymawianie imienia druida swego nadaremno."
     hide Ema
     hide Pearl
     hide Penny
@@ -242,19 +243,19 @@ label ._5ulubione_powiedzenia2:
         text_style("dark_thoughts", "{b}{size=+15}4.5) Wardęga z youtuba, wszystkim lżej{/size}{/b}"),
         text_style("cite", text_style("dark_thoughts", "{space=50}absolutnie wszyscy youtuberzy"))
     ]
-    $ BlankBlip(list_text(fav_powiedzenia2))
+    $ Blank(list_text(fav_powiedzenia2))
 
 label ._6ulubione_powiedzenia3:
     $ fav_powiedzenia3 = [
         text_style("archivo", "5) Z Wardęgą ci się upiecze.") +
         text_style("dark_thoughts","{w}\n Niech zgadnę, kto może być tego autorem...") +
         text_style("dark_thoughts","{w}\n Mamy tu nawiązanie do gotowania, więc może...") +
-        text_style("dark_thoughts", "{w}{b}\'Cnotliwy Lexio\'{/b}?"),
+        text_style("dark_thoughts", "{w}{b}\'Cnotliwy Lexiu\'{/b}?"),
         text_style("cite", "{space=50}Cyceron"),
         text_style("dark_thoughts", "{w}\n{image=minikonopski} {size=+50}.......{/size}") +
         text_style("dark_thoughts", "{w}\nNo prawie mi się udało...")
     ]
-    $ BlankBlip(list_text(fav_powiedzenia3))
+    $ Blank(list_text(fav_powiedzenia3))
 
 label ._6koniec_powiedzen:
     $ change_scene(skip_loading=True)

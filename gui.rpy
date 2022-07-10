@@ -368,11 +368,11 @@ define gui.nvl_list_length = 6
 
 ## The height of an NVL-mode entry. Set this to None to have the entries
 ## dynamically adjust height.
-define gui.nvl_height = 115
+define gui.nvl_height = None
 
 ## The spacing between NVL-mode entries when gui.nvl_height is None, and between
 ## NVL-mode entries and an NVL-mode menu.
-define gui.nvl_spacing = 10
+define gui.nvl_spacing = 30
 
 ## The position, width, and alignment of the label giving the name of the
 ## speaking character.
@@ -382,17 +382,18 @@ define gui.nvl_name_width = 150
 define gui.nvl_name_xalign = 1.0
 
 ## The position, width, and alignment of the dialogue text.
-define gui.nvl_text_xpos = 450
-define gui.nvl_text_ypos = 8
-define gui.nvl_text_width = 590
+define gui.nvl_text_xpos = 100
+define gui.nvl_text_ypos = 28
+define gui.nvl_text_width = 990
 define gui.nvl_text_xalign = 0.0
 
 ## The position, width, and alignment of nvl_thought text (the text said by the
 ## nvl_narrator character.)
 define gui.nvl_thought_xpos = 240
-define gui.nvl_thought_ypos = 0
+define gui.nvl_thought_ypos = 100
 define gui.nvl_thought_width = 780
 define gui.nvl_thought_xalign = 0.0
+define gui.nvl_thought_yalign = 0.0
 
 ## The position of nvl menu_buttons.
 define gui.nvl_button_xpos = 450
@@ -458,17 +459,17 @@ init python:
         gui.file_slot_rows = 2
 
         ## NVL-mode.
-        gui.nvl_height = 170
+        #gui.nvl_height = 170
 
-        gui.nvl_name_width = 305
-        gui.nvl_name_xpos = 325
+        #gui.nvl_name_width = 305
+        #gui.nvl_name_xpos = 325
 
-        gui.nvl_text_width = 915
-        gui.nvl_text_xpos = 345
-        gui.nvl_text_ypos = 5
+        #gui.nvl_text_width = 915
+        #gui.nvl_text_xpos = 345
+        #gui.nvl_text_ypos = 5
 
-        gui.nvl_thought_width = 1240
-        gui.nvl_thought_xpos = 20
+        #gui.nvl_thought_width = 1240
+        #gui.nvl_thought_xpos = 20
 
         gui.nvl_button_width = 1240
         gui.nvl_button_xpos = 20

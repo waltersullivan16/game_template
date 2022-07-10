@@ -44,7 +44,8 @@ init -10 python:
     def stop_sound_effect(channel="sound"):
         renpy.music.stop(channel=channel)
 
-    def play_video(name, stop_music=True, group=""):
+    def play_video(name, stop_music=True, group=""):#, volume=1):
+        #renpy.music.set_volume(5, channel='movie')
         renpy.movie_cutscene(video(name, group=group), stop_music=stop_music)
 
     def mute(channel="music", m=True):

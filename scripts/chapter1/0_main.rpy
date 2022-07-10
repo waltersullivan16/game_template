@@ -21,15 +21,17 @@ init python:
 label start:
     show screen zz with slow_fade
     $ stop_music()
-    jump chapter0
-    #jump uwertura_scenes
+    if not persistent.testing:
+        jump uwertura_scenes
+    else:
+        jump chapter30
 
 label uwertura_scenes:
     $ stop_music()
     menu:
         "currrent check":
             $stop_music()
-            jump chapter30
+            jump chapter28
         "intro":
             jump intro_menu
         "szukanie blowka":

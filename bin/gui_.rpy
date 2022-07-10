@@ -18,6 +18,8 @@ init -12 python:
         "tangerine": "#E78A61",
 
         "pink": "#ff69b4",
+        "light_pink" :"#FFB6C1",
+        "bright_pink": "#FF1493",
         
         "yellow": "#FFFF00",
         #"tet": "#f5a90e",

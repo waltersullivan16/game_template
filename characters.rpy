@@ -9,14 +9,23 @@ init -8 python:
 
     BlankBlipClass = CharacterBase(name="")#, blip="blip")
     BlankBlip = BlankBlipClass.char
+    narrator = Character(None, kind=nvl)
+    d1 = Character(None, kind=nvl, what_font=font("kalam"), window_left_margin=100, what_size=40, what_color=color("pink"))
+    d2 = Character(None, kind=nvl, what_font=font("kalam"), what_size=40, what_color=color("light_pink"))
+    d3 = Character(None, kind=nvl, what_font=font("kalam"), what_size=40, what_color=color("bright_pink"))
 
 ###################### KONOPSKI ###########################
     
     KonopskiClass = CharacterBase("Konopski")
     Konopski = KonopskiClass.char
-
+    KonopskiClass.init_images()
+    #npy.image("konopski2", KonopskiClass.animations_switch2)
+    
 layeredimage konopski:
-    group body:
+    #image_format "characters/konopski/body/{image}.png"
+    #image_format "characters/konopski/[type_konopski]/{image}[type_konopski].png"
+
+    group body auto:
         attribute main default
 
     if KonopskiClass.talking:
@@ -33,18 +42,12 @@ layeredimage konopski:
         attribute flower "flowers"
         attribute question "question" xpos 350 zoom 0.6
 
-layeredimage konopski_phoenix:
-
-    group head auto:
-        attribute normal default
-    group suit auto:
-        attribute normal default
 
 ###################### revo ###########################
 
 init python:
     
-    RevoClass = CharacterBase("Revo")
+    RevoClass = CharacterBase("Revo", at_list=[Position(xpos=0.3)])
     Revo = RevoClass.char
 
 layeredimage revo:
@@ -57,7 +60,7 @@ layeredimage revo:
 ###################### WARDEGA ###########################
 
 init python:
-    WardegaClass = CharacterBase("Wardega")
+    WardegaClass = CharacterBase("Wardega", at_list=[Position(xpos=0.7)])
     Wardega = WardegaClass.char
 
 
@@ -76,8 +79,16 @@ layeredimage wardega:
 
 init python:
     
-    LexioClass = CharacterBase("Lexio")
+
+    LexioClass = CharacterBase("Lexio", at_list=[Position(ypos=0.715)])
     Lexio = LexioClass.char
+
+layeredimage lexio:
+    group body:
+        attribute main default
+
+    if LexioClass.talking:
+        LexioClass.animations_switch
 
 ###################### PEARL ###########################
 
@@ -155,3 +166,25 @@ layeredimage lilmasti:
         at Position(ypos=900)
         attribute main default
 '''
+
+init python:
+    BoxdelClass = CharacterBase("Boxdel", group="reszta")
+    Boxdel = BoxdelClass.char
+    renpy.image("bb", animation_maker("boxdel", "main"))
+    renpy.image("ds", BoxdelClass.animations_switch)
+
+layeredimage boxdel:
+    group body auto:
+        attribute main default
+    if BoxdelClass.talking:
+        BoxdelClass.animations_switch
+
+
+init python:
+    UlfikClass = CharacterBase("Ulfik", group="reszta")
+    Ulfik = UlfikClass.char
+layeredimage ulfik:
+    group body auto:
+        attribute main default
+    if UlfikClass.talking:
+        UlfikClass.animations_switch

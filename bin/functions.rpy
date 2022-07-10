@@ -39,13 +39,28 @@ init -9 python:
     def char_talking(character, event, **kwargs):
         if event == "show":
             character.talking = True
+            print(character.name)
+            #if character.name == "konopski":
+            #    print("TAGAS", renpy.get_say_image_tag(), renpy.get_attributes(character.name))
+            #    character.atr = renpy.get_attributes(character.name)
+            #    renpy.show("{} {}".format(character.name, renpy.get_attributes(character.name)[0]+"_talking"))
+            #print(character.char)
+            #tags = renpy.get_attributes(character.name)
+            #if tags is not None:
+            #    print(tags)
+            #    renpy.show("{} {}_talking".format(character, " ".join(tags)))
             blip = get_blip(character.blip or persistent.blip)# or persistent.blip
-            print(character, character.name, character.blip, blip)
+            #print(character, character.name, character.blip, blip)
+            #play_sound_effect(blip, channel="sound", loop="True", relative_volume=0.6)
             play_sound_effect(blip, channel="sound", loop="True")
 
         elif event in ["end", "slow_done"]:
             character.talking = False
+            #renpy.show("{} {}".format(character, tags))
+            #tags = renpy.get_attributes(character.name)
             stop_sound_effect()
+            #if character.name == "konopski":
+            #    renpy.show("{} {}".format(character.name, renpy.get_attributes(character.name)[0]))
             if event == "end":
                 persistent.blip = "main"
 
@@ -67,6 +82,7 @@ init -9 python:
         animation_list = []
         for i in range(frames):
             animation_list.extend([get_frame(name, animation_name, i + 1), pause])
+        print(animation_list)
         return Animation(*animation_list)
     
     animation_reaction = lambda name: animation_maker(name, "reaction")

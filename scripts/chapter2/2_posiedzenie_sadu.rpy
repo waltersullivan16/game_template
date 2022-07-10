@@ -1,14 +1,16 @@
-label sad_poczatek:
-    scene courtroom
-    show screen z
+label chapter2:
+    $ change_style("main")
+    scene courtroom_full
     #jump sad
     #jump wardega1
     #jump wardega-przemowienie
     #jump gimper
 
-label sad:
+label poczatek_sadu:
     pause 1.0
     scene gavel
+    $ play_sound_effect("gavel")
+    #TODO: muzyka
     pause 1.0
     $ judge_scene()
     Lexio """
@@ -25,17 +27,18 @@ label sad:
     $ judge_scene()
     Lexio "Czy mógłbym prosić obronę o potwierdzenie gotowości do rozpoczącie rozprawy?"
 
-    $ defense_scene()
+    $ defense_scenep(kpose="szok")
     Konopski "Zartujecie sobie, prawda? Chcecie rozładować atmosferę poprzez odegranie tej karykaturalnej farsy?"
 
-    $ judge_scene()
+    $ judge_scene(lpose="irytacja")
     Lexio "Panie Konopski, ponawiam pytanie. Czy jest pan gotowy do rozpoczęcia rozprawy?"
 
-    $ defense_scene()
+    $ defense_scene(kpose="wkurw")
     Konopski "Absolutnie nie jestem!"
+    # zastanawianie się
     Konopski "Poza tym, pomijając absurd całej tej sytuacji, czy przypadkiem nie jestem oskarżonym, a nie obrońcą?"
 
-    $ judge_scene()
+    $ judge_scene(lpose="powaga")
     Lexio """
         Zgadza się, ale żaden obrońca z urzędu nie zdecydował się na podjęcie tej sprawy.
 
@@ -46,16 +49,16 @@ label sad:
         Prawdą jest, że jest to niecodzienna sytuacja, ale mamy do czynienia z przestępstwem na tyle poważnym, że decyzją sądu najwyższego rozprawa musi odbyć się w trybie natychmiastowym.
         """
 
-    $ pros_scene()
+    $ pros_scene(wpose="powaga")
     Wardega "Niekonwencjonalne sytuacje wymagają użycia niekonwencjonalnych metod."
 
-    $ judge_scene()
+    $ judge_scene(lpose="radosc")
     Lexio "Dziękuję prokuratorze Wardęgo, jak zawsze trafił pan w sedno sprawy."
 
-    $ defense_scene()
+    $ defense_scene(kpose="kropla")
     Konopski "Sednem sprawy jest to, że ta sytuacja jest kafkowska, a nie niekonwencjonalna."
 
-    $ judge_scene()
+    $ judge_scene(lpose="irytacja")
     Lexio """
         Konopski, to nie jest czas i miejsce na zgrywanie ornitologa!
 
@@ -63,7 +66,7 @@ label sad:
 
         Czy mógłbym prosić obronę o potwierdzenie gotowości do rozpoczącie rozprawy?
         """
-    $ defense_scene()
+    $ defense_scene(kpose="wkurw")
     Konopski "Ponawiam odpowiedź."
     Konopski "NIE"
     Konopski "Jest tu tyle nadużyć, że nawet nie wiem od czego miałbym zacząć..."
@@ -73,24 +76,23 @@ label sad:
     Lexio "Czy ma pan zamiar postulować o ponowienie próby znalezienia obrońcy z urzędu?"
 
     $ defense_scene()
-    Konopski "Nie, jeśli miałbym o coś postulować to zmianę sędzie..."
-
-    $ defense_scene()
+    Konopski "Nie, jeśli miałbym o coś postulować to zmianę sędzie...{nw}"
 
     $ judge_scene()
-    Lexio "Czy ma pan zamiast postulować o usunięcie z sali rozpraw adiutanta?"
+    Lexio "Czy ma pan zamiar postulować o usunięcie z sali rozpraw adiutanta?"
 
     $ defense_scene()
-    Konopski "Naprawdę, wolałbym zacząć od..."
+    Konopski "Nie, to naprawdę nie tutaj tkwi główny problem."
+    $ thinking(Konopski, "Chociaż nie ukrywam, że jego obecność wywołuje we mnie lekki dyskomfort")
 
     $ judge_scene()
     Lexio "No to skoro wszystko jest już ustalone, to możemy wreszcie przejść do konkretów."
     Lexio "Proszę stronę oskarżającą o zabranie głosu."
-    jump wardega1
+    jump mowa_wardegi
 
-label wardega1:
+label mowa_wardegi:
 
-    $ pros_scene()
+    $ pros_scene(wpose="powaga")
     Wardega """
         To dla mnie zaszczyt wysoki sądzie.
 
@@ -99,11 +101,12 @@ label wardega1:
         Wiem że moja sława wyprzedza mnie, ale i tak chciałbym oficjalnie się przedstawić.
         """
 
-    $ defense_scene()
+    $ defense_scene(kpose="kropla")
     Konopski "Naprawdę nie ma takiej potrzeby..."
 
+    ## TODO przedstawienie scenka
     $ pros_scene()
-    Wardgea """
+    Wardega """
         Nazywam się Sylwester Wardęga.
 
         Dla jednych Druid Sprawiedliwości.
@@ -113,89 +116,94 @@ label wardega1:
         Wszystko capsem.
         """
 
-    $ defense_scene()
-    Konopski "To mnie przerasta..."
+    $ defense_scene(kpose="kropla")
+    $ thinking(Konopski, "To mnie przerasta...")
 
-    $ pros_scene()
-    Wardęga "Tak dla jasności, należysz do tej drugiej grupy."
+    $ pros_scene(wpose="uszczypliwosc")
+    Wardega "Tak dla jasności, należysz do tej drugiej grupy."
 
-    $ defense_scene()
-    Konopski "Cóż za niespodzianka..."
+    $ defense_scene(kpose="kropla")
+    $ thinking(Konopsk, "Cóż za niespodzianka...")
 
-    $ pros_scene()
-    Wardaga "Ja sam lubię myśleć o sobie jako o drugim Johnniem Cochranie."
-    Wardega "To adwokat O.J.Simsona ty intelektualna amebo."
+    $ pros_scene(wpose="powaga")
+    Wardega "Ja sam lubię myśleć o sobie jako o drugim Johnnym Cochranie."
+    #uszczypliwosc
+    Wardega "To adwokat O.J.Simsona, ty intelektualna amebo."
 
-    $ defense_scene()
+    $ defense_scene("kropla")
+    $ thinking("Chyba zostanę przy 'Sylwester Wardęga', ty fanie 'rezolutnej dysputy'")
 
-    $ pros_scene()
-    Konopski "Chyba zostanę przy 'Sylwester Wardęga'..."
-    Wardęga "Zważywszy na dzisiejsze okoliczności, zdecydowałem się na formę oficjalną, ale zachowującą nutkę mistycyzmu."
+    $ pros_scene(wpose="powaga")
+    Wardega "Zważywszy na dzisiejsze okoliczności, zdecydowałem się na formę oficjalną, ale zachowującą nutkę mistycyzmu."
     Wardega "W dniu dzisiejszym proszę zwracać się do mnie per"
     Wardega "'Panie Druidzie'."
 
-    $ defense_scene()
-    Konopski "Ok, wszystko jedno, niech będzie Pan Druid, możemy już przejść dalej?"
+    $ defense_scene("kropla")
+    $ thinking(Konopski, "Ok, wszystko jedno, niech będzie Pan Druid, możemy już przejść dalej?")
 
-    $ pros_scene()
-    Wardęga "Moje życiowe motto brzmi: każdy kij ma dwa końce."
+    $ pros_scene(wpose="powaga")
+    Wardega "Moje życiowe motto brzmi: każdy kij ma dwa końce."
 
-    $ defense_scene()
-    Konopski "Gdzieś to już słyszałem..."
+    $ defense_scene("kropla")
+    $ thinking(Konopski, "Gdzieś to już słyszałem...")
 
-    $ pros_scene()
+    $ pros_scene(wpose="powaga")
     Wardega "Ale to ja wiem za który z nich należy chwicić."
 
-    $ defense_scene()
+    $ defense_scene("thinking")
     Konopski "A to akurat nowość"
 
-    $ pros_scene()
-    Wardęga "Więc czas żebym chwycił batutę i rozpoczął koncert sprawiedliwości."
+    $ pros_scene(wpose="wczucie")
+    Wardega "Więc czas żebym chwycił batutę i rozpoczął koncert sprawiedliwości."
 
-    $ defense_scene()
-    Konopski "..."
+    $ defense_scene("kropla")
+    $ thinking(Konopski, "...")
+    pause 1
+    # thinking
     Konopski "Sam to wymyśliłeś?"
 
-    $ pros_scene()
-    Wardęga "Nie zamierzam odpowiadać na pytania zadane tak bezczelnie spoufalającym się tonem."
+    $ pros_scene(wpose="pogarda")
+    Wardega "Nie zamierzam odpowiadać na pytania zadane tak bezczelnie spoufalającym się tonem."
 
-    $ defense_scene()
+    $ defense_scene("zniecierpliwienie")
     Konopski "Czy sam to pan wymyślił... Panie Druidzie?"
 
-    $ pros_scene()
-    Wardęga "Pamiętałeś o capsie?"
+    $ pros_scene(wpose="pogarda")
+    Wardega "Pamiętałeś o capsie?"
 
-    $ defense_scene()
+    $ defense_scene("kropla")
     Konopski "Jakże bym śmiał zapomnieć."
 
-    $ pros_scene()
+    $ pros_scene(wpose="powaga")
     Wardega "Doskonale."
     pause 1.0
+    # main
     Wardega "Mógłbyś powtórzyć pytanie?"
 
     $ defense_scene()
     Konopski "Czy pańskie motto Panie Druidzie zostało wymyślone w całości przez pana?"
 
     $ pros_scene()
-    Wardęga "Nie."
-    Wardęga "Ten fragment z batutą zapożyczyłam od jakiegoś kolesia z forum miłośników imagestocka."
+    Wardega "Nie."
+    Wardega "Ten fragment z batutą zapożyczyłam od jakiegoś kolesia z forum miłośników imagestocka."
 
     $ judge_scene()
     Lexio "Aaaaaa, już łapię."
     Lexio "W sensie że batuta to też kijek, tak? I ma dwa końce?"
 
-    $ pros_scene()
-    Wardęga "Dokładnie tak Konopski. wiedziałem że będziesz miał problem z rozszyfrowaniem meandrów poezji."
+    $ pros_scene(wpose="uszczypliwosc")
+    Wardega "Dokładnie tak Konopski. wiedziałem że będziesz miał problem z rozszyfrowaniem meandrów poezji."
 
-    $ defense_scene()
+    $ defense_scene("kropla")
     Konopski "Zdaje pan sobie sprawę, że nie ja zadałem to pytanie, prawda?"
 
-    $ pros_scene()
+    $ pros_scene("pogarda") # irytacja?
     Wardega "..."
     Wardega "Dość już tego pajacowania Konopski, to nie czas i miejsce na czcze pogaduszki."
 
-    $ defense_scene()
+    $ defense_scene("kropla")
     Konopski "..."
+    # zniecierpliwienie
     Konopski "Mea culpa, od teraz będę starał się powstrzymać od bezsensownych monologów..."
     jump wardega_przemowienie
 
@@ -324,7 +332,7 @@ label wardega_przemowienie:
 
     Wardega "Bawią cię moje zarzuty Konop? Jesteś dumny ze swojego kryminalnego życia?"
 
-    Lexiu "Dobrze, Zabójczy kociaku, zniszcz swoją ofiarę!"
+    Lexio "Dobrze, Zabójczy kociaku, zniszcz swoją ofiarę!"
 
     Wardega """
         ...
@@ -336,7 +344,7 @@ label wardega_przemowienie:
     Konopski "Ostatni był żart z moim rynsztokiem na youtubie."
 
 #Popatrzcie państwo, na ten zuchwały uśmieszek obrońcy. Na pierwszy rzut oka, że jest równie zdeprawowany jak jego klient
-    Wardęga """
+    Wardega """
 
         Ach tak, jak mogłem zapomnieć!
 

@@ -11,6 +11,7 @@ init -12 python:
 init -11 python:
     TITLE = "template"
     GAME_PATH = gpj('/home/akechi/renpy/games', TITLE, 'game')
+    persistent.testing = True
 
     if persistent.style is None:
         persistent.style = "main"
@@ -21,7 +22,7 @@ init -11 python:
     config.mouse = {n:[(mouse(n), 1, 0)] for n in mouses_list}
     config.mouse["default"] = [(mouse("main"), 1, 0)]
     
-    #_dismiss_pause = False
+    _dismiss_pause = False
 
 init -1 python:
     AUTOMATIC_IMAGES = ["/"]
@@ -41,6 +42,9 @@ define config.menu_include_disabled = True
 #define config.label_callback = label_callback
 #define config.displayable_prefix["blur"] = blurred
 #define config.menu_arguments_callback = True
+
+default preferences.afm_time = 8
+default preferences.afm_enable = True
 
 default preferences.show_empty_window = False
 default preferences.text_cps = 40

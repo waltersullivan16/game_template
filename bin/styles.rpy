@@ -79,8 +79,8 @@ style say_dialogue_quote:
 
 ### BLACK
 style say_dialogue_black:
-    #font font("indie")
-    #size 60
+    font font("indie")
+    size 60
     slow_cps 20
     xalign 0.5 yalign 0.5
     xsize 1200
@@ -89,7 +89,7 @@ style say_dialogue_black:
 ### STRAZNIK
 
 style say_dialogue_straznik:
-    xalign 0.5 ypos 0.5
+    xalign 0.5 yalign 0.5
     xsize 1000
     line_spacing 10
 
@@ -265,6 +265,16 @@ style blowek_text_style is text:
     size 45
     font font("love")
     color color("pink")
+
+style dziewczyny_text_style is text:
+    size 40
+    font font("kalam")
+    slow_cps 40
+
+style wkurw_text_style is text:
+    size 40
+    font font("coda")
+    color color("white")
 
 style button:
     background "#006"

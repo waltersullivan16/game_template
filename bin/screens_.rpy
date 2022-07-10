@@ -43,8 +43,13 @@ screen choices_template(chapter, imagebuttons):
                 idle "gui/choices/inactive_{}.png".format(i)
                 action [Hide("choices_template", transition=ease),  Jump("{}.{}".format(chapter, i))]
 
+screen chapters(n):
+    for i in range(n):
+        pass
+
 screen z():
-    use screen_buttons_template(0, 0, Jump("uwertura_scenes"))
+    if persistent.testing:
+        use screen_buttons_template(0, 0, Jump("uwertura_scenes"))
     use screen_buttons_template(0.9, 0, ShowMenu("preferences"))
 
 screen zz():

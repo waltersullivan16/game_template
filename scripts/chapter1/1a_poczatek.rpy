@@ -16,7 +16,7 @@ label ._1quote_screen:
     pause 12.0
     hide screen quote with transition("wet")
     
-label ._2konop_monolog1:
+label og:
     scene intro with very_slow_fade
     $ change_style("intro")
 
@@ -33,7 +33,8 @@ Czy żałuję, że otworzyłem tę puszkę Pandory?{w=1} Raczej nie.
 Wszystkie trudy i znoje były warte tej jednej magicznej chwili, która dzisiaj niewątpliwie nastąpi.
 Lexiu usłyszy dzisiaj wyrok...''')
     
-label ._3winny:
+#label ._3winny:
+label ny:
     $ stop_music()
     scene intro2
     $ play_music("title", fadein=0.0, loop=False)
@@ -46,7 +47,7 @@ label ._3winny:
     $play_video("mona_cut", stop_music=False)
 
     show title_blank at Position(ypos=0.6) with wipeleft
-    pause 0.7
+    pause 0.8
     show zbrodnia at Position(ypos=0.6) with vpunch
     pause 0.6
     show kara at Position(ypos=0.6) with vpunch
@@ -97,7 +98,7 @@ label ._3subscribe_like:
     pause
 
 label ._4subscribe_thanks:
-    $ new_trophy("hajsownik Konopa")
+    $ new_trophy("oporny hajsownik Konopa")
     Konopski "Fenomenalnie!"
     $ play_music("lobby")
     Konopski "Od razu wiedziałem, że mam do czynienia z prawdziwym koneserem sztuki!"

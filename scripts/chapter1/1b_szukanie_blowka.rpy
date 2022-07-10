@@ -476,6 +476,8 @@ Może to zostać odebrane jako próba podważenia słuszności jego decyzji.
     pause
 
 label .uciekaj:
+    scene lobby
+    $ change_style("main")
     $ thinking(
         Konopski,'''
 Nie mogę tak po prostu stąd wyjść...
@@ -487,5 +489,37 @@ Kupię sobie nowy za pieniądze, które pierwotnie miałem przeznaczyć na wypł
 ...
 Kuźwa, przecież mi nie starczy.
 No trudno, dołożę z własnej kieszeni.
-Narauuu{nw}''')
-    jump chapter30
+...
+''')
+    scene black with transition("farba", time=1.5)
+label ut:
+    $ stop_music()
+    scene black
+    $change_style("black")
+
+    Blank "I takim smutnym akcentem kończymy dzisiejsze przygody z wymiarem sprawiedliwości."
+    Blank "Dzięki za oglądanie, trzymajcie się i nauuuuuuuuuuuu{nw}"
+    $ play_sound_effect("suprise", relative_volume=0.2)
+    nvl clear
+    d1 "HEJ DZIEWCZYNY, PATRZCIE TAM!"
+    d2 "CZY TO PRZYPADKIEM NIE JEST...?"
+    d3 "TAK, TO NA PEWNO ON!"
+    nvl clear
+    $ play_sound_effect("suprise", relative_volume=0.5)
+    d1 "WYGLĄDA NA ZESTRESOWANEGO :(("
+    d2 "DZIWISZ MU SIĘ? NA JEGO MIEJSCU JUŻ DAWNO BYM PADŁA NA ZAWAŁ!"
+    d3 "WOLAŁABYM UCIEC Z KRAJU NIŻ PRZEŻYĆ KATUSZE, KTÓRE GO ZARAZ CZEKAJĄ!"
+    nvl clear
+    $ play_sound_effect("suprise", relative_volume=1)
+    d1 "A WYOBRAŹCIE SOBIE MOMENT WEZWANIA NA SALĘ!"
+    d2 "WEŹ PRZESTAŃ, BYŁABYM TAK TOTALNIE ZESRANA!"
+    d3 "MOŻE PODBIJEMY DO NIEGO, ŻEBY DODAĆ MU OTUCHY?"
+    $ change_style("main")
+    show konopski niesmak with moveinbottom
+    pause 1
+    $ Konopski(text_style("wkurw", "JAK JA NIENAWIDZĘ TYCH ZJEBAN{nw}"))
+    $ play_sound_effect("szok")
+    scene ciag_dalszy
+    pause 4
+    $ new_trophy("fanom niech będą męki")
+    jump chapter1_stop

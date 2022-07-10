@@ -36,19 +36,27 @@ init python:
         renpy.transition("vpunch")
         renpy.show("black")
 
-    def show_scene(background, characters):
+    def show_scene(background, characters, overlay=[]):
         renpy.scene()
         renpy.show(background)
-        for (c, t) in characters:
-            renpy.show(c, at_list=t)
+        print(characters)
+        for c, p in characters:
+            renpy.show("{} {}".format(c.name, p), at_list=c.at_list)
+        for o in overlay:
+            renpy.show(o)
 
-    def judge_scene(): {show_scene("judge", [(LexioC.name, LexioC.show_args)])}
-    def pros_scene(): {show_scene(
+    def judge_scene(lpose="main"): {show_scene("judge", [(LexioClass, lpose)], ["lawkaj"])}
+    def pros_scene(rpose="main", wpose="main"): {show_scene(
         "prosecution",
-        [("wardega", []), ("revo", [])]
+        [(RevoClass, rpose), (WardegaClass, wpose)],
+        ["lawkap"]
     )}
-    def defense_scene(): {show_scene("defense", [(KonopskiC.name, KonopskiC.show_args)])}
-    def witness_scene(): {show_scene("witness", [(GimperC.name, GimperC.show_args)])}
+    def defense_scene(kpose="pmain"): {show_scene(
+        "defense", 
+        [(KonopskiClass, kpose)],
+        ["lawkad"]
+    )}
+    def witness_scene(): {show_scene("witness", [Gimper])}
 
     def straznik(text):
         #renpy.transition(transition("shatter"))
@@ -60,3 +68,7 @@ init python:
         #renpy.transition(transition("shot"))
         renpy.hide("very_dark_blur")
         renpy.pause(1.0)
+
+    def dziewczyny(text):
+        for t in text:
+            Unknown(text_style("dziewczyny", "{} {{w=0.4}}{{nw}}".format(t)))
