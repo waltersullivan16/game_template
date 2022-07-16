@@ -17,7 +17,7 @@
 "gui.rpy"
 
 ## script
-"scripts/0_main.rpy"
+"scripts/chapter1/0_main.rpy"
 
 "scripts/chapter1/1a_poczatek.rpy"
 "scripts/chapter1/1b_szukanie_blowka.rpy"
@@ -27,3 +27,5 @@
 "scripts/chapter1/1d_straznik.rpy"
 
 "scripts/chapter2/2_posiedzenie_sadu.rpy"
+
+"scripts/test.rpy"

@@ -23,11 +23,13 @@ label poczatek_sadu:
 
     $ pros_scene()
     Wardega "Jesteśmy w pełni gotowi wysoki sądzie."
+    $ copros_scene()
+    Revo "Gotowy wysoki sądzie"
 
     $ judge_scene()
     Lexio "Czy mógłbym prosić obronę o potwierdzenie gotowości do rozpoczącie rozprawy?"
 
-    $ defense_scenep(kpose="szok")
+    $ defense_scene(kpose="szok")
     Konopski "Zartujecie sobie, prawda? Chcecie rozładować atmosferę poprzez odegranie tej karykaturalnej farsy?"
 
     $ judge_scene(lpose="irytacja")
@@ -123,7 +125,7 @@ label mowa_wardegi:
     Wardega "Tak dla jasności, należysz do tej drugiej grupy."
 
     $ defense_scene(kpose="kropla")
-    $ thinking(Konopsk, "Cóż za niespodzianka...")
+    $ thinking(Konopski, "Cóż za niespodzianka...")
 
     $ pros_scene(wpose="powaga")
     Wardega "Ja sam lubię myśleć o sobie jako o drugim Johnnym Cochranie."

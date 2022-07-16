@@ -46,14 +46,19 @@ init python:
             renpy.show(o)
 
     def judge_scene(lpose="main"): {show_scene("judge", [(LexioClass, lpose)], ["lawkaj"])}
-    def pros_scene(rpose="main", wpose="main"): {show_scene(
+    def pros_scene(wpose="main"): {show_scene(
         "prosecution",
-        [(RevoClass, rpose), (WardegaClass, wpose)],
+        [(WardegaClass, wpose)],
         ["lawkap"]
+    )}
+    def copros_scene(rpose="main"): {show_scene(
+        "coprosecution",
+        [(RevoClass, rpose)]
     )}
     def defense_scene(kpose="pmain"): {show_scene(
         "defense", 
-        [(KonopskiClass, kpose)],
+        #[(KonopskiClass, kpose)],
+        [(KonopskiClass, "phoenix politowanie")],
         ["lawkad"]
     )}
     def witness_scene(): {show_scene("witness", [Gimper])}

@@ -186,6 +186,8 @@ label ostatnie_pytanie:
 
 label omg:
     show lobby
+    $ change_style("main")
+    $ stop_music()
     #show konopski at t 
     show lobby_black with transition("imdis", reverse=True)
     show konopski main at Position(xpos=0.5, ypos=1.15) behind lobby_black with moveinbottom
@@ -194,10 +196,32 @@ label omg:
     $ play_sound_effect("punch")
     #show lilmasti wpierdol2 at masti_wpierdol behind lobby_black
     show glove at masti_wpierdol behind lobby_black
-    Konopski "Przestań, już wchodzę!"
     ### TODO Koniec
-    show black with dissolve
-    Konopski "Mam nadzieję, że Blowek zapłacze nad moją mogiłą." 
+    Konopski "Przestań, przecież już wchodzę!"
+    scene black with transition("imdis", reverse=True)#dissolve
+    #Konopski "Mam nadzieję, że Blowek zapłacze nad moją mogiłą." 
+    #$ play_sound_effect("punch")
+    $ play_sound_effect("door_opening")
+    pause 1.5
+    $ play_music("crowd_talking", relative_volume=1.5)
+    pause 1
+    $ change_style("black")
+    $ Blank(text_style("black", "No proszę, proszę... A kogóż my tu mamy?"))
+    $ Blank(text_style("black", "Pan Konopski wreszcie raczył nas zaszczycić swoją obecnością..."))
+    $ Blank(text_style("black", "A już zastanawialiśmy się, czy aby nie trzeba będzie wysłać panu specjalnego zaproszenia..."))
+    $ change_style("main")
+    Konopski "Co...{w=1} Co tu się..."
+    Konopski "To są jakieś jaja..."
+    Konopski "To przecież nie może dziać się naprawdę...{w=1} prawda?"
+    Konopski "Proszę, powiedz że to się nie dzieje{nw}"
+    $ change_style("black")
+    $ Blank(text_style("strazmasterka", "Baw się dobrze chłystku."))
+    pause 0.5
+    $ stop_music()
+    $ play_sound_effect("cl")
+    scene ciag_dalszy with vpunch
+    pause 10
+     
     jump end
 
 label end:

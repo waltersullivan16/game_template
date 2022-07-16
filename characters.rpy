@@ -17,19 +17,34 @@ init -8 python:
 ###################### KONOPSKI ###########################
     
     KonopskiClass = CharacterBase("Konopski")
+    #KonopskiClass.init_images()
     Konopski = KonopskiClass.char
-    KonopskiClass.init_images()
-    #npy.image("konopski2", KonopskiClass.animations_switch2)
+
+transform mouth_transform:
+    #"images/characters/[persistent.character]/mouth/[persistent.mouth].png"
+    pause 0.2
+    alpha 1.0
+    pause 0.2
+    alpha 0.1
+    repeat
+
+
+define config.speaking_attribute = "talking"
+
     
 layeredimage konopski:
-    #image_format "characters/konopski/body/{image}.png"
-    #image_format "characters/konopski/[type_konopski]/{image}[type_konopski].png"
+    #image_format "images/characters/konopski/[persistent.version]/{image}.png"
 
-    group body auto:
+    group body if_not "phoenix" auto variant "main":# prefix "body":
         attribute main default
 
-    if KonopskiClass.talking:
-        KonopskiClass.animations_switch
+    group body if_not "main" auto variant "phoenix":# prefix "body":
+        attribute zawstydzenie default
+
+    group mouth auto:
+        at mouth_transform
+        if_any "talking"
+        attribute normal default null
 
     group anime auto:
         attribute normal default null
@@ -42,25 +57,40 @@ layeredimage konopski:
         attribute flower "flowers"
         attribute question "question" xpos 350 zoom 0.6
 
+#layeredimage konopski phoenix:
+#    image_format "images/characters/konopski/phoenix/{name}.png"
+
+#    group head auto prefix "konopski_phoenix_head":
+#        attribute politowanie default
+
+    #if KonopskiClass.talking:
+    #    print("ATTRIBUTES TALKING: konopski {}".("konopski", renpy.get_say_attributes()))
+#        KonopskiClass.animations_switch
+
+#    group suit auto:
+#        attribute normal default
+
 
 ###################### revo ###########################
 
 init python:
     
-    RevoClass = CharacterBase("Revo", at_list=[Position(xpos=0.3)])
+    RevoClass = CharacterBase("Revo", at_list=[Position(xpos=0.7)])
     Revo = RevoClass.char
 
 layeredimage revo:
-    group body:
+    group head auto:
         attribute main default
-
     if RevoClass.talking:
         RevoClass.animations_switch
+    group suit auto:
+        attribute reading default
+
 
 ###################### WARDEGA ###########################
 
 init python:
-    WardegaClass = CharacterBase("Wardega", at_list=[Position(xpos=0.7)])
+    WardegaClass = CharacterBase("Wardega")#, at_list=[Position(xpos=0.7)])
     Wardega = WardegaClass.char
 
 

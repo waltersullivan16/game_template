@@ -3,17 +3,8 @@ transform t:
     zoom 0.7
 label test:
     scene lobby
+    show konopski phoenix politowanie
     pause 1.0
-
-    pause 0.5
-    #show lobby_black with transition("black", reverse=True)
-    show konopski main at center with moveinbottom
-    show pearl main
-
-    Pearl "Fsdfsdfsdfsdf"
-    #show text creepy_text("wardega") at creepy_transform
-    Pearl "dsada"
-    Pearl "Nie wypowiadaj tego imienia na daremno!"
     Konopski "Moje pytanie absolutnie zaliczoło się do kategorii nie na daremno... Ale mniejsza o to, wróćmy do tego poprzedniego."
     Pearl "Powiadają że jego ulubionym filmem jest nagranie procesu OJ Simsona."
     Ema "Woooow!"

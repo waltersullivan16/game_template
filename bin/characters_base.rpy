@@ -41,6 +41,36 @@ init -8 python:
             return self._animation_switch
 
         @property
+        def character_path(self):
+            return gpj(PATH_CHARACTERS, self.group, self.name)
+
+        @property
+        def mouth_switch(self):
+            if self._mouth_switch is None:
+                res = []
+                for s in self.styles:
+                    res.extend(["{} {} talking".format(self.name,s ), At(s, "mouth_transform")])
+                self._mouth_switch = ShowingSwitch(*res)
+            return self._mouth_switch
+
+        @property
+        def styles(self):
+
+            if self._styles is None:
+                    z = [p for p in os.listdir(PATH_CHARACTERS)]
+                    print(z)
+                    paths = list(filter(lambda x: x.split('/')[-1].startswith("animation"), [gpj(self.character_path, p)  for p in os.listdir(self.character_path)]))
+                    print("paths {}".format(paths))
+                    self._styles = []
+                    for anim_path in paths:
+                        self._styles += [d for d in os.listdir(anim_path)]
+            print("styles {}".format(self._styles))
+            return self._styles
+                
+        def __str__(self):
+            return self.name
+
+        @property
         def animations_switch2(self):
             if self._animation_switch is None:
                 res = []
@@ -53,23 +83,20 @@ init -8 python:
 
         def init_images(self):
             def talking_animation(a, animation_pause=0.2):
-                return ['{} {} 1', animation_pause, '{} {} 2', animation_pause]
+                animation_format = lambda i: '{} {} {}'.format(self.name, a, i)
+                return [animation_format('1'), animation_pause, animation_format('2'), animation_pause]
+
             for s in self.styles:
-                renpy.image("{} {}".format(self.name, s), gpj(self.character_path, "body", "{}_body_{}.png".format(self.name, s)))
-                renpy.image("{} {}_talking".format(self.name, s), animation_maker(self.name, s))
+                #renpy.image("{} {}".format(self.name, s), gpj(self.character_path, "body", "{}_phoenix_head_{}.png".format(self.name, s)))
+                renpy.image("{} {} talking".format(self.name, s), "mouth")
+            renpy.image("konopski talking", "mouth")
+            d = gpj(self.character_path, "mouth")
 
-        @property
-        def character_path(self):
-            return gpj(PATH_CHARACTERS, self.group, self.name)
-
-        @property
-        def styles(self):
-
-            if self._styles is None:
-                anim_path = gpj(self.character_path, "animations")
-                self._styles = [d for d in os.listdir(anim_path)] if os.path.exists(anim_path) else []
-            return self._styles
-
+        def aa(self):
+            print("dasdadasdas", renpy.get_attributes("konopski"))
+            persistent.mouth = renpy.get_attributes(self.name)
+            return "mouth"
+            
         @property
         def styles2(self):
             def match_pattern(s):
@@ -97,6 +124,3 @@ init -8 python:
 
         def image_type(self, atr):
             return self.anim_name(atr) if self.talking else self.image_name(atr)
-                
-        def __str__(self):
-            return self.name

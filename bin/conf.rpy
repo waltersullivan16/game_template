@@ -25,11 +25,11 @@ init -11 python:
     _dismiss_pause = False
 
 init -1 python:
-    AUTOMATIC_IMAGES = ["/"]
+    AUTOMATIC_IMAGES = ["/, _"]
 
     AUTOMATIC_IMAGES_STRIP = ["images"] + get_dirs("images")
     
-    for x in ["scenes", "others"]:
+    for x in ["scenes", "others", "background"]:
         AUTOMATIC_IMAGES_STRIP += get_dirs(gpj("images", x))
     renpy.music.register_channel("sfx1", "sfx")
     renpy.music.register_channel("sfx2")#n, "sfx")

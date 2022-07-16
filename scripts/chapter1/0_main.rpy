@@ -24,7 +24,7 @@ label start:
     if not persistent.testing:
         jump uwertura_scenes
     else:
-        jump chapter30
+        jump test
 
 label uwertura_scenes:
     $ stop_music()

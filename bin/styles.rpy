@@ -252,7 +252,7 @@ style jak_to_mowia_text_style is text:
 style strazmasterka_text_style is text:
     xpos 0
     size 100
-    font font("consult")
+    font font("breathe")
     color color("blood")
     bold True
 
@@ -275,6 +275,11 @@ style wkurw_text_style is text:
     size 40
     font font("coda")
     color color("white")
+
+style futura_text_style is text:
+    size 30
+    font("block")
+
 
 style button:
     background "#006"
