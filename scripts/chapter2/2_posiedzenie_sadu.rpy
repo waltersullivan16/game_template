@@ -118,6 +118,15 @@ label mowa_wardegi:
         Wszystko capsem.
         """
 
+label mm:
+    scene wardega_intro
+    nvl clear
+    wardega_nvl """
+        urodziły mnie wilki
+
+        jebanie
+    """
+
     $ defense_scene(kpose="kropla")
     $ thinking(Konopski, "To mnie przerasta...")
 
@@ -127,13 +136,13 @@ label mowa_wardegi:
     $ defense_scene(kpose="kropla")
     $ thinking(Konopski, "Cóż za niespodzianka...")
 
-    $ pros_scene(wpose="powaga")
+    $ pros_scene(wpose="serious")
     Wardega "Ja sam lubię myśleć o sobie jako o drugim Johnnym Cochranie."
     #uszczypliwosc
     Wardega "To adwokat O.J.Simsona, ty intelektualna amebo."
 
     $ defense_scene("kropla")
-    $ thinking("Chyba zostanę przy 'Sylwester Wardęga', ty fanie 'rezolutnej dysputy'")
+    $ thinking(Konopski, "Chyba zostanę przy 'Sylwester Wardęga', ty fanie 'rezolutnej dysputy'")
 
     $ pros_scene(wpose="powaga")
     Wardega "Zważywszy na dzisiejsze okoliczności, zdecydowałem się na formę oficjalną, ale zachowującą nutkę mistycyzmu."

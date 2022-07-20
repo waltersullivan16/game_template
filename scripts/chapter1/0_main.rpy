@@ -25,6 +25,12 @@ label start:
         jump uwertura_scenes
     else:
         jump test
+label scenes2:
+    $ stop_music()
+    menu:
+        "currrent check":
+            jump test
+
 
 label uwertura_scenes:
     $ stop_music()

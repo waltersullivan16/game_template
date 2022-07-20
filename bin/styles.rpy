@@ -100,6 +100,24 @@ style say_label_straznik:
     size 80
     font font("ubuntu")
 
+
+#### NVL
+
+style nvl_main is nvl_window
+style nvl_dialogue_main is say_dialogue
+
+style nvl_wardega is nvl_window
+style nvl_wardega:
+    background textbox_maker("wardega", alpha=1, type="nvl")
+
+style nvl_dialogue_wardega: 
+    xpos 200 ypos 0.1
+    xsize 500
+    color color("white")
+    #font font("monster")
+    size 40
+    slow_cps 20
+
 ####################### MULTIPLE WINDOWS ####################################
 
 style multiple2_say_window:

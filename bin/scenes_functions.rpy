@@ -58,7 +58,7 @@ init python:
     def defense_scene(kpose="pmain"): {show_scene(
         "defense", 
         #[(KonopskiClass, kpose)],
-        [(KonopskiClass, "phoenix politowanie")],
+        [(KonopskiClass, "zawstydzenie")],
         ["lawkad"]
     )}
     def witness_scene(): {show_scene("witness", [Gimper])}

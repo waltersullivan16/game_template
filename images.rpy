@@ -15,6 +15,8 @@ image reaction_angry = At("angry", beating)
 image question = animation_reaction("question")
 image flowers = animation_reaction("flowers")
 
+image blank = Image("background/blank.png")
+
 #init python:
 #    def reaction(name, fun=beating):
 #        renpy.show(name, at_list=[fun])

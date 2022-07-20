@@ -69,8 +69,11 @@ init -12 python:
         styled_monologue(s, character, text, kwargs)
 
 ### TEXTBOX
-    def textbox_maker(textbox_name, alpha=0.85):
-        return Transform(Image(gpj("gui", "textbox", "{}_textbox.png".format(textbox_name))), alpha=alpha)
+    def textbox_maker(textbox_name, alpha=0.85, type="textbox"):
+        return Transform(Image(gpj("gui", "textbox", "{}_{}.png".format(textbox_name, type))), alpha=alpha)
 
     def change_style(s):
         persistent.style = s
+
+    def change_nvl(s):
+        persistent.nvl = s

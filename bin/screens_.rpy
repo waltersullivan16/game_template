@@ -49,7 +49,7 @@ screen chapters(n):
 
 screen z():
     if persistent.testing:
-        use screen_buttons_template(0, 0, Jump("uwertura_scenes"))
+        use screen_buttons_template(0, 0, Jump("scenes2"))
     use screen_buttons_template(0.9, 0, ShowMenu("preferences"))
 
 screen zz():

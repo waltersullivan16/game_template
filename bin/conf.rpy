@@ -15,6 +15,8 @@ init -11 python:
 
     if persistent.style is None:
         persistent.style = "main"
+    if persistent.nvl is None:
+        persistent.nvl = "main"
 
     mouse = lambda x: gpj("gui", "mouse", "{}.png".format(x))
     mouses_list = ["main", "active", "red", "loading", "not", "love", "question"]

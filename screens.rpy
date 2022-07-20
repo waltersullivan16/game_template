@@ -1264,8 +1264,7 @@ style notify_text:
 screen nvl(dialogue, items=None):
 
     window:
-        style "nvl_window"
-
+        style "nvl_{}".format(persistent.nvl)
         has vbox:
             spacing gui.nvl_spacing
 
@@ -1295,6 +1294,8 @@ screen nvl(dialogue, items=None):
 
 screen nvl_dialogue(dialogue):
 
+    $style.nvl_dialogue = style["nvl_dialogue_{}".format(persistent.nvl)]
+
     for d in dialogue:
 
         window:
@@ -1320,7 +1321,7 @@ style nvl_window is default
 style nvl_entry is default
 
 style nvl_label is say_label
-style nvl_dialogue is say_dialogue
+#style nvl_dialogue is say_dialogue
 
 style nvl_button is button
 style nvl_button_text is button_text
