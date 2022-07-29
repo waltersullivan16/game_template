@@ -29,15 +29,14 @@ label scenes2:
     $ stop_music()
     menu:
         "currrent check":
-            jump test
-
+            jump chapter2
 
 label uwertura_scenes:
     $ stop_music()
     menu:
         "currrent check":
             $stop_music()
-            jump chapter28
+            jump chapter2
         "intro":
             jump intro_menu
         "szukanie blowka":

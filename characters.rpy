@@ -14,23 +14,25 @@ init -8 python:
     d2 = Character(None, kind=nvl, what_font=font("kalam"), what_size=40, what_color=color("light_pink"))
     d3 = Character(None, kind=nvl, what_font=font("kalam"), what_size=40, what_color=color("bright_pink"))
 
-    wardega_nvl = Character(None, kind=nvl)
+    wardega_nvl = Character(None, kind=nvl, what_slow_cps=20)
 
 ###################### KONOPSKI ###########################
+default konopski_head = "main"
+default konopski_suit = "objection"
+
+init python:
     
-    KonopskiClass = CharacterBase("Konopski")
+    KonopskiClass = CharacterBase("Konopski", image="konopski_phoenix", size=(800, 800), version="phoenix")
     Konopski = KonopskiClass.char
+
 #define config.speaking_attribute = "talking"
 
     
 layeredimage konopski:
     #image_format "images/characters/konopski/[persistent.version]/{image}.png"
 
-    group body if_not "phoenix" auto variant "main":# prefix "body":
+    group body auto:# prefix "body":
         attribute main default
-
-    group body if_not "main" auto variant "phoenix":# prefix "body":
-        attribute zawstydzenie default
 
     if KonopskiClass.talking:
         KonopskiClass.animations_switch
@@ -46,64 +48,18 @@ layeredimage konopski:
         attribute flower "flowers"
         attribute question "question" xpos 350 zoom 0.6
 
+
 ###################### revo ###########################
 
 init python:
-    
-    RevoClass = CharacterBase("Revo", at_list=[Position(xpos=0.7)])
+    RevoClass = CharacterBase("Revo", at_list=[Position(xpos=0.7)], size=(748, 631))
     Revo = RevoClass.char
-
-layeredimage revo:
-    group head auto:
-        attribute main default
-    if RevoClass.talking:
-        RevoClass.animations_switch
-    group suit auto:
-        attribute normal default
-
+    
 ###################### WARDEGA ###########################
 
 init python:
-    WardegaClass = CharacterBase("Wardega")#, at_list=[Position(xpos=0.7)])
+    WardegaClass = CharacterBase("Wardega", size=(782, 705))#, at_list=[Position(xpos=0.7)])
     Wardega = WardegaClass.char
-
-    WardegaClass.character_image()
-
-layeredimage wardegea:
-    group head auto:
-        attribute serious default
-    if WardegaClass.talking:
-        WardegaClass.animations_switch
-
-    group suit auto:
-        attribute main default
-
-default w_pose = "serious"
-default wardega_head = "serious"
-default wardega_suit = "main"
-init python:
-    renpy.image("mouth_w2", [
-    "characters/wardega/mouth/wardega_mouth_[w_pose].png",
-    "alpha 0.0",
-    "pause 0.2",
-    "alpha 1.0",
-    "pause 0.2"])
-image mouth_w:
-    "characters/wardega/mouth/wardega_mouth_[w_pose].png"
-    alpha 0.0
-    pause 0.2
-    alpha 1.0
-    pause 0.2
-    repeat
-image wardega=WardegaClass.character_image()
-
-image wardega2 = LiveComposite((782, 705),
-    (0, 0), "characters/wardega/head/wardega_head_[w_pose].png",
-    (0, 0), ConditionSwitch(
-        "WardegaClass.talking", "mouth_w2",
-        "True", Null()), 
-    (0, 0), "characters/wardega/suit/wardega_suit_main.png"
-)
 
 ###################### Lexio ###########################
 

@@ -75,18 +75,6 @@ init -9 python:
         loading_change(1, 0)
         renpy.transition(transition, time)
 
-    def animation_maker(name, animation_name, frames=2, pause=0.2):
-        def get_frame(character, animation_name, frame):
-            return "{} {} {}".format(character, animation_name, frame)
-
-        animation_list = []
-        for i in range(frames):
-            animation_list.extend([get_frame(name, animation_name, i + 1), pause])
-        print(animation_list)
-        return Animation(*animation_list)
-    
-    animation_reaction = lambda name: animation_maker(name, "reaction")
- 
     def change_cursor(cursor):
         globals()['default_mouse'] = cursor
         return
@@ -116,10 +104,6 @@ init -9 python:
     def check_music_volume(min_volume=0, max_volume=1):
         print(min_volume, max_volume)
         return min_volume <= preferences.get_volume("music") <= max_volume
-    
-    def too_loud(max_volume=0.1):
-        return check_music_volume(max_volume)
-
 #    def replacement_show(*args, **kwargs):
 #        renpy.show(*args, **kwargs)
 #        return 

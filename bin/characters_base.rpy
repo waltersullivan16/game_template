@@ -1,34 +1,37 @@
 "../files_list.txt"
 
+
 init -8 python:
 ### CHARACTERS
-    spose = "main"
 
     PATH_CHARACTERS = gpj("images", "characters")
 
     class CharacterBase:
-        def __init__(self, name, group="", blip=None, at_list=[], default="main", **kwargs):
+        def __init__(self, name, group="", version="", blip=None, at_list=[], size=None, image=None, **kwargs):
             self.capital_name = name.upper()
             self.name = name.lower()
+            self.image = image or self.name
             self.group = group
+            self.version = version
 
             self.talking = False
             self.blip = blip
             self.at_list = at_list
-            self.default = default
+            self.size = size
 
             self._animation_switch = None
             self._styles = None
             self._talking_animation = None
 
             self.kwargs = kwargs
-            #self.init_images()
+            
+            self.init_image()
 
         @property
         def char(self):
             return Character(
                 name=self.capital_name,
-                image=self.name,
+                image=self.image,
                 callback=partial(char_talking, self), **self.kwargs)
 
         @property
@@ -43,7 +46,16 @@ init -8 python:
 
         @property
         def character_path(self):
-            return gpj(PATH_CHARACTERS, self.group, self.name)
+            return gpj(PATH_CHARACTERS, self.group, self.name, self.version)
+
+        @property
+        def suit(self):
+            return persistent.poses[self.name].get("suit", "main")
+
+        @property
+        def head(self):
+            return persistent.poses[self.name].get("head", "main")
+        
 
         @property
         def styles(self):
@@ -58,27 +70,49 @@ init -8 python:
             print("styles {}".format(self._styles))
             return self._styles
                 
+        def init_image(self):
+            if self.size is not None:
+                if self.name not in persistent.poses.keys():
+                    persistent.poses[self.name] = {"suit": "main", "head": "main"}
+                renpy.image(self.image, LiveCompositeImg(self.name, self.character_path, self.size).character_image)
+
         def __str__(self):
             return self.name
 
 
-        def body_path(self, body_part):
-            return gpj(selfcharacter_path(self.name, self.group), body_part, self.body_image_name(body_part))
+    class LiveCompositeImg:
+        def __init__(self, name, path, size):
+            self.name = name
+            self.path = path
+            self.size = size
+            self._talking_animation = None
+            self._character_image = None
 
+        def component_path(self, body_part, pose=None): 
+            return gpj(self.path, body_part, "[{}Class.{}].png".format(self.name.capitalize(), pose or body_part))
+
+        @property
         def character_image(self):
-            img_name = lambda part, i="": "{}_{}_[{}_{}]{}.png".format(self.name, part, self.name, part, i)
-            img_path = lambda part, i="": gpj(self.character_path, part, img_name(part, i))
-            
-            def talking_animation():
-                if self._talking_animation is None:
-                    self._talking_animation = Animation(*[
-                        img_path("head"), 0.2, img_path("head", 2), 0.2
-                    ])
-                return self._talking_animation
+            if self._character_image is None:
 
-            return LiveComposite(
-                (782, 705),
-                (0, 0), ConditionSwitch(
-                    "{}Class.talking".format(self.name.capitalize()), talking_animation(),
-                    "True", img_path("head")), 
-                (0, 0), img_path("suit"))
+                self._character_image = LiveComposite(
+                    self.size,
+                    (0, 0), self.component_path("head"),
+                    (0, 0), ConditionSwitch(
+                        "{}Class.talking".format(self.name.capitalize()), self.talking_animation,
+                        "True", "blank"),
+                    (0, 0), self.component_path("suit"))
+
+            return self._character_image
+
+        @property
+        def talking_animation(self):
+            if self._talking_animation is None:
+                self._talking_animation = Animation(*[
+                    self.component_path("mouth", "head"), 0.2,  "blank", 0.2
+                ])
+            return self._talking_animation
+
+    def change_pose(character, **kwargs):
+        for k in kwargs:
+            persistent.poses[character][k] = kwargs[k]

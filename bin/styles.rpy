@@ -111,12 +111,12 @@ style nvl_wardega:
     background textbox_maker("wardega", alpha=1, type="nvl")
 
 style nvl_dialogue_wardega: 
-    xpos 200 ypos 0.1
-    xsize 500
+    xpos 40 ypos 0.12
+    xsize 580
     color color("white")
-    #font font("monster")
-    size 40
-    slow_cps 20
+    font font("unique")
+    line_spacing 5
+    size 30
 
 ####################### MULTIPLE WINDOWS ####################################
 

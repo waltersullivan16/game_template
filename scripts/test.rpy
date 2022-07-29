@@ -3,7 +3,7 @@ transform t:
     zoom 0.7
 label test:
     scene lobby
-    show konopski phoenix politowanie
+    show konopski
     show wardega
     pause 1.0
     Wardega "dddssfsdfsdf"
