@@ -128,17 +128,11 @@ screen trofeum(t):
 
 screen new_item(name, description):
     zorder 1
-    vbox xalign 0.5 yalign 0.1:
-        add "gui/button/new_item.png"
-        vbox:
-            xpos 0.6 ypos 0.0
-            text name xpos 0 ypos -230 style "new_item"
-            text description xpos -100 ypos -100 style "new_item"
-
-        vbox:
-            xpos 0.1 ypos 0.1
-            text "fsdfsd" xpos -350 ypos 0.2 style "new_item"
-            text description xpos -500 ypos 0.5 style "new_item"
+    add "gui/button/new_item2.png"
+    add "gui/items/{}.png".format(name)
+    vbox:
+        text name xpos 400 ypos 0.2 style "new_item_name"
+        text description xpos 400 ypos 0.5 style "new_item_desc"
 
 
 ############ EXAMPLES ###########

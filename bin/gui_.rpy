@@ -66,7 +66,10 @@ init -12 python:
 
     def thinking(character, text, style=None, **kwargs):
         s = "thoughts_{}".format(persistent.style)
+        persistent.thinking = True
+        KonopskiClass.talking = False
         styled_monologue(s, character, text, kwargs)
+        persistent.thinking = False
 
 ### TEXTBOX
     def textbox_maker(textbox_name, alpha=0.85, type="textbox"):

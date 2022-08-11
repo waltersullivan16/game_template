@@ -21,7 +21,7 @@ init python:
 label start:
     show screen zz with slow_fade
     $ stop_music()
-    if not persistent.testing:
+    if persistent.testing:
         jump uwertura_scenes
     else:
         jump test
@@ -29,7 +29,7 @@ label scenes2:
     $ stop_music()
     menu:
         "currrent check":
-            jump chapter2
+            jump kon
 
 label uwertura_scenes:
     $ stop_music()

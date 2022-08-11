@@ -312,6 +312,9 @@ style trofeum:
     font font("ubuntu")
     color color("black")
 
-style new_item:
+style new_item_name:
     font font("coda")
+    color color("white")
+
+style new_item_desc:
     color color("white")

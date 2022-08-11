@@ -6,7 +6,7 @@ init -9 python:
         animation_list = []
         for i in range(frames):
             animation_list.extend([get_frame(name, animation_name, i + 1), pause])
-        print(animation_list)
+        #print(animation_list)
         return Animation(*animation_list)
     
     animation_reaction = lambda name: animation_maker(name, "reaction")

@@ -27,7 +27,7 @@ init -9 python:
 
     def label_callback(name, abnormal):
         if not renpy.has_label(name):
-            print("dadadadas", name)
+            #print("dadadadas", name)
             renpy.jump("uwertura_scenes")
             return
         if not name.startswith('_'):
@@ -37,9 +37,11 @@ init -9 python:
             persistent.base = name_arr[-len(name_arr)]
 
     def char_talking(character, event, **kwargs):
+        #print(kwargs)
+        print("talking fyn", persistent.thinking)
         if event == "show":
-            character.talking = True
-            print("ATTRIBUTES TALKING: konopski {}".format(renpy.get_attributes("konopski")))
+            character.talking = not persistent.thinking
+            #print("ATTRIBUTES TALKING: konopski {}".format(renpy.get_attributes("konopski")))
             #if character.name == "konopski":
             #    print("TAGAS", renpy.get_say_image_tag(), renpy.get_attributes(character.name))
             #    character.atr = renpy.get_attributes(character.name)
@@ -91,7 +93,7 @@ init -9 python:
         renpy.hide_screen("trofeum")
 
     def conditional_wait(condition, text_arr, last_text, p=1, **kwargs):
-        print(preferences.get_volume("music"))
+        #print(preferences.get_volume("music"))
         i = 0
         while condition(**kwargs):
             character, text = text_arr[i]
@@ -102,7 +104,7 @@ init -9 python:
         character(text)
 
     def check_music_volume(min_volume=0, max_volume=1):
-        print(min_volume, max_volume)
+        #print(min_volume, max_volume)
         return min_volume <= preferences.get_volume("music") <= max_volume
 #    def replacement_show(*args, **kwargs):
 #        renpy.show(*args, **kwargs)

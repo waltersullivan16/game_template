@@ -22,7 +22,7 @@ default konopski_suit = "objection"
 
 init python:
     
-    KonopskiClass = CharacterBase("Konopski", image="konopski_phoenix", size=(800, 800), version="phoenix")
+    KonopskiClass = CharacterBase("Konopski", image="konopski_phoenix", size=(800, 800), version="phoenix", at_list=[Position(ypos=1.2)])
     Konopski = KonopskiClass.char
 
 #define config.speaking_attribute = "talking"
@@ -34,7 +34,7 @@ layeredimage konopski:
     group body auto:# prefix "body":
         attribute main default
 
-    if KonopskiClass.talking:
+    if KonopskiClass.talking and not persistent.thinking:
         KonopskiClass.animations_switch
 
     group anime auto:

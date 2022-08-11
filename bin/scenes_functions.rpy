@@ -12,7 +12,7 @@ init python:
     def show_scene(background, characters, overlay=[]):
         renpy.scene()
         renpy.show(background)
-        print(characters)
+        #print(characters)
         for c in characters:
             renpy.show("{}".format(c.image), at_list=c.at_list)
         for o in overlay:

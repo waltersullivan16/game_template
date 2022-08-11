@@ -13,6 +13,7 @@ init -8 python:
             self.image = image or self.name
             self.group = group
             self.version = version
+            self.thinking = False
 
             self.talking = False
             self.blip = blip
@@ -55,19 +56,18 @@ init -8 python:
         @property
         def head(self):
             return persistent.poses[self.name].get("head", "main")
-        
 
         @property
         def styles(self):
 
             if self._styles is None:
                     z = [p for p in os.listdir(PATH_CHARACTERS)]
-                    print(z)
+                    #print(z)
                     paths = list(filter(lambda x: x.split('/')[-1].startswith("animation"), [gpj(self.character_path, p)  for p in os.listdir(self.character_path)]))
                     self._styles = []
                     for anim_path in paths:
                         self._styles += [d for d in os.listdir(anim_path)]
-            print("styles {}".format(self._styles))
+            #print("styles {}".format(self._styles))
             return self._styles
                 
         def init_image(self):
