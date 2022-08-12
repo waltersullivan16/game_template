@@ -1,6 +1,7 @@
 label chapter2:
     $ change_style("main")
     scene courtroom_full
+    $ play_sound_effect("crowd_long")
     #jump sad
     #jump wardega1
     #jump wardega-przemowienie
@@ -28,7 +29,7 @@ label poczatek_sadu:
     Lexio "Czy mógłbym prosić obronę o potwierdzenie gotowości do rozpoczęcia rozprawy?"
 
 label kon:
-    $ defense_scene(head="sykniecie")
+    $ defense_scene("panika")
     Konopski "..."
     Konopski "Co to ma kuźwa być?"
     pause 1
@@ -38,27 +39,32 @@ label kon:
     Konopski "..."
     Konopski "Kto i kiedy mnie w to ubrał?!"
 
-    $ pros_scene()
+    $ pros_scene("smirk")
     Wardega "A oto i nasza diwa, jak zawsze w świetnej formie!"
-    Wardega "Ledwo wyszła na scenę, a już zaczęła gwiazdorzyć"
+    Wardega "Ledwo wyszła na scenę, a już zaczęła gwiazdorzyć!"
 
     $ defense_scene()
-    $ thinking(Konopski, "Nie daj się sprowokować. Nie daj się sprowokować. Nie daj się sprowokować.")
+    $ thinking(Konopski, "A oto i nasz Wardęga.")
+    $ thinking(Konopski, "Ledwo się odezwał, a już{w=1} mam ochotę strzelić sobie w łeb...")
 
     $ pros_scene()
-    Wardega "Każdy na jej miejscu miałby w sobie chociaż tyle przyzwoitości, żeby podziękować za przyodzianie w ten gustowny garniturek."
-    Wardega "Ale najwidoczniej mamy przed sobą typ osoby, która otrzymawszy od babci dziergany na drutach sweter w renifery, robi aferę, że wolałaby wilki."
+    Wardega "Każdy na jej miejscu, kto ma w sobie choć odrobinę człowieczeństwa, podziękowałby za tak szykowne wdzianko."
+    Wardega "Ja na przykład jestem niezwykle wdzięczny za przyodzianie mnie w ten gustowny garniturek."
 
     $ defense_scene()
-    $ thinking(Konopski, "Eeee... to był przykład z autopsji, tak?")
+    $ thinking(Konopski, "No i tu muszę ci przyznać rację.")
+    $ thinking(Konopski, "Ja też jestem niezwykle wdzięczny {w=1} za przyodzianie cię w ten gustowny garniturek.")
+    $ thinking(Konopski, "Ten widok w pewien sposób rekompensuje mi poniesione dziś straty moralne.")
 
     $ pros_scene()
     Wardega "No tak, jak ja mogłem wcześniej o tym nie pomyśleć! Przecież to takie oczywiste dlaczego czujesz się teraz tak niekomfortowo!"
     Wardega "To twój pierwszy raz w nieobszczanych ciuchach, co, Konopski?"
 
 # OBJECTION!!!!
+    $ objection(Konopski, "objection")
+    $ wtf_moments()
 
-    $ judge_scene()
+    $ judge_scene("wkurw")
     Lexio "Co to do kurwy nędzy było."
 
     $ defense_scene()
@@ -68,18 +74,19 @@ label kon:
     Lexio "Panie Konopski, takie rzeczy to się mogą panu wymsknąć na podwórku, to jest sala rozpraw, a nie jakaś obora, na litość boską!"
 
     $ defense_scene()
-    Konopski "No to może zacznijmy od tego, żeby ten koleś w żabocie przestał być wobec mnie tak wulgarny. To jest sala rozpraw, a nie jakaś zatęchła leśna nora, na litość boską!"
+    Konopski "No to może zacznijmy od tego, żeby ten koleś w żabocie przestał być wobec mnie tak wulgarny. To jest sala rozpraw, a nie jakaś zatęchła leśna dziura, na litość boską!"
 
 # zbliżenie na twarze revawardęgi/ lexia -> pause
 
     $ judge_scene()
+    pause 1
     Lexio "Co to jest żabot?"
 
-    $ defense_scene()
+    $ defense_scene("kropla")
     Konopski "Kurwa serio?"
 
     # objection
-    $ pros_scene()
+    $ pros_scene("wkurw")
     Wardega "Panuj nad sobą, młody człowieku!"
     Wardega "Taki mały grzdylek, a tak brzydko mówi."
 

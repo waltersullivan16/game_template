@@ -38,7 +38,6 @@ init -9 python:
 
     def char_talking(character, event, **kwargs):
         #print(kwargs)
-        print("talking fyn", persistent.thinking)
         if event == "show":
             character.talking = not persistent.thinking
             #print("ATTRIBUTES TALKING: konopski {}".format(renpy.get_attributes("konopski")))

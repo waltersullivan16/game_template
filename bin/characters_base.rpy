@@ -7,7 +7,7 @@ init -8 python:
     PATH_CHARACTERS = gpj("images", "characters")
 
     class CharacterBase:
-        def __init__(self, name, group="", version="", blip=None, at_list=[], size=None, image=None, **kwargs):
+        def __init__(self, name, group="", version="", blip=None, at_list=[], size=None, image=None, pose_map={}, curr_pose="main", **kwargs):
             self.capital_name = name.upper()
             self.name = name.lower()
             self.image = image or self.name
@@ -25,6 +25,9 @@ init -8 python:
             self._talking_animation = None
 
             self.kwargs = kwargs
+
+            self.pose_map = pose_map
+            self.curr_pose = curr_pose
             
             self.init_image()
 
@@ -51,15 +54,14 @@ init -8 python:
 
         @property
         def suit(self):
-            return persistent.poses[self.name].get("suit", "main")
+            return self.pose_map.get(self.curr_pose, {}).get("suit", "main")
 
         @property
         def head(self):
-            return persistent.poses[self.name].get("head", "main")
+            return self.pose_map.get(self.curr_pose, {}).get("head", "main")
 
         @property
         def styles(self):
-
             if self._styles is None:
                     z = [p for p in os.listdir(PATH_CHARACTERS)]
                     #print(z)
@@ -72,12 +74,16 @@ init -8 python:
                 
         def init_image(self):
             if self.size is not None:
-                if self.name not in persistent.poses.keys():
-                    persistent.poses[self.name] = {"suit": "main", "head": "main"}
                 renpy.image(self.image, LiveCompositeImg(self.name, self.character_path, self.size).character_image)
+
+        def change_pose(self, curr_pose):
+            self.curr_pose = curr_pose
 
         def __str__(self):
             return self.name
+
+        def __eq__(self, other):
+            return isinstance(other, CharacterBase) and self.name == other.name
 
 
     class LiveCompositeImg:
