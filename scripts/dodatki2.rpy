@@ -1,3 +1,4 @@
+label dasd:
     Ema "A chce pan więcej?"
     Konopski "{size=+50}NIE!{/size} Przysięgam, znam już czarnoksiężnika jak własną kieszeń, powiedz mi proszę teraz..."
     Ema "Ma pan do wyboru:"

@@ -9,25 +9,21 @@ init python:
         change_style(s)
         renpy.transition(transition(t[1], time[1]))
 
-    def change_pose(c, p=None):
-        if p is not None:
-            c.change_pose(p)
-
     def show_scene(background, characters, overlay=[], t=None):
         renpy.scene()
         renpy.show(background)
         #print(characters)
         for c in characters:
-            renpy.show("{}".format(c.image), at_list=c.at_list)
+            renpy.show(c.image, at_list=c.at_list)
         for o in overlay:
             renpy.show(o)
 
-    def judge_scene(pose=None, t=None):
-        change_pose(LexioClass, pose)
+    def judge_scene(pose="main", t=None):
+        change_pose("lexio", pose)
         show_scene("judge", [LexioClass], ["lawkaj"], t=t)
 
     def pros_scene(pose="main", t=None):
-        WardegaClass.change_pose(pose)
+        change_pose("wardega", pose)
         show_scene(
             "prosecution",
             [WardegaClass],
@@ -35,13 +31,13 @@ init python:
             t=t
     )
     def copros_scene(pose="main", t=None):
-        change_pose(RevoClass, pose)
+        change_pose("revo", pose)
         show_scene(
         "coprosecution",
         [RevoClass], t=t
     )
     def defense_scene(pose="main", t=None):
-        KonopskiClass.change_pose(pose)
+        change_pose("konopski", pose)
         show_scene(
             "defense", 
             #[(KonopskiClass, kpose)],
@@ -50,18 +46,34 @@ init python:
         )
     def witness_scene(): {show_scene("witness", [Gimper])}
 
-    def objection(character, name):
-        play_sound_effect("{}_{}".format(name, character.name,), group="objection")
-        renpy.show("{}_bubble".format(name))
+    def objection(character, name, objection_sound=False):
+        if objection_sound:
+            play_sound_effect("objection_sound", channel="sfx2")
+        play_sound_effect(f"{name}_{character.name}", group="objection")
+        renpy.show(f'{name}_bubble')
         renpy.pause(2)
-        renpy.hide("{}_bubble".format(name))
+        renpy.hide(f"{name}_bubble")
 
     def wtf_moments(scenes_list=[judge_scene, pros_scene, copros_scene, defense_scene]):
-        def wtf_moment(scene):
-            renpy.transition(transition("imdis"))
-            scene()
+        def wtf_moment(scene, pose="main"):
+            #renpy.transition(transition("imdis"))
+            scene(pose)
             play_sound_effect("bum")
             renpy.pause(1)
 
-        for s in scenes_list:
-            wtf_moment(s)
+        for s in scenes_list[:-1]:
+            wtf_moment(s, "wtf_moment")
+        wtf_moment(scenes_list[-1])
+
+    def zoom_moment(character, pos=(0,0), zoom=2, text=None, sound=None, time=None, talking=False):
+        renpy.scene()
+        renpy.show("zoom_objection")
+        #renpy.show(character.char, at_list=["zoom_character"])
+        renpy.show(character.image, at_list=[character_zoom(z=zoom,x=pos[0], y=pos[1])])
+        if talking:
+            character.talking_cutscene = True
+        if sound is not None:
+            play_sound_effect(sound)
+            play_sound_effect(sound)
+        renpy.pause(time)
+        character.talking_cutscene = False

@@ -100,7 +100,6 @@ style say_label_straznik:
     size 80
     font font("ubuntu")
 
-
 #### NVL
 
 style nvl_main is nvl_window
@@ -113,9 +112,9 @@ style nvl_wardega:
 style nvl_dialogue_wardega: 
     xpos 40 ypos 0.12
     xsize 580
-    color color("white")
+    color color("blue")
     font font("unique")
-    line_spacing 5
+    line_spacing 3
     size 30
 
 ####################### MULTIPLE WINDOWS ####################################
@@ -297,7 +296,6 @@ style wkurw_text_style is text:
 style futura_text_style is text:
     size 30
     font("block")
-
 
 style button:
     background "#006"

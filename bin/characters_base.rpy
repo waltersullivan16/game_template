@@ -1,7 +1,7 @@
 "../files_list.txt"
 
 
-init -8 python:
+init -1 python:
 ### CHARACTERS
 
     PATH_CHARACTERS = gpj("images", "characters")
@@ -16,6 +16,7 @@ init -8 python:
             self.thinking = False
 
             self.talking = False
+            self.talking_cutscene = False
             self.blip = blip
             self.at_list = at_list
             self.size = size
@@ -27,7 +28,7 @@ init -8 python:
             self.kwargs = kwargs
 
             self.pose_map = pose_map
-            self.curr_pose = curr_pose
+            persistent.poses[self.name] = "main"
             
             self.init_image()
 
@@ -53,12 +54,20 @@ init -8 python:
             return gpj(PATH_CHARACTERS, self.group, self.name, self.version)
 
         @property
+        def curr_pose(self):
+            return persistent.poses[self.name]
+
+        @property
         def suit(self):
             return self.pose_map.get(self.curr_pose, {}).get("suit", "main")
 
         @property
         def head(self):
-            return self.pose_map.get(self.curr_pose, {}).get("head", "main")
+            return self.pose_map.get(self.curr_pose, {}).get("head", self.curr_pose)
+
+        @property
+        def lip_sync(self):
+            return self.talking or self.talking_cutscene
 
         @property
         def styles(self):
@@ -75,9 +84,6 @@ init -8 python:
         def init_image(self):
             if self.size is not None:
                 renpy.image(self.image, LiveCompositeImg(self.name, self.character_path, self.size).character_image)
-
-        def change_pose(self, curr_pose):
-            self.curr_pose = curr_pose
 
         def __str__(self):
             return self.name
@@ -103,9 +109,9 @@ init -8 python:
 
                 self._character_image = LiveComposite(
                     self.size,
-                    (0, 0), self.component_path("head"),
+                    (0, 0), self.component_path("head"),# pose="static"),
                     (0, 0), ConditionSwitch(
-                        "{}Class.talking".format(self.name.capitalize()), self.talking_animation,
+                        "{}Class.lip_sync and not persistent.thinking".format(self.name.capitalize()), self.talking_animation,
                         "True", "blank"),
                     (0, 0), self.component_path("suit"))
 
@@ -115,10 +121,9 @@ init -8 python:
         def talking_animation(self):
             if self._talking_animation is None:
                 self._talking_animation = Animation(*[
-                    self.component_path("mouth", "head"), 0.2,  "blank", 0.2
+                    self.component_path("mouth", "head"), 0.2, "blank", 0.2
                 ])
             return self._talking_animation
 
-    def change_pose(character, **kwargs):
-        for k in kwargs:
-            persistent.poses[character][k] = kwargs[k]
+    def change_pose(name, pose, **kwargs):
+        persistent.poses[name] = pose

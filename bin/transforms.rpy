@@ -26,6 +26,10 @@ transform choice_transform:
     alpha 0.0
     easein 1.0 alpha 1.0
 
+transform character_zoom(z=2, x=0, y=0):
+    xpos x ypos y
+    zoom z
+
 define vpunch = Move((0, 10), (0, -10), .10, bounce=True, repeat=True, delay=.275)
 define hpunch = Move((15, 0), (-15, 0), .10, bounce=True, repeat=True, delay=.275)
 define m = Move((15, 0), (-15, 0), .10, bounce=True, repeat=True, delay=.275)

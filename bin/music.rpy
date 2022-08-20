@@ -1,34 +1,23 @@
 " ../files_list.rpy"
-## jump to other conf files
-"gui_.rpy"
-"characters_base.rpy"
-"functions.rpy"
-"screens_.rpy"
-
-## common files
-"../characters.rpy"
-"../images.rpy"
-"../screens.rpy"
-
-## script
-"../scripts/chapter1/1a_poczatek.rpy"
 
 init -10 python:
 
     def music(name):
-        return gpj("music", "soundtrack", "{}.mp3".format(name))
+        return gpj("music", "soundtrack", f"{name}.mp3")
 
     def sound(name, group=""):
-        return gpj("music","sound effects", group, "{}.mp3".format(name))
+        return gpj("music","sound effects", group, f"{name}.mp3")
 
     def video(name, group=""):
-        return gpj("videos", group, "{}.webm".format(name))
+        return gpj("videos", group, f"{name}.webm")
 
     def get_blip(b):
-        n = "blip_{}".format(b)
-        path = gpj("music", "sound effects", "{}.mp3".format(n))
+        #n = "blip_{}".format(b)
+        #path = gpj("music", "sound effects", "{}.mp3".format(n))
+        path = gpj("music", "sound effects", f"blip_{b}.mp3")
         #print(n, path)
-        return n if os.path.exists(gpj("music", "sound effects", "{}.mp3".format(n))) else "blip_main"
+        #return n if os.path.exists(gpj("music", "sound effects", "{}.mp3".format(n))) else "blip_main"
+        return f"blip_{b}" if os.path.exists(gpj("music", "sound effects", f"blip_{b}.mp3")) else "blip_main"
         
     config.main_menu_music = music("chipdale")
 

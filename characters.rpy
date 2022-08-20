@@ -1,6 +1,6 @@
 "files_list.rpy"
 
-init -8 python:
+init python:
 
     Unknown = Character(name = "???")
     Blank = Character(name = "")
@@ -14,21 +14,18 @@ init -8 python:
     d2 = Character(None, kind=nvl, what_font=font("kalam"), what_size=40, what_color=color("light_pink"))
     d3 = Character(None, kind=nvl, what_font=font("kalam"), what_size=40, what_color=color("bright_pink"))
 
-    wardega_nvl = Character(None, kind=nvl, what_slow_cps=20)
-
-###################### KONOPSKI ###########################
-default konopski_head = "main"
-default konopski_suit = "objection"
+    nvl_wardega = Character(None, kind=nvl, what_slow_cps=20)
 
 init python:
-    
     poses = {
        "main": {"head": "main", "suit": "main"},
-       "thinking": {"head": "main", "suit": "thinking"},
+       "thinking": {"head": "wprost_otwarte", "suit": "thinking"},
        "kartka": {"head": "cocky", "suit": "kartka"},
-       "objection": {"head": "cocky", "suit": "objection"},
-       "zawstydzenie": {"head": "zalamanie", "suit": "zawstydzenie"},
-       "kropla": {"head": "main", "suit": "kropla"},
+       "objection": {"head": "objection", "suit": "objection"},
+       "wtf": {"head": "wtf", "suit": "normal"},
+       "kropla": {"head": "kropla", "suit": "kropla"},
+       "zawstydzenie": {"head": "zawstydzenie", "suit": "zawstydzenie"},
+       "wtf_moment": {"head": "wtf", "suit": "thinking"},
     }
 
     KonopskiClass = CharacterBase("Konopski", image="konopski_phoenix", size=(800, 800), version="phoenix", at_list=[Position(ypos=1.2)], pose_map=poses)
@@ -60,21 +57,33 @@ layeredimage konopski:
 ###################### revo ###########################
 
 init python:
-    RevoClass = CharacterBase("Revo", at_list=[Position(xpos=0.7)], size=(748, 631))
+    pose_map = {
+        "wtf_moment": {"head": "main"},
+        "kartka": {"head": "main", "suit": "kartka"}
+    }
+    RevoClass = CharacterBase("Revo", at_list=[Position(xpos=0.7)], size=(748, 631), pose_map=pose_map)
     Revo = RevoClass.char
     
 ###################### WARDEGA ###########################
 
 init python:
+
+# HEADS
+# duma, egzaltacja, egzaltacja2, main, obrzydzenie, politowanie, rezygnacja, smirk, smirk2, smutek,
+# thinking, wkurw, 
+# wtf: zaskoczone oczy skierowane na widownię
+# wtf2: zaskoczone oczy skierowane na konopskiego
+
+# SUITS
+# main, rozlozone, palec, kartka
  
     pose_map = {
-        "main": {"head": "main", "suit": "main"},
-        "egzaltacja": {"head": "egzaltacja", "suit": "main"},
-        "egzaltacja2": {"head": "egzaltacja2", "suit": "main"},
-        "palec": {"head": "smirk", "suit": "palec"},
-        "pogarda": {"head": "main", "suit": "rozlozone"},
+        "palec": {"head": "wkurw", "suit": "palec"},
+        "pogarda": {"head": "smirk2", "suit": "rozlozone"},
+        "smirk": {"head": "smirk", "suit": "rozlozone"},
         "kartka": {"head": "main", "suit": "kartka"},
-        "wkurw": {"head": "main", "suit": "wkurw"},
+        "serious": {"head": "main", "suit": "palec"},
+        "wtf_moment": {"head": "wkurw"},
     }
 
     WardegaClass = CharacterBase("Wardega", size=(782, 705), pose_map=pose_map)#, at_list=[Position(xpos=0.7)])
@@ -85,14 +94,9 @@ init python:
 init python:
     
     pose_map = {
-        "main": {"head": "main", "suit": "main"},
+        "wkurw": {"head": "pretensja"},
+        "wtf_moment": {"head": "politowanie"},
     }
-    LexioClass = CharacterBase("Lexio", at_list=[Position(ypos=0.715)], pose_map=pose_map)
+    LexioClass = CharacterBase("Lexio", at_list=[Position(xpos=0.55, ypos=0.84)], pose_map=pose_map, size=(543, 503))
     Lexio = LexioClass.char
-
-layeredimage lexio:
-    group body:
-        attribute main default
-
-    if LexioClass.talking:
-        LexioClass.animations_switch
+    Lexio.name = "Leksiu"

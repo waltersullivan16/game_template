@@ -8,15 +8,25 @@ init -12 python:
     from itertools import chain
     import random
 
-init -11 python:
     TITLE = "template"
     GAME_PATH = gpj('/home/akechi/renpy/games', TITLE, 'game')
-    persistent.testing = True
+    #persistent.testing = True
+
+init python:
+    if persistent.count is None:
+        persistent.count = 0
+    else:
+        persistent.count += 1
+    print(persistent.count)
 
     if persistent.style is None:
         persistent.style = "main"
     if persistent.nvl is None:
         persistent.nvl = "main"
+    if persistent.poses is None:
+        persistent.poses = {}
+    
+    persistent.thinking = False
 
     mouse = lambda x: gpj("gui", "mouse", "{}.png".format(x))
     mouses_list = ["main", "active", "red", "loading", "not", "love", "question"]
@@ -45,8 +55,8 @@ define config.menu_include_disabled = True
 #define config.displayable_prefix["blur"] = blurred
 #define config.menu_arguments_callback = True
 
-default preferences.afm_time = 8
-default preferences.afm_enable = True
+#default preferences.afm_time = 8
+#default preferences.afm_enable = True
 
 default preferences.show_empty_window = False
 default preferences.text_cps = 40
