@@ -59,7 +59,8 @@ layeredimage konopski:
 init python:
     pose_map = {
         "wtf_moment": {"head": "main"},
-        "kartka": {"head": "main", "suit": "kartka"}
+        "kartka": {"head": "main", "suit": "kartka"},
+        "objection": {"head": "main", "suit": "objection"},
     }
     RevoClass = CharacterBase("Revo", at_list=[Position(xpos=0.7)], size=(748, 631), pose_map=pose_map)
     Revo = RevoClass.char
@@ -78,15 +79,16 @@ init python:
 # main, rozlozone, palec, kartka
  
     pose_map = {
-        "palec": {"head": "wkurw", "suit": "palec"},
+        "wkurw": {"head": "wkurw", "suit": "palec"},
         "pogarda": {"head": "smirk2", "suit": "rozlozone"},
         "smirk": {"head": "smirk", "suit": "rozlozone"},
         "kartka": {"head": "main", "suit": "kartka"},
         "serious": {"head": "main", "suit": "palec"},
         "wtf_moment": {"head": "wkurw"},
+        "objection": {"head": "objection", "suit": "objection"}
     }
 
-    WardegaClass = CharacterBase("Wardega", size=(782, 705), pose_map=pose_map)#, at_list=[Position(xpos=0.7)])
+    WardegaClass = CharacterBase("Wardega", size=(1063, 720), pose_map=pose_map)#, at_list=[Position(xpos=0.7)])
     Wardega = WardegaClass.char
 
 ###################### Lexio ###########################

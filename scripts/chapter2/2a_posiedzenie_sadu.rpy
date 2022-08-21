@@ -1,4 +1,5 @@
 label chapter2:
+    $persistent.thinking = False
     $ change_style("main")
     scene courtroom_full
     $ play_sound_effect("crowd_long")
@@ -30,17 +31,18 @@ label poczatek_sadu:
 
 label kon:
     $ defense_scene("wtf")
-    Konopski "..."
+    $ thinking(Konopski, "...")
     Konopski "Co to ma kuźwa być?"
     pause 1
     Konopski "Nie, no ale serio pytam. CO TO MA BYĆ?"
     Konopski "Renesans ery pranków?"
     Konopski "I w co ja jestem kuźwa ubrany?!"
-    Konopski "..."
+    pause 1
     $ change_pose("konopski", "wkurw")
     Konopski "Kto i kiedy mnie w to ubrał?!"
 
     $ pros_scene("pogarda")
+    pause 1
     Wardega "A oto i nasza diwa, jak zawsze w świetnej formie!"
     Wardega "Ledwo wyszła na scenę, a już zaczęła gwiazdorzyć!"
 
@@ -56,21 +58,21 @@ label kon:
     $ defense_scene()
     $ thinking(Konopski, "No i tu muszę ci przyznać rację.")
     $ thinking(Konopski, "Ja też jestem niezwykle wdzięczny {w=1} za przyodzianie cię w ten gustowny garniturek.")
-    $ change_pose("konopski", "beka1")
+    $ change_pose("konopski", "beka")
     $ thinking(Konopski, "Ten widok w pewien sposób rekompensuje mi poniesione dziś straty moralne.")
 
     $ pros_scene()
     Wardega "No tak, jak ja mogłem wcześniej o tym nie pomyśleć! Przecież to takie oczywiste dlaczego czujesz się teraz tak niekomfortowo!"
     pause 1
     $ change_pose("wardega", "pogarda")
-    Wardega "To twój pierwszy raz w nieobszczanych ciuchach, co, Konopski?"
+    Wardega "To twój pierwszy raz w nieobszczanych ciuchach, co, Konopski?{w=1}{nw}"
 
 # OBJECTION!!!!
     $ stop_music()
-    $ objection(Konopski, "objection")
+    $ objection("konopski", "objection")
     $ change_pose("lexio", "wkurw")
     $ wtf_moments()
-    $ defense_scene()
+    $ defense_scene("objection")
     pause 1
     $ change_pose("konopski", "zawstydzenie")
     $ play_sound_effect("zawstydzenie", group="reactions")
@@ -80,7 +82,7 @@ label kon:
     $ play_sound_effect("wkurw", group="reactions")
     pause 2
     $ change_pose("lexio", "politowanie")
-    Lexio "Co to do kurwy nędzy było."
+    Lexio "Co to do kurwy nędzy było?"
 
     $ defense_scene()
     Konopski "Eeee... ja chciałem wyrazić oburzenie i tak jakoś mi się wymsknęło..."
@@ -96,14 +98,14 @@ label kon:
     $ judge_scene()
     pause 1
     $ change_pose("lexio", "politowanie")
-    Lexio "Co to jest żabot?"
+    Lexio "Co to jest żabot?{w=1}{nw}"
 
     $ defense_scene("kropla")
     $ play_sound_effect("kropla", group="reactions")
     Konopski "Kurwa serio?"
 
     # objection
-    $ pros_scene("palec")
+    $ pros_scene("wkurw")
     Wardega "Panuj nad sobą, młody człowieku!"
     Wardega "Taki mały grzdylek, a tak brzydko mówi."
 
@@ -112,11 +114,18 @@ label kon:
     Lexio "Od razu widać, że recydywista."
 
     $ defense_scene()
-    Konopski "..."
+    Konopski "Dobra, niech wam będzie, jestem nikczemnikiem o fagacim sercu{w=1}"
 
-    $ objection(Revo, "excuseme", objection_sound=True)
+    #$judge_scene()
+    #Lexio "No już spokojnie, nie bądź dla siebie taki surowy."
+
+    #$ defense_scene()
+    #Konopski "Tak czy siak, chciałbym zdementować te oszczerstwa"
+
+    $ objection("revo", "excuseme", objection_sound=True)
     $ wtf_moments(scenes_list=[pros_scene, defense_scene, judge_scene, copros_scene])
     pause 1
+    $change_pose("revo", "main")
     Revo "Państwo wybaczą, że w tak impertynencki sposób przerywam tę żarliwą debatę, ale chciałbym wtrącić swój komentarz, czy mogę?"
     
     $ judge_scene()
@@ -148,7 +157,7 @@ label kon:
     $ stop_music()
     $ play_sound_effect("wkurw", group="reactions")
     pause 1
-    $ change_pose("wardega", "palec")
+    $ change_pose("wardega", "wkurw")
     Wardega "Słyszysz Konopski? Dość już tych twoich dyrdymałów!"
 
     $ judge_scene()
@@ -176,16 +185,15 @@ label kon:
     $ defense_scene("wprost_otwarte")
     Konopski "Co? Że niby ja?"
     pause 1
-    $ change_pose("konopski", "wtf")
+    $ change_pose("konopski", "main")
     Konopski "To do mnie było?"
     pause 1
-    $ change_pose("konopski", "main")
     Konopski "A ja przypadkiem jeszcze przed chwilą nie byłem oskarżonym?"
     
     $ judge_scene("pretensja")
     Lexio "Czy mam przez to rozumieć, że nie chcesz być obrońcą?"
 
-    $ defense_scene("opanowanie")
+    $ defense_scene()
     Konopski "Tego nie powiedziałem..."
 
     $ judge_scene("pretensja")
@@ -193,7 +201,7 @@ label kon:
 
     $ defense_scene("thinking")
     Konopski "Eeee... "
-    $ change_pose("konopski", "high")
+    $ change_pose("konopski", "main")
     Konopski "No niech już będzie..."
 
     $ judge_scene()
@@ -283,21 +291,82 @@ label mowa_wardegi:
     $ thinking(Konopski, "Dla świata Wesz Społeczna.")
 
     $ pros_scene("serious")
-    Wardega "Dla ciebie Konopski, Śmiertelne Zagrożenie, kryjące się w lesie Pradawne Zło, stojący za twoimi plecami Slender Man."
+    Wardega "Dla ciebie Konopski, Śmiertelne Zagrożenie"
 
     $ defense_scene()
+    $ thinking(Konopski, "Śmiertelne zagrożenie?")
+
+    $ pros_scene("serious")
+    Wardega "Skrywające się w najmroczniejszych zakątkach lasu, Pradawne Zło."
+
+    $ defense_scene("kropla")
+    $ thinking(Konopski, "Pradawne zło...?")
+    
+    $ pros_scene("serious")
+    Wardega "Stojący za twoimi plecami Slender Man."
+label slender_lol:
+    $defense_scene()
     pause 1
     $ change_pose("konopski", "beka")
-    $ thinking(Konopski, "...{w=1} kuźwa, co?")
-    $ thinking(Konopski, "SLENDER MAN...?")
+    $ play_sound_effect("idea1", group="reactions")
     pause 1
-    $ change_pose("konopski", "beka2")
-    $ thinking(Konopski, "Może powiesz jeszcze że Mini Majk to Micheal Jordan?")
+    $ config.default_music_volume = 0.1
+    $ thinking(Konopski, "... {w=1}kuźwa, co?")
+    $ thinking(Konopski, "SLENDER MAN...?!")
+    pause 1
+    $ thinking(Konopski, "Ale w sensie, że...{w=1} ten wysoki, chudy koleś?{w=1} O nim mówimy?")
+    $ thinking(Konopski, "O tym WYJĄTKOWO WYSOKIM i PRZERAŹLIWIE CHUDYM kolesiu?")
+    pause 1
+    $ thinking(Konopski, "Czyli o tego właśnie SLENDER mana nam chodzi? Tak dla jasności pytań, żeby nie było niedomówień.")
+    pause 1
+    $ change_pose("konopski", "thinking")
+    $ thinking(Konopski, "Jakby ci to...")
+    $ thinking(Konopski, "No bo wiesz, nie chcę zabrzmieć jak ten typ dzieciaka, który za punkt honoru obrał sobie zrujnowanie dziecięcych fantazji kolegom z podwórka.")
+    $ thinking(Konopski, "Tak nawiasem mówiąc, mam wrażenie, graniczące z pewnością, że to ty należałeś do tego znienawidzonego grona nadgorliwców, uświadamiających naiwnej gawiedzi, że mikołaj nie isnieje.")
+    $ thinking(Konopski, "Jebana sześćdziesiona.")
+    $ thinking(Konopski, "Ale już mniejsza o to. Wróćmy do twoich marzeń byciu wysokim, chudym, przerażającym {w=1}SLENDER MANEM.")
 
+label slender_story:
+    $ thinking(Konopski, "Tak z czysto praktycznego punktu widzenia. Wyobraźmy sobie taki scenariusz.")
+    $ thinking(Konopski, "Miejsce akcji: ciemny las.")
+    $ thinking(Konopski, "Czas akcji: ciemna noc.")
+    $ thinking(Konopski, "Ale nie aż tak ciemna.")
+    $ thinking(Konopski, "Mówiąc krótko jest ciemno jak w dupie u murzyna.")
+    $ change_pose("konopski", "kropla")
+    pause 1
+    $ thinking(Konopski, "Kuźwa, jakie szczęście że to tylko monolog wewnętrzny, bo w przeciwnym wypadku z miejsca trafiłbym do pierdla.")
+    pause 1
+    $ thinking(Konopski, "Albo, co gorsza, mogliby mnie zbanować.")
+
+    $ thinking(Konopski, "No już mniejsza z tym. Głosówek z tego nie będzie, więc git.") 
+    $ thinking(Konopski, "Wracając do tematu...")
+    
+    $ thinking(Konopski, "Załóżmy czysto teoretycznie, że jestem pizdeczką i boję się ciemności, {w=1}{fast} Podkreślam, CZYSTO TEORETYCZNIE, tylko baby są w takich sytuacjach obsrane, mężczyźni, w sposób męski, z męskim spokojem zachowują zimną, bogatą w męskość krew.")
+    pause 1
+    $ thinking(Konopski, "No to idę w tej ciemnicy, idę, idę, cisza totalna, aż tu nagle{w=1}")
+    $ thinking(Konopski, "TRZASK")
+    $ thinking(Konopski, "Odwracam się powoli, czując męski niepokój (czyli tak w zasadzie na luzaku).")
+    pause 1
+    $ thinking(Konopski, "Odwracam się bardzo powoli, żeby było klimatycznie.")
+    pause 1
+    $ thinking(Konopski, "Odwróciłem się.")
+    $ thinking(Konopski, "PRZERAŻENIE")
+    $ thinking(Konopski, "STRACH")
+    $ thinking(Konopski, "TERROR")
+    $ thinking(Konopski, "SERCE ZAMIERA W PIERSI{w=1} twojej, bo spodziewałeś się jakiejkolwiek reakcji.")
+    $ thinking(Konopski, "A ja idę dalej. Jak gdyby nigdy nic.")
+    $ thinking(Konopski, "No bo tak między nami mówiąc: nawet cię nie zauważyłem{w=1} ty jebany kurduplu.")
+    pause 1
+    $ thinking(Konopski, "Kurtyna.")
+    pause 1
+    $ thinking(Konopski, "Albo wiesz co, jak sobie teraz myślę, to chyba zbyt pochopnie oceniłem ten pomysł. Jest kilka osób, nadających się na twoje potencjalne ofiary.")
+    $ thinking(Konopski, "Dajmy na to Mini Majk.") 
+    
     #"KONOPSKI TY AROGANCKA AMEBO Z NIEDOWŁADEM MÓZGU"
     # w sumie spoko, muszę być jakąś wykoksaną amebą, chuj że z niedowładem, tak czy siak mam jakiś mózg
 
     $ pros_scene("wkurw")    
+    $ stop_music()
     $ play_sound_effect("wkurw", group="reactions")
     Wardega "KONOPSKI TY AROGANCKI GNOJU! SŁUCHASZ TY W OGÓLE CO SIĘ DO CIEBIE MÓWI?"
 
@@ -307,7 +376,9 @@ label mowa_wardegi:
     $ change_pose("konopski", "high")
     Konopski "Tak słucham."
 
-    $ pros_scene("wkurw")
+    $ pros_scene()
+    pause 1
+    $change_pose("wkurw")
     Wardega "Nie wciskaj mi tu kitu, ty farmazoniarzu, przecież widzę że odleciałeś myślami do jakiejś swojej konopolandii czy tam gdziekolwiek cię ponosi ten twój pusty łeb."
 
     $ judge_scene()
@@ -324,18 +395,26 @@ label mowa_wardegi:
     Konopski "Dla jednych Konopski, dla drugich Konopskyyy, dla Wardęgi{nw}"
    
     $ objection("wardega", "silence") 
-    $ pros_scene()
+    # todo
+    # change_pose("konopski", "strach")
+    # pause 1
+    $ play_sound_effect("wkurw", group="reactions")
+    $ pros_scene("objection")
+    pause 1
+    $ play_music("wardega_wkurw")
+    pause 1
+    $ change_pose("wardega", "wkurw")
     Wardega "Myślisz, że możesz sobie tak kpić ze mnie w żywe oczy? Taki jesteś dowcipny, ty niewychowana łazęgo? Taki z ciebie ironiczny mądrala? Taki obraz siebie ci się uroił w tym pustym łbie?"
     Wardega "To ja ci teraz powiem kim jesteś. Jesteś paskudnym, parszywym, aroganckim, skretyniałym, zdeprawowanym i szpetnym wybrykiem natury, który nie ma żadnego szacunku do autorytetów."
 
-    $ defense_scene("pogarda")
-    Konopski "..."
+    $ defense_scene()#"pogarda")
+    pause 1
 
     $ pros_scene()
-    Wardega "..."
+    pause 1
 
     $ defense_scene()
-    Konopski "..."
+    pause 1
 
     $ pros_scene()
     Wardega "Może jakiś komentarz? Przemyślenia?"
@@ -360,7 +439,7 @@ label mowa_wardegi:
     Wardega "On wie, że to tylko takie żarciki i nie ma mi tego za złe."
     Wardega "Co nie, Konopski? Sztama?"
 
-    $ defense_scene("pogarda")
+    $ defense_scene()#"pogarda")
     Konopski "..."
     #rzut na chamskie mordy konopskiego, lexia revo
     $ pros_scene()
@@ -386,7 +465,7 @@ label aa:
     $ judge_scene()
     Lexio "Dobra, już."
     Lexio "Konopski, przeproś."
-    $ objection(Konopski, "objection")
+    $ objection("konopski", "objection")
     
     $defense_scene()
     Konopski "No teraz to cię chyba totalnie posrało, nie ma nawet takiej{nw}"

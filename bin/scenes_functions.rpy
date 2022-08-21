@@ -49,13 +49,13 @@ init python:
     def objection(character, name, objection_sound=False):
         if objection_sound:
             play_sound_effect("objection_sound", channel="sfx2")
-        play_sound_effect(f"{name}_{character.name}", group="objection")
+        play_sound_effect(f"{name}_{character}", group="objection")
         renpy.show(f'{name}_bubble')
         renpy.pause(2)
         renpy.hide(f"{name}_bubble")
 
     def wtf_moments(scenes_list=[judge_scene, pros_scene, copros_scene, defense_scene]):
-        def wtf_moment(scene, pose="main"):
+        def wtf_moment(scene, pose="objection"):
             #renpy.transition(transition("imdis"))
             scene(pose)
             play_sound_effect("bum")

@@ -100,7 +100,7 @@ screen say(who, what):
     $style.say_dialogue = style["say_dialogue_{}".format(persistent.style)]
     window:
         id "window"
-        if who is not None and who is not "blank":
+        if who is not None and who != "blank":
             window:
                 id "namebox"
                 style "namebox_{}".format(persistent.style)
@@ -1315,7 +1315,7 @@ screen nvl_dialogue(dialogue):
 
 ## This controls the maximum number of NVL-mode entries that can be displayed at
 ## once.
-define config.nvl_list_length = gui.nvl_list_length
+define config.nvl_list_length = 1#gui.nvl_list_length
 
 style nvl_window is default
 style nvl_entry is default

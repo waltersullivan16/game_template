@@ -55,8 +55,8 @@ define config.menu_include_disabled = True
 #define config.displayable_prefix["blur"] = blurred
 #define config.menu_arguments_callback = True
 
-#default preferences.afm_time = 8
-#default preferences.afm_enable = True
+default preferences.afm_time = 5
+default preferences.afm_enable = True
 
 default preferences.show_empty_window = False
 default preferences.text_cps = 40

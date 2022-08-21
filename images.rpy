@@ -5,7 +5,7 @@
 image bg lobby = Image("background/lobby.png")
 image lobby2 = Image("background/lobby2.png")
 image lobby_black = Image("background/lobby_black.png")
-image bg black = Image("background/black.png")
+image bg black = Image("background/colors/black.png")
 
 image minikonopski = Image("characters/konopski/mini-konopski.png")
 

@@ -8,7 +8,6 @@
 "bin/music.rpy"
 "bin/images_python.rpy"
 "bin/styles.rpy"
-"bin/placeholders.rpy"
 
 ## common files
 "characters.rpy"
@@ -26,6 +25,7 @@
 "scripts/chapter1/1c_dziewczyny.rpy"
 "scripts/chapter1/1d_straznik.rpy"
 
-"scripts/chapter2/2_posiedzenie_sadu.rpy"
+"scripts/chapter2/2a_posiedzenie_sadu.rpy"
+"scripts/chapter2/2b_wardega_intro.rpy"
 
 "scripts/test.rpy"
